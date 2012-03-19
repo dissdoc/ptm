@@ -1,0 +1,4 @@
+%h4= album.name
+%p= album.description
+- if current_user.id == album.user_id
+  = link_to "delete", album, :method => :delete
