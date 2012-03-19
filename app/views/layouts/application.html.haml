@@ -1,0 +1,22 @@
+!!! 5
+%html
+  %head
+    %title= title_page
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %div.container
+      %div.span-18
+        = render "shared/logo"
+      %div{ :class => ["span-6", "last"] }
+        = render "shared/auth_menu"
+
+      %div.span-24
+        = render "shared/navigator"
+
+    %div.container
+      %div.span-18
+        = yield
+      %div{ :class => ["span-6", "last"] }
+        v

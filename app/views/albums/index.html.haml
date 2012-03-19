@@ -1,0 +1,8 @@
+%h2
+  Albums
+
+%p
+  = link_to "My albums", my_albums_path
+
+- @albums.each do |album|
+  = render :partial => "albums/album", :locals => { :album => album }
