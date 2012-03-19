@@ -3,6 +3,8 @@ Ptm::Application.routes.draw do
 
   resources :albums do
     get 'my', :on => :collection
+
+    resources :photos
   end
 
   root :to => 'home#index'

@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-
+    @album = Album.find(params[:id])
   end
 
   def new
@@ -17,8 +17,9 @@ class AlbumsController < ApplicationController
     @album = current_user.albums.new(params[:album])
     if @album.save!
       redirect_to my_albums_path
+    else
+      redirect_to albums_path
     end
-    redirect_to albums_path
   end
 
   def destroy
