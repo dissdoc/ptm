@@ -1,3 +1,12 @@
 = form_for [@album, @photo] do |f|
   = f.file_field :image
+
+  %div
+    = f.label :tag_names, "Tags"
+    = f.text_field :tag_names
+
+  %div
+    = f.label "Generate at"
+    = f.datetime_select :generate
+
   = f.submit "Add"

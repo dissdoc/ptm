@@ -2,5 +2,6 @@
 
 = link_to "add photo", new_album_photo_path(@album)
 
-- @album.photos.each do |photo|
-  = image_tag photo.image.url(:small)
+%p
+  - @album.photos.each do |photo|
+    = link_to image_tag(photo.image.url(:small)), [@album, photo]

@@ -15,4 +15,9 @@ class PhotosController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def show
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.find(params[:id])
+  end
 end

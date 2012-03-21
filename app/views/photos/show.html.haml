@@ -1,0 +1,12 @@
+= link_to "Edit"
+
+%p
+  = image_tag @photo.image.url(:medium)
+
+%p
+  %label Generate at:
+  = @photo.generate
+
+%p
+  %label Tags:
+  = @photo.tag_names
