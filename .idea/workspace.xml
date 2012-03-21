@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/tag.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/tagging.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/photos/show.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120321082549_add_generate_to_photo.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120321095053_create_tags.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120321095135_create_taggings.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/geo.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120321101739_create_geos.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120321110244_add_photo_to_geo.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ptm.iml" afterPath="$PROJECT_DIR$/.idea/ptm.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/photos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/photo.rb" afterPath="$PROJECT_DIR$/app/models/photo.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/albums/show.html.haml" afterPath="$PROJECT_DIR$/app/views/albums/show.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/photos/new.html.haml" afterPath="$PROJECT_DIR$/app/views/photos/new.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/photos/show.html.haml" afterPath="$PROJECT_DIR$/app/views/photos/show.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="ptm.iws" />
@@ -35,10 +35,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="photo.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="photo.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="346" selection-end="346" vertical-scroll-proportion="0.20143884">
+            <state line="25" column="68" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="geo.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/geo.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="53" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -47,16 +56,25 @@
       <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/photos/new.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="29" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+            <state line="10" column="23" selection-start="176" selection-end="180" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="photos_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="46" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="21" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+            <state line="16" column="16" selection-start="195" selection-end="195" vertical-scroll-proportion="0.21333334">
               <folding />
             </state>
           </provider>
@@ -76,12 +94,15 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/views/albums/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/tagging.rb" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/models/location.rb" />
         <option value="$PROJECT_DIR$/app/views/photos/new.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
         <option value="$PROJECT_DIR$/app/models/photo.rb" />
+        <option value="$PROJECT_DIR$/app/models/geo.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
       </list>
     </option>
   </component>
@@ -117,17 +138,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ptm" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -376,6 +396,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -487,6 +517,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="" />
       <created>1332317404905</created>
       <updated>1332317404905</updated>
     </task>
@@ -496,23 +527,23 @@
     <frame x="-1" y="-4" width="1602" height="1204" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6703807" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.253866" sideWeight="0.6703807" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32961932" sideWeight="0.0" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961932" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -568,44 +599,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120321082549_add_generate_to_photo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="3" selection-end="3" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/albums/_album.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="47" selection-start="132" selection-end="155" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="42" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -617,37 +613,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="14" selection-start="323" selection-end="323" vertical-scroll-proportion="0.18666667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/tagging.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="72" selection-end="72" vertical-scroll-proportion="0.04028777">
+        <state line="2" column="17" selection-start="72" selection-end="72" vertical-scroll-proportion="0.026666667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="41" selection-start="117" selection-end="117" vertical-scroll-proportion="0.04028777">
+        <state line="2" column="41" selection-start="117" selection-end="117" vertical-scroll-proportion="0.026666667">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/new.html.haml">
+    <entry file="file://$PROJECT_DIR$/../courts/app/models/court.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="29" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+        <state line="16" column="129" selection-start="463" selection-end="463" vertical-scroll-proportion="0.21333334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+    <entry file="file://$PROJECT_DIR$/../courts/app/models/league.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="21" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+        <state line="22" column="125" selection-start="674" selection-end="674" vertical-scroll-proportion="0.29333332">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../courts/app/models/game.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="130" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.50666666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../courts/app/views/managers/clubs/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="48" selection-start="1224" selection-end="1224" vertical-scroll-proportion="-21.913044">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/geo.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="53" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../courts/app/controllers/managers/clubs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="62" selection-start="480" selection-end="480" vertical-scroll-proportion="0.29961088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../courts/app/models/club.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="103" selection-start="387" selection-end="448" vertical-scroll-proportion="0.29333332">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="346" selection-end="346" vertical-scroll-proportion="0.20143884">
+        <state line="25" column="68" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="23" selection-start="176" selection-end="180" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="46" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="16" selection-start="195" selection-end="195" vertical-scroll-proportion="0.21333334">
           <folding />
         </state>
       </provider>

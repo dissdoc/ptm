@@ -12,6 +12,7 @@ gem 'devise'
 gem 'blueprint-rails'
 gem 'haml-rails'
 gem 'paperclip', :git => 'http://github.com/thoughtbot/paperclip.git'
+gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.

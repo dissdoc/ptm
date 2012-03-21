@@ -10,3 +10,9 @@
 %p
   %label Tags:
   = @photo.tag_names
+
+%p
+  %label Geolocation
+  %div
+    = @photo.geo.address
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
