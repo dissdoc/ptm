@@ -21,4 +21,20 @@ class PhotosController < ApplicationController
     @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
   end
+
+  def edit
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.find(params[:id])
+    @photo.geo
+  end
+
+  def update
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.find(params[:id])
+    if @photo.update_attributes(params[:photo])
+      redirect_to [@album, @photo]
+    else
+      render :action => "edit"
+    end
+  end
 end

@@ -1,4 +1,4 @@
-= link_to "Edit"
+= link_to "Edit", edit_album_photo_url(@album, @photo)
 
 %p
   = image_tag @photo.image.url(:medium)
@@ -11,8 +11,9 @@
   %label Tags:
   = @photo.tag_names
 
-%p
-  %label Geolocation
-  %div
-    = @photo.geo.address
-  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
+- if @photo.geo
+  %p
+    %label Geolocation
+    %div
+      = @photo.geo.address
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"

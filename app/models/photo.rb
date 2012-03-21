@@ -9,10 +9,10 @@ class Photo < ActiveRecord::Base
   has_attached_file :image,
                     :styles => {:icon => "64x64>", :small => "100x63>", :medium => "260x180>", :large => "483x302>" }
 
-  attr_accessible :album_id, :image, :generate, :tag_names
+  attr_accessible :album_id, :image, :generate, :tag_names, :geo
   attr_writer :tag_names
 
-  accepts_nested_attributes_for :geo
+  accepts_nested_attributes_for :geo, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   attr_accessible :geo_attributes
 
   after_save :assign_tags
