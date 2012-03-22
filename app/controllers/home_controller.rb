@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :users]
+
   def index
     if params[:search_locations].present?
       @locations = Geo.near(params[:search_locations])
@@ -23,5 +25,10 @@ class HomeController < ApplicationController
     else
       @users = User.all
     end
+  end
+
+  def myfriends
+    @friendlists = current_user.friendlists.all
+    @friendlist = current_user.friendlists.new
   end
 end

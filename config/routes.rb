@@ -9,6 +9,9 @@ Ptm::Application.routes.draw do
     end
   end
 
+  resources :friendlists
+
   root :to => 'home#index'
   match 'users', :to => 'home#users'
+  match 'myfriends', :to => 'home#myfriends'
 end

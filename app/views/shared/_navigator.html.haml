@@ -3,3 +3,7 @@
 = link_to "Albums", albums_path
 |
 = link_to "Users", users_path
+
+- if signed_in?
+  |
+  = link_to "My friends", myfriends_path

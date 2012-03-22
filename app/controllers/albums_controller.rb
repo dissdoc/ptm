@@ -31,6 +31,4 @@ class AlbumsController < ApplicationController
   def my
     @albums = current_user.albums.all
   end
-
-
 end

@@ -1,0 +1,14 @@
+%div.span-9
+  test
+%div{ :class => ["span-9", "last"] }
+  = form_for @friendlist do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.submit "Create"
+
+  - if @friendlists.present?
+    %ul
+      - @friendlists.each do |friendlist|
+        %li= friendlist.name
+  - else
+    No friendlists
