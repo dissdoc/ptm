@@ -21,6 +21,10 @@ class Photo < ActiveRecord::Base
     @tag_names || tags.map(&:name).join(' ')
   end
 
+  def self.get_by_datetime(datetime)
+    where('generate <= ?', datetime)
+  end
+
   private
 
     def assign_tags

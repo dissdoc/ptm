@@ -2,4 +2,26 @@
   Photo Time Machine
 
 %p
-  this is test
+  %h4 Search locations
+
+  = form_tag root_path, :method => :get do
+    = text_field_tag :search_locations, params[:search_locations]
+    = submit_tag "Search", :name => nil
+
+  %h4 Search tags
+
+  = form_tag root_path, :method => :get do
+    = text_field_tag :search_tags, params[:search_tags]
+    = submit_tag "Search", :name => nil
+
+
+  %h4 Search datetime
+
+  = form_tag root_path, :method => :get do
+    = datetime_select :search_dt, params[:search_dt]
+    = submit_tag "Search", :name => nil
+
+
+%p
+  - @photos.each do |photo|
+    = image_tag photo.image.url(:small)
