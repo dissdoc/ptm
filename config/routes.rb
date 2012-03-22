@@ -10,4 +10,5 @@ Ptm::Application.routes.draw do
   end
 
   root :to => 'home#index'
+  match 'users', :to => 'home#users'
 end

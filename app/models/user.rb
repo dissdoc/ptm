@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :albums, :dependent => :destroy
   has_many :notes, :dependent => :destroy
 
+  def self.search(query)
+    where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
+  end
+
   def full_name
     [first_name, last_name].join(" ")
   end

@@ -16,4 +16,12 @@ class HomeController < ApplicationController
       @photos = Photo.all
     end
   end
+
+  def users
+    if params[:query].present?
+      @users = User.search(params[:query])
+    else
+      @users = User.all
+    end
+  end
 end
