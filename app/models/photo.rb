@@ -3,6 +3,7 @@ class Photo < ActiveRecord::Base
 
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
+  has_many :notes, :dependent => :destroy
 
   has_one :geo, :dependent => :destroy
 

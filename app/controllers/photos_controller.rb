@@ -20,6 +20,8 @@ class PhotosController < ApplicationController
   def show
     @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
+    @notes = @photo.notes
+    @note = @photo.notes.new
   end
 
   def edit

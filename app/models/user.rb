@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :presence => true
   validates :first_name, :last_name, :length => { :maximum => 64 }
 
-  has_many :albums
+  has_many :albums, :dependent => :destroy
+  has_many :notes, :dependent => :destroy
 
   def full_name
     [first_name, last_name].join(" ")
