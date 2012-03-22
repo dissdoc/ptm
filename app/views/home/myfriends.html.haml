@@ -1,5 +1,18 @@
 %div.span-9
-  test
+  %h3 My friends
+  - if current_user.friends.present?
+    %ul
+      - current_user.friendships.each do |friendship|
+        %li
+          = friendship.friend.full_name
+          = link_to "remove", friendlists_remove_friend_path(:id => friendship.id), :method => :post
+
+  %h3 Friended by me
+  - if current_user.inverse_friends.present?
+    %ul
+      - current_user.inverse_friends.each do |friend|
+        %li
+          = friend.full_name
 %div{ :class => ["span-9", "last"] }
   = form_for @friendlist do |f|
     = f.label :name

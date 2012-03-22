@@ -7,5 +7,6 @@
   - @users.each do |user|
     %div
       = user.full_name
+      = link_to "Add friend", friendlists_add_friend_path(:friend_id => user), :method => :post
 - else
   %h3 Nothing
