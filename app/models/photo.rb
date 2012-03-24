@@ -6,15 +6,19 @@ class Photo < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
 
   has_one :geo, :dependent => :destroy
+  has_one :share_photo, :dependent => :destroy
 
   has_attached_file :image,
                     :styles => {:icon => "64x64>", :small => "100x63>", :medium => "260x180>", :large => "483x302>" }
 
-  attr_accessible :album_id, :image, :generate, :tag_names, :geo
+  attr_accessible :album_id, :image, :generate, :tag_names, :geo, :share_photo
   attr_writer :tag_names
 
   accepts_nested_attributes_for :geo, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   attr_accessible :geo_attributes
+
+  accepts_nested_attributes_for :share_photo
+  attr_accessible :share_photo_attributes
 
   after_save :assign_tags
 
@@ -24,6 +28,10 @@ class Photo < ActiveRecord::Base
 
   def self.get_by_datetime(datetime)
     where('generate <= ?', datetime)
+  end
+
+  def all_public
+    share_photo
   end
 
   private

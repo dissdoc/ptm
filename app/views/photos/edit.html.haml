@@ -24,6 +24,11 @@
           %label Longitude
           = location.text_field :longitude
 
+    %p
+      = f.fields_for :share_photo do |sharing|
+        %label Public ?
+        = sharing.check_box :share
+
     %div
       = f.label "Generate at"
       = f.datetime_select :generate

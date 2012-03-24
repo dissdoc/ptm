@@ -11,6 +11,10 @@
   %label Tags:
   = @photo.tag_names
 
+- if @photo.share_photo
+  %label Public:
+  = @photo.share_photo.share
+
 - if @photo.geo
   %p
     %label Geolocation

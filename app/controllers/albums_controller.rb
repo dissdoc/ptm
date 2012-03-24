@@ -31,4 +31,10 @@ class AlbumsController < ApplicationController
   def my
     @albums = current_user.albums.all
   end
+
+  def share
+    @album = Album.find(params[:album_id])
+    @album.photos.each { |photo| photo.share_photo.sharing! }
+    redirect_to albums_path
+  end
 end

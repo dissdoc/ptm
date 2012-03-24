@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     elsif params[:search_dt].present?
       @photos = Photo.get_by_datetime(params[:search_dt].to_s)
     else
-      @photos = Photo.all
+      @photos = Photo.all(:joins => :share_photo, :conditions => {:share_photos => {:share => true}})
     end
   end
 
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
   end
 
   def myfriends
-    @friendlists = current_user.friendlists.all
+    @friendlists = current_user.friend lists.all
     @friendlist = current_user.friendlists.new
   end
 end

@@ -6,3 +6,5 @@
 - if signed_in? && current_user.id == album.user_id
   |
   = link_to "delete", album, :method => :delete
+  |
+  = link_to "sharing", album_share_path(album)

@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
     @album = Album.find(params[:album_id])
     @photo = @album.photos.new
     @photo.build_geo
+    @photo.build_share_photo
   end
 
   def create
@@ -27,7 +28,17 @@ class PhotosController < ApplicationController
   def edit
     @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
-    @photo.geo
+    if @photo.geo
+      @photo.geo
+    else
+      @photo.build_geo
+    end
+
+    if @photo.share_photo
+      @photo.share_photo
+    else
+      @photo.build_share_photo
+    end
   end
 
   def update
