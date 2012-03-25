@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324061353) do
+ActiveRecord::Schema.define(:version => 20120325160329) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.string   "object_name"
+    t.string   "object_link"
+    t.string   "action2"
+    t.string   "object_name2"
+    t.string   "object_link2"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -62,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120324061353) do
     t.datetime "image_updated_at"
     t.integer  "album_id"
     t.datetime "generate"
+    t.integer  "user_id"
   end
 
   create_table "share_photos", :force => true do |t|

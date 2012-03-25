@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :length => { :maximum => 64 }
 
   has_many :albums, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
   has_many :notes, :dependent => :destroy
+  has_many :activities, :dependent => :destroy
 
   has_many :friendlists, :dependent => :destroy
 

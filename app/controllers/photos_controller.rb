@@ -11,7 +11,9 @@ class PhotosController < ApplicationController
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.new(params[:photo])
+    @photo.user_id = current_user.id
     if @photo.save!
+      Activity.create!(:user_id => current_user.id, :action => 'add', :object_name => 'photo', :object_link => album_photo_path(@album, @photo))
       redirect_to @album
     else
       redirect_to root_path

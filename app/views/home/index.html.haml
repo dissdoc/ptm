@@ -25,3 +25,18 @@
 %p
   - @photos.each do |photo|
     = image_tag photo.image.url(:small)
+
+
+%p
+  %h3 Activities
+
+  - if signed_in? && current_user.activities.present?
+    %ul
+      - current_user.activities.each do |activity|
+        %li
+          User#
+          = activity.user_id
+          &nbsp;
+          = activity.action
+          &nbsp;
+          = link_to activity.object_name, activity.object_link
