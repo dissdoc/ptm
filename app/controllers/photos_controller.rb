@@ -1,15 +1,14 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :set_album
 
   def new
-    @album = Album.find(params[:album_id])
     @photo = @album.photos.new
     @photo.build_geo
     @photo.build_share_photo
   end
 
   def create
-    @album = Album.find(params[:album_id])
     @photo = @album.photos.new(params[:photo])
     @photo.user_id = current_user.id
     if @photo.save!
@@ -21,30 +20,18 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
     @notes = @photo.notes
     @note = @photo.notes.new
   end
 
   def edit
-    @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
-    if @photo.geo
-      @photo.geo
-    else
-      @photo.build_geo
-    end
-
-    if @photo.share_photo
-      @photo.share_photo
-    else
-      @photo.build_share_photo
-    end
+    @photo.geo ? @photo.geo : @photo.build_geo
+    @photo.share_photo ? @photo.share_photo : @photo.build_share_photo
   end
 
   def update
-    @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
     if @photo.update_attributes(params[:photo])
       redirect_to [@album, @photo]
@@ -52,4 +39,10 @@ class PhotosController < ApplicationController
       render :action => "edit"
     end
   end
+
+  protected
+
+    def set_album
+      @album = Album.find(params[:album_id])
+    end
 end
