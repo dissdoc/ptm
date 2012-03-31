@@ -5,7 +5,6 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'jquery-rails'
 gem 'heroku'
 gem 'devise'
@@ -13,6 +12,7 @@ gem 'blueprint-rails'
 gem 'haml-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'geocoder'
+gem 'omniauth'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +24,10 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'sqlite3'
 end
 
 group :production do
