@@ -13,6 +13,7 @@ gem 'haml-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'geocoder'
 gem 'omniauth'
+gem 'paperclipdropbox'
 
 # Gems used only for assets and not required
 # in production environments by default.
