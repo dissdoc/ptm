@@ -17,4 +17,7 @@ Ptm::Application.routes.draw do
   root :to => 'home#index'
   match 'users', :to => 'home#users'
   match 'myfriends', :to => 'home#myfriends'
+  match 'faq', :to => 'home#faq'
+  match 'contacts', :to => 'home#contacts'
+  match 'about', :to => 'home#about'
 end

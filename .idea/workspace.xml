@@ -2,10 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/dropboxsession.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/home/about.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/home/contacts.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/home/faq.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_breadcrumbs.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_footer.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/paperclipdropbox.yml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/shared/_auth_menu.html.haml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/shared/_logo.html.haml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/style.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.haml" afterPath="$PROJECT_DIR$/app/views/home/index.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_navigator.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_navigator.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,19 +48,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
+      <file leaf-file-name="home_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="22" selection-start="346" selection-end="346" vertical-scroll-proportion="0.24">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dropboxsession.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/dropboxsession.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="20" column="40" selection-start="742" selection-end="742" vertical-scroll-proportion="0.32">
               <folding />
             </state>
           </provider>
@@ -62,30 +70,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/photos/new.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/photos/edit.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/share_photo.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/albums/_album.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/photo.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/models/activity.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
-        <option value="$PROJECT_DIR$/config/initializers/omniauth.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/faq.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/home/contacts.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/home/about.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/shared/_footer.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_breadcrumbs.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/shared/_navigator.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-5" />
+    <option name="x" value="-1" />
     <option name="y" value="-1" />
-    <option name="width" value="1290" />
-    <option name="height" value="1030" />
+    <option name="width" value="1282" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -94,7 +102,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -113,22 +121,22 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="RailsProjectView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="ptm" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -207,11 +215,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="initializers" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -226,6 +238,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,6 +304,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -304,6 +396,28 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -313,8 +427,8 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
@@ -493,16 +607,21 @@
       <created>1333208476823</created>
       <updated>1333208476823</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add dropbox storage">
+      <created>1333297222697</created>
+      <updated>1333297222697</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="-1" width="1290" height="1030" extended-state="6" />
+    <frame x="-1" y="-1" width="1282" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991803" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26173428" sideWeight="0.6707317" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -513,7 +632,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -555,7 +673,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dropbox storage" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -578,86 +696,27 @@
     <MESSAGE value="add activities" />
     <MESSAGE value="cosmetic refactoring" />
     <MESSAGE value="fix problem" />
+    <MESSAGE value="add dropbox storage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/albums/_album.html.haml">
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="213" selection-end="213" vertical-scroll-proportion="0.144" />
+        <state line="21" column="35" selection-start="605" selection-end="605" vertical-scroll-proportion="0.336">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/note.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_footer.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/activity.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="18" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120325160329_create_activities.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="46" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="31" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/album.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="30" selection-end="30" vertical-scroll-proportion="0.032" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="60" selection-start="845" selection-end="845" vertical-scroll-proportion="0.99086756">
+        <state line="4" column="2" selection-start="120" selection-end="120" vertical-scroll-proportion="0.064">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="27" selection-start="624" selection-end="624" vertical-scroll-proportion="0.6585366" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/omniauth.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="3" selection-start="64" selection-end="64" vertical-scroll-proportion="0.016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/dropboxsession.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -666,7 +725,93 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="22" selection-start="346" selection-end="346" vertical-scroll-proportion="0.24">
+        <state line="16" column="26" selection-start="370" selection-end="370" vertical-scroll-proportion="0.256">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_breadcrumbs.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="20" selection-start="37" selection-end="37" vertical-scroll-proportion="0.016">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="44" selection-start="107" selection-end="107" vertical-scroll-proportion="0.048">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_navigator.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="104" selection-end="104" vertical-scroll-proportion="0.11488863">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="17" selection-start="689" selection-end="689" vertical-scroll-proportion="0.272">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="23" selection-start="273" selection-end="273" vertical-scroll-proportion="0.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="11" selection-start="172" selection-end="172" vertical-scroll-proportion="0.128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application_empty.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="31" selection-start="337" selection-end="337" vertical-scroll-proportion="0.256">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="40" selection-start="742" selection-end="742" vertical-scroll-proportion="0.32">
           <folding />
         </state>
       </provider>

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :users]
+  before_filter :authenticate_user!, :only => [:myfriends ]
 
   def index
     if params[:search_locations].present?
@@ -17,6 +17,23 @@ class HomeController < ApplicationController
     else
       @photos = Photo.all(:joins => :share_photo, :conditions => {:share_photos => {:share => true}})
     end
+
+    render :layout => 'application_empty'
+  end
+
+  def faq
+    @title_page = "FAQ"
+    add_breadcrumb @title_page, ''
+  end
+
+  def contacts
+    @title_page = "Contacts"
+    add_breadcrumb @title_page, ''
+  end
+
+  def about
+    @title_page = "About"
+    add_breadcrumb @title_page, ''
   end
 
   def users

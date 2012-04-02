@@ -14,6 +14,7 @@ gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'geocoder'
 gem 'omniauth'
 gem 'paperclipdropbox'
+gem 'rails-breadcrumbs'
 
 # Gems used only for assets and not required
 # in production environments by default.

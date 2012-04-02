@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title= title_page
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %div.container
+      = render "shared/header"
+
+      %div.span-24
+        = yield :breadcrumbs
+        = render "shared/navigator"
+        = yield
+
+      = render "shared/footer"
