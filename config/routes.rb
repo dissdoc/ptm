@@ -1,7 +1,7 @@
 Ptm::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'accounts#create'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'auths' }
   resources :accounts
 
   resources :albums do

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :birthday
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
 
   validates :first_name, :last_name, :presence => true
   validates :first_name, :last_name, :length => { :maximum => 64 }
@@ -30,5 +30,13 @@ class User < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].join(" ")
+  end
+
+  def apply_omniauth(omniauth)
+    accounts.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+
+  def password_required?
+    (accounts.empty? || !password.blank?) && super
   end
 end
