@@ -12,7 +12,7 @@ gem 'blueprint-rails'
 gem 'haml-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'geocoder'
-gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'paperclipdropbox'
 gem 'rails-breadcrumbs'
 

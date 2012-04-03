@@ -100,6 +100,11 @@ GEM
     omniauth (1.0.3)
       hashie (~> 1.2)
       rack
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.9)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.0.6)
     paperclipdropbox (1.0.7)
       dropbox
@@ -172,7 +177,7 @@ DEPENDENCIES
   haml-rails
   heroku
   jquery-rails
-  omniauth
+  omniauth-twitter
   paperclip!
   paperclipdropbox
   pg

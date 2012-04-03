@@ -34,4 +34,7 @@ Ptm::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  TWITTER_KEY = 'RmK6FzZaDfDN1nAgJHM76A'
+  TWITTER_SECRET = 'IeeoSg6Oq6kZ6FaD1npYiYueQlcYxNn7dX54tFZwsw'
 end
