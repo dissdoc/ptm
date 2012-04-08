@@ -1,4 +1,0 @@
-production:
-  dropbox_key: floorupset@rambler.ru
-  dropbox_secret: Pfrktgrf
-  path: "/:attachment/:attachment/:id/:style/:filename"

@@ -106,7 +106,7 @@ GEM
     omniauth-twitter (0.0.9)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.0.6)
-    paperclipdropbox (1.0.7)
+    paperclipdropbox (1.0.8)
       dropbox
       paperclip
     pg (0.13.2)
@@ -179,7 +179,7 @@ DEPENDENCIES
   jquery-rails
   omniauth-twitter
   paperclip!
-  paperclipdropbox
+  paperclipdropbox (= 1.0.8)
   pg
   rails (= 3.2.1)
   rails-breadcrumbs

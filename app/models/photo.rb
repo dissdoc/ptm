@@ -10,7 +10,9 @@ class Photo < ActiveRecord::Base
   has_one :share_photo, :dependent => :destroy
 
   has_attached_file :image,
-                    :styles => {:icon => "64x64>", :small => "100x63>", :medium => "260x180>", :large => "483x302>" }
+                    :styles => {:icon => "64x64>", :small => "100x63>", :medium => "260x180>", :large => "483x302>" },
+                    :storage => :Dropboxstorage,
+                    :path => "/:attachment/:attachment/:id/:style/:filename"
 
   attr_accessible :album_id, :user_id, :image, :generate, :tag_names, :geo, :share_photo
   attr_writer :tag_names
