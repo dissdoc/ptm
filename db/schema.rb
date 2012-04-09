@@ -86,10 +86,10 @@ ActiveRecord::Schema.define(:version => 20120403120151) do
   end
 
   create_table "share_photos", :force => true do |t|
-    t.boolean  "share",      :default => false
+    t.boolean  "share",      :default => true
     t.integer  "photo_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "taggings", :force => true do |t|
