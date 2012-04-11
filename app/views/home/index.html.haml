@@ -37,3 +37,10 @@
           = activity.action
           &nbsp;
           = link_to activity.object_name, activity.object_link
+
+
+%div.spread
+  %div.twshare.left
+    %a.twitter-share-button.left{"data-url" => "http://phototimemachine.org", "data-text" => "Photo Time Machine",
+      "data-via" => "phototimemachin", :href => "https://twitter.com/share" } Tweet
+    %script{:src => "http://platform.twitter.com/widgets.js", :type => "text/javascript"}
