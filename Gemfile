@@ -13,6 +13,7 @@ gem 'haml-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'geocoder'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'paperclipdropbox', '1.0.8'
 gem 'rails-breadcrumbs'
 

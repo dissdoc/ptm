@@ -64,4 +64,9 @@ Ptm::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  TWITTER_KEY = 'RmK6FzZaDfDN1nAgJHM76A'
+  TWITTER_SECRET = 'IeeoSg6Oq6kZ6FaD1npYiYueQlcYxNn7dX54tFZwsw'
+
+  FACEBOOK_ID = '284172994996972'
+  FACEBOOK_SECRET = 'c259083297389a8b89539c97ea4ea9e2'
 end
