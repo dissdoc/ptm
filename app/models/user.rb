@@ -24,6 +24,12 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  has_attached_file :avatar,
+                    :styles => {:icon => "32x32>", :small => "64x64>", :medium => "260x180>" },
+                    :storage => :Dropboxstorage,
+                    :path => "/:attachment/:attachment/:id/:style/:filename"
+  attr_accessible :avatar
+
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
   end
