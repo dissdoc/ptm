@@ -17,9 +17,10 @@
       = f.label :password_confirmation
       = f.password_field :password_confirmation
 
-    %div
-      = f.label :current_password
-      = f.password_field :current_password
+    - if !current_user.has_no_password?
+      %div
+        = f.label :current_password
+        = f.password_field :current_password
 
   %div{ :class => ["span-9", "last"] }
     %div
