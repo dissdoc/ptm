@@ -6,7 +6,7 @@
 - if @users.present?
   - @users.each do |user|
     %div
-      - if user.avatar
+      - if user.avatar.exists?
         = image_tag user.avatar.url(:icon)
       = user.full_name
       = link_to "Add friend", friendlists_add_friend_path(:friend_id => user), :method => :post
