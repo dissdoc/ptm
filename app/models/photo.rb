@@ -26,7 +26,7 @@ class Photo < ActiveRecord::Base
   after_save :assign_tags
 
   def tag_names
-    @tag_names || tags.map(&:name).join(' ')
+    @tag_names || tags.map(&:name).join(', ')
   end
 
   def self.get_by_datetime(datetime)
@@ -41,7 +41,7 @@ class Photo < ActiveRecord::Base
 
     def assign_tags
       if @tag_names
-        self.tags = @tag_names.split(/\s+/).map do |name|
+        self.tags = @tag_names.split(/,\s+/).map do |name|
           Tag.find_or_create_by_name(name)
         end
       end
