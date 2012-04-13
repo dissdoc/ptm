@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/auths/edit.html.haml" afterPath="$PROJECT_DIR$/app/views/auths/edit.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/auths/new.html.haml" afterPath="$PROJECT_DIR$/app/views/auths/new.html.haml" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,73 +29,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="edit.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="edit.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/auths/edit.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="87" selection-start="896" selection-end="896" vertical-scroll-proportion="0.49">
+            <state line="35" column="52" selection-start="840" selection-end="861" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myfriends.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/home/myfriends.html.haml">
+      <file leaf-file-name="new.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/auths/new.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/home/users.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="30" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="photo.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="118" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auths_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/auths_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="29" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="38" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="25" selection-start="1363" selection-end="1363" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_header.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="40" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+            <state line="17" column="52" selection-start="381" selection-end="381" vertical-scroll-proportion="0.23287672">
               <folding />
             </state>
           </provider>
@@ -114,7 +60,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20120324061353_create_share_photos.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20120318192150_add_regfields_to_users.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
@@ -130,6 +75,7 @@
         <option value="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/users.html.haml" />
         <option value="$PROJECT_DIR$/app/views/auths/edit.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/auths/new.html.haml" />
       </list>
     </option>
   </component>
@@ -851,7 +797,11 @@
       <created>1334314221950</created>
       <updated>1334314221950</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix current user birthday">
+      <created>1334314936489</created>
+      <updated>1334314936489</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -913,7 +863,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix show avatar" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix current user birthday" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -943,16 +893,12 @@
     <MESSAGE value="fix edit profile for current user" />
     <MESSAGE value="fix tag join" />
     <MESSAGE value="fix show avatar" />
+    <MESSAGE value="fix current user birthday" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120318192150_add_regfields_to_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="95" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/accounts/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="55" selection-start="200" selection-end="200" vertical-scroll-proportion="0.066603236" />
@@ -996,13 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/myfriends.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/auths_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="29" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
@@ -1024,13 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="118" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="40" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
@@ -1038,16 +970,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="118" selection-start="434" selection-end="434" vertical-scroll-proportion="0.168">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/users.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="30" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
+        <state line="8" column="30" selection-start="210" selection-end="210" vertical-scroll-proportion="0.10958904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/myfriends.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/auths/edit.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="87" selection-start="896" selection-end="896" vertical-scroll-proportion="0.49">
+        <state line="35" column="52" selection-start="840" selection-end="861" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/auths/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="52" selection-start="381" selection-end="381" vertical-scroll-proportion="0.23287672">
           <folding />
         </state>
       </provider>

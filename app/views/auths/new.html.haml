@@ -15,7 +15,7 @@
   - if @user.password_required?
     %div
       = f.label :birthday
-      = f.date_select :birthday
+      = f.date_select :birthday, :start_year => 1930
 
   %div
     = f.label :email
