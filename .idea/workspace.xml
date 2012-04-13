@@ -4,8 +4,6 @@
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/auths/edit.html.haml" afterPath="$PROJECT_DIR$/app/views/auths/edit.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/users.html.haml" afterPath="$PROJECT_DIR$/app/views/home/users.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_header.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +32,7 @@
       <file leaf-file-name="edit.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/auths/edit.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="36" selection-start="893" selection-end="893" vertical-scroll-proportion="0.532">
+            <state line="35" column="87" selection-start="896" selection-end="896" vertical-scroll-proportion="0.49">
               <folding />
             </state>
           </provider>
@@ -849,7 +847,11 @@
       <created>1334314052861</created>
       <updated>1334314052861</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix show avatar">
+      <created>1334314221950</created>
+      <updated>1334314221950</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -911,7 +913,7 @@
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix tag join" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix show avatar" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -940,6 +942,7 @@
     <MESSAGE value="add auth with facebook" />
     <MESSAGE value="fix edit profile for current user" />
     <MESSAGE value="fix tag join" />
+    <MESSAGE value="fix show avatar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1044,7 +1047,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/auths/edit.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="36" selection-start="893" selection-end="893" vertical-scroll-proportion="0.532">
+        <state line="35" column="87" selection-start="896" selection-end="896" vertical-scroll-proportion="0.49">
           <folding />
         </state>
       </provider>

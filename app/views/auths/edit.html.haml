@@ -33,7 +33,7 @@
 
     %div
       = f.label :birthday
-      = f.date_select :birthday
+      = f.date_select :birthday, :start_year => 1930, :default => current_user.birthday
 
   %div.span-18
     - if current_user.avatar.exists?
