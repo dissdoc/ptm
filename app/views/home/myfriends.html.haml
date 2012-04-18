@@ -20,8 +20,8 @@
     = f.submit "Create"
 
   - if @friendlists.present?
-    %ul
-      - @friendlists.each do |friendlist|
-        %li= friendlist.name
+    - @friendlists.each do |friendlist|
+      %h5= friendlist.name
+      = friendlist.owner.full_name
   - else
     No friendlists

@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+
+  date:
+    formats:
+      full: "%d %b, %Y"
+  time:
+    formats:
+      full: "%d %B, %Y at %I:%M%p"

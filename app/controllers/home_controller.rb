@@ -40,12 +40,17 @@ class HomeController < ApplicationController
     if params[:query].present?
       @users = User.search(params[:query])
     else
-      @users = User.all
+      @users = User.free_all(current_user)
     end
   end
 
   def myfriends
     @friendlists = current_user.friendlists.all
     @friendlist = current_user.friendlists.new
+  end
+
+  def activities
+    @title_page = "Activities"
+    add_breadcrumb @title_page
   end
 end

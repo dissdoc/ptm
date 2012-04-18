@@ -37,4 +37,17 @@ class AlbumsController < ApplicationController
     @album.photos.each { |photo| photo.share_photo.sharing! }
     redirect_to albums_path
   end
+
+  def edit
+    @album = current_user.albums.find(params[:id])
+  end
+
+  def update
+    @album = current_user.albums.find(params[:id])
+    if @album.update_attributes(params[:album])
+      redirect_to albums_path
+    else
+      redirect_to edit_album_path(@album)
+    end
+  end
 end

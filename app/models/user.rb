@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
   end
 
+  def self.free_all(user)
+    where('id != ?', user.id)
+  end
+
   def full_name
     [first_name, last_name].join(" ")
   end

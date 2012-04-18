@@ -1,9 +1,17 @@
 %h4= album.name
 
-%p= album.description
+%div= album.description
+
+%div
+  - if album.photos.first
+    = image_tag album.photos.first.image.url(:medium)
+
+%div= l album.created_at, :format => :full
 
 = link_to "detail", album
 - if signed_in? && current_user.id == album.user_id
+  |
+  = link_to "edit", edit_album_path(album)
   |
   = link_to "delete", album, :method => :delete
   |

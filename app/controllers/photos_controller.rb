@@ -40,6 +40,13 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo = current_user.photos.find(params[:id])
+    @album = @photo.album
+    @photo.destroy
+    redirect_to @album
+  end
+
   protected
 
     def set_album

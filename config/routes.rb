@@ -23,4 +23,5 @@ Ptm::Application.routes.draw do
   match 'faq', :to => 'home#faq'
   match 'contacts', :to => 'home#contacts'
   match 'about', :to => 'home#about'
+  match 'activities', :to => 'home#activities'
 end
