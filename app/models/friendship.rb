@@ -5,7 +5,6 @@ class Friendship < ActiveRecord::Base
   def self.is_friend(user, friend)
     return false if user == friend
     return true unless find_by_user_id_and_friend_id(user, friend).nil?
-    #return true unless find_by_user_id_and_friend_id(friend, user).nil?
     false
   end
 end

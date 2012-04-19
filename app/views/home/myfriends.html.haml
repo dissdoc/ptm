@@ -6,22 +6,10 @@
         %li
           = friendship.friend.full_name
           = link_to "remove", friendlists_remove_friend_path(:id => friendship.id), :method => :post
-
+%div.span-9.last
   %h3 Friended by me
-  - if current_user.inverse_friends.present?
-    %ul
-      - current_user.inverse_friends.each do |friend|
-        %li
-          = friend.full_name
-%div{ :class => ["span-9", "last"] }
-  = form_for @friendlist do |f|
-    = f.label :name
-    = f.text_field :name
-    = f.submit "Create"
-
-  - if @friendlists.present?
-    - @friendlists.each do |friendlist|
-      %h5= friendlist.name
-      = friendlist.owner.full_name
-  - else
-    No friendlists
+    - if current_user.inverse_friends.present?
+      %ul
+        - current_user.inverse_friends.each do |friend|
+          %li
+            = friend.full_name

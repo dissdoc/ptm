@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   has_many :activities, :dependent => :destroy
 
-  has_many :friendlists, :dependent => :destroy
-
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :friends, :through => :friendships
