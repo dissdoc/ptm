@@ -7,6 +7,7 @@ Ptm::Application.routes.draw do
   resources :albums do
     get 'my', :on => :collection
     get 'share'
+    post 'set_title', :on => :member
 
     resources :photos do
       resources :notes

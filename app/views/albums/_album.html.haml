@@ -3,7 +3,9 @@
 %div= album.description
 
 %div
-  - if album.photos.first
+  - if album.thumbnail
+    = image_tag album.show_thumbnail.image.url(:medium)
+  - elsif album.photos.first
     = image_tag album.photos.first.image.url(:medium)
 
 %div= l album.created_at, :format => :full

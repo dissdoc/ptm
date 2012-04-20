@@ -45,8 +45,6 @@ class HomeController < ApplicationController
   end
 
   def myfriends
-    @friendlists = current_user.friendlists.all
-    @friendlist = current_user.friendlists.new
   end
 
   def activities

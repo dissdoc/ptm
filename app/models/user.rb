@@ -33,7 +33,11 @@ class User < ActiveRecord::Base
   end
 
   def self.free_all(user)
-    where('id != ?', user.id)
+    if user
+      where('id != ?', user.id)
+    else
+      all
+    end
   end
 
   def full_name

@@ -50,4 +50,13 @@ class AlbumsController < ApplicationController
       redirect_to edit_album_path(@album)
     end
   end
+
+  def set_title
+    @album = current_user.albums.find(params[:id])
+    if @album.update_attributes(:thumbnail => params[:thumbnail])
+      redirect_to @album
+    else
+      redirect_to albums_path
+    end
+  end
 end

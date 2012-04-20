@@ -4,4 +4,7 @@
 
 %p
   - @album.photos.each do |photo|
-    = link_to image_tag(photo.image.url(:small)), [@album, photo]
+    %div
+      = link_to image_tag(photo.image.url(:small)), [@album, photo]
+      - if photo.admin_of?(current_user)
+        = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo.id), :method => :post

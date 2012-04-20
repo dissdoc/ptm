@@ -8,8 +8,8 @@
           = link_to "remove", friendlists_remove_friend_path(:id => friendship.id), :method => :post
 %div.span-9.last
   %h3 Friended by me
-    - if current_user.inverse_friends.present?
-      %ul
-        - current_user.inverse_friends.each do |friend|
-          %li
-            = friend.full_name
+  - if current_user.inverse_friends.present?
+    %ul
+      - current_user.inverse_friends.each do |friend|
+        %li
+          = friend.full_name

@@ -37,6 +37,10 @@ class Photo < ActiveRecord::Base
     share_photo
   end
 
+  def admin_of?(current_user)
+    user.id == current_user.id if current_user
+  end
+
   private
 
     def assign_tags
