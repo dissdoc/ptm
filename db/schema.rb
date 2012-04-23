@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420120343) do
+ActiveRecord::Schema.define(:version => 20120423160255) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -42,13 +42,6 @@ ActiveRecord::Schema.define(:version => 20120420120343) do
     t.integer  "thumbnail"
   end
 
-  create_table "friendlists", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -63,6 +56,26 @@ ActiveRecord::Schema.define(:version => 20120420120343) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "photo_id"
+  end
+
+  create_table "group_joins", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.string   "role"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "accepted",   :default => false
+  end
+
+  add_index "group_joins", ["group_id"], :name => "group_joins_group_id_ix"
+  add_index "group_joins", ["user_id"], :name => "group_joins_user_id_ix"
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "notes", :force => true do |t|
