@@ -28,6 +28,26 @@ class User < ActiveRecord::Base
                     :path => "/:attachment/:attachment/:id/:style/:filename"
   attr_accessible :avatar
 
+  has_many :group_joins, :dependent => :destroy
+
+  has_many :managing_groups,
+      :through => :group_joins,
+      :class_name => 'Group',
+      :source => :group,
+      :conditions => ['group_joins.role = ?', 'admin']
+
+  has_many :joining_groups,
+      :through => :group_joins,
+      :class_name => 'Group',
+      :source => :group,
+      :conditions => ['group_joins.role = ? AND group_joins.accepted = ?', 'member', true]
+
+  has_many :requesting_groups,
+      :through => :group_joins,
+      :class_name => 'Group',
+      :source => :group,
+      :conditions => ['group_joins.role = ? AND group_joins.accepted = ?', 'member', false]
+
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
   end
@@ -74,5 +94,21 @@ class User < ActiveRecord::Base
 
   def has_no_password?
     self.encrypted_password.blank?
+  end
+
+  def manager?
+    managing_groups.present?
+  end
+
+  def admin_of?(group)
+    managing_groups.where(:id => group.id).first.present?
+  end
+
+  def join_of?(group)
+    joining_groups.where(:id => group.id).first.present?
+  end
+
+  def can_join?(group)
+    group_joins.where(:group_id => group.id).first.blank?
   end
 end

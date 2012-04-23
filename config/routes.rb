@@ -14,6 +14,8 @@ Ptm::Application.routes.draw do
     end
   end
 
+  resources :groups
+
   resources :friendlists
   match '/friendlists/add_friend', :to => 'friendlists#add_friend', :via => :post
   match '/friendlists/remove_friend', :to => 'friendlists#remove_friend', :via => :post
