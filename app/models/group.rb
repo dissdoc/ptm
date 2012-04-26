@@ -21,5 +21,5 @@ class Group < ActiveRecord::Base
 
   attr_accessible :name, :description
 
-  validates :name
+  validates :name, :presence => true
 end

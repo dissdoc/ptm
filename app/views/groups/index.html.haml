@@ -1,0 +1,16 @@
+%h2= @title_page
+
+= link_to "Create group", new_group_path
+
+- if @groups.present?
+  %ul
+    - @groups.each do |group|
+      %li
+        = link_to group.name
+        |
+        = link_to "Detail", group
+        - if current_user && current_user.manager?
+          |
+          = link_to "Edit", edit_group_path(group.id)
+- else
+  %p No groups yet...

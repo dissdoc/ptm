@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_initial_breadcrumbs
 
+  def manager?
+    current_user.manager?
+  end
+
   private
 
     def set_initial_breadcrumbs
