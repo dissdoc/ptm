@@ -6,7 +6,7 @@ class GroupJoin < ActiveRecord::Base
   validates :user_id, :uniqueness => { :scope => :group_id, :message => "should happen once per club" }
   validates :role, :inclusion => { :in => %w(admin member), :message => "Role %{value} is reserved" }
 
-  def accepted!
+  def accept!
     update_attribute(:accepted, true)
   end
 

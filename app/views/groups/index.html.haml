@@ -9,6 +9,9 @@
         = link_to group.name
         |
         = link_to "Detail", group
+        - if current_user && current_user.can_join?(group)
+          |
+          = link_to "Join", group_join_path(group), :method => :post
         - if current_user && current_user.manager?
           |
           = link_to "Edit", edit_group_path(group.id)

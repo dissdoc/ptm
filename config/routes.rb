@@ -14,7 +14,17 @@ Ptm::Application.routes.draw do
     end
   end
 
-  resources :groups
+  resources :groups do
+    post 'join'
+
+    resource :member_groups, :only => [:index] do
+      member do
+        post 'accept'
+        post 'reject'
+        post 'remove'
+      end
+    end
+  end
 
   resources :friendlists
   match '/friendlists/add_friend', :to => 'friendlists#add_friend', :via => :post

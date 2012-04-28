@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :authenticate_user!, :manager?, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index]
 
   def index
     @groups = Group.find(:all)
@@ -42,8 +42,21 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_admins = @group.admins
+    @group_members = @group.members
+    @group_candidates = @group.candidates
     @title_page = @group.name
     add_breadcrumb "Groups", groups_path
     add_breadcrumb @title_page, ''
+  end
+
+  def join
+    @group = Group.find(params[:group_id])
+    @group_join = @group.group_joins.new(:user => current_user, :role => 'member')
+    if @group_join.save!
+      redirect_to groups_path
+    else
+      render :action => :show
+    end
   end
 end

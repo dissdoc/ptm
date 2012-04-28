@@ -1,3 +1,30 @@
-%h2= @title_page
+%div.span-16
+  %h2= @title_page
 
-%p= @group.description
+  %p= @group.description
+
+
+%div.span-8.last
+  %h5 Admins
+
+  - @group_admins.each do |admin|
+    = admin.full_name
+    %br
+
+  %h5 Members
+
+  - @group_members.each do |member|
+    = member.full_name
+    - if current_user.admin_of?(@group)
+      = link_to '-', reject_group_member_groups_path(:group_id => @group, :id => member), :method => :post
+    %br
+
+  %h5 Candidates
+
+  - @group_candidates.each do |candidate|
+    = candidate.full_name
+    - if current_user.admin_of?(@group)
+      = link_to '+', accept_group_member_groups_path(:group_id => @group, :id => candidate), :method => :post
+      |
+      = link_to '-', remove_group_member_groups_path(:group_id => @group, :id => candidate), :method => :post
+    %br
