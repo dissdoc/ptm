@@ -7,7 +7,7 @@
       %li.headlink
         - if current_user.avatar.exists?
           = image_tag current_user.avatar.url(:icon)
-        = current_user.full_name
+        = link_to current_user.full_name, profile_path
         %ul
           %li= link_to "Settings", edit_user_registration_path(current_user)
           %li= link_to "Sign out", destroy_user_session_path, :method => :delete

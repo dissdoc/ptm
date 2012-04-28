@@ -3,6 +3,9 @@
 
   %p= @group.description
 
+  - if current_user.join_of?(@group) || current_user.admin_of?(@group)
+    = link_to "Invite users"
+
 
 %div.span-8.last
   %h5 Admins

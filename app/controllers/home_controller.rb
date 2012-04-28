@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :only => [:myfriends ]
+  before_filter :authenticate_user!, :only => [:myfriends, :profile]
 
   def index
     if params[:search_locations].present?
@@ -49,6 +49,11 @@ class HomeController < ApplicationController
 
   def activities
     @title_page = "Activities"
+    add_breadcrumb @title_page
+  end
+
+  def profile
+    @title_page = "Profile"
     add_breadcrumb @title_page
   end
 end

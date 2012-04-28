@@ -16,6 +16,7 @@ Ptm::Application.routes.draw do
 
   resources :groups do
     post 'join'
+    post 'invite'
 
     resource :member_groups, :only => [:index] do
       member do
@@ -31,6 +32,7 @@ Ptm::Application.routes.draw do
   match '/friendlists/remove_friend', :to => 'friendlists#remove_friend', :via => :post
 
   root :to => 'home#index'
+  match 'profile', :to => 'home#profile'
   match 'users', :to => 'home#users'
   match 'myfriends', :to => 'home#myfriends'
   match 'faq', :to => 'home#faq'
