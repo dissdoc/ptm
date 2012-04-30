@@ -17,12 +17,16 @@ Ptm::Application.routes.draw do
   resources :groups do
     post 'join'
     post 'invite'
+    post 'not_agree'
+
+    get 'users'
 
     resource :member_groups, :only => [:index] do
       member do
         post 'accept'
         post 'reject'
         post 'remove'
+        post 'invite'
       end
     end
   end

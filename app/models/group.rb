@@ -11,13 +11,13 @@ class Group < ActiveRecord::Base
       :through => :group_joins,
       :class_name => "User",
       :source => :user,
-      :conditions => ['group_joins.role = ? AND group_joins.accepted = ?', 'member', true]
+      :conditions => ['group_joins.role = ? AND group_joins.accepted = ? AND group_joins.agree = ?', 'member', true, true]
 
   has_many :candidates,
       :through => :group_joins,
       :class_name => "User",
       :source => :user,
-      :conditions => ['group_joins.role = ? AND group_joins.accepted = ?', 'member', false]
+      :conditions => ['group_joins.role = ? AND (group_joins.accepted = ? OR group_joins.agree = ?)', 'member', false, false]
 
   attr_accessible :name, :description
 

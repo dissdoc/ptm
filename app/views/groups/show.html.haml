@@ -4,7 +4,7 @@
   %p= @group.description
 
   - if current_user.join_of?(@group) || current_user.admin_of?(@group)
-    = link_to "Invite users"
+    = link_to "Invite users", group_users_path(@group)
 
 
 %div.span-8.last

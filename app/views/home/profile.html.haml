@@ -3,4 +3,11 @@
 
 %div.span-8.last
   %h5 Invites
+  - @invites.each do |invite|
+    %div
+      = invite.name
+      = link_to "Agree", group_invite_path(:group_id => invite, :id => current_user), :method => :post
+      |
+      = link_to "-", group_not_agree_path(:group_id => invite, :id => current_user), :method => :post
+
   %h5 Requesting groups

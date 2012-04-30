@@ -40,13 +40,19 @@ class User < ActiveRecord::Base
       :through => :group_joins,
       :class_name => 'Group',
       :source => :group,
-      :conditions => ['group_joins.role = ? AND group_joins.accepted = ?', 'member', true]
+      :conditions => ['group_joins.role = ? AND group_joins.accepted = ? AND group_joins.agree = ?', 'member', true, true]
 
   has_many :requesting_groups,
       :through => :group_joins,
       :class_name => 'Group',
       :source => :group,
-      :conditions => ['group_joins.role = ? AND group_joins.accepted = ?', 'member', false]
+      :conditions => ['group_joins.role = ? AND group_joins.accepted = ? AND group_joins.agree = ?', 'member', false, true]
+
+  has_many :inviting_groups,
+      :through => :group_joins,
+      :class_name => 'Group',
+      :source => :group,
+      :conditions => ['group_joins.role = ? AND group_joins.accepted = ? AND group_joins.agree = ?', 'member', true, false]
 
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
@@ -106,6 +112,10 @@ class User < ActiveRecord::Base
 
   def join_of?(group)
     joining_groups.where(:id => group.id).first.present?
+  end
+
+  def invite_of?(group)
+    inviting_groups.where(:id => group.id).first.present?
   end
 
   def can_join?(group)

@@ -23,6 +23,16 @@ class MemberGroupsController < ApplicationController
     redirect_to @group
   end
 
+  def invite
+    @user = User.find(params[:user_id])
+    @group_join = @group.group_joins.new(:user => @user, :role => 'member', :accepted => true)
+    if @group_join.save!
+      redirect_to @group
+    else
+      redirect_to group_users_path(@group)
+    end
+  end
+
   protected
 
   def set_group
@@ -34,6 +44,7 @@ class MemberGroupsController < ApplicationController
     GroupJoin.where(
       :user_id => params[:id],
       :group_id => params[:group_id],
+      :agree => true,
       :role => 'member').first
   end
 end

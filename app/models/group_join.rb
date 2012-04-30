@@ -13,4 +13,8 @@ class GroupJoin < ActiveRecord::Base
   def reject!
     update_attribute(:accepted, false)
   end
+
+  def invite!
+    update_attribute(:agree, true)
+  end
 end

@@ -55,5 +55,7 @@ class HomeController < ApplicationController
   def profile
     @title_page = "Profile"
     add_breadcrumb @title_page
+
+    @invites = current_user.inviting_groups
   end
 end
