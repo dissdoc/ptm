@@ -47,6 +47,7 @@ class GroupsController < ApplicationController
     @group_members = @group.members
     @group_candidates = @group.candidates
     @title_page = @group.name
+    @dashboards = @group.dashboards.all
     add_breadcrumb "Groups", groups_path
     add_breadcrumb @title_page, ''
   end

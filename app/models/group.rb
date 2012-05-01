@@ -19,6 +19,8 @@ class Group < ActiveRecord::Base
       :source => :user,
       :conditions => ['group_joins.role = ? AND (group_joins.accepted = ? OR group_joins.agree = ?)', 'member', false, false]
 
+  has_many :dashboards, :as => :dashtable
+
   attr_accessible :name, :description
 
   validates :name, :presence => true

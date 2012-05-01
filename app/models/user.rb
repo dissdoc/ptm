@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
       :source => :group,
       :conditions => ['group_joins.role = ? AND group_joins.accepted = ? AND group_joins.agree = ?', 'member', true, false]
 
+  has_many :dashboards, :dependent => :destroy
+
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
   end

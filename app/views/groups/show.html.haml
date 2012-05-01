@@ -6,6 +6,18 @@
   - if current_user.join_of?(@group) || current_user.admin_of?(@group)
     = link_to "Invite users", group_users_path(@group)
 
+  %h4 Dashboard
+
+  - if signed_in? && (current_user.admin_of?(@group) || current_user.join_of?(@group))
+    = link_to "Create new theme", new_group_dashboard_path(@group)
+
+  - if @dashboards.present?
+    - @dashboards.each do |dashboard|
+      %div
+        = link_to dashboard.name, group_dashboard_path(@group, dashboard)
+  - else
+    %p Not yet...
+
 
 %div.span-8.last
   %h5 Admins

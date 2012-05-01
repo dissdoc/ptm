@@ -29,6 +29,8 @@ Ptm::Application.routes.draw do
         post 'invite'
       end
     end
+
+    resources :dashboards
   end
 
   resources :friendlists
