@@ -30,7 +30,11 @@ Ptm::Application.routes.draw do
       end
     end
 
-    resources :dashboards
+    resources :dashboards do
+      member do
+        post 'add_note'
+      end
+    end
   end
 
   resources :friendlists

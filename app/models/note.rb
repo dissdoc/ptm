@@ -1,8 +1,8 @@
 class Note < ActiveRecord::Base
   belongs_to :user
-  belongs_to :photo
+  belongs_to :notable, :polymorphic => true
 
-  validates :message, :user_id, :photo_id, :presence => true
+  validates :message, :user_id, :presence => true
 
   def author
     user = User.where('id = ?', user_id).last

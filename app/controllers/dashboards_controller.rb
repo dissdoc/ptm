@@ -20,6 +20,19 @@ class DashboardsController < ApplicationController
 
   def show
     @dashboard = @group.dashboards.find(params[:id])
+    @notes = @dashboard.notes.all
+    @note = @dashboard.notes.new
+  end
+
+  def add_note
+    @dashboard = Dashboard.find(params[:id])
+    @note = @dashboard.notes.new(params[:note])
+    @note.user_id = current_user.id
+    if @note.save!
+      redirect_to group_dashboard_path(@group, @dashboard)
+    else
+      render :action => :show
+    end
   end
 
   protected

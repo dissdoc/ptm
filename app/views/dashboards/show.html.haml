@@ -2,3 +2,18 @@
 = @dashboard.description
 
 %h5 Comments
+
+- if @notes.present?
+  - @notes.each do |note|
+    %div
+      = note.message
+      |
+      = note.author
+- else
+  Not yet
+
+= form_for @note, :as => :note, :url => add_note_group_dashboard_path(@group, @dashboard), :method => :post do |f|
+  %div
+    = f.text_area :message
+  %div
+    = f.submit "Add comment"
