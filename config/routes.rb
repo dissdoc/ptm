@@ -10,7 +10,10 @@ Ptm::Application.routes.draw do
     post 'set_title', :on => :member
 
     resources :photos do
-      resources :notes
+      member do
+        post 'add_note'
+        get 'show_notes'
+      end
     end
   end
 

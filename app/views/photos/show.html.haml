@@ -22,17 +22,16 @@
       = @photo.geo.address
     = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
 
-= form_for [@album, @photo, @note] do |f|
-  %div
-    = f.label :message
-    = f.text_area :message, :rows => 5
-  %div
-    = f.submit "Add"
-
+%h4 Comments
 - if @notes
   - @notes.each do |note|
     %p
       = note.message
-      %u= note.author
-      - if note.is_admin?(current_user)
-        = link_to "Delete", [@album, @photo, note], :method => :delete
+      |
+      = note.author
+
+= form_for @note, :as => :note, :url => add_note_album_photo_path(@album, @photo) do |f|
+  %div
+    = f.text_area :message, :rows => 5
+  %div
+    = f.submit "Add"

@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = @album.photos.find(params[:id])
-    @notes = @photo.notes
+    @notes = @photo.notes.all
     @note = @photo.notes.new
   end
 
@@ -45,6 +45,17 @@ class PhotosController < ApplicationController
     @album = @photo.album
     @photo.destroy
     redirect_to @album
+  end
+
+  def add_note
+    @photo = @album.photos.find(params[:id])
+    @note = @photo.notes.new(params[:note])
+    @note.user_id = current_user.id
+    if @note.save!
+      redirect_to [@album, @photo]
+    else
+      redirect_to root_path
+    end
   end
 
   protected
