@@ -9,6 +9,8 @@ class Photo < ActiveRecord::Base
   has_one :geo, :dependent => :destroy
   has_one :share_photo, :dependent => :destroy
 
+  has_many :photo_group_joins, :dependent => :destroy
+
   has_attached_file :image,
                     :styles => {:icon => "64x64>", :small => "100x63>", :medium => "260x180>", :large => "483x302>" },
                     :storage => :Dropboxstorage,

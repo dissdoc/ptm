@@ -21,8 +21,10 @@ Ptm::Application.routes.draw do
     post 'join'
     post 'invite'
     post 'not_agree'
+    post 'link_photo'
 
     get 'users'
+    get 'photos'
 
     resource :member_groups, :only => [:index] do
       member do

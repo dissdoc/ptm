@@ -1,0 +1,6 @@
+%h3 Link photo to group
+
+- @photos.each do |photo|
+  = link_to image_tag(photo.image.url(:small)),
+    group_link_photo_path(:group_id => @group, :photo_id => photo),
+    :method => :post

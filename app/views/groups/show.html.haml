@@ -5,6 +5,16 @@
 
   - if current_user.join_of?(@group) || current_user.admin_of?(@group)
     = link_to "Invite users", group_users_path(@group)
+    |
+    = link_to "Add photo to group", group_photos_path(@group)
+
+  %h4 Photos
+
+  - if @photos.present?
+    - @photos.each do |photo|
+      = image_tag photo.image.url(:small)
+  - else
+    Not yet photo
 
   %h4 Dashboard
 

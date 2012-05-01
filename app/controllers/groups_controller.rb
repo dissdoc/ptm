@@ -48,6 +48,7 @@ class GroupsController < ApplicationController
     @group_candidates = @group.candidates
     @title_page = @group.name
     @dashboards = @group.dashboards.all
+    @photos = @group.link_photos.all
     add_breadcrumb "Groups", groups_path
     add_breadcrumb @title_page, ''
   end
@@ -80,6 +81,21 @@ class GroupsController < ApplicationController
     join.destroy if join.present?
 
     redirect_to @group
+  end
+
+  def photos
+    @group = Group.find(params[:group_id])
+    @photos = current_user.photos.all
+  end
+
+  def link_photo
+    @group = Group.find(params[:group_id])
+    @photo_group_join = @group.photo_group_joins.new(:photo_id => params[:photo_id])
+    if @photo_group_join.save!
+      redirect_to @group
+    else
+      render :action => :photos
+    end
   end
 
   protected
