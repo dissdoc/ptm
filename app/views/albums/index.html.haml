@@ -4,5 +4,4 @@
 %p
   = link_to "My albums", my_albums_path
 
-- @albums.each do |album|
-  = render :partial => "albums/album", :locals => { :album => album }
+= render :partial => "albums/shared/album", :collection => @albums

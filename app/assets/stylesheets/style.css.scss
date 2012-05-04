@@ -1,0 +1,58 @@
+$background-color: #fff;
+$light-grey: #eee;
+
+body {
+    padding: {
+      top: 15px
+    }
+}
+
+/*  Dropdown menu */
+#dropdown {
+  ul {
+    list-style-type: none;
+    width: 150px;
+  }
+
+  &:hover {
+    ul {
+      display: block;
+      position: absolute;
+    }
+  }
+
+  li.headlink {
+    ul {
+      display: none;
+      background: $background-color;
+
+      li {
+        padding: 10px 3px 10px 3px;
+
+        border: {
+          bottom: 1px solid $light-grey;
+        }
+      }
+    }
+  }
+}
+
+/*  Breadcrumbs menu */
+#breadcrumbs {
+  padding: {
+    top: 5px;
+    bottom: 5px;
+  }
+
+  border: {
+    top: 1px solid $light-grey;
+    bottom: 1px solid $light-grey;
+  }
+}
+
+/* Footer for page design */
+#footer {
+    text: {
+      align: center;
+    }
+}
