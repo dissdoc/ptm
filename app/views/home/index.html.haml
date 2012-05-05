@@ -1,23 +1,21 @@
 %p
-  %h4 Search locations
+  %div#tab-panel
+    %ul.htabs
+      %li= link_to "Timeline", "#timeline"
+      %li= link_to "Map", "#map"
+      %li= render :partial => 'home/shared/search_tags'
 
-  = form_tag root_path, :method => :get do
-    = text_field_tag :search_locations, params[:search_locations]
-    = submit_tag "Search", :name => nil
+    %div.clear
 
-  %h4 Search tags
-
-  = form_tag root_path, :method => :get do
-    = text_field_tag :search_tags, params[:search_tags]
-    = submit_tag "Search", :name => nil
-
-
-  %h4 Search datetime
-
-  = form_tag root_path, :method => :get do
-    = datetime_select :search_dt, params[:search_dt]
-    = submit_tag "Search", :name => nil
-
+    %div.tabs
+      %div#timeline.tab
+        = form_tag root_path, :method => :get do
+          = datetime_select :search_dt, params[:search_dt]
+          = submit_tag "Search", :name => nil
+      %div#map.tab
+        = form_tag root_path, :method => :get do
+          = text_field_tag :search_locations, params[:search_locations]
+          = submit_tag "Search", :name => nil
 
 %p
   = render :partial => 'photos/shared/photo', :collection => @photos

@@ -18,4 +18,19 @@ $(document).ready(function(){
     $('#dropdown li.headlink').hover(
         function() { $('ul', this).css('display', 'block'); },
         function() { $('ul', this).css('display', 'none'); });
+
+    $('.tab:not(:first)').hide();
+    $('.tab:first').show();
+
+    $('.htabs a').click(function() {
+        stringref = jQuery(this).attr("href").split('#')[1];
+        $('.tab:not(#'+stringref+')').hide();
+
+        if (jQuery.browser.msie && jQuery.browser.version.substr(0,3) == "6.0")
+            $('.tab#' + stringref).show();
+        else
+            $('.tab#' + stringref).fadeIn();
+
+        return false;
+    });
 });

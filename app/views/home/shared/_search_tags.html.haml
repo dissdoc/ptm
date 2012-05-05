@@ -1,0 +1,3 @@
+= form_tag root_path, :method => :get do
+  = text_field_tag :search_tags, params[:search_tags]
+  = submit_tag "Go!", :name => nil

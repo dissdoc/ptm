@@ -37,6 +37,22 @@ body {
   }
 }
 
+/* Tab Panel for index page */
+#tab-panel {
+  ul {
+    list-style-type: none;
+    padding: 0px;
+
+    li {
+      float: left;
+      padding: {
+        left: 10px;
+        right: 10px;
+      }
+    }
+  }
+}
+
 /*  Breadcrumbs menu */
 #breadcrumbs {
   padding: {
@@ -55,4 +71,8 @@ body {
     text: {
       align: center;
     }
+}
+
+.clear {
+  clear: both;
 }

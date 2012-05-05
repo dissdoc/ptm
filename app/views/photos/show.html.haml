@@ -26,4 +26,5 @@
 - if @notes.present?
   = render :partial => 'notes/shared/note', :collection => @notes
 
-= note_form(@note, :album => @album, :photo => @photo)
+- if signed_in?
+  = note_form(@note, :album => @album, :photo => @photo)
