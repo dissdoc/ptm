@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :set_group, :except => [:index, :new, :create, :invite, :not_agree]
   before_filter :authenticate_user!, :except => [:index]
   before_filter :guest?, :only => [:invite, :not_agree]
 
@@ -26,14 +27,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
     @title_page = "Edit group"
     add_breadcrumb "Group", groups_path
     add_breadcrumb @title_page, ''
   end
 
   def update
-    @group = Group.find(params[:id])
     if @group.update_attributes(params[:group])
       redirect_to groups_path
     else
@@ -42,7 +41,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
     @group_admins = @group.admins
     @group_members = @group.members
     @group_candidates = @group.candidates
@@ -54,7 +52,6 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find(params[:group_id])
     @group_join = @group.group_joins.new(:user => current_user, :role => 'member', :agree => true)
     if @group_join.save!
       redirect_to groups_path
@@ -64,7 +61,6 @@ class GroupsController < ApplicationController
   end
 
   def users
-    @group = Group.find(params[:group_id])
     @users = User.all
     @title_page = @group.name
     add_breadcrumb "Group", groups_path
@@ -84,12 +80,10 @@ class GroupsController < ApplicationController
   end
 
   def photos
-    @group = Group.find(params[:group_id])
     @photos = current_user.photos.all
   end
 
   def link_photo
-    @group = Group.find(params[:group_id])
     @photo_group_join = @group.photo_group_joins.new(:photo_id => params[:photo_id])
     if @photo_group_join.save!
       redirect_to @group
@@ -111,5 +105,9 @@ class GroupsController < ApplicationController
   def guest?
     @group = Group.find(params[:group_id])
     current_user.invite_of?(@group)
+  end
+
+  def set_group
+    @group = Group.find(params[:group_id] ? params[:group_id] : params[:id])
   end
 end

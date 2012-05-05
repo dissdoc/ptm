@@ -123,4 +123,8 @@ class User < ActiveRecord::Base
   def can_join?(group)
     group_joins.where(:group_id => group.id).first.blank?
   end
+
+  def admin_of_album?(album)
+    albums.where(:id => album.id).first.present?
+  end
 end

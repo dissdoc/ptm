@@ -1,6 +1,7 @@
 %h2= @album.name
 
-= link_to "add photo", new_album_photo_path(@album)
+- if current_user && current_user.admin_of_album?(@album)
+  = link_to "add photo", new_album_photo_path(@album)
 
 %p
   - @album.photos.each do |photo|

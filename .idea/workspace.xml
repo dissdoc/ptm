@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/nologo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/shared/_group.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/albums/my.html.haml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/home/activities.html.haml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/home/myfriends.html.haml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/shared/_navigator.html.haml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/friendlists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/friendlists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/albums/index.html.haml" afterPath="$PROJECT_DIR$/app/views/albums/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/groups/index.html.haml" afterPath="$PROJECT_DIR$/app/views/groups/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/profile.html.haml" afterPath="$PROJECT_DIR$/app/views/home/profile.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/users.html.haml" afterPath="$PROJECT_DIR$/app/views/home/users.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/groups_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/photos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/albums/show.html.haml" afterPath="$PROJECT_DIR$/app/views/albums/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml" afterPath="$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,10 +34,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="profile.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/home/profile.html.haml">
+      <file leaf-file-name="albums_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="9" selection-start="795" selection-end="795" vertical-scroll-proportion="0.44041944">
+            <state line="63" column="42" selection-start="1406" selection-end="1406" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photos_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="80" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="127" column="29" selection-start="3940" selection-end="3940" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="24" selection-start="391" selection-end="391" vertical-scroll-proportion="0.14680648">
               <folding />
             </state>
           </provider>
@@ -66,11 +83,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/albums/my.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/albums/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/shared/_navigator.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/myfriends.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/users.html.haml" />
@@ -78,10 +90,15 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/friendlists_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml" />
         <option value="$PROJECT_DIR$/app/views/home/profile.html.haml" />
         <option value="$PROJECT_DIR$/app/views/groups/shared/_group.html.haml" />
         <option value="$PROJECT_DIR$/app/views/groups/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/albums_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/views/albums/show.html.haml" />
       </list>
     </option>
   </component>
@@ -133,12 +150,12 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ptm" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -673,12 +690,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
+      <pane id="RailsProjectView">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -690,8 +707,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1059,114 +1076,98 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120420120343_add_thumbnail_to_album.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120319143911_add_attachment_image_to_photo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/albums/shared/_album.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/albums/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="46" selection-start="65" selection-end="65" vertical-scroll-proportion="0.053384174">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="571" selection-end="571" vertical-scroll-proportion="0.37368923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/friendlists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="20" selection-start="419" selection-end="419" vertical-scroll-proportion="0.20019066">
-          <folding />
-        </state>
+        <state line="15" column="20" selection-start="419" selection-end="419" vertical-scroll-proportion="0.20019066" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="36" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.6539562">
-          <folding />
-        </state>
+        <state line="49" column="36" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.6539562" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="5" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.5872259">
-          <folding />
-        </state>
+        <state line="44" column="5" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.5872259" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application_empty.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="253" selection-end="253" vertical-scroll-proportion="0.16015252">
-          <folding />
-        </state>
+        <state line="12" column="28" selection-start="253" selection-end="253" vertical-scroll-proportion="0.16015252" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/users.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="965" selection-end="965" vertical-scroll-proportion="0.44041944">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="2" selection-start="127" selection-end="127" vertical-scroll-proportion="0.053384174">
-          <folding />
-        </state>
+        <state line="33" column="0" selection-start="965" selection-end="965" vertical-scroll-proportion="0.44041944" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/groups/shared/_group.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="4" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="4" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/groups/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="68" selection-start="150" selection-end="150" vertical-scroll-proportion="0.066730216">
+        <state line="5" column="68" selection-start="150" selection-end="150" vertical-scroll-proportion="0.066730216" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/groups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="35" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.6673022">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/session_store.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="56" selection-start="117" selection-end="117" vertical-scroll-proportion="0.026692087">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="8" selection-start="165" selection-end="165" vertical-scroll-proportion="0.09342231">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/profile.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="9" selection-start="795" selection-end="795" vertical-scroll-proportion="0.44041944">
+        <state line="33" column="9" selection-start="795" selection-end="795" vertical-scroll-proportion="0.44041944" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/groups/shared/_invite.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="31" selection-start="36" selection-end="36" vertical-scroll-proportion="0.013346043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/albums_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="42" selection-start="1406" selection-end="1406" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="80" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="29" selection-start="3940" selection-end="3940" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/albums/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="391" selection-end="391" vertical-scroll-proportion="0.14680648">
           <folding />
         </state>
       </provider>

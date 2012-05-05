@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:show]
+  before_filter :set_album, :only => [:destroy, :edit, :update, :set_title]
 
   def index
     @albums = current_user.albums.all
@@ -54,5 +55,12 @@ class AlbumsController < ApplicationController
     else
       redirect_to albums_path
     end
+  end
+
+  protected
+
+  def set_album
+    @album ||= current_user.albums.find(params[:id])
+    redirect_to root_path if @album.blank?
   end
 end
