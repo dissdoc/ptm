@@ -44,14 +44,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def myfriends
-  end
-
-  def activities
-    @title_page = "Activities"
-    add_breadcrumb @title_page
-  end
-
   def profile
     @title_page = "Profile"
     add_breadcrumb @title_page

@@ -5,7 +5,6 @@ Ptm::Application.routes.draw do
   resources :accounts
 
   resources :albums do
-    get 'my', :on => :collection
     get 'share'
     post 'set_title', :on => :member
 
@@ -49,9 +48,7 @@ Ptm::Application.routes.draw do
   root :to => 'home#index'
   match 'profile', :to => 'home#profile'
   match 'users', :to => 'home#users'
-  match 'myfriends', :to => 'home#myfriends'
   match 'faq', :to => 'home#faq'
   match 'contacts', :to => 'home#contacts'
   match 'about', :to => 'home#about'
-  match 'activities', :to => 'home#activities'
 end

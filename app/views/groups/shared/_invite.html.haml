@@ -1,0 +1,5 @@
+%div
+  = invite.name
+  = link_to "Accept", group_invite_path(:group_id => invite, :id => current_user), :method => :post
+  |
+  = link_to "Refuse", group_not_agree_path(:group_id => invite, :id => current_user), :method => :post

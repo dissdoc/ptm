@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @albums = Album.all
+    @albums = current_user.albums.all
   end
 
   def show
@@ -26,10 +26,6 @@ class AlbumsController < ApplicationController
     @album = current_user.albums.find(params[:id])
     @album.destroy
     redirect_to my_albums_path
-  end
-
-  def my
-    @albums = current_user.albums.all
   end
 
   def share

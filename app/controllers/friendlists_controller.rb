@@ -13,6 +13,6 @@ class FriendlistsController < ApplicationController
   def remove_friend
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
-    redirect_to myfriends_path
+    redirect_to users_path
   end
 end

@@ -1,7 +1,7 @@
 %h2
   Albums
 
-%p
-  = link_to "My albums", my_albums_path
+%div
+  = link_to "Create new album", new_album_path
 
 = render :partial => "albums/shared/album", :collection => @albums

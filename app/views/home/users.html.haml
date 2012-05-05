@@ -1,15 +1,33 @@
-= form_tag users_path, :method => :get do
-  = text_field_tag :query, params[:query]
-  = submit_tag "Search", :name => nil
+%div.span-6
+  = form_tag users_path, :method => :get do
+    = text_field_tag :query, params[:query]
+    = submit_tag "Search", :name => nil
 
 
-- if @users.present?
-  - @users.each do |user|
-    - unless Friendship.is_friend(current_user, user)
-      %div
-        - if user.avatar.exists?
-          = image_tag user.avatar.url(:icon)
-        = user.full_name
-        = link_to "Add friend", friendlists_add_friend_path(:friend_id => user), :method => :post
-- else
-  %h3 Nothing
+  - if @users.present?
+    - @users.each do |user|
+      - unless Friendship.is_friend(current_user, user)
+        %div
+          - if user.avatar.exists?
+            = image_tag user.avatar.url(:icon)
+          = user.full_name
+          = link_to "Add friend", friendlists_add_friend_path(:friend_id => user), :method => :post
+  - else
+    %h3 Nothing
+
+%div.span-9
+  %h3 My friends
+  - if current_user.friends.present?
+    %ul
+      - current_user.friendships.each do |friendship|
+        %li
+          = friendship.friend.full_name
+          = link_to "remove", friendlists_remove_friend_path(:id => friendship.id), :method => :post
+
+%div.span-9.last
+  %h3 Friended by me
+  - if current_user.inverse_friends.present?
+    %ul
+      - current_user.inverse_friends.each do |friend|
+        %li
+          = friend.full_name
