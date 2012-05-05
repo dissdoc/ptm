@@ -11,8 +11,7 @@
   %h4 Photos
 
   - if @photos.present?
-    - @photos.each do |photo|
-      = image_tag photo.image.url(:small)
+    = render :partial => 'photos/shared/photo', :collection => @photos
   - else
     Not yet photo
 

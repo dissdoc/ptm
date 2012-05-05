@@ -23,15 +23,7 @@
     = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
 
 %h4 Comments
-- if @notes
-  - @notes.each do |note|
-    %p
-      = note.message
-      |
-      = note.author
+- if @notes.present?
+  = render :partial => 'notes/shared/note', :collection => @notes
 
-= form_for @note, :as => :note, :url => add_note_album_photo_path(@album, @photo) do |f|
-  %div
-    = f.text_area :message, :rows => 5
-  %div
-    = f.submit "Add"
+= note_form(@note, :album => @album, :photo => @photo)

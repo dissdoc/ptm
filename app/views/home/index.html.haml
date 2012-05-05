@@ -20,8 +20,8 @@
 
 
 %p
-  - @photos.each do |photo|
-    = image_tag photo.image.url(:small)
+  = render :partial => 'photos/shared/photo', :collection => @photos
+
 
 %div.spread
   %div.twshare.left
