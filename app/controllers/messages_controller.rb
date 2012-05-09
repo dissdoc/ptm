@@ -23,4 +23,19 @@ class MessagesController < ApplicationController
       render :new
     end
   end
+
+  def recommended
+    link = params[:link]
+    user = User.find(params[:user_id])
+    @message = Message.new
+    @message.theme = "Recommended..."
+    @message.description = "User #{current_user.full_name} recommended #{link}"
+    @message.to_user = user
+    @message.from_user = user
+    if @message.save!
+      redirect_to link
+    else
+      redirect_to root_path
+    end
+  end
 end

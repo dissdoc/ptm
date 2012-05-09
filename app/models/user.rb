@@ -17,14 +17,30 @@ class User < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   has_many :activities, :dependent => :destroy
 
-  has_many :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :friends, :through => :friendships
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :friendships, :dependent => :destroy
 
-  has_many :messages, :foreign_key => "to_user_id", :dependent => :destroy
-  has_many :to_me, :class_name => 'Message', :foreign_key => "to_user_id"
-  has_many :from_me, :class_name => 'Message', :foreign_key => "from_user_id"
+  has_many :inverse_friendships,
+      :class_name => "Friendship",
+      :foreign_key => "friend_id"
+
+  has_many :friends,
+      :through => :friendships
+
+  has_many :inverse_friends,
+      :through => :inverse_friendships,
+      :source => :user
+
+  has_many :messages,
+      :foreign_key => "to_user_id",
+      :dependent => :destroy
+
+  has_many :to_me,
+      :class_name => 'Message',
+      :foreign_key => "to_user_id"
+
+  has_many :from_me,
+      :class_name => 'Message',
+      :foreign_key => "from_user_id"
 
   has_many :from_me,
       :through => :messages,
@@ -136,5 +152,9 @@ class User < ActiveRecord::Base
 
   def admin_of_album?(album)
     albums.where(:id => album.id).first.present?
+  end
+
+  def admin_of_photo?(photo)
+    photos.where(:id => photo.id).first.present?
   end
 end

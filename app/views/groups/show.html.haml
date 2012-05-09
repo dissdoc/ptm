@@ -52,3 +52,11 @@
       |
       = link_to '-', remove_group_member_groups_path(:group_id => @group, :id => candidate), :method => :post
     %br
+
+    %h3 My friends
+    %ul
+      - current_user.friendships.each do |friendship|
+        %li
+          = friendship.friend.full_name
+          |
+          = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => group_url(@group)), :method => :post

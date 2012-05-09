@@ -1,30 +1,40 @@
-= link_to "Edit", edit_album_photo_url(@album, @photo)
+%div.span-16
+  - if current_user.admin_of_photo?(@photo)
+    = link_to "Edit", edit_album_photo_url(@album, @photo)
 
-%p
-  = image_tag @photo.image.url(:medium)
-
-%p
-  %label Generate at:
-  = @photo.generate
-
-%p
-  %label Tags:
-  = @photo.tag_names
-
-- if @photo.share_photo
-  %label Public:
-  = @photo.share_photo.share
-
-- if @photo.geo
   %p
-    %label Geolocation
-    %div
-      = @photo.geo.address
-    = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
+    = image_tag @photo.image.url(:medium)
 
-%h4 Comments
-- if @notes.present?
-  = render :partial => 'notes/shared/note', :collection => @notes
+  %p
+    %label Generate at:
+    = @photo.generate
 
-- if signed_in?
-  = note_form(@note, :album => @album, :photo => @photo)
+  %p
+    %label Tags:
+    = @photo.tag_names
+
+  - if @photo.share_photo
+    %label Public:
+    = @photo.share_photo.share
+
+  - if @photo.geo
+    %p
+      %label Geolocation
+      %div
+        = @photo.geo.address
+      = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=true&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
+
+  %h4 Comments
+  - if @notes.present?
+    = render :partial => 'notes/shared/note', :collection => @notes
+
+  - if signed_in?
+    = note_form(@note, :album => @album, :photo => @photo)
+
+%div.span-8.last
+  %ul
+    - current_user.friendships.each do |friendship|
+      %li
+        = friendship.friend.full_name
+        |
+        = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post

@@ -1,11 +1,20 @@
-%h2= @album.name
+%div.span-16
+  %h2= @album.name
 
-- if current_user && current_user.admin_of_album?(@album)
-  = link_to "add photo", new_album_photo_path(@album)
+  - if current_user && current_user.admin_of_album?(@album)
+    = link_to "add photo", new_album_photo_path(@album)
 
-%p
-  - @album.photos.each do |photo|
-    %div
-      = link_to image_tag(photo.image.url(:small)), [@album, photo]
-      - if photo.admin_of?(current_user)
-        = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo.id), :method => :post
+  %p
+    - @album.photos.each do |photo|
+      %div
+        = link_to image_tag(photo.image.url(:small)), [@album, photo]
+        - if photo.admin_of?(current_user)
+          = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo.id), :method => :post
+
+%div.span-8.last
+    %ul
+      - current_user.friendships.each do |friendship|
+        %li
+          = friendship.friend.full_name
+          |
+          = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => album_url(@album)), :method => :post
