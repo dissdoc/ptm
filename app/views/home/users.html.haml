@@ -23,6 +23,8 @@
         %li
           = friendship.friend.full_name
           = link_to "remove", friendlists_remove_friend_path(:id => friendship.id), :method => :post
+          |
+          = link_to "message", new_message_path(:user_id => friendship.friend)
 
 %div.span-9.last
   %h3 Friended by me

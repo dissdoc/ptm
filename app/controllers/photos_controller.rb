@@ -57,7 +57,7 @@ class PhotosController < ApplicationController
   end
 
   protected
-    def get_photo
+    def set_photo
       @photo = @album.photos.find(params[:id])
     end
 

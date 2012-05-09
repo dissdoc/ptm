@@ -45,6 +45,8 @@ Ptm::Application.routes.draw do
   match '/friendlists/add_friend', :to => 'friendlists#add_friend', :via => :post
   match '/friendlists/remove_friend', :to => 'friendlists#remove_friend', :via => :post
 
+  resources :messages
+
   root :to => 'home#index'
   match 'profile', :to => 'home#profile'
   match 'users', :to => 'home#users'

@@ -22,6 +22,16 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  has_many :messages, :foreign_key => "to_user_id", :dependent => :destroy
+  has_many :to_me, :class_name => 'Message', :foreign_key => "to_user_id"
+  has_many :from_me, :class_name => 'Message', :foreign_key => "from_user_id"
+
+  has_many :from_me,
+      :through => :messages,
+      :class_name => 'Message',
+      :foreign_key => 'from_user_id',
+      :source => :from_user
+
   has_attached_file :avatar,
                     :styles => {:icon => "32x32>", :small => "64x64>", :medium => "260x180>" },
                     :storage => :Dropboxstorage,
