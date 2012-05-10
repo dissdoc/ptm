@@ -1,0 +1,24 @@
+= link_to "Create person", new_familytree_path
+
+- if @familytrees.present?
+  %table
+    %thead
+      %th ID
+      %th Name
+      %th Parent1
+      %th Parent2
+    %tbody
+      - @familytrees.each do |node|
+        %tr
+          %td= node.id
+          %td= node.name
+          %td
+            - if node.left > 0
+              = node.left
+            - else
+              = render :partial => "familytrees/shared/add_parent", :locals => {:persons => @familytrees, :name => 'left_node', :id => node.id}
+          %td
+            - if node.right > 0
+              = node.right
+            - else
+              = render :partial => "familytrees/shared/add_parent", :locals => {:persons => @familytrees, :name => 'right_node', :id => node.id}

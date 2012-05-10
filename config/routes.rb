@@ -48,6 +48,9 @@ Ptm::Application.routes.draw do
   resources :messages
   match '/messages/recommended', :to => 'messages#recommended', :via => :post
 
+  resources :familytrees
+  match '/familytrees/add_parent', :to => 'familytrees#add_parent', :via => :post
+
   root :to => 'home#index'
   match 'profile', :to => 'home#profile'
   match 'users', :to => 'home#users'

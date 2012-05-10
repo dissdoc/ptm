@@ -82,6 +82,8 @@ class User < ActiveRecord::Base
 
   has_many :dashboards, :dependent => :destroy
 
+  has_many :familytrees, :dependent => :destroy
+
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
   end

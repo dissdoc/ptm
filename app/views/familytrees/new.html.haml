@@ -1,0 +1,8 @@
+%h3 Create new person to family tree
+
+= form_for @familytree do |f|
+  %div
+    = f.label :name
+    = f.text_field :name
+  %div
+    = f.submit "Add person"

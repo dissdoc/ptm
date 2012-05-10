@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509123739) do
+ActiveRecord::Schema.define(:version => 20120510080132) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20120509123739) do
     t.string   "dashtable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "familytrees", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "left",       :default => 0
+    t.integer  "right",      :default => 0
   end
 
   create_table "friendlists", :force => true do |t|

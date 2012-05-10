@@ -1,0 +1,4 @@
+= form_tag familytrees_add_parent_path, :method => :post do
+  = select_tag name, options_from_collection_for_select(persons, "id", "name")
+  = hidden_field_tag 'parent', id
+  = submit_tag "Pin", :name => nil
