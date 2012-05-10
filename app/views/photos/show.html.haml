@@ -1,5 +1,5 @@
 %div.span-16
-  - if current_user.admin_of_photo?(@photo)
+  - if current_user && current_user.admin_of_photo?(@photo)
     = link_to "Edit", edit_album_photo_url(@album, @photo)
 
   %p
@@ -22,7 +22,7 @@
       %label Geolocation
       %div
         = @photo.geo.address
-      = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=true&markers=#{@photo.geo.latitude}%2C#{@photo.geo.longitude}"
+      = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&&markers=size:mid%7Ccolor:red%7C#{@photo.geo.address}"
 
   %h4 Comments
   - if @notes.present?
@@ -32,9 +32,10 @@
     = note_form(@note, :album => @album, :photo => @photo)
 
 %div.span-8.last
-  %ul
-    - current_user.friendships.each do |friendship|
-      %li
-        = friendship.friend.full_name
-        |
-        = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post
+  - if signed_in?
+    %ul
+      - current_user.friendships.each do |friendship|
+        %li
+          = friendship.friend.full_name
+          |
+          = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post

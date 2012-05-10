@@ -12,6 +12,7 @@
           = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo.id), :method => :post
 
 %div.span-8.last
+  -if signed_in?
     %ul
       - current_user.friendships.each do |friendship|
         %li
