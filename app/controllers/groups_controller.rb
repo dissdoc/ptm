@@ -70,13 +70,15 @@ class GroupsController < ApplicationController
   def invite
     join = get_group_invite(params)
     join.invite! if join.present?
+
+    redirect_to profile_path
   end
 
   def not_agree
     join = get_group_invite(params)
     join.destroy if join.present?
 
-    redirect_to @group
+    redirect_to profile_path
   end
 
   def photos
