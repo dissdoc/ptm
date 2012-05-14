@@ -5,8 +5,12 @@
 %div
   - if album.thumbnail
     = image_tag album.show_thumbnail.image.url(:medium)
+  - elsif album.collection
+    = image_tag album.photo_album_joins.first.photo.image.url(:medium) if album.photo_album_joins.present?
   - elsif album.photos.first
     = image_tag album.photos.first.image.url(:medium)
+
+
 
 %div= l album.created_at, :format => :full
 

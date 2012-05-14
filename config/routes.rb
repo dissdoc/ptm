@@ -15,6 +15,7 @@ Ptm::Application.routes.draw do
       end
     end
   end
+  match '/albums/link_photo', :to => 'albums#link_photo', :via => :post
 
   resources :groups do
     post 'join'

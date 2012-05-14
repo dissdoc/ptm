@@ -17,16 +17,16 @@ class AlbumsController < ApplicationController
   def create
     @album = current_user.albums.new(params[:album])
     if @album.save!
-      redirect_to my_albums_path
-    else
       redirect_to albums_path
+    else
+      render :action => :new
     end
   end
 
   def destroy
     @album = current_user.albums.find(params[:id])
     @album.destroy
-    redirect_to my_albums_path
+    redirect_to albums_path
   end
 
   def share
@@ -54,6 +54,16 @@ class AlbumsController < ApplicationController
       redirect_to @album
     else
       redirect_to albums_path
+    end
+  end
+
+  def link_photo
+    collection = current_user.albums.find(params[:album_id])
+    @join = collection.photo_album_joins.new(:photo_id => params[:photo_id].to_i)
+    if @join.save!
+      redirect_to albums_path
+    else
+      redirect_to root_path
     end
   end
 

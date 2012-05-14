@@ -100,6 +100,10 @@ class User < ActiveRecord::Base
     [first_name, last_name].join(" ")
   end
 
+  def collections
+    albums.where(:collection => true)
+  end
+
   def apply_omniauth(omniauth)
     accounts.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
