@@ -67,6 +67,19 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def tagging
+    @album = current_user.albums.find(params[:album_id])
+    tags = params[:tags].split(/,\s+/)
+    @album.photos.each do |photo|
+      t1 = photo.tags.map(&:name)
+      t2 = tags
+      photo.tags = (t1 + t2).map do |name|
+        Tag.find_or_create_by_name(name)
+      end
+    end
+    redirect_to @album
+  end
+
   protected
 
   def set_album

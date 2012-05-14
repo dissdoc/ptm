@@ -5,6 +5,11 @@
     - if current_user.admin_of_album?(@album) && !@album.collection
       = link_to "add photo", new_album_photo_path(@album)
 
+      = form_tag album_tagging_path(@album), :method => :post do
+        Tags
+        = text_field_tag "tags"
+        = submit_tag "Add"
+
   %p
     - if @album.collection
       - @album.photo_album_joins.each do |photo_join|

@@ -15,7 +15,7 @@
 %div= l album.created_at, :format => :full
 
 = link_to "detail", album
-- if signed_in? && current_user.id == album.user_id
+- if signed_in? && current_user.admin_of_album?(album)
   |
   = link_to "edit", edit_album_path(album)
   |
