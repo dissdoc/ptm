@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :only => [:myfriends, :profile]
+  before_filter :authenticate_user!, :only => [:profile]
 
   def index
     if params[:search_locations].present?

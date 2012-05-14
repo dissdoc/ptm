@@ -6,12 +6,11 @@
 
   - if @users.present?
     - @users.each do |user|
-      - unless Friendship.is_friend(current_user, user)
-        %div
-          - if user.avatar.exists?
-            = image_tag user.avatar.url(:icon)
-          = user.full_name
-          = link_to "Add friend", friendlists_add_friend_path(:friend_id => user), :method => :post
+      %div
+        - if user.avatar.exists?
+          = image_tag user.avatar.url(:icon)
+        = user.full_name
+        = link_to "Add friend", friendlists_add_friend_path(:friend_id => user), :method => :post unless Friendship.is_friend(current_user, user)
   - else
     %h3 Nothing
 
