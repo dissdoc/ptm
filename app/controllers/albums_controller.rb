@@ -10,6 +10,9 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @title_page = @album.name
+    add_breadcrumb 'My albums', albums_path
+    add_breadcrumb @title_page, ''
   end
 
   def new

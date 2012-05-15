@@ -3,7 +3,6 @@ class PhotosController < ApplicationController
   before_filter :set_album
   before_filter :set_photo, :except => [:new, :create, :destroy]
   before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update]
-  before_filter :collection?, :only => [:new, :create]
 
   def new
     @photo = @album.photos.new
@@ -68,9 +67,5 @@ class PhotosController < ApplicationController
 
     def album_admin?
       redirect_to root_path if current_user.id != @album.user.id
-    end
-
-    def collection?
-      !@album.collection?
     end
 end

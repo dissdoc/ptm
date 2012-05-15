@@ -4,6 +4,8 @@
     at
     = l @album.created_at, :format => :full
 
+  %div= @album.description
+
   - if current_user
     - if current_user.admin_of_album?(@album)
       = link_to "add photo", new_album_photo_path(@album)

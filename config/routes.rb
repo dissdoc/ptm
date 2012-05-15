@@ -59,4 +59,8 @@ Ptm::Application.routes.draw do
   match 'faq', :to => 'home#faq'
   match 'contacts', :to => 'home#contacts'
   match 'about', :to => 'home#about'
+  match 'favorites', :to => 'home#favorites'
+
+  match 'favorites/fave', :to => 'favorites#fave', :via => :post
+  match 'favorites/unfave', :to => 'favorites#unfave', :via => :post
 end

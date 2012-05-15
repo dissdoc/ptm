@@ -50,4 +50,8 @@ class HomeController < ApplicationController
 
     @invites = current_user.inviting_groups
   end
+
+  def favorites
+    @favorites = current_user.favorites
+  end
 end

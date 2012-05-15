@@ -3,12 +3,10 @@
     - if current_user.admin_of_photo?(@photo)
       = link_to "Edit", edit_album_photo_url(@album, @photo)
     - else
-      - if current_user.collections.present?
-        = form_tag albums_link_photo_url, :method => :post do
-          = select_tag "album_id", options_from_collection_for_select(current_user.collections, "id", "name")
-          = hidden_field_tag 'photo_id', @photo.id
-          = submit_tag "Add link to collection"
-
+      - if current_user.photo_fave?(@photo)
+        = link_to "Unfave", favorites_unfave_path(:photo_id => @photo), :method => :post, :remote => true
+      - else
+        = link_to "Fave", favorites_fave_path(:photo_id => @photo), :method => :post, :remote => true
   %p
     = image_tag @photo.image.url(:medium)
 
