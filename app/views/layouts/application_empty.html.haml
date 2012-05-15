@@ -11,6 +11,11 @@
 
       %div.span-24
         = yield :breadcrumbs
-        = yield
+
+        %div.span-16
+          = yield
+        %div.span-8.last
+          - if signed_in?
+            = render :partial => 'shared/left_panel'
 
       = render "shared/footer"

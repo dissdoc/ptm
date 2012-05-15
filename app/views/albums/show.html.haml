@@ -1,8 +1,11 @@
 %div.span-16
-  %h2= @album.name
+  %h2
+    = @album.name
+    at
+    = l @album.created_at, :format => :full
 
   - if current_user
-    - if current_user.admin_of_album?(@album) && !@album.collection
+    - if current_user.admin_of_album?(@album)
       = link_to "add photo", new_album_photo_path(@album)
 
       = form_tag album_tagging_path(@album), :method => :post do
@@ -11,18 +14,11 @@
         = submit_tag "Add"
 
   %p
-    - if @album.collection
-      - @album.photo_album_joins.each do |photo_join|
-        %div
-          = link_to image_tag(photo_join.photo.image.url(:small)), [photo_join.photo.album, photo_join.photo]
-          - if current_user.admin_of_album?(@album)
-            = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo_join.photo.id), :method => :post
-    - else
-      - @album.photos.each do |photo|
-        %div
-          = link_to image_tag(photo.image.url(:small)), [@album, photo]
-          - if photo.admin_of?(current_user)
-            = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo.id), :method => :post
+    - @album.photos.each do |photo|
+      %div
+        = link_to image_tag(photo.image.url(:small)), [@album, photo]
+        - if photo.admin_of?(current_user)
+          = link_to "Set as title", set_title_album_path(@album, :thumbnail => photo.id), :method => :post
 
 %div.span-8.last
   -if signed_in?

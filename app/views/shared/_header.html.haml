@@ -1,17 +1,15 @@
-%div.span-18
-  %h3 PHOTOTIMEMACHINE
+%div.span-16
+  = link_to 'PHOTOTIMEMACHINE', root_path, :class => 'title-header'
 
-%div{ :class => ["span-6", "last"] }
-  - if signed_in?
-    %ul#dropdown
-      %li.headlink
-        - if current_user.avatar.exists?
-          = image_tag current_user.avatar.url(:icon)
-        = link_to current_user.full_name, profile_path
-        %ul
-          %li= link_to "Settings", edit_user_registration_path(current_user)
-          %li= link_to "Sign out", destroy_user_session_path, :method => :delete
-  - else
-    = link_to "Sign in", new_user_session_path
-    |
-    = link_to "Sign up", new_user_registration_path
+%div.span-8.last
+  %ul#menu
+    - if signed_in?
+      %li
+        Signed in as&nbsp;
+        = render :partial => 'auths/shared/user_link', :locals => { :user => current_user }
+      %li= link_to 'Sign out', destroy_user_session_path, :method => :delete
+
+    - else
+      %li= link_to 'Sign in', new_user_session_path
+      %li= link_to 'Sign up', new_user_registration_path
+    %div.clear

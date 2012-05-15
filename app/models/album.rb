@@ -7,10 +7,6 @@ class Album < ActiveRecord::Base
   validates :name, :user_id, :presence => true
 
   def show_thumbnail
-    unless collection
-      photos.where("id = ?", thumbnail).first
-    else
-      photo_album_joins.where("photo_id = ?", thumbnail).first.photo
-    end
+    photos.where("id = ?", thumbnail).first
   end
 end

@@ -1,9 +1,11 @@
 class AlbumsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album, :only => [:destroy, :edit, :update, :set_title]
+  before_filter :set_albums, :only => [:destroy, :index]
 
   def index
-    @albums = current_user.albums.all
+    @title_page = 'My albums'
+    add_breadcrumb @title_page, ''
   end
 
   def show
@@ -11,22 +13,29 @@ class AlbumsController < ApplicationController
   end
 
   def new
+    @title_page = 'Create new album'
+    add_breadcrumb 'My albums', albums_path
+    add_breadcrumb @title_page, ''
     @album = current_user.albums.new
   end
 
   def create
     @album = current_user.albums.new(params[:album])
-    if @album.save!
-      redirect_to albums_path
-    else
-      render :action => :new
+    respond_to do |format|
+      if @album.save
+        flash[:success] = 'Form created successfully'
+        format.html { redirect_to albums_path }
+      else
+        format.html { render :action => :new }
+      end
     end
   end
 
   def destroy
-    @album = current_user.albums.find(params[:id])
     @album.destroy
-    redirect_to albums_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def share
@@ -37,6 +46,9 @@ class AlbumsController < ApplicationController
 
   def edit
     @album = current_user.albums.find(params[:id])
+    @title_page = "Edit #{@album.name}"
+    add_breadcrumb 'My albums', albums_path
+    add_breadcrumb @title_page, ''
   end
 
   def update
@@ -85,5 +97,9 @@ class AlbumsController < ApplicationController
   def set_album
     @album ||= current_user.albums.find(params[:id])
     redirect_to root_path if @album.blank?
+  end
+
+  def set_albums
+    @albums = current_user.albums.all
   end
 end
