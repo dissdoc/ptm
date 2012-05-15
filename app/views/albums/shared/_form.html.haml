@@ -1,0 +1,16 @@
+%div.dialog
+  = form_for @album do |f|
+    %legend= legend
+
+    = render :partial => 'shared/error_messages', :locals => { :target => @album }
+
+    %div
+      %div= f.label :name
+      %div= f.text_field :name
+
+    %div
+      %div= f.label :description
+      %div= f.text_area :description
+
+    %div
+      %div.action= f.submit button

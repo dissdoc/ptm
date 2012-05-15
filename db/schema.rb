@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510080132) do
+ActiveRecord::Schema.define(:version => 20120515130638) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(:version => 20120510080132) do
     t.datetime "updated_at",                :null => false
     t.integer  "left",       :default => 0
     t.integer  "right",      :default => 0
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "friendlists", :force => true do |t|
@@ -123,6 +130,13 @@ ActiveRecord::Schema.define(:version => 20120510080132) do
     t.string   "notable_type"
   end
 
+  create_table "photo_album_joins", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "photo_group_joins", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "group_id"
@@ -183,6 +197,8 @@ ActiveRecord::Schema.define(:version => 20120510080132) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "about"
+    t.string   "current_city"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

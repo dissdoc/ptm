@@ -1,20 +1,15 @@
-%h4= album.name
+%li
+  %div.item
+    %div.name= link_to album.name, album
 
-%div= album.description
+    %div.imaging
+      - if album.thumbnail
+        = image_tag album.show_thumbnail.image.url(:small)
+      - elsif album.photos.first
+        = image_tag album.photos.first.image.url(:small)
 
-%div
-  - if album.thumbnail
-    = image_tag album.show_thumbnail.image.url(:medium)
-  - elsif album.photos.first
-    = image_tag album.photos.first.image.url(:medium)
-
-%div= l album.created_at, :format => :full
-
-= link_to "detail", album
-- if signed_in? && current_user.id == album.user_id
-  |
-  = link_to "edit", edit_album_path(album)
-  |
-  = link_to "delete", album, :method => :delete
-  |
-  = link_to "sharing", album_share_path(album)
+    %div.actions
+      - if signed_in? && current_user.admin_of_album?(album)
+        = link_to image_tag('edit.png'), edit_album_path(album)
+        = link_to image_tag('share.png'), album_share_path(album)
+        = link_to image_tag('delete.png'), album, :method => :delete, :remote => true

@@ -7,6 +7,7 @@ Ptm::Application.routes.draw do
   resources :albums do
     get 'share'
     post 'set_title', :on => :member
+    post 'tagging'
 
     resources :photos do
       member do
@@ -15,6 +16,7 @@ Ptm::Application.routes.draw do
       end
     end
   end
+  match '/albums/link_photo', :to => 'albums#link_photo', :via => :post
 
   resources :groups do
     post 'join'
@@ -57,4 +59,8 @@ Ptm::Application.routes.draw do
   match 'faq', :to => 'home#faq'
   match 'contacts', :to => 'home#contacts'
   match 'about', :to => 'home#about'
+  match 'favorites', :to => 'home#favorites'
+
+  match 'favorites/fave', :to => 'favorites#fave', :via => :post
+  match 'favorites/unfave', :to => 'favorites#unfave', :via => :post
 end

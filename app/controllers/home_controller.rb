@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :only => [:myfriends, :profile]
+  before_filter :authenticate_user!, :only => [:profile]
 
   def index
     if params[:search_locations].present?
@@ -49,5 +49,9 @@ class HomeController < ApplicationController
     add_breadcrumb @title_page
 
     @invites = current_user.inviting_groups
+  end
+
+  def favorites
+    @favorites = current_user.favorites
   end
 end

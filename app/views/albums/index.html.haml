@@ -1,7 +1,10 @@
-%h2
-  Albums
-
-%div
+%div.span-10
+  %div#album-count
+    You have
+    = pluralize(@albums.count, 'album')
+%div.span-6.last
   = link_to "Create new album", new_album_path
 
-= render :partial => "albums/shared/album", :collection => @albums
+%ul#collection
+  = render :partial => "albums/shared/album", :collection => @albums
+%div.break &nbsp;

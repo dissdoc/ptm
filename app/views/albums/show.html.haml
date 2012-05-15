@@ -1,8 +1,19 @@
 %div.span-16
-  %h2= @album.name
+  %h2
+    = @album.name
+    at
+    = l @album.created_at, :format => :full
 
-  - if current_user && current_user.admin_of_album?(@album)
-    = link_to "add photo", new_album_photo_path(@album)
+  %div= @album.description
+
+  - if current_user
+    - if current_user.admin_of_album?(@album)
+      = link_to "add photo", new_album_photo_path(@album)
+
+      = form_tag album_tagging_path(@album), :method => :post do
+        Tags
+        = text_field_tag "tags"
+        = submit_tag "Add"
 
   %p
     - @album.photos.each do |photo|

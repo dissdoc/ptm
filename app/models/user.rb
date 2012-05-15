@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
       :source => :group,
       :conditions => ['group_joins.role = ? AND group_joins.accepted = ? AND group_joins.agree = ?', 'member', true, false]
 
+  has_many :favorites, :order => 'created_at desc', :dependent => :destroy
+
   has_many :dashboards, :dependent => :destroy
 
   has_many :familytrees, :dependent => :destroy
@@ -98,6 +100,10 @@ class User < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].join(" ")
+  end
+
+  def collections
+    albums.where(:collection => true)
   end
 
   def apply_omniauth(omniauth)
@@ -158,5 +164,9 @@ class User < ActiveRecord::Base
 
   def admin_of_photo?(photo)
     photos.where(:id => photo.id).first.present?
+  end
+
+  def photo_fave?(photo)
+    favorites.where('photo_id = ?', photo.id).first.present?
   end
 end

@@ -14,6 +14,13 @@ class AccountsController < ApplicationController
     else
       user = User.new
       user.apply_omniauth(omniauth)
+
+      info = omniauth['info']
+      if info
+        user.current_city = info['location'] if info['location']
+        user.about = info['description'] if info['description']
+      end
+
       if user.save
         sign_in_and_redirect(:user, user)
       else
