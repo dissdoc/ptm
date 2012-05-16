@@ -1,4 +1,4 @@
 - if @favorites.present?
-  present
+  = render :partial => 'photos/shared/favorite', :collection => @favorites
 - else
   not

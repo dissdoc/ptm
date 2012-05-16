@@ -1,25 +1,28 @@
 class FavoritesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :can_fave?
+  before_filter :authenticate_user!, :can_fave?, :set_photo
 
   def fave
-    current_user.create!(:photo_id => params[:photo_id])
+    current_user.favorites.create!(:photo_id => params[:photo_id])
     respond_to do |format|
       format.js
     end
   end
 
   def unfave
-    @favorite = current_user.favorites.find(params[:photo_id])
+    @favorite = current_user.favorites.where(:photo_id => params[:photo_id]).first
     @favorite.destroy
     respond_to do |format|
-      format.js
+      format.js { render :template => 'favorites/fave.js.erb' }
     end
   end
 
   protected
 
   def can_fave?
-    !current_user.photos.find(params[:photo_id]).present?
+    !current_user.photos.where('id = ?', params[:photo_id]).first.present?
+  end
+
+  def set_photo
+    @photo = Photo.find(params[:photo_id]) if params[:photo_id].present?
   end
 end
