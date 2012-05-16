@@ -8,5 +8,5 @@ class Assortment < ActiveRecord::Base
       :class_name => "Photo",
       :source => :photo
 
-  validates :user_id, :name,  :presence => true
+  validates :user_id, :name, :presence => true
 end

@@ -1,0 +1,8 @@
+%h3= @assortment.name
+
+%div= @assortment.description
+
+- if @assortment.photos.present?
+  = render :partial => 'photos/shared/photo', :collection => @assortment.photos
+- else
+  Not yet!

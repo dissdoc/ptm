@@ -1,1 +1,11 @@
-assortment
+%div.span-10
+  You have
+  = pluralize(current_user.assortments.count, 'collection')
+%div.span-6.last
+  = link_to 'Create new collection', new_assortment_path
+
+%div
+  - if current_user.assortments.present?
+    = render :partial => 'assortments/shared/assortment', :collection => current_user.assortments
+  - else
+    Not yet!
