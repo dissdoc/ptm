@@ -32,4 +32,29 @@ class AssortmentsController < ApplicationController
     add_breadcrumb 'My collection', assortments_path
     add_breadcrumb @title_page, ''
   end
+
+  def add_photo_show
+    @assortment = Assortment.find(params[:assortment_id])
+    @title_page = @assortment.name
+    add_breadcrumb 'My collection', assortments_path
+    add_breadcrumb @title_page, @assortment
+    add_breadcrumb 'Add photo', ''
+  end
+
+  def add_photo
+    @assortment = Assortment.find(params[:assortment_id])
+    @assortment.photo_assortment_joins.create!(:photo_id => params[:photo_id].to_i)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def remove_photo
+    @assortment = Assortment.find(params[:assortment_id])
+    @join = @assortment.photo_assortment_joins.where(:photo_id => params[:photo_id].to_i).first
+    @join.destroy
+    respond_to do |format|
+      format.js { render :template => 'assortments/add_photo' }
+    end
+  end
 end

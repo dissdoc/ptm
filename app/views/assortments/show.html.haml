@@ -2,6 +2,9 @@
 
 %div= @assortment.description
 
+%p
+  = link_to 'Add photos to this collection', assortment_add_photo_show_path(@assortment)
+
 - if @assortment.photos.present?
   = render :partial => 'photos/shared/photo', :collection => @assortment.photos
 - else

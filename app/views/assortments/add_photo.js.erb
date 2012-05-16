@@ -1,0 +1,4 @@
+$('#prepare-to-add').html("<%= escape_javascript(render(:partial => 'assortments/shared/photo', :collection => current_user.favorites )) %>").fadeIn(500);
+$('#addings').html("<%= escape_javascript(render(:partial => 'assortments/shared/item', :collection => @assortment.photos )) %>").fadeIn(500);
+$('#counter1').html("This is all my favorites <%= pluralize(current_user.favorites.count, 'photos') %>").fadeIn(500);
+$('#counter2').html("This is all my favorites <%= pluralize(@assortment.photos.count, 'photo') %>").fadeIn(500);

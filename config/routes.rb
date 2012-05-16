@@ -53,7 +53,11 @@ Ptm::Application.routes.draw do
   resources :familytrees
   match '/familytrees/add_parent', :to => 'familytrees#add_parent', :via => :post
 
-  resources :assortments
+  resources :assortments do
+    get 'add_photo_show'
+    post 'add_photo'
+    post 'remove_photo'
+  end
 
   root :to => 'home#index'
   match 'profile', :to => 'home#profile'
