@@ -1,8 +1,8 @@
 %p#counter1
   This is all my favorites
-  = pluralize(current_user.favorites.count, 'photo')
+  = pluralize(current_user.current_favorites.not_yet_added(@assortment.photos).count, 'photo')
 
-%div#prepare-to-add= render :partial => 'assortments/shared/photo', :collection => current_user.favorites
+%div#prepare-to-add= render :partial => 'assortments/shared/photo', :collection => current_user.current_favorites.not_yet_added(@assortment.photos)
 
 %p#counter2
   This is all my favorites

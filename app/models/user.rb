@@ -82,11 +82,18 @@ class User < ActiveRecord::Base
 
   has_many :favorites, :order => 'created_at desc', :dependent => :destroy
 
+  has_many :current_favorites,
+      :through => :favorites,
+      :class_name => 'Photo',
+      :source => :photo,
+      :order => 'created_at desc'
+
   has_many :dashboards, :dependent => :destroy
 
   has_many :familytrees, :dependent => :destroy
 
   has_many :assortments, :dependent => :destroy
+
 
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")

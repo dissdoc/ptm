@@ -46,6 +46,14 @@ class Photo < ActiveRecord::Base
     user.id == current_user.id if current_user
   end
 
+  def self.not_yet_added(items)
+    if items.present?
+      find(:all, :conditions => ['photo_id NOT IN (?)', items.map(&:id)])
+    else
+      all
+    end
+  end
+
   private
 
     def assign_tags
