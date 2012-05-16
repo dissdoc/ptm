@@ -26,6 +26,8 @@ class Photo < ActiveRecord::Base
   accepts_nested_attributes_for :share_photo
   attr_accessible :share_photo_attributes
 
+  has_many :photo_assortment_joins, :dependent => :destroy
+
   after_save :assign_tags
 
   def tag_names
