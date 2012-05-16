@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20120514074243_add_collection_to_album.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ptm.iml" afterPath="$PROJECT_DIR$/.idea/ptm.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" afterPath="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_left_panel.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_left_panel.html.haml" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,6 +40,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="_album.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/albums/shared/_album.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="72" selection-start="282" selection-end="282" vertical-scroll-proportion="0.10676835">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -66,28 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="favorites_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="favorites_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="16" selection-start="424" selection-end="424" vertical-scroll-proportion="0.3430572">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fave.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/favorites/fave.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="11" selection-start="11" selection-end="11" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="unfave.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/favorites/unfave.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="21" column="16" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,12 +100,10 @@
       <list>
         <option value="$PROJECT_DIR$/app/models/album.rb" />
         <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" />
         <option value="$PROJECT_DIR$/app/views/photos/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/photos/edit.html.haml" />
         <option value="$PROJECT_DIR$/app/views/albums/show.html.haml" />
         <option value="$PROJECT_DIR$/app/models/photo.rb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.haml" />
         <option value="$PROJECT_DIR$/app/models/favorite.rb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/favorites.html.haml" />
@@ -122,14 +112,16 @@
         <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/favorites/fave.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/favorites_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="-1" />
-    <option name="width" value="1217" />
-    <option name="height" value="1026" />
+    <option name="x" value="-1" />
+    <option name="y" value="-3" />
+    <option name="width" value="1602" />
+    <option name="height" value="1204" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -173,16 +165,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ptm" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -713,6 +695,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -720,8 +712,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1030,14 +1022,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-1" width="1217" height="1026" extended-state="6" />
+    <frame x="-1" y="-3" width="1602" height="1204" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974002" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329698" sideWeight="0.0" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21623336" sideWeight="0.0" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1133,16 +1125,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="45" selection-start="59" selection-end="59" vertical-scroll-proportion="0.013631938" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/auths/new.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="20" selection-start="688" selection-end="688" vertical-scroll-proportion="0.46711153" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="55" selection-start="1077" selection-end="1077" vertical-scroll-proportion="0.5204957" />
@@ -1178,6 +1160,13 @@
         <state line="1" column="56" selection-start="47" selection-end="101" vertical-scroll-proportion="0.013346043" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="34" selection-start="134" selection-end="134" vertical-scroll-proportion="0.040895812">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/favorites/fave.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="11" selection-start="11" selection-end="11" vertical-scroll-proportion="0.0" />
@@ -1188,21 +1177,11 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/favorites.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0">
+        <state line="21" column="16" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="11" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="60" selection-start="4797" selection-end="4797" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
@@ -1210,9 +1189,24 @@
         <state line="64" column="10" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="424" selection-end="424" vertical-scroll-proportion="0.3430572">
+        <state line="169" column="60" selection-start="4797" selection-end="4797" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="11" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/favorites.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="12" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/albums/shared/_album.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="72" selection-start="282" selection-end="282" vertical-scroll-proportion="0.10676835">
           <folding />
         </state>
       </provider>

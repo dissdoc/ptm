@@ -4,9 +4,9 @@
 
     %div.imaging
       - if album.thumbnail
-        = image_tag album.show_thumbnail.image.url(:small)
+        = link_to image_tag(album.show_thumbnail.image.url(:small)), album
       - elsif album.photos.first
-        = image_tag album.photos.first.image.url(:small)
+        = link_to image_tag(album.photos.first.image.url(:small)), album
 
     %div.actions
       - if signed_in? && current_user.admin_of_album?(album)
