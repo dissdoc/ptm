@@ -2,13 +2,13 @@ class AssortmentsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @title_page = 'My collections'
+    @title_page = 'Collections'
     add_breadcrumb @title_page, ''
   end
 
   def new
     @title_page = 'Create new collection'
-    add_breadcrumb 'My collections', assortments_path
+    add_breadcrumb 'Collections', assortments_path
     add_breadcrumb @title_page, ''
 
     @assortment = current_user.assortments.new
@@ -36,7 +36,7 @@ class AssortmentsController < ApplicationController
   def add_photo_show
     @assortment = Assortment.find(params[:assortment_id])
     @title_page = @assortment.name
-    add_breadcrumb 'My collection', assortments_path
+    add_breadcrumb 'Collection', assortments_path
     add_breadcrumb @title_page, @assortment
     add_breadcrumb 'Add photo', ''
   end

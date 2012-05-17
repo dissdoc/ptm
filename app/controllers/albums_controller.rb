@@ -4,20 +4,20 @@ class AlbumsController < ApplicationController
   before_filter :set_albums, :only => [:destroy, :index]
 
   def index
-    @title_page = 'My albums'
+    @title_page = 'Albums'
     add_breadcrumb @title_page, ''
   end
 
   def show
     @album = Album.find(params[:id])
     @title_page = @album.name
-    add_breadcrumb 'My albums', albums_path
+    add_breadcrumb 'Albums', albums_path
     add_breadcrumb @title_page, ''
   end
 
   def new
     @title_page = 'Create new album'
-    add_breadcrumb 'My albums', albums_path
+    add_breadcrumb 'Albums', albums_path
     add_breadcrumb @title_page, ''
     @album = current_user.albums.new
   end
@@ -50,7 +50,7 @@ class AlbumsController < ApplicationController
   def edit
     @album = current_user.albums.find(params[:id])
     @title_page = "Edit #{@album.name}"
-    add_breadcrumb 'My albums', albums_path
+    add_breadcrumb 'Albums', albums_path
     add_breadcrumb @title_page, ''
   end
 
