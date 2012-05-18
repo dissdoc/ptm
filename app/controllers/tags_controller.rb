@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :can_delete?
+  before_filter :can_delete?, :only => [:destroy]
 
   def create
     photo_id = params[:photo_id].to_i
