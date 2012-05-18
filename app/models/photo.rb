@@ -54,6 +54,10 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  def can_add?(assortment)
+    !photo_assortment_joins.where('assortment_id = ?', assortment.id).first.present?
+  end
+
   private
 
     def assign_tags

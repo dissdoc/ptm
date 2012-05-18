@@ -9,6 +9,9 @@
     = image_tag @photo.image.url(:medium)
 
   %p
+    = render :partial => 'photos/shared/photo', :collection => @album.photos
+
+  %p
     %label Generate at:
     = @photo.generate
 

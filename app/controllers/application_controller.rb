@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   private
 
     def set_initial_breadcrumbs
-      add_breadcrumb "Main", :root_path
+      add_breadcrumb "Home", :root_path
     end
 end
