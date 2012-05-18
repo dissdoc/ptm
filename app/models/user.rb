@@ -94,6 +94,9 @@ class User < ActiveRecord::Base
 
   has_many :assortments, :dependent => :destroy
 
+  has_many :taggings, :dependent => :destroy
+  has_many :tags, :through => :taggings
+
 
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")

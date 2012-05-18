@@ -29,4 +29,4 @@
         %li
           = friendship.friend.full_name
           |
-          = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => album_url(@album)), :method => :post
+          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_url(@album)), :method => :post

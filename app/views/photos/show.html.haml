@@ -25,10 +25,10 @@
 
   - if @photo.geo
     %p
-      %label Geolocation
+      %label Where:
+      = @photo.geo.address
       %div
-        = @photo.geo.address
-      = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&&markers=size:mid%7Ccolor:red%7C#{@photo.geo.address}"
+        = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&&markers=size:mid%7Ccolor:red%7C#{@photo.geo.address}"
 
   %h4 Comments
   - if @notes.present?
@@ -44,4 +44,4 @@
         %li
           = friendship.friend.full_name
           |
-          = link_to "sharing", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post
+          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post
