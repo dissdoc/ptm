@@ -14,4 +14,8 @@ class Tag < ActiveRecord::Base
   def self.get(name)
     self.where("name = ?", name).last
   end
+
+  def can_delete?(photo, user)
+    taggings.where('photo_id = ? AND user_id = ? AND tag_id = ?', photo.id, user.id, self.id).first.present?||user.admin_of_photo?(photo)
+  end
 end

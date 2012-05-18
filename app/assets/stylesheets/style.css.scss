@@ -68,6 +68,12 @@ a.title-header {
   }
 }
 
+#form-little {
+  input[type=text] {
+    width: 240px;
+  }
+}
+
 #collection {
   list-style-type: none;
   padding: 0px;
@@ -117,8 +123,28 @@ a.title-header {
   }
 }
 
-ul.left-menu {
+ul.header-menu {
   list-style-type: none;
+  padding: 0px;
+
+  li {
+    padding: {
+      top: 5px;
+      right: 7px;
+      bottom: 5px;
+    }
+    float: left;
+  }
+
+  a {
+    color: #444;
+    font-size: 1.10em;
+    text-decoration: none;
+
+    &:hover {
+      color: #666;
+    }
+  }
 }
 
 #dropdown {

@@ -1,0 +1,6 @@
+- if tags.present?
+  %p
+    %label Tags:
+    = render :partial => 'tags/shared/tag', :collection => tags, :locals => { :photo => photo }
+
+    = render :partial => 'tags/shared/form', :locals => { :photo => photo }

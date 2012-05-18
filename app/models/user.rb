@@ -178,6 +178,10 @@ class User < ActiveRecord::Base
     photos.where(:id => photo.id).first.present?
   end
 
+  def admin_of_tag?(photo, tag)
+    taggings.where(:tag_id => tag.id, :photo_id => photo.id).first.present?
+  end
+
   def photo_fave?(photo)
     favorites.where('photo_id = ?', photo.id).first.present?
   end

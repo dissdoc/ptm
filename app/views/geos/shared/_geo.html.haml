@@ -1,0 +1,6 @@
+- if photo.geo.present?
+  %p
+    %label Where:
+    = photo.geo.address
+    %div
+      = image_tag "http://maps.google.com/maps/api/staticmap?size=320x240&sensor=false&&markers=size:mid%7Ccolor:red%7C#{photo.geo.address}"
