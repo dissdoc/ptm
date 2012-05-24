@@ -12,7 +12,12 @@ Ptm::Application.routes.draw do
     resources :photos do
       member do
         post 'add_note'
+        post 'create_recommend'
+        post 'apply_recommend'
+        post 'destroy_recommend'
+
         get 'show_notes'
+        get 'recommend_geo'
       end
     end
   end

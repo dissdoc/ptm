@@ -2,7 +2,8 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album
   before_filter :set_photo, :except => [:new, :create, :destroy]
-  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update]
+  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend]
+  before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
 
   def new
     @photo = @album.photos.new
@@ -56,6 +57,22 @@ class PhotosController < ApplicationController
     end
   end
 
+  def recommend_geo
+
+  end
+
+  def create_recommend
+
+  end
+
+  def apply_recommend
+
+  end
+
+  def destroy_recommend
+
+  end
+
   protected
     def set_photo
       @photo = @album.photos.find(params[:id])
@@ -67,5 +84,9 @@ class PhotosController < ApplicationController
 
     def album_admin?
       redirect_to root_path if current_user.id != @album.user.id
+    end
+
+    def not_admin_photo?
+      redirect_to @photo if current_user.id == @photo.user.id
     end
 end
