@@ -28,6 +28,6 @@
 
   %div
     = f.label "Generate at"
-    = f.datetime_select :generate, :start_year => 1826
+    = f.datetime_select :generate, :start_year => 1826, :end_year => Time.now.year - 15
 
   = f.submit "Add"
