@@ -215,3 +215,10 @@ ul.header-menu {
 .clear {
   clear: both;
 }
+
+#map_canvas {
+  width: 420px;
+  height: 340px;
+  overflow: hidden;
+  position: relative;
+}

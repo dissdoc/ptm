@@ -6,4 +6,4 @@
       = image_tag "http://maps.google.com/maps/api/staticmap?size=320x240&sensor=false&&markers=size:mid%7Ccolor:red%7C#{photo.geo.address}"
 
     - if signed_in? && !current_user.admin_of_photo?(photo)
-      = link_to 'Recommend'
+      = link_to 'Recommend', recommend_geo_album_photo_path(@album, @photo)

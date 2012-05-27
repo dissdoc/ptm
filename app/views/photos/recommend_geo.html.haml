@@ -1,0 +1,8 @@
+%h4 Recommend geo
+
+= form_tag create_recommend_album_photo_path(@album, @photo), :method => :post do
+  = text_field_tag :address, params[:address] ? params[:address] : @photo.geo.address
+  = hidden_field_tag 'lat', @photo.geo.latitude
+  = hidden_field_tag 'lng', @photo.geo.longitude
+  %div#map_canvas{ :load => 'getZoom();'}
+  = submit_tag 'Recommend'

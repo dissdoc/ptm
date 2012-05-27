@@ -17,6 +17,8 @@
           = text_field_tag :search_locations, params[:search_locations]
           = submit_tag "Search", :name => nil
 
+    %div#map_canvas
+
 %p
   = render :partial => 'photos/shared/photo', :collection => @photos
 
