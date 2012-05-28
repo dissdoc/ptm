@@ -97,6 +97,7 @@ class User < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
 
+  has_many :recommend_geos, :dependent => :destroy
 
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")

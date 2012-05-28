@@ -62,15 +62,28 @@ class PhotosController < ApplicationController
   end
 
   def create_recommend
-
+    @recommend = @photo.geo.recommend_geos.new
+    @recommend.address = params[:address]
+    @recommend.comment = params[:comment]
+    if @recommend.save!
+      redirect_to album_photo_path(@album, @photo)
+    else
+      render :action => :recommend_geo
+    end
   end
 
   def apply_recommend
-
+    recommend = RecommendGeo.find(params[:recommend_id])
+    @photo.geo.update_attributes(:address => recommend.address, :latitude => recommend.latitude,
+                                    :longitude => recommend.longitude)
+    recommend.destroy
+    redirect_to album_photo_path(@album, @photo)
   end
 
   def destroy_recommend
-
+    recommend = RecommendGeo.find(params[:recommend_id])
+    recommend.destroy
+    redirect_to album_photo_path(@album, @photo)
   end
 
   protected

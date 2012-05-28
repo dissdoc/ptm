@@ -5,4 +5,5 @@
   = hidden_field_tag 'lat', @photo.geo.latitude
   = hidden_field_tag 'lng', @photo.geo.longitude
   %div#map_canvas{ :load => 'getZoom();'}
-  = submit_tag 'Recommend'
+  = text_area_tag :comment, params[:comment]
+  %div= submit_tag 'Recommend'

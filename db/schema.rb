@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518070836) do
+ActiveRecord::Schema.define(:version => 20120525091813) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -156,6 +156,17 @@ ActiveRecord::Schema.define(:version => 20120518070836) do
     t.integer  "album_id"
     t.datetime "generate"
     t.integer  "user_id"
+  end
+
+  create_table "recommend_geos", :force => true do |t|
+    t.string   "comment"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "user_id"
+    t.integer  "geo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "share_photos", :force => true do |t|

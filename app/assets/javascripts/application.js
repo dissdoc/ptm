@@ -46,10 +46,11 @@ $(document).ready(function(){
     });
 });
 
-function initialize() {
-    this.map = null;
-    this.geocoder = null;
+this.marker = null;
+this.map = null;
+this.geocoder = null;
 
+function initialize() {
     if (this.geocoder == null)
         this.geocoder = new google.maps.Geocoder();
 
@@ -61,24 +62,59 @@ function initialize() {
         center: latlng,
         mapTypeId:google.maps.MapTypeId.ROADMAP
     }
+
     this.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    this.marker = new google.maps.Marker({
+        position: latlng,
+        draggable:true,
+        animation: google.maps.Animation.DROP,
+        map: this.map
+    });
+    google.maps.event.addListener(this.marker, 'click', toggleBounce);
+    google.maps.event.addListener(this.marker, 'dragend', markerPositionChanged);
 }
 
-function getZoom() {
-    alert("thats all");
+function toggleBounce() {
+    if (this.marker.getAnimation() != null) {
+        this.marker.setAnimation(null);
+    } else {
+        this.marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
 }
 
-function setMapToCity(map, geocoder) {
-    var address = $('#address').attr('value');
-    geocoder.geocode({ 'address': address }, function (results, status) {
+function markerPositionChanged() {
+    var latlng = marker.getPosition();
+    geocoder.geocode({ 'latLng': latlng, 'language' : 'ru' }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-            //установить Zoom таким образом, чтобы город был показан весь
-            map.setZoom(_this.getZoom(results[0].geometry.viewport));
-            //и поставить маркет для отметки адреса
-            addMarker();
-        } else {
-            alert("Пошло что-то не так, потому что: " + status);
+            this.map.setCenter(results[0].geometry.location);
+            setAddress(results[0]);
         }
     });
+}
+
+function setAddress(item) {
+    var new_address = composeAddress(item);
+    $('#address').val(new_address);
+}
+
+function composeAddress(item) {
+    retAddress = "";
+    $.each(item.address_components, function (i, address_item) {
+        var isOk = false;
+        $.each(address_item.types, function (j, typeName) {
+            //не будем брать значения адреса улицы и локали (города) - город потом будет в administrative_level_2
+            if (typeName != "street_address" && typeName != "locality") {
+                isOk = true;
+            }
+        });
+        if (isOk) {
+            if (retAddress == "") {
+                retAddress = address_item.long_name;
+            } else {
+                retAddress = retAddress + ", " + address_item.long_name;
+            }
+        }
+    });
+    return retAddress;
 }
