@@ -1,6 +1,8 @@
 = form_for [@album, @photo] do |f|
   = f.file_field :image
 
+
+
   %div
     = f.label :tag_names, "Tags"
     = f.text_field :tag_names
@@ -11,15 +13,11 @@
     = f.fields_for :geo do |location|
       %div
         %label Address:
-        = location.text_field :address
+        = location.text_field :address, :id => 'address'
 
-      %div
-        %label Latitude
-        = location.text_field :latitude
-
-      %div
-        %label Longitude
-        = location.text_field :longitude
+        = hidden_field_tag 'lat', '-34.397'
+        = hidden_field_tag 'lng', '150.644'
+      %div#map_canvas
 
   %p
     = f.fields_for :share_photo do |sharing|
