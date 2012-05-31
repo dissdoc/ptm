@@ -58,14 +58,25 @@ class PhotosController < ApplicationController
   end
 
   def recommend_geo
-
+    @geo = @photo.geo.present? ? @photo.geo : @geo = params[:address]
+    @lat = @photo.geo.present? ? @photo.geo.latitude : '-34.397'
+    @lng = @photo.geo.present? ? @photo.geo.longitude : '150.644'
   end
 
   def create_recommend
-    @recommend = @photo.geo.recommend_geos.new
+    @recommend = @photo.recommend_geos.new
+
     @recommend.address = params[:address]
     @recommend.comment = params[:comment]
+    @recommend.user = current_user
     if @recommend.save!
+      @message = Message.new
+      @message.theme = "Recommended geotag..."
+      @message.description = "User #{current_user.full_name} recommended new geolocation for photo #{@photo}"
+      @message.to_user = @photo.user
+      @message.from_user = current_user
+      @message.save!
+
       redirect_to album_photo_path(@album, @photo)
     else
       render :action => :recommend_geo
@@ -74,8 +85,15 @@ class PhotosController < ApplicationController
 
   def apply_recommend
     recommend = RecommendGeo.find(params[:recommend_id])
-    @photo.geo.update_attributes(:address => recommend.address, :latitude => recommend.latitude,
+
+    if @photo.geo.present?
+      @photo.geo.update_attributes(:address => recommend.address, :latitude => recommend.latitude,
                                     :longitude => recommend.longitude)
+    else
+      @geo = @photo.build_geo(:address => recommend.address, :latitude => recommend.latitude,
+                       :longitude => recommend.longitude)
+      @geo.save!
+    end
     recommend.destroy
     redirect_to album_photo_path(@album, @photo)
   end

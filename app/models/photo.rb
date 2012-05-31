@@ -29,6 +29,8 @@ class Photo < ActiveRecord::Base
 
   has_many :photo_assortment_joins, :dependent => :destroy
 
+  has_many :recommend_geos, :dependent => :destroy
+
   after_save :assign_tags
 
   def tag_names
