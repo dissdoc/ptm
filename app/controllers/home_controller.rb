@@ -54,4 +54,8 @@ class HomeController < ApplicationController
   def favorites
     @favorites = current_user.favorites
   end
+
+  def detail
+    @user = User.find(params[:id])
+  end
 end

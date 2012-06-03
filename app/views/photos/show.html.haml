@@ -24,8 +24,8 @@
 
 %div.span-8.last
   %p
-    Generate by
-    = @photo.user.full_name
+    %label Generate by:
+    = link_to @photo.user.full_name, detail_path(:id => @photo.user)
 
   = render :partial => 'photos/shared/generate_at', :locals => { :photo => @photo }
 
