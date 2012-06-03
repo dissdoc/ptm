@@ -25,7 +25,10 @@
 
       %li= link_to "Family Tree", familytrees_path
 
-%div.span-16.last
+%div.span-8
+  = render :partial => 'photos/shared/photo', :collection => current_user.photos
+
+%div.span-8.last
   - current_user.activities.each do |activity|
     %div
       = link_to activity.user.full_name

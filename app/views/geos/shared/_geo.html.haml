@@ -13,6 +13,6 @@
     %li
       %i= recommend.address
       %div= recommend.comment
-      - if current_user.admin_of_photo?(photo)
+      - if signed_in? && current_user.admin_of_photo?(photo)
         = link_to "V", apply_recommend_album_photo_path(@album, @photo, :recommend_id => recommend), :method => :post
         = link_to "X", destroy_recommend_album_photo_path(@album, @photo, :recommend_id => recommend), :method => :post

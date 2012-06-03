@@ -1,3 +1,4 @@
 - if user.avatar.exists?
   = image_tag user.avatar.url(:icon)
-= link_to user.full_name, edit_user_registration_path(user)
+= link_to user.full_name, profile_path
+= link_to 'Settings', edit_user_registration_path(user)

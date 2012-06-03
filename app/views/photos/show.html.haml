@@ -23,6 +23,10 @@
     = note_form(@note, :album => @album, :photo => @photo)
 
 %div.span-8.last
+  %p
+    Generate by
+    = @photo.user.full_name
+
   = render :partial => 'photos/shared/generate_at', :locals => { :photo => @photo }
 
   = render :partial => 'geos/shared/geo', :locals => { :photo => @photo }
