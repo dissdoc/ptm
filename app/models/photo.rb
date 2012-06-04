@@ -18,7 +18,7 @@ class Photo < ActiveRecord::Base
                     :storage => :Dropboxstorage,
                     :path => "/:attachment/:attachment/:id/:style/:filename"
 
-  attr_accessible :album_id, :user_id, :image, :generate, :tag_names, :geo, :share_photo
+  attr_accessible :album_id, :user_id, :image, :generate, :generate_end, :tag_names, :geo, :share_photo
   attr_writer :tag_names
 
   accepts_nested_attributes_for :geo, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531065028) do
+ActiveRecord::Schema.define(:version => 20120604050831) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(:version => 20120531065028) do
     t.text     "description"
   end
 
+  create_table "collections", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "dashboards", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -72,6 +79,13 @@ ActiveRecord::Schema.define(:version => 20120531065028) do
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
     t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "friendlists", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -131,6 +145,13 @@ ActiveRecord::Schema.define(:version => 20120531065028) do
     t.string   "notable_type"
   end
 
+  create_table "photo_album_joins", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "photo_assortment_joins", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "assortment_id"
@@ -156,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20120531065028) do
     t.integer  "album_id"
     t.datetime "generate"
     t.integer  "user_id"
+    t.datetime "generate_end"
   end
 
   create_table "recommend_geos", :force => true do |t|

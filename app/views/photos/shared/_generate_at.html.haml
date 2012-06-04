@@ -2,3 +2,6 @@
   %p
     %label When:
     = l photo.generate, :format => :full
+    - if photo.generate_end
+      \...
+      = l photo.generate_end, :format => :full
