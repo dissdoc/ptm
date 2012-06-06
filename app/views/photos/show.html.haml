@@ -15,6 +15,11 @@
     %label Public:
     = @photo.share_photo.share
 
+  - unless @photo.comment.blank?
+    %p
+      %label Description:
+      %div= @photo.comment
+
   %h4 Comments
   - if @notes.present?
     = render :partial => 'notes/shared/note', :collection => @notes
