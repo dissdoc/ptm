@@ -69,4 +69,6 @@ Ptm::Application.configure do
 
   FACEBOOK_ID = '284172994996972'
   FACEBOOK_SECRET = 'c259083297389a8b89539c97ea4ea9e2'
+
+  Paperclip.options[:command_path] = '/usr/bin'
 end

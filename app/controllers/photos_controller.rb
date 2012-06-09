@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album
   before_filter :set_photo, :except => [:new, :create, :destroy]
-  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend]
+  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend, :crop, :cropped]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
 
   def new
@@ -102,6 +102,22 @@ class PhotosController < ApplicationController
     recommend = RecommendGeo.find(params[:recommend_id])
     recommend.destroy
     redirect_to album_photo_path(@album, @photo)
+  end
+
+  def crop
+
+  end
+
+  def cropped
+    if @photo.update_attributes(params[:photo])
+      if params[:photo][:image].blank?
+        redirect_to [@album, @photo]
+      else
+        render :action => :crop
+      end
+    else
+      render :action => :edit
+    end
   end
 
   protected

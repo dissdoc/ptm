@@ -17,6 +17,7 @@ gem 'omniauth-facebook'
 gem 'paperclipdropbox', '1.0.8'
 gem 'rails-breadcrumbs'
 gem 'therubyracer'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.

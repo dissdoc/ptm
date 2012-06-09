@@ -2,6 +2,8 @@
   - if current_user
     - if current_user.admin_of_photo?(@photo)
       = link_to "Edit", edit_album_photo_url(@album, @photo)
+      |
+      = link_to "Crop", crop_album_photo_url(@album, @photo)
     - else
       %div#favorites
         = render :partial => 'favorites/shared/fave', :locals => { :photo => @photo }

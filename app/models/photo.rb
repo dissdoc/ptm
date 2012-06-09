@@ -14,11 +14,16 @@ class Photo < ActiveRecord::Base
   has_many :favorites, :dependent => :destroy
 
   has_attached_file :image,
-                    :styles => {:icon => "64x64", :small => "100x63", :medium => "260x180", :large => "483x302" },
-                    :storage => :Dropboxstorage,
-                    :path => "/:attachment/:attachment/:id/:style/:filename"
+      :whiny => true,
+      :styles => {:icon => "64x64", :small => "100x63", :medium => "260x180", :large => "483x302" },
+      :storage => :Dropboxstorage,
+      :path => "/:attachment/:attachment/:id/:style/:filename",
+      :processors => [:cropper]
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :reprocess_image, :if => :cropping?
 
-  attr_accessible :album_id, :user_id, :comment, :image, :generate, :generate_end, :tag_names, :geo, :share_photo
+  attr_accessible :album_id, :user_id, :comment, :image, :generate, :generate_end, :tag_names, :geo, :share_photo,
+                  :crop_x, :crop_y, :crop_w, :crop_h
   attr_writer :tag_names
 
   accepts_nested_attributes_for :geo, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
@@ -61,6 +66,15 @@ class Photo < ActiveRecord::Base
     !photo_assortment_joins.where('assortment_id = ?', assortment.id).first.present?
   end
 
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def image_geometry(style = :original)
+    @geometry ||= {}
+    @geometry[style] ||= Paperclip::Geometry.from_file(image.url(style))
+  end
+
   private
 
     def assign_tags
@@ -69,5 +83,9 @@ class Photo < ActiveRecord::Base
           Tag.find_or_create_by_name(name)
         end
       end
+    end
+
+    def reprocess_image
+      image.reprocess!
     end
 end
