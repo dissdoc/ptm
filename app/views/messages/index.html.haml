@@ -1,3 +1,13 @@
 %h4 My messages
 
-= render :partial => "messages/shared/message", :collection => @to_me_messages
+%div.span-16
+  = render :partial => "messages/shared/message", :collection => @to_me_messages
+
+%div.span-8.last
+  %h4 Send message to...
+  - if current_user.friends.present?
+    %ul
+      - current_user.friendships.each do |friendship|
+        %li
+          = friendship.friend.full_name
+          = link_to "message", new_message_path(:user_id => friendship.friend)

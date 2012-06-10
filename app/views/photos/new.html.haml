@@ -1,4 +1,4 @@
-= form_for [@album, @photo] do |f|
+= form_for [@album, @photo], :html => { :multipart => true }  do |f|
   = f.file_field :image
 
   %div
