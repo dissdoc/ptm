@@ -1,0 +1,63 @@
+<% content_for(:head) do  %>
+    <script src="/assets/jquery.min.js"></script>
+    <script src="/assets/jquery.imgareaselect.min.js"></script>
+    <script src="/assets/jquery.imgnotes-0.2.js"></script>
+    <link rel="stylesheet" href="/assets/imgareaselect-default.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/imgnotes.css" type="text/css" />
+
+    <script language="Javascript">
+        jQuery(function($) {
+            notes = [{"x1":"10","y1":"10","height":"150","width":"50","note":"This is a note"}, {"x1":"25","y1":"25","height":"70","width":"80","note":"<b>This</b> is a new note This is another note This is a new note"}];
+            $('#imgselectarea').imgNotes();
+            $('#imgselectarea').imgAreaSelect({
+                handles: true,
+                onSelectChange:showaddnote
+            });
+
+            $('#cancelnote').click(function(){
+                $('#imgselectarea').imgAreaSelect({ hide: true, disable:true });
+                $('#noteform').hide();
+            });
+
+            $('#addnotelink').click(function(){
+                $('#imgselectarea').imgAreaSelect({ enable:true, onSelectChange: showaddnote, x1: 120, y1: 90, x2: 280, y2: 210 });
+                return false;
+            });
+        });
+
+        function showaddnote (img, area) {
+            imgOffset = $(img).offset();
+            form_left  = parseInt(imgOffset.left) + parseInt(area.x1);
+            form_top   = parseInt(imgOffset.top) + parseInt(area.y1) + parseInt(area.height)+5;
+
+            $('#noteform').css({ left: form_left + 'px', top: form_top + 'px'});
+
+            $('#noteform').show();
+
+            $('#noteform').css("z-index", 10000);
+            $('#NoteX1').val(area.x1);
+            $('#NoteY1').val(area.y1);
+            $('#NoteHeight').val(area.height);
+            $('#NoteWidth').val(area.width);
+
+        }
+    </script>
+<% end %>
+
+<a href="#" id="addnotelink">Add a tag</a>
+
+<%= image_tag @photo.image.url(:large), :id => "imgselectarea" %>
+
+<div id="noteform">
+  <form id="NoteAddForm" method="post" action="/nagpurbirds2/notes/add">
+    <fieldset>
+      <legend>Add Note</legend>
+      <input name="data[Note][x1]" type="hidden" value="" id="NoteX1">
+      <input name="data[Note][y1]" type="hidden" value="" id="NoteY1">
+      <input name="data[Note][height]" type="hidden" value="" id="NoteHeight">
+      <input name="data[Note][width]" type="hidden" value="" id="NoteWidth">
+      <textarea name="data[Note][note]" id="NoteNote"></textarea>
+    </fieldset>
+    <div class="submit"><input type="submit" value="Submit"> &nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" id="cancelnote"></div>
+  </form>
+</div>

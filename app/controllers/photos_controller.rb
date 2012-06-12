@@ -108,6 +108,10 @@ class PhotosController < ApplicationController
 
   end
 
+  def selected
+
+  end
+
   def cropped
     if @photo.update_attributes(params[:photo])
       if params[:photo][:image].blank?

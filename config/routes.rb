@@ -20,6 +20,7 @@ Ptm::Application.routes.draw do
         get 'show_notes'
         get 'recommend_geo'
         get 'crop'
+        get 'selected'
       end
     end
   end
