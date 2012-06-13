@@ -1,16 +1,37 @@
+- content_for(:head) do
+  %script{ :src => "/assets/jquery.min.js" }
+  %script{ :src => "/assets/jquery.imgareaselect.min.js" }
+  %script{ :src => "/assets/jquery.imgnotes-0.2.js" }
+  %link{ :rel => "stylesheet", :href => "/assets/imgareaselect-default.css", :type => "text/css" }
+  %link{ :rel => "stylesheet", :href => "/assets/imgnotes.css", :type => "text/css" }
+
+  :erb
+    <script language="Javascript">
+      jQuery(function($) {
+        notes = [];
+        <% @photo.areatags.each do |areatag| %>
+          notes.push({"x1": "<%= areatag.x %>",
+                      "y1": "<%= areatag.y %>",
+                      "height": "<%= areatag.height %>",
+                      "width": "<%= areatag.width %>",
+                      "note": "<%= areatag.description %>" });
+        <% end %>
+
+        $('#imgselectarea').imgNotes();
+      });
+    </script>
+
 %div.span-16
   - if current_user
     - if current_user.admin_of_photo?(@photo)
       = link_to "Edit", edit_album_photo_url(@album, @photo)
-      |
-      = link_to "Crop", crop_album_photo_url(@album, @photo)
       |
       = link_to "Selected", selected_album_photo_url(@album, @photo)
     - else
       %div#favorites
         = render :partial => 'favorites/shared/fave', :locals => { :photo => @photo }
   %p
-    = image_tag @photo.image.url(:medium)
+    = image_tag @photo.image.url(:large), :id => "imgselectarea"
 
   %p
     = render :partial => 'photos/shared/photo', :collection => @album.photos
