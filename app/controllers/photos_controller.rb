@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album
   before_filter :set_photo, :except => [:new, :create, :destroy]
-  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend, :crop, :cropped]
+  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend, :addarea, :deletearea]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
 
   def new
@@ -104,24 +104,24 @@ class PhotosController < ApplicationController
     redirect_to album_photo_path(@album, @photo)
   end
 
-  def crop
-
-  end
-
   def selected
 
   end
 
-  def cropped
-    if @photo.update_attributes(params[:photo])
-      if params[:photo][:image].blank?
-        redirect_to [@album, @photo]
-      else
-        render :action => :crop
-      end
+  def addarea
+    if params[:description].blank?
+      render :action => :selected
     else
-      render :action => :edit
+      @photo.areatags.create!(:x => params[:x1], :y => params[:y1], :height => params[:height], :width => params[:width],
+        :description => params[:description])
+      redirect_to selected_album_photo_path(@album, @photo)
     end
+  end
+
+  def deletearea
+    area = @photo.areatags.find(params[:area])
+    area.destroy
+    redirect_to selected_album_photo_path(@album, @photo)
   end
 
   protected

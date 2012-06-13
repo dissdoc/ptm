@@ -95,6 +95,21 @@ class AlbumsController < ApplicationController
     redirect_to @album
   end
 
+  def add_photos
+    @album = current_user.albums.find(params[:album_id])
+    5.times { @album.photos.new }
+  end
+
+  def pin_photos
+    @album = current_user.albums.find(params[:album_id])
+    render :text => params[:album]
+    #if @album.update_attributes(params[:album])
+    #  redirect_to @album
+    #else
+    #  render :action => :add_photos
+    #end
+  end
+
   protected
 
   def set_album

@@ -15,11 +15,11 @@ Ptm::Application.routes.draw do
         post 'create_recommend'
         post 'apply_recommend'
         post 'destroy_recommend'
-        post 'cropped'
+        post 'addarea'
+        post 'deletearea'
 
         get 'show_notes'
         get 'recommend_geo'
-        get 'crop'
         get 'selected'
       end
     end
