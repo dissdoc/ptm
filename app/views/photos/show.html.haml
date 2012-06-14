@@ -14,7 +14,7 @@
                       "y1": "<%= areatag.y %>",
                       "height": "<%= areatag.height %>",
                       "width": "<%= areatag.width %>",
-                      "note": "<%= areatag.description %>" });
+                      "note": "<%= areatag.description.gsub(/\r/," ").gsub(/\n/," ") %>" });
         <% end %>
 
         $('#imgselectarea').imgNotes();
@@ -22,11 +22,11 @@
     </script>
 
 %div.span-16
-  - if current_user
+  - if signed_in?
+    = link_to "Selected", selected_album_photo_url(@album, @photo)
     - if current_user.admin_of_photo?(@photo)
-      = link_to "Edit", edit_album_photo_url(@album, @photo)
       |
-      = link_to "Selected", selected_album_photo_url(@album, @photo)
+      = link_to "Edit", edit_album_photo_url(@album, @photo)
     - else
       %div#favorites
         = render :partial => 'favorites/shared/fave', :locals => { :photo => @photo }

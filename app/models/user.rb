@@ -99,6 +99,8 @@ class User < ActiveRecord::Base
 
   has_many :recommend_geos, :dependent => :destroy
 
+  has_many :areatags, :dependent => :destroy
+
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")
   end
@@ -181,6 +183,10 @@ class User < ActiveRecord::Base
 
   def admin_of_tag?(photo, tag)
     taggings.where(:tag_id => tag.id, :photo_id => photo.id).first.present?
+    end
+
+  def admin_of_areatag?(photo, areatag)
+    areatags.where(:id => areatag.id, :photo_id => photo.id).first.present?
   end
 
   def photo_fave?(photo)

@@ -2,8 +2,9 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album
   before_filter :set_photo, :except => [:new, :create, :destroy]
-  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend, :addarea, :deletearea]
+  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
+  before_filter :can_delete?, :only => [:deletearea]
 
   def new
     @photo = @album.photos.new
@@ -113,7 +114,7 @@ class PhotosController < ApplicationController
       render :action => :selected
     else
       @photo.areatags.create!(:x => params[:x1], :y => params[:y1], :height => params[:height], :width => params[:width],
-        :description => params[:description])
+        :description => params[:description], :user_id => current_user.id)
       redirect_to selected_album_photo_path(@album, @photo)
     end
   end
@@ -139,5 +140,11 @@ class PhotosController < ApplicationController
 
     def not_admin_photo?
       redirect_to @photo if current_user.id == @photo.user.id
+    end
+
+    def can_delete?
+      @areatag = Areatag.find(params[:area])
+
+      !current_user.admin_of_photo?(@photo) && !current_user.admin_of_areatag?(@photo, @areatag)
     end
 end
