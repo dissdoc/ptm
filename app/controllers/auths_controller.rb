@@ -20,6 +20,22 @@ class AuthsController < Devise::RegistrationsController
   def build_resource(*args)
     super
     if session[:omniauth]
+      omniauth = session[:omniauth]
+
+      if omniauth['provider'] == 'twitter'
+        @first_name = omniauth['info']['name'] if omniauth['info']['name']
+        @second_name = nil
+        @email = omniauth['info']['email'] if omniauth['info']['email']
+        @gender = nil
+        @location = omniauth['info']['location'] if omniauth['info']['location']
+      elsif omniauth['provider'] = 'facebook'
+        @first_name = omniauth['info']['first_name'] if omniauth['info']['first_name']
+        @second_name = omniauth['info']['second_name'] if omniauth['info']['second_name']
+        @email = omniauth['info']['email'] if omniauth['info']['email']
+        @gender = nil
+        @location = omniauth['info']['location'] if omniauth['info']['location']
+      end
+
       @user.apply_omniauth(session[:omniauth])
       @user.valid?
     end

@@ -2,9 +2,7 @@
   Edit your profile
 
 %h6 Test from twitter
-%div
-  City:
-  = current_user.current_city
+
 %div
   About:
   = current_user.about
@@ -25,10 +23,13 @@
       = f.label :password_confirmation
       = f.password_field :password_confirmation
 
-    - if !current_user.has_no_password?
-      %div
-        = f.label :current_password
-        = f.password_field :current_password
+    %div
+      = f.label :gender
+      = f.select :gender, options_for_select(['Male', 'Female', 'Unisex'], current_user.gender)
+
+    %div
+      = f.label 'Location'
+      = f.text_field :current_city
 
   %div{ :class => ["span-9", "last"] }
     %div

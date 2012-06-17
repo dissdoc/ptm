@@ -4,8 +4,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    render :text => request.env['omniauth.auth'].to_yaml
-    #omniauth = request.env['omniauth.auth']
+    omniauth = request.env['omniauth.auth']
     #account = Account.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     #if account
     #  sign_in_and_redirect(:user, account.user)
@@ -16,12 +15,6 @@ class AccountsController < ApplicationController
     #  user = User.new
     #  user.apply_omniauth(omniauth)
     #
-    #  info = omniauth['info']
-    #  if info
-    #    user.current_city = info['location'] if info['location']
-    #    user.about = info['description'] if info['description']
-    #  end
-    #
     #  if user.save
     #    sign_in_and_redirect(:user, user)
     #  else
@@ -29,6 +22,7 @@ class AccountsController < ApplicationController
     #    redirect_to new_user_registration_url
     #  end
     #end
+    render :text => omniauth.to_xml
   end
 
   def destroy

@@ -6,11 +6,11 @@
 
   %div
     = f.label :first_name
-    = f.text_field :first_name
+    = f.text_field :first_name, :value => @first_name
 
   %div
     = f.label :last_name
-    = f.text_field :last_name
+    = f.text_field :last_name , :value => @second_name
 
   - if @user.password_required?
     %div
@@ -19,7 +19,7 @@
 
   %div
     = f.label :email
-    = f.email_field :email
+    = f.email_field :email, :value => @email
 
   - if @user.password_required?
     %div
@@ -29,6 +29,14 @@
     %div
       = f.label :password_confirmation
       = f.password_field :password_confirmation
+
+  %div
+    = f.label :gender
+    = f.select :gender, options_for_select(['Male', 'Female', 'Unisex'])
+
+  %div
+    = f.label 'Location'
+    = f.text_field :current_city, :value => @location
 
   %div
     = f.submit "Sign up"

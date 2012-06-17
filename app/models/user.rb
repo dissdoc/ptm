@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :birthday
+  attr_accessible :email, :password, :password_confirmation,
+                  :remember_me, :first_name, :last_name, :birthday,
+                  :about, :current_city, :gender
 
   validates :first_name, :last_name, :presence => true
   validates :first_name, :last_name, :length => { :maximum => 64 }
@@ -130,23 +132,13 @@ class User < ActiveRecord::Base
   end
 
   def update_with_password(params = {})
-    current_password = params.delete(:current_password) if !params[:current_password].blank?
-
     if params[:password].blank?
       params.delete(:password)
-      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+      params.delete(:password_confirmation) if
+          params[:password_confirmation].blank?
     end
 
-    result = if has_no_password? || valid_password?(current_password)
-              update_attributes(params)
-             else
-              self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
-              self.attributes = params
-              false
-             end
-
-    clean_up_passwords
-    result
+    update_attributes(params)
   end
 
   def has_no_password?
