@@ -62,13 +62,6 @@ ActiveRecord::Schema.define(:version => 20120614120610) do
     t.text     "description"
   end
 
-  create_table "collections", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "photo_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "dashboards", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -91,13 +84,6 @@ ActiveRecord::Schema.define(:version => 20120614120610) do
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
     t.integer  "photo_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "friendlists", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -155,13 +141,6 @@ ActiveRecord::Schema.define(:version => 20120614120610) do
     t.datetime "updated_at",   :null => false
     t.integer  "notable_id"
     t.string   "notable_type"
-  end
-
-  create_table "photo_album_joins", :force => true do |t|
-    t.integer  "album_id"
-    t.integer  "photo_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "photo_assortment_joins", :force => true do |t|
