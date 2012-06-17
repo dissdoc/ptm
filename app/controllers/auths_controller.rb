@@ -28,12 +28,14 @@ class AuthsController < Devise::RegistrationsController
         @email = omniauth['info']['email'] if omniauth['info']['email']
         @gender = nil
         @location = omniauth['info']['location'] if omniauth['info']['location']
+        @about = omniauth['info']['description'] if omniauth['info']['description']
       elsif omniauth['provider'] = 'facebook'
         @first_name = omniauth['info']['first_name'] if omniauth['info']['first_name']
         @second_name = omniauth['info']['second_name'] if omniauth['info']['second_name']
         @email = omniauth['info']['email'] if omniauth['info']['email']
-        @gender = nil
+        @gender = omniauth['extra']['raw_info']['gender'] if omniauth['extra']['raw_info']['gender']
         @location = omniauth['info']['location'] if omniauth['info']['location']
+        @about = omniauth['extra']['raw_info']['bio'] if omniauth['extra']['raw_info']['bio']
       end
 
       @user.apply_omniauth(session[:omniauth])
