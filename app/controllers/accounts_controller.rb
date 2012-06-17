@@ -4,9 +4,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      format.to_yaml { render :text => request.env['omniauth.auth'].to_yaml, :content_type => 'text/yaml' }
-    end
+    render :text => request.env['omniauth.auth'].to_yaml
     #omniauth = request.env['omniauth.auth']
     #account = Account.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     #if account
