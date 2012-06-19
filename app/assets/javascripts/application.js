@@ -12,19 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require_tree .
 
+this.marker = null;
+this.map = null;
+this.geocoder = null;
+
 $(document).ready(function(){
-    // create map
     initialize();
-//    var latlng = new google.maps.LatLng(-34.397, 150.644);
-//    var myOptions = {
-//        zoom: 8,
-//        center: latlng,
-//        mapTypeId: google.maps.MapTypeId.ROADMAP
-//    };
-//    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    // end of create map
 
     $('#dropdown li.headlink').hover(
         function() { $('ul', this).css('display', 'block'); },
@@ -45,10 +41,6 @@ $(document).ready(function(){
         return false;
     });
 });
-
-this.marker = null;
-this.map = null;
-this.geocoder = null;
 
 function initialize() {
     if (this.geocoder == null)

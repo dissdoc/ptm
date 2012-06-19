@@ -1,15 +1,18 @@
-%div.span-16
-  = link_to 'PHOTOTIMEMACHINE', root_path, :class => 'title-header'
+%div.row
+  %div.six.columns
+    %div#logo= link_to 'PHOTOTIMEMACHINE', root_path, :class => "header"
 
-%div.span-8.last
-  %ul#menu
-    - if signed_in?
+  %div.six.columns
+    %ul.nav-bar
+      %li= link_to 'Explore', '#', :class => 'simple'
+      %li= link_to 'Groups', '#', :class => 'simple'
+      %li= link_to 'Friends', '#', :class => 'simple'
+      %li= link_to 'Upload', '#', :class => 'simple'
+      %li= link_to 'Kirill Muchow', '#', :class => 'simple'
       %li
-        Signed in as&nbsp;
-        = render :partial => 'auths/shared/user_link', :locals => { :user => current_user }
-      %li= link_to 'Sign out', destroy_user_session_path, :method => :delete
-
-    - else
-      %li= link_to 'Sign in', new_user_session_path
-      %li= link_to 'Sign up', new_user_registration_path
-    %div.clear
+        %div
+          = link_to image_tag('email.png'), '#'
+          %sub 13
+          &nbsp;&nbsp;
+          = link_to image_tag('alarm.png'), '#'
+          %sub 82

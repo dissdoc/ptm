@@ -1,32 +1,61 @@
-%p
-  %div#tab-panel
-    %ul.htabs
-      %li= link_to "Timeline", "#timeline"
-      %li= link_to "Map", "#map"
-      %li= render :partial => 'home/shared/search_tags'
+%script{ :type => 'text/javascript', :src => "/assets/markerclusterer_compiled.js" }
 
-    %div.clear
+= form_tag root_path, :method => :get do
+  %div.row
+    %div.four.columns
+      = text_field_tag :search_tags, params[:search_tags], :class => 'input-text'
+    %div.two.columns
+      = submit_tag "Go!", :name => nil, :class => 'small white nice button radius'
+    %div.six.columns
+      %div#fullmap
 
-    %div.tabs
-      %div#timeline.tab
-        = form_tag root_path, :method => :get do
-          = datetime_select :search_dt, params[:search_dt]
-          = submit_tag "Search", :name => nil
-      %div#map.tab
-        = form_tag root_path, :method => :get do
-          = text_field_tag :search_locations, params[:search_locations]
-          = submit_tag "Search", :name => nil
+  %div.row
+    %div.six.columns
+      = datetime_select :search_dt, params[:search_dt]
+    %div.six.columns
+      = datetime_select :search_dt, params[:search_dt]
 
-    %div#map_canvas
-
-%p
-  = render :partial => 'photos/shared/photo', :collection => @photos
-
-
-%div.spread
-  %div.twshare.left
+%div.rows
+  %div.six.columns
+    = facebook_like
+  %div.six.columns
     %a.twitter-share-button.left{"data-url" => "http://phototimemachine.org", "data-text" => "Photo Time Machine",
-      "data-via" => "phototimemachin", :href => "https://twitter.com/share" } Tweet
+          "data-via" => "phototimemachin", :href => "https://twitter.com/share" } Tweet
     %script{:src => "http://platform.twitter.com/widgets.js", :type => "text/javascript"}
 
-  = facebook_like
+%div.row
+  %div.twelve.columns
+    = render :partial => 'photos/shared/photo', :collection => @photos
+
+
+:erb
+  <script language="Javascript">
+    var markers = [];
+
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 0,
+      center: latlng,
+      mapTypeId:google.maps.MapTypeId.ROADMAP,
+      streetViewControl: false,
+      mapTypeControl: false
+    }
+
+    var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+
+    <% @photos.each do |photo| %>
+      <% if photo.geo.present? %>
+        var latlng = new google.maps.LatLng(<%= photo.geo.latitude %>, <%= photo.geo.longitude %>);
+        var marker = new google.maps.Marker({
+          position: latlng
+        });
+        markers.push(marker);
+      <% end %>
+    <% end %>
+
+    markerClusterer = new MarkerClusterer(map, markers, {
+    maxZoom: 18,
+        gridSize: 50,
+        styles: null
+    });
+  </script>

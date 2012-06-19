@@ -19,6 +19,7 @@ gem 'rails-breadcrumbs'
 gem 'therubyracer'
 gem 'thin'
 gem "cucumber-rails"
+gem 'zurb-foundation'
 
 # Gems used only for assets and not required
 # in production environments by default.
