@@ -45,11 +45,13 @@
 
     <% @photos.each do |photo| %>
       <% if photo.geo.present? %>
-        var latlng = new google.maps.LatLng(<%= photo.geo.latitude %>, <%= photo.geo.longitude %>);
-        var marker = new google.maps.Marker({
-          position: latlng
-        });
-        markers.push(marker);
+        <% if photo.geo.latitude.present? && photo.geo.longitude.present? %>
+          var latlng = new google.maps.LatLng(<%= photo.geo.latitude %>, <%= photo.geo.longitude %>);
+          var marker = new google.maps.Marker({
+            position: latlng
+          });
+          markers.push(marker);
+        <% end>
       <% end %>
     <% end %>
 
