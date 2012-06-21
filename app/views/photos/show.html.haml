@@ -27,6 +27,8 @@
     - if current_user.admin_of_photo?(@photo)
       |
       = link_to "Edit", edit_album_photo_url(@album, @photo)
+      |
+      = link_to "Delete", [@album, @photo], :method => :delete
     - else
       %div#favorites
         = render :partial => 'favorites/shared/fave', :locals => { :photo => @photo }

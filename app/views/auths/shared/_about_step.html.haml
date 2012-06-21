@@ -1,18 +1,18 @@
 %h3 Some words about you
 
-  %div
-    = f.label :gender
-    = f.select :gender, options_for_select(['Male', 'Female', 'Unisex'], @gender)
+%div
+  = f.label :gender
+  = f.select :gender, options_for_select(['Male', 'Female', 'Unisex'], @gender)
 
-  - if @user.password_required?
-    %div
-      = f.label :birthday
-      = f.date_select :birthday, :start_year => 1930
-
+- if @user.password_required?
   %div
-    = f.label 'Location'
-    = f.text_field :current_city, :value => @location
+    = f.label :birthday
+    = f.date_select :birthday, :start_year => 1930
 
-  %div
-    = f.label :about
-    = f.text_area :about, :value => @about
+%div
+  = f.label 'Location'
+  = f.text_field :current_city, :value => @location
+
+%div
+  = f.label :about
+  = f.text_area :about, :value => @about

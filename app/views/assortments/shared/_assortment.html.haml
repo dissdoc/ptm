@@ -1,1 +1,4 @@
 = link_to assortment.name, assortment
+- if signed_in? && current_user.admin_of_assortment(assortment)
+  |
+  = link_to "Delete", assortment, :method => :delete

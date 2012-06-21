@@ -181,6 +181,10 @@ class User < ActiveRecord::Base
     areatags.where(:id => areatag.id, :photo_id => photo.id).first.present?
   end
 
+  def admin_of_assortment(assort)
+    assortments.where(:id => assort.id).first.present?
+  end
+
   def photo_fave?(photo)
     favorites.where('photo_id = ?', photo.id).first.present?
   end

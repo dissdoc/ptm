@@ -26,6 +26,12 @@ class AssortmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @assortment = current_user.assortments.find(params[:id])
+    @assortment.destroy
+    redirect_to assortments_path
+  end
+
   def show
     @assortment = current_user.assortments.find(params[:id])
     @title_page = @assortment.name

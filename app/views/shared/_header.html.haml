@@ -8,7 +8,11 @@
       %li= link_to 'Groups', '#', :class => 'simple'
       %li= link_to 'Friends', '#', :class => 'simple'
       %li= link_to 'Upload', '#', :class => 'simple'
-      %li= link_to 'Kirill Muchow', '#', :class => 'simple'
+
+      - if signed_in?
+        %li= link_to current_user.full_name, destroy_user_session_path, :method => :delete, :class => 'simple'
+      - else
+        %li= link_to 'Sign in', new_user_session_path, :class => 'simple'
       %li
         %div
           = link_to image_tag('email.png'), '#'
