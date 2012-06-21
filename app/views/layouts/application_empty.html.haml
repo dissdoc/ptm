@@ -14,8 +14,7 @@
       = render "shared/header"
 
       - if signed_in?
-        %div.span-24
-          = render :partial => 'shared/panel'
+        = render :partial => 'shared/panel'
 
       %div.span-24
         = yield :breadcrumbs

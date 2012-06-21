@@ -1,27 +1,76 @@
 %script{ :type => 'text/javascript', :src => "/assets/markerclusterer_compiled.js" }
+%script{ :type => 'text/javascript', :src => "/assets/jquery.ui-slider.js" }
 
 = form_tag root_path, :method => :get do
   %div.row
-    %div.four.columns
+    %div.five.columns
+      %br
+      %br
+      %br
+      %br
+      %br
       = text_field_tag :search_tags, params[:search_tags], :class => 'input-text'
-    %div.two.columns
-      = submit_tag "Go!", :name => nil, :class => 'small white nice button radius'
+    %div.one.columns
+      %br
+      %br
+      %br
+      %br
+      %br
+      = submit_tag "Go!", :name => nil, :class => 'small white nice button'
     %div.six.columns
       %div#fullmap
 
   %div.row
-    %div.six.columns
-      = datetime_select :search_dt, params[:search_dt]
-    %div.six.columns
-      = datetime_select :search_dt, params[:search_dt]
+    %div.twelve.columns
+      :erb
+        <input type="hidden" id="minCost" value="0"/>
+        <input type="hidden" id="maxCost" value="1000"/>
 
-%div.rows
-  %div.six.columns
-    = facebook_like
-  %div.six.columns
-    %a.twitter-share-button.left{"data-url" => "http://phototimemachine.org", "data-text" => "Photo Time Machine",
-          "data-via" => "phototimemachin", :href => "https://twitter.com/share" } Tweet
-    %script{:src => "http://platform.twitter.com/widgets.js", :type => "text/javascript"}
+      %ul#data
+        %li 1828
+        %li 1831
+        %li 1838
+        %li 1841
+        %li 1844
+        %li 1847
+        %li 1850
+        %li 1890
+        %li 1893
+        %li 1898
+        %li 1901
+        %li 1904
+        %li 1906
+        %li 1910
+        %li 1913
+        %li 1917
+        %li 1930
+        %li 1941
+        %li 1950
+        %li 1970
+        %li 1991
+        %li 1997
+
+      %div#slider
+
+%div.row
+  %div.three.columns
+  %div.four.columns
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    = image_tag "s_repeat_back.png"
+    = image_tag "repeat_back.png"
+    = image_tag "p_repeat_back.png"
+    = image_tag "p_play.png"
+    = image_tag "play.png"
+    = image_tag "s_play.png"
+  %div.three.columns
+  %div.two.columns
+    = image_tag "facebook.png"
+    = image_tag "twitter.png"
+    = image_tag "vk.png"
+
+%div.row
+  %div.twelve.columns
+    %br
 
 %div.row
   %div.twelve.columns
@@ -59,5 +108,44 @@
     maxZoom: 18,
         gridSize: 50,
         styles: null
+    });
+
+    $("#slider").slider({
+        min: 0,
+        max: 1000,
+        values: [0,1000],
+        range: true,
+        stop: function(event, ui) {
+            jQuery("input#minCost").val(jQuery("#slider").slider("values",0));
+            jQuery("input#maxCost").val(jQuery("#slider").slider("values",1));
+        },
+        slide: function(event, ui){
+            jQuery("input#minCost").val(jQuery("#slider").slider("values",0));
+            jQuery("input#maxCost").val(jQuery("#slider").slider("values",1));
+        }
+    });
+
+    jQuery("input#minCost").change(function(){
+        var value1=jQuery("input#minCost").val();
+        var value2=jQuery("input#maxCost").val();
+
+        if(parseInt(value1) > parseInt(value2)){
+            value1 = value2;
+            jQuery("input#minCost").val(value1);
+        }
+        jQuery("#slider").slider("values",0,value1);
+    });
+
+    jQuery("input#maxCost").change(function(){
+        var value1=jQuery("input#minCost").val();
+        var value2=jQuery("input#maxCost").val();
+
+        if (value2 > 1000) { value2 = 1000; jQuery("input#maxCost").val(1000)}
+
+        if(parseInt(value1) > parseInt(value2)){
+            value2 = value1;
+            jQuery("input#maxCost").val(value2);
+        }
+        jQuery("#slider").slider("values",1,value2);
     });
   </script>
