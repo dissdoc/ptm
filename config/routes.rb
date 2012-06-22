@@ -31,6 +31,7 @@ Ptm::Application.routes.draw do
     post 'invite'
     post 'not_agree'
     post 'link_photo'
+    post 'unlink_photo'
 
     get 'users'
     get 'photos'

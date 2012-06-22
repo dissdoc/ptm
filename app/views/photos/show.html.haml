@@ -24,6 +24,8 @@
 %div.span-16
   - if signed_in?
     = link_to "Selected", selected_album_photo_url(@album, @photo)
+    |
+    = link_to "Add to my group", '#', 'data-reveal-id' => "modalGroup"
     - if current_user.admin_of_photo?(@photo)
       |
       = link_to "Edit", edit_album_photo_url(@album, @photo)
@@ -72,3 +74,22 @@
           = friendship.friend.full_name
           |
           = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post
+
+
+%div#modalGroup.reveal-modal
+  %h4 Change group for add
+  %a{ :class => "close-reveal-modal" }
+    &#215;
+
+  - current_user.managing_groups.each do |group|
+    %div= link_to group.name, group_link_photo_url(:group_id => group, :photo_id => @photo), :method => :post
+  - current_user.joining_groups.each do |group|
+    %div= link_to group.name, group_link_photo_url(:group_id => group, :photo_id => @photo), :method => :post
+
+:javascript
+  $('#modalGroup').reveal({
+    animation: 'none',
+    animationspeed: 200,
+    closeOnBackgroundClick: true,
+    dissmissModalClass: 'close-reveal-modal'
+  });

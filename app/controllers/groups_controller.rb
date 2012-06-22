@@ -86,12 +86,22 @@ class GroupsController < ApplicationController
   end
 
   def link_photo
-    @photo_group_join = @group.photo_group_joins.new(:photo_id => params[:photo_id])
-    if @photo_group_join.save!
-      redirect_to @group
+    if can_link_photo?
+      @photo_group_join = @group.photo_group_joins.new(:photo_id => params[:photo_id])
+      if @photo_group_join.save!
+        redirect_to @group
+      else
+        render :action => :photos
+      end
     else
-      render :action => :photos
+      redirect_to @group
     end
+  end
+
+  def unlink_photo
+    @photo_group_join = @group.photo_group_joins.where(:photo_id => params[:photo_id]).first
+    @photo_group_join.destroy
+    redirect_to @group
   end
 
   protected
@@ -111,5 +121,9 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id] ? params[:group_id] : params[:id])
+  end
+
+  def can_link_photo?
+    @group.photo_group_joins.where(:photo_id => params[:photo_id]).first.blank?
   end
 end
