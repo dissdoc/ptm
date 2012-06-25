@@ -6,6 +6,9 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       format.js
     end
+
+    photo = Photo.find(params[:photo_id])
+    UserMailer.deliver_added_photo_favorite(current_user, photo)
   end
 
   def unfave

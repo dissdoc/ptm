@@ -71,4 +71,7 @@ Ptm::Application.configure do
   FACEBOOK_SECRET = 'c259083297389a8b89539c97ea4ea9e2'
 
   Paperclip.options[:command_path] = '/usr/bin'
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
 end
