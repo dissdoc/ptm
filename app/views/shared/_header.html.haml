@@ -10,7 +10,7 @@
         %li= link_to 'Friends', '#', :class => 'simple'
         %li= link_to 'Upload', '#', :class => 'simple'
         %li.has-flyout
-          = link_to current_user.full_name, destroy_user_session_path, :method => :delete, :class => 'simple'
+          = link_to current_user.full_name, '#', :class => 'simple'
           %div.flyout.small
             %ul
               %li= link_to 'Profile', profile_path, :class => 'simple'

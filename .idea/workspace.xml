@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/photos/show.html.haml" afterPath="$PROJECT_DIR$/app/views/photos/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_header.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" />
     </list>
     <ignored path="ptm.iws" />
@@ -39,73 +40,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gmail.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/initializers/gmail.rb">
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="35" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
+            <state line="78" column="56" selection-start="2630" selection-end="2630" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photos_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+      <file leaf-file-name="_header.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="115" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assortments_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/assortments_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="favorites_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="64" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="added_photo_favorite.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="5" selection-start="82" selection-end="82" vertical-scroll-proportion="0.081791624">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_photo.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/photos/shared/_photo.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="44" selection-start="27" selection-end="44" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="46" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.0">
+            <state line="12" column="46" selection-start="450" selection-end="450" vertical-scroll-proportion="0.16015252">
               <folding />
             </state>
           </provider>
@@ -130,9 +77,7 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/photo_group_join.rb" />
         <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
@@ -140,6 +85,8 @@
         <option value="$PROJECT_DIR$/app/controllers/favorites_controller.rb" />
         <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
       </list>
     </option>
   </component>
@@ -1382,7 +1329,11 @@
       <created>1340625081334</created>
       <updated>1340625081334</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="fix template">
+      <created>1340625773425</created>
+      <updated>1340625773425</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1446,7 +1397,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add template email" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix template" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1459,7 +1410,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="add recommend by geotags" />
     <MESSAGE value="add map to new photo" />
     <MESSAGE value="bug fix, show all my photos" />
     <MESSAGE value="add description for photo" />
@@ -1484,6 +1434,7 @@
     <MESSAGE value="fix email template" />
     <MESSAGE value="fix password" />
     <MESSAGE value="add template email" />
+    <MESSAGE value="fix template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1499,13 +1450,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="53" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.2802669">
           <folding />
         </state>
       </provider>
@@ -1538,13 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="119" selection-start="3046" selection-end="3046" vertical-scroll-proportion="1.1996105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="46" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.0">
@@ -1552,37 +1489,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="64" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/gmail.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="35" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/assortments_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="18" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="115" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
+        <state line="4" column="1" selection-start="50" selection-end="50" vertical-scroll-proportion="0.054527752">
           <folding />
         </state>
       </provider>
@@ -1594,9 +1503,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="5" selection-start="82" selection-end="82" vertical-scroll-proportion="0.081791624">
+        <state line="6" column="64" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/assortments_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="115" selection-start="1311" selection-end="1311" vertical-scroll-proportion="-0.5872259">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/gmail.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="35" selection-start="214" selection-end="214" vertical-scroll-proportion="0.066730216">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="18" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="56" selection-start="2630" selection-end="2630" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="46" selection-start="450" selection-end="450" vertical-scroll-proportion="0.16015252">
           <folding />
         </state>
       </provider>
