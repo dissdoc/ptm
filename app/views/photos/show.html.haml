@@ -24,8 +24,9 @@
 %div.span-16
   - if signed_in?
     = link_to "Selected", selected_album_photo_url(@album, @photo)
-    |
-    = link_to "Add to my group", '#', 'data-reveal-id' => "modalGroup"
+    - if signed_in?
+      |
+      = link_to "Add to group", '#', 'data-reveal-id' => "modalGroup"
     - if current_user.admin_of_photo?(@photo)
       |
       = link_to "Edit", edit_album_photo_url(@album, @photo)
@@ -75,16 +76,28 @@
           |
           = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post
 
+  - if signed_in? && @photo.candidate_to_groups
+    %p
+      %h6 Signed in groups:
+
+      - @photo.candidate_to_groups.each do |group|
+        %div
+          = group.name
+          - if current_user.admin_of_photo?(@photo)
+            = link_to "Add", agree_link_photo_album_photo_url(@album, @photo, :group_id => group), :method => :post
+            |
+            = link_to "Cancel", cancel_link_photo_album_photo_url(@album, @photo, :group_id => group), :method => :post
 
 %div#modalGroup.reveal-modal
   %h4 Change group for add
   %a{ :class => "close-reveal-modal" }
     &#215;
 
-  - current_user.managing_groups.each do |group|
-    %div= link_to group.name, group_link_photo_url(:group_id => group, :photo_id => @photo), :method => :post
-  - current_user.joining_groups.each do |group|
-    %div= link_to group.name, group_link_photo_url(:group_id => group, :photo_id => @photo), :method => :post
+  - if signed_in?
+    - current_user.managing_groups.each do |group|
+      %div= link_to group.name, group_link_photo_url(:group_id => group, :photo_id => @photo), :method => :post
+    - current_user.joining_groups.each do |group|
+      %div= link_to group.name, group_link_photo_url(:group_id => group, :photo_id => @photo), :method => :post
 
 :javascript
   $('#modalGroup').reveal({

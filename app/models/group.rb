@@ -24,7 +24,14 @@ class Group < ActiveRecord::Base
   has_many :link_photos,
       :through => :photo_group_joins,
       :class_name => "Photo",
-      :source => :photo
+      :source => :photo,
+      :conditions => ['photo_group_joins.status = ?', true]
+
+  has_many :waiting_photos,
+      :through => :photo_group_joins,
+      :class_name => "Photo",
+      :source => :photo,
+      :conditions => ['photo_group_joins.status = ?', false]
 
   has_many :dashboards, :as => :dashtable
 

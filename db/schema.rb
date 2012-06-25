@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617093422) do
+ActiveRecord::Schema.define(:version => 20120625070428) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -174,8 +174,10 @@ ActiveRecord::Schema.define(:version => 20120617093422) do
   create_table "photo_group_joins", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.boolean  "status",     :default => false
   end
 
   create_table "photos", :force => true do |t|

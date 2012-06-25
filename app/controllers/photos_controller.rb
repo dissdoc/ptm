@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
   before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
   before_filter :can_delete?, :only => [:deletearea]
+  before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
 
   def new
     @photo = @album.photos.new
@@ -125,6 +126,16 @@ class PhotosController < ApplicationController
     redirect_to selected_album_photo_path(@album, @photo)
   end
 
+  def agree_link_photo
+    @group.photo_group_joins.where(:photo_id => @photo.id).first.accept!
+    redirect_to [@album, @photo]
+  end
+
+  def cancel_link_photo
+    @group.photo_group_joins.where(:photo_id => @photo.id).first.destroy
+    redirect_to [@album, @photo]
+  end
+
   protected
     def set_photo
       @photo = @album.photos.find(params[:id])
@@ -146,5 +157,9 @@ class PhotosController < ApplicationController
       @areatag = Areatag.find(params[:area])
 
       !current_user.admin_of_photo?(@photo) && !current_user.admin_of_areatag?(@photo, @areatag)
+    end
+
+    def set_group
+      @group = Group.find(params[:group_id])
     end
 end

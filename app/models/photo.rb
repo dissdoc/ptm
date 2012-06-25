@@ -11,6 +11,19 @@ class Photo < ActiveRecord::Base
   has_one :share_photo, :dependent => :destroy
 
   has_many :photo_group_joins, :dependent => :destroy
+
+  has_many :parent_groups,
+      :through => :photo_group_joins,
+      :class_name => "Group",
+      :source => :group,
+      :conditions => ['photo_group_joins.status = ?', true]
+
+  has_many :candidate_to_groups,
+      :through => :photo_group_joins,
+      :class_name => "Group",
+      :source => :group,
+      :conditions => ['photo_group_joins.status = ?', false]
+
   has_many :favorites, :dependent => :destroy
 
   has_attached_file :image,

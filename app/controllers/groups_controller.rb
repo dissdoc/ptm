@@ -87,7 +87,18 @@ class GroupsController < ApplicationController
 
   def link_photo
     if can_link_photo?
-      @photo_group_join = @group.photo_group_joins.new(:photo_id => params[:photo_id])
+      @photo = Photo.find(params[:photo_id])
+      if @photo.user_id == current_user.id &&
+        @photo_group_join = @group.photo_group_joins.new(
+            :photo_id => @photo.id,
+            :user_id => current_user.id,
+            :status => true)
+      else
+        @photo_group_join = @group.photo_group_joins.new(
+            :photo_id => @photo.id,
+            :user_id => current_user.id)
+      end
+
       if @photo_group_join.save!
         redirect_to @group
       else

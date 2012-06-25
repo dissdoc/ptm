@@ -17,6 +17,8 @@ Ptm::Application.routes.draw do
         post 'destroy_recommend'
         post 'addarea'
         post 'deletearea'
+        post 'agree_link_photo'
+        post 'cancel_link_photo'
 
         get 'show_notes'
         get 'recommend_geo'
