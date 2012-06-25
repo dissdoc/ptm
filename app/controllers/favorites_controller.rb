@@ -3,12 +3,11 @@ class FavoritesController < ApplicationController
 
   def fave
     current_user.favorites.create!(:photo_id => params[:photo_id])
+    photo = Photo.find(params[:photo_id])
+    UserMailer.added_photo_favorite(current_user, photo)
     respond_to do |format|
       format.js
     end
-
-    photo = Photo.find(params[:photo_id])
-    UserMailer.deliver_added_photo_favorite(current_user, photo)
   end
 
   def unfave
