@@ -71,6 +71,8 @@ class GroupsController < ApplicationController
     join = get_group_invite(params)
     join.invite! if join.present?
 
+    you = User.find(params[:id])
+    UserMailer.invited_photo(current_user, you, @group).deliver
     redirect_to profile_path
   end
 
@@ -100,6 +102,7 @@ class GroupsController < ApplicationController
       end
 
       if @photo_group_join.save!
+        UserMailer.invited_photo(current_user, @group, @photo).deliver
         redirect_to @group
       else
         render :action => :photos

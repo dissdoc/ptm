@@ -1,0 +1,16 @@
+= @user.full_name
+&nbsp;
+added a tag
+&nbsp;
+
+- @tags.each do |tag|
+  %b= tag.name
+  &nbsp;
+
+to your photo
+&nbsp;
+= @photo.id
+&nbsp;
+-
+&nbsp;
+= @photo.comment

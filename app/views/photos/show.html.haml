@@ -74,7 +74,7 @@
         %li
           = friendship.friend.full_name
           |
-          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo)), :method => :post
+          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo), :photo_id => @photo), :method => :post
 
   - if signed_in? && @photo.candidate_to_groups.present?
     %p

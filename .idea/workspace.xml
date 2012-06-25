@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_friend.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_note.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_photo_gallery.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_tag.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/commented_photo.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/invited_photo.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/invited_you.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/shared_photo.html.haml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/suggested_geotag.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/assortments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/assortments_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/friendlists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/friendlists_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/groups_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/messages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/photos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/photo.rb" afterPath="$PROJECT_DIR$/app/models/photo.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/photos/show.html.haml" afterPath="$PROJECT_DIR$/app/views/photos/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_header.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,28 +46,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user_mailer.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="user_mailer.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="18" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
+            <state line="102" column="50" selection-start="2171" selection-end="2171" vertical-scroll-proportion="0.9599619">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+      <file leaf-file-name="invited_you.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/user_mailer/invited_you.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="56" selection-start="2630" selection-end="2630" vertical-scroll-proportion="0.0">
+            <state line="4" column="13" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_header.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
+      <file leaf-file-name="invited_photo.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/user_mailer/invited_photo.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="46" selection-start="450" selection-end="450" vertical-scroll-proportion="0.16015252">
+            <state line="9" column="16" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photos_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="120" column="66" selection-start="3658" selection-end="3716" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groups_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/groups_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="30" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -71,22 +104,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/group.rb" />
-        <option value="$PROJECT_DIR$/app/models/photo.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/models/photo_group_join.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
-        <option value="$PROJECT_DIR$/config/environment.rb" />
-        <option value="$PROJECT_DIR$/config/environments/production.rb" />
-        <option value="$PROJECT_DIR$/config/initializers/gmail.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/favorites_controller.rb" />
-        <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
-        <option value="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/shared_photo.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/suggested_geotag.html.haml" />
         <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
+        <option value="$PROJECT_DIR$/config/initializers/session_store.rb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/added_note.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/commented_photo.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/added_photo_gallery.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/assortments_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/added_friend.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/invited_photo.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/friendlists_controller.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/invited_you.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
       </list>
     </option>
   </component>
@@ -230,24 +263,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="environments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ptm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ptm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -275,6 +290,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tags" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tags" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,6 +386,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="photos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -437,6 +548,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="groups" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="geos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1333,7 +1470,11 @@
       <created>1340625773425</created>
       <updated>1340625773425</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="bug fix">
+      <created>1340626258374</created>
+      <updated>1340626258374</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1397,7 +1538,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix template" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1425,7 +1566,6 @@
     <MESSAGE value="fix latlng generator error" />
     <MESSAGE value="trash fix" />
     <MESSAGE value="add slider to main page" />
-    <MESSAGE value="bug fix" />
     <MESSAGE value="add destroy to photo and collection" />
     <MESSAGE value="add link photo to group from album" />
     <MESSAGE value="add candidates photo for group" />
@@ -1435,119 +1575,120 @@
     <MESSAGE value="fix password" />
     <MESSAGE value="add template email" />
     <MESSAGE value="fix template" />
+    <MESSAGE value="bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/commented_photo.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.37368923">
+        <state line="9" column="16" selection-start="103" selection-end="103" vertical-scroll-proportion="0.12011439">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120516090618_create_assortments.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="28" selection-start="146" selection-end="146" vertical-scroll-proportion="0.053384174">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/models/assortment.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/favorites/shared/_fave.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="59" selection-start="203" selection-end="203" vertical-scroll-proportion="0.040895812">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="46" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="1" selection-start="50" selection-end="50" vertical-scroll-proportion="0.054527752">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/shared/_photo.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="44" selection-start="27" selection-end="44" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/favorites_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="64" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
+        <state line="6" column="15" selection-start="235" selection-end="246" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/assortments_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="41" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_gallery.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="16" selection-start="96" selection-end="96" vertical-scroll-proportion="0.12268744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_friend.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/group.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/shared_photo.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="47" selection-end="94" vertical-scroll-proportion="0.053384174">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/friendlists_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="47" selection-start="300" selection-end="300" vertical-scroll-proportion="0.09342231">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="115" selection-start="1311" selection-end="1311" vertical-scroll-proportion="-0.5872259">
+        <state line="120" column="66" selection-start="3658" selection-end="3716" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/gmail.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/invited_you.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="35" selection-start="214" selection-end="214" vertical-scroll-proportion="0.066730216">
+        <state line="4" column="13" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/invited_photo.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="16" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/groups_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="30" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="18" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="56" selection-start="2630" selection-end="2630" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_header.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="46" selection-start="450" selection-end="450" vertical-scroll-proportion="0.16015252">
+        <state line="102" column="50" selection-start="2171" selection-end="2171" vertical-scroll-proportion="0.9599619">
           <folding />
         </state>
       </provider>

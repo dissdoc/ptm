@@ -53,6 +53,7 @@ class PhotosController < ApplicationController
     @note = @photo.notes.new(params[:note])
     @note.user_id = current_user.id
     if @note.save!
+      UserMailer.commented_photo(current_user, @photo).deliver
       redirect_to [@album, @photo]
     else
       redirect_to root_path
@@ -72,6 +73,7 @@ class PhotosController < ApplicationController
     @recommend.comment = params[:comment]
     @recommend.user = current_user
     if @recommend.save!
+      UserMailer.suggested_geotag(current_user, @photo).deliver
       @message = Message.new
       @message.theme = "Recommended geotag..."
       @message.description = "User #{current_user.full_name} recommended new geolocation for photo #{@photo}"
@@ -114,8 +116,9 @@ class PhotosController < ApplicationController
     if params[:description].blank?
       render :action => :selected
     else
-      @photo.areatags.create!(:x => params[:x1], :y => params[:y1], :height => params[:height], :width => params[:width],
+      @note = @photo.areatags.create!(:x => params[:x1], :y => params[:y1], :height => params[:height], :width => params[:width],
         :description => params[:description], :user_id => current_user.id)
+      UserMailer.added_note(current_user, @note, @photo).deliver
       redirect_to selected_album_photo_path(@album, @photo)
     end
   end

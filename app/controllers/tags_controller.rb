@@ -6,13 +6,16 @@ class TagsController < ApplicationController
     photo_id = params[:photo_id].to_i
     @photo = Photo.find(photo_id)
 
-    params[:tags].split(/,\s+/).map do |name|
+    map = params[:tags].split(/,\s*/).map
+    map.each do |name|
       tag = Tag.find_or_create_by_name(name)
       tagging = Tagging.find(:all, :conditions => {:tag_id => tag, :photo_id => photo_id}).first
       unless tagging
         Tagging.create!(:user_id => current_user.id, :photo_id => photo_id, :tag_id => tag.id)
       end
     end
+
+    UserMailer.added_tag(current_user, map, photo).deliver
 
     respond_to do |format|
       format.js

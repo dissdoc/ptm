@@ -50,6 +50,8 @@ class AssortmentsController < ApplicationController
   def add_photo
     @assortment = Assortment.find(params[:assortment_id])
     @assortment.photo_assortment_joins.create!(:photo_id => params[:photo_id].to_i)
+    photo = Photo.find(params[:photo_id])
+    UserMailer.added_photo_gallery(current_user, @assortment, photo).deliver
     respond_to do |format|
       format.js
     end

@@ -33,6 +33,8 @@ class MessagesController < ApplicationController
     @message.to_user = user
     @message.from_user = user
     if @message.save!
+      photo = Photo.find(params[:photo_id])
+      UserMailer.share_photo(current_user, photo).deliver
       redirect_to link
     else
       redirect_to root_path
