@@ -4,19 +4,40 @@
 
   %div.six.columns
     %ul.nav-bar
-      %li= link_to 'Explore', '#', :class => 'simple'
-      %li= link_to 'Groups', '#', :class => 'simple'
-      %li= link_to 'Friends', '#', :class => 'simple'
-      %li= link_to 'Upload', '#', :class => 'simple'
-
       - if signed_in?
-        %li= link_to current_user.full_name, destroy_user_session_path, :method => :delete, :class => 'simple'
+        %li= link_to 'Explore', '#', :class => 'simple'
+        %li= link_to 'Groups', '#', :class => 'simple'
+        %li= link_to 'Friends', '#', :class => 'simple'
+        %li= link_to 'Upload', '#', :class => 'simple'
+        %li.has-flyout
+          = link_to current_user.full_name, destroy_user_session_path, :method => :delete, :class => 'simple'
+          %div.flyout.small
+            %ul
+              %li= link_to 'Profile', profile_path, :class => 'simple'
+              %li= link_to 'Photos', '#', :class => 'simple'
+              %li= link_to 'Albums', albums_path, :class => 'simple'
+              %li= link_to 'Collections', assortments_path, :class => 'simple'
+              %li= link_to 'Family trees', familytrees_path, :class => 'simple'
+              %li= link_to 'Favorites', favorites_path, :class => 'simple'
+              %li= link_to 'Manage by content', '#', :class => 'simple'
+              %li= link_to 'Recent activity', '#', :class => 'simple'
+              %li= link_to 'Tags', '#', :class => 'simple'
+              %li= link_to 'Mail', messages_path, :class => 'simple'
+              %li= link_to 'Statistics', '#', :class => 'simple'
+              %li= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'simple'
+
+        %li
+          %div
+            = link_to image_tag('email.png'), '#'
+            %sub 13
+            &nbsp;&nbsp;
+            = link_to image_tag('alarm.png'), '#'
+            %sub 82
       - else
+        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         %li= link_to 'Sign in', new_user_session_path, :class => 'simple'
-      %li
-        %div
-          = link_to image_tag('email.png'), '#'
-          %sub 13
-          &nbsp;&nbsp;
-          = link_to image_tag('alarm.png'), '#'
-          %sub 82
+        %li= link_to 'Sign up', new_user_registration_path, :class => 'simple'
