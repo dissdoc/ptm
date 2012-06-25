@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/favorites_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/favorites_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" afterPath="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" />
     </list>
     <ignored path="ptm.iws" />
@@ -33,7 +33,7 @@
       <file leaf-file-name="user_mailer.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="88" selection-start="191" selection-end="258" vertical-scroll-proportion="0.0">
+            <state line="5" column="18" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -87,7 +87,16 @@
       <file leaf-file-name="added_photo_favorite.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="64" selection-end="64" vertical-scroll-proportion="0.06815969">
+            <state line="6" column="5" selection-start="82" selection-end="82" vertical-scroll-proportion="0.081791624">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_photo.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/photos/shared/_photo.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="44" selection-start="27" selection-end="44" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,9 +136,9 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application_empty.html.haml" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
-        <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
         <option value="$PROJECT_DIR$/config/initializers/gmail.rb" />
         <option value="$PROJECT_DIR$/app/controllers/favorites_controller.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml" />
       </list>
     </option>
@@ -1369,7 +1378,11 @@
       <created>1340624042186</created>
       <updated>1340624042186</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="add template email">
+      <created>1340625081334</created>
+      <updated>1340625081334</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1433,7 +1446,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix password" />
+    <option name="LAST_COMMIT_MESSAGE" value="add template email" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1446,7 +1459,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="add recommend by geotags" />
     <MESSAGE value="add map to new photo" />
     <MESSAGE value="bug fix, show all my photos" />
@@ -1471,18 +1483,12 @@
     <MESSAGE value="add first step for email" />
     <MESSAGE value="fix email template" />
     <MESSAGE value="fix password" />
+    <MESSAGE value="add template email" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application_empty.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="26" selection-start="492" selection-end="492" vertical-scroll-proportion="0.25357482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.37368923">
@@ -1553,20 +1559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="88" selection-start="191" selection-end="258" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="115" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/gmail.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="35" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
@@ -1581,9 +1573,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="18" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="115" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/shared/_photo.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="44" selection-start="27" selection-end="44" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_mailer/added_photo_favorite.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="64" selection-end="64" vertical-scroll-proportion="0.06815969">
+        <state line="6" column="5" selection-start="82" selection-end="82" vertical-scroll-proportion="0.081791624">
           <folding />
         </state>
       </provider>
