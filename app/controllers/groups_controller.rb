@@ -1,11 +1,17 @@
 class GroupsController < ApplicationController
-  before_filter :set_group, :except => [:index, :new, :create, :invite, :not_agree]
+  before_filter :set_group, :except => [:index, :managed, :new, :create, :invite, :not_agree]
   before_filter :authenticate_user!, :except => [:index]
   before_filter :guest?, :only => [:invite, :not_agree]
 
   def index
-    @groups = Group.all
+    @groups = current_user.contained_groups.all
     @title_page = "Groups"
+    add_breadcrumb @title_page, ''
+  end
+
+  def managed
+    @groups = current_user.managing_groups.all
+    @title_page = "Managing groups"
     add_breadcrumb @title_page, ''
   end
 

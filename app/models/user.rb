@@ -64,6 +64,12 @@ class User < ActiveRecord::Base
       :source => :group,
       :conditions => ['group_joins.role = ?', 'admin']
 
+  has_many :contained_groups,
+      :through => :group_joins,
+      :class_name => 'Group',
+      :source => :group,
+      :conditions => ['group_joins.role = ? OR group_joins.role = ?', 'member', 'admin']
+
   has_many :joining_groups,
       :through => :group_joins,
       :class_name => 'Group',

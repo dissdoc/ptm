@@ -30,6 +30,7 @@ Ptm::Application.routes.draw do
   end
   match '/albums/link_photo', :to => 'albums#link_photo', :via => :post
 
+  match '/groups/managed', :to => 'groups#managed'
   resources :groups do
     post 'join'
     post 'invite'

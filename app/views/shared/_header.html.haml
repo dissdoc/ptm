@@ -18,11 +18,10 @@
           = link_to 'Groups', '#', :class => 'simple'
           %div.flyout.mysmall
             %ul
-              %li= link_to 'Group\'s photos', '#', :class => 'simple'
-              %li= link_to 'Your groups', '#', :class => 'simple'
-              %li= link_to 'Managed by you', '#', :class => 'simple'
+              %li= link_to 'Your groups', groups_path, :class => 'simple'
+              %li= link_to 'Managed by you', groups_managed_path, :class => 'simple'
               %li= link_to 'Search for a group', '#', :class => 'simple'
-              %li= link_to 'Create a new one', '#', :class => 'simple'
+              %li= link_to 'Create a new one', new_group_path, :class => 'simple'
 
         %li.has-flyout
           = link_to 'Friends', '#', :class => 'simple'
