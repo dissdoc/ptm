@@ -1,22 +1,24 @@
-%ul#thumbs
-  - photos.each do |photo|
-    %li
-      = image_tag(photo.image.url(:small))
+- unless photos.blank?
+  %ul#thumbs
+    - photos.each do |photo|
+      %li
+        = image_tag(photo.image.url(:small))
 
-      %div
-        = link_to image_tag(photo.image.url(:medium), :width => '150px', :height => '100px'), [ photo.album, photo ]
-        %br
-
-        - if photo.comment.present?
-          = photo.comment
+        %div
+          = link_to image_tag(photo.image.url(:medium), :width => '150px', :height => '100px'), [ photo.album, photo ]
           %br
 
-        - if photo.user.present?
-          = link_to photo.user.full_name, detail_path(:id => photo.user)
-          %br
+          - if photo.comment.present?
+            = photo.comment
+            %br
 
-        = render :partial => 'photos/shared/generate_at', :locals => { :photo => photo }
+          - if photo.user.present?
+            = link_to photo.user.full_name, detail_path(:id => photo.user)
+            %br
 
+          = render :partial => 'photos/shared/generate_at', :locals => { :photo => photo }
+- else
+  Not yet photos!
 
 :javascript
   $('ul#thumbs li').hover(
