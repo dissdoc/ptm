@@ -150,3 +150,20 @@ ul#data {
   width: 300px;
   font-size: 12px;
 }
+
+ul#thumbs {
+  li {
+    float: left;
+    padding: 2px;
+
+    div {
+      border: 1px solid $link-hover-color;
+      padding: 3px;
+      display: none;
+      position: absolute;
+      background: white;
+      z-index: 10;
+      width: 150px;
+    }
+  }
+}

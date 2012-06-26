@@ -1,0 +1,32 @@
+%ul#thumbs
+  - photos.each do |photo|
+    %li
+      = image_tag(photo.image.url(:small))
+
+      %div
+        = link_to image_tag(photo.image.url(:medium), :width => '150px', :height => '100px'), [ photo.album, photo ]
+        %br
+
+        - if photo.comment.present?
+          = photo.comment
+          %br
+
+        - if photo.user.present?
+          = link_to photo.user.full_name, detail_path(:id => photo.user)
+          %br
+
+        = render :partial => 'photos/shared/generate_at', :locals => { :photo => photo }
+
+
+:javascript
+  $('ul#thumbs li').hover(
+    function() {
+      var img = $(this).find('img').position();
+      var top = img.top - 20;
+      var left = img.left - 20;
+      $(this).find('div').css({'display': 'block', 'top': top, 'left': left});
+    },
+    function() {
+      $(this).find('div').css({'display': 'none'});
+    }
+  );
