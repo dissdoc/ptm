@@ -1,11 +1,15 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
-  before_filter :set_album
-  before_filter :set_photo, :except => [:new, :create, :destroy]
+  before_filter :set_album, :except => [:index]
+  before_filter :set_photo, :except => [:new, :create, :destroy, :index]
   before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
+
+  def index
+    @photos = current_user.photos
+  end
 
   def new
     @photo = @album.photos.new

@@ -4,6 +4,8 @@ Ptm::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'auths' }
   resources :accounts
 
+
+  match '/photos', :to => 'photos#index'
   resources :albums do
     get 'share'
     post 'set_title', :on => :member

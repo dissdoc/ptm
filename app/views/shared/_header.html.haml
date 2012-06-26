@@ -5,16 +5,42 @@
   %div.six.columns
     %ul.nav-bar
       - if signed_in?
-        %li= link_to 'Explore', '#', :class => 'simple'
-        %li= link_to 'Groups', '#', :class => 'simple'
-        %li= link_to 'Friends', '#', :class => 'simple'
+        %li.has-flyout
+          = link_to 'Explore', '#', :class => 'simple'
+          %div.flyout.mysmall
+            %ul
+              %li= link_to 'To be tagged', '#', :class => 'simple'
+              %li= link_to 'Popular', '#', :class => 'simple'
+              %li= link_to 'Our choice', '#', :class => 'simple'
+              %li= link_to 'Current uploads', '#', :class => 'simple'
+
+        %li.has-flyout
+          = link_to 'Groups', '#', :class => 'simple'
+          %div.flyout.mysmall
+            %ul
+              %li= link_to 'Group\'s photos', '#', :class => 'simple'
+              %li= link_to 'Your groups', '#', :class => 'simple'
+              %li= link_to 'Managed by you', '#', :class => 'simple'
+              %li= link_to 'Search for a group', '#', :class => 'simple'
+              %li= link_to 'Create a new one', '#', :class => 'simple'
+
+        %li.has-flyout
+          = link_to 'Friends', '#', :class => 'simple'
+          %div.flyout.mysmall
+            %ul
+              %li= link_to 'Friend\'s photos', '#', :class => 'simple'
+              %li= link_to 'List of friends', '#', :class => 'simple'
+              %li= link_to 'Find your friends', '#', :class => 'simple'
+              %li= link_to 'Invite', '#', :class => 'simple'
+
         %li= link_to 'Upload', '#', :class => 'simple'
+
         %li.has-flyout
           = link_to current_user.full_name, '#', :class => 'simple'
-          %div.flyout.small
+          %div.flyout.mysmall
             %ul
               %li= link_to 'Profile', profile_path, :class => 'simple'
-              %li= link_to 'Photos', '#', :class => 'simple'
+              %li= link_to 'Photos', photos_path, :class => 'simple'
               %li= link_to 'Albums', albums_path, :class => 'simple'
               %li= link_to 'Collections', assortments_path, :class => 'simple'
               %li= link_to 'Family trees', familytrees_path, :class => 'simple'
@@ -26,13 +52,36 @@
               %li= link_to 'Statistics', '#', :class => 'simple'
               %li= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'simple'
 
-        %li
+        %li.has-flyout
           %div
             = link_to image_tag('email.png'), '#'
             %sub 13
-            &nbsp;&nbsp;
+          %div.flyout.mymedium.right
+            %ul
+              %li User1 / At veto eos et accusam et justo
+              %li User2 / At veto eos et accusam et justo
+              %li User3 / At veto eos et accusam et justo
+              %li User4 / At veto eos et accusam et justo
+              %li User5 / At veto eos et accusam et justo
+              %li User6 / At veto eos et accusam et justo
+              %li User7 / At veto eos et accusam et justo
+              %li User8 / At veto eos et accusam et justo
+
+        %li.has-flyout
+          %div
             = link_to image_tag('alarm.png'), '#'
             %sub 82
+          %div.flyout.mymedium.right
+            %ul
+              %li User1 added your photo "tiles" as a favorite just now
+              %li User2 commented on your photo "title" 5 min ago
+              %li User3 commented on your photo "title" 5 min ago
+              %li User4 added your photo "tiles" as a favorite just now
+              %li User5 commented on your photo "title" 5 min ago
+              %li User6 added your photo "tiles" as a favorite just now
+              %li User7 added your photo "tiles" as a favorite just now
+              %li User8 added your photo "tiles" as a favorite just now
+
       - else
         %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

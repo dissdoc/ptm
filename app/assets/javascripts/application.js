@@ -20,6 +20,8 @@ this.map = null;
 this.geocoder = null;
 
 $(document).ready(function(){
+    $("#slider").slider("values",20, 100);
+
     initialize();
 });
 
