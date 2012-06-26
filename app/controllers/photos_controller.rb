@@ -54,10 +54,13 @@ class PhotosController < ApplicationController
   end
 
   def add_note
+    current_notes = @photo.notes.all.uniq{ |note| note.user_id }
+
     @note = @photo.notes.new(params[:note])
     @note.user_id = current_user.id
     if @note.save!
       UserMailer.commented_photo(current_user, @photo).deliver
+      UserMailer.also_added_comment(current_user, @photo, current_notes).deliver if current_notes.count > 0
       redirect_to [@album, @photo]
     else
       redirect_to root_path

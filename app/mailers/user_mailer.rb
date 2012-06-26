@@ -53,6 +53,17 @@ class UserMailer < ActionMailer::Base
     )
   end
 
+  def also_added_comment(user, photo, current_notes)
+    @user = user
+    @photo = photo
+
+    emails = current_notes.collect(&:user).collect(&:email).join(";")
+    mail(
+        :to => emails,
+        :subject => "#{user.full_name} also added a comment to photo '#{photo.comment}'"
+    )
+  end
+
   def commented_photo(user, photo)
     @user = user
     @photo = photo
