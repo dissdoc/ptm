@@ -74,7 +74,7 @@
 
 %div.row
   %div.twelve.columns
-    = render :partial => 'photos/shared/photos_detail', :locals => { :photos => @photos }
+    %div#photos= render :partial => 'photos/shared/photos_detail', :locals => { :photos => @photos }
 
 
 :erb
@@ -91,6 +91,7 @@
     }
 
     var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+    google.maps.event.addListener(map, 'idle', getBounds);
 
     <% @photos.each do |photo| %>
       <% if photo.geo.present? %>
@@ -148,4 +149,19 @@
         }
         jQuery("#slider").slider("values",1,value2);
     });
+
+    function getBounds() {
+      var currentBounds = map.getBounds();
+      //var ne_lng = currentBounds.getNorthEast().lng();
+      //var ne_lat = currentBounds.getNorthEast().lat();
+      //var sw_lng = currentBounds.getSouthWest().lng();
+      //var sw_lat = currentBounds.getSouthWest().lat();
+
+      var current = currentBounds.getNorthEast();
+      var center = map.getCenter();
+
+      $.post("<%= photos_refresh_path %>",
+          { ne_lng: current.lng(), ne_lat: current.lat(),
+            lat: center.lat(), lng: center.lng() });
+    }
   </script>

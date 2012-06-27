@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
-  before_filter :set_album, :except => [:index]
-  before_filter :set_photo, :except => [:new, :create, :destroy, :index]
+  before_filter :authenticate_user!, :except => [:show, :refresh]
+  before_filter :set_album, :except => [:index, :refresh]
+  before_filter :set_photo, :except => [:new, :create, :destroy, :index, :refresh]
   before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend,
     :apply_recommend_at, :destroy_recommend_at]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
@@ -10,6 +10,22 @@ class PhotosController < ApplicationController
 
   def index
     @photos = current_user.photos
+  end
+
+  def refresh
+    if params[:ne_lat] && params[:ne_lng] && params[:lat] && params[:lng]
+      between = Geocoder::Calculations.distance_between([params[:lat].to_f, params[:lng].to_f],
+          [params[:ne_lat].to_f, params[:ne_lng].to_f])
+
+      @locations = Geo.near([params[:lat].to_f, params[:lng].to_f], between)
+      @photos = @locations.collect(&:photo)
+    else
+      @photos = Photo.all
+    end
+
+    respond_to do |format|
+      format.js { render :template => 'photos/refresh.js.erb' }
+    end
   end
 
   def new
