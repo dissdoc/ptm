@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/photos/refresh.js.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/photos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.haml" afterPath="$PROJECT_DIR$/app/views/home/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +33,7 @@
       <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="0" selection-start="4380" selection-end="4380" vertical-scroll-proportion="0.0">
+            <state line="164" column="43" selection-start="4503" selection-end="4503" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -53,7 +51,7 @@
       <file leaf-file-name="photos_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="964" selection-end="964" vertical-scroll-proportion="0.26653308">
+            <state line="27" column="33" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.3787575">
               <folding />
             </state>
           </provider>
@@ -1443,7 +1441,11 @@
       <created>1340792559762</created>
       <updated>1340792559762</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="add search by map index page">
+      <created>1340802815716</created>
+      <updated>1340802815716</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1507,7 +1509,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix convert datetime" />
+    <option name="LAST_COMMIT_MESSAGE" value="add search by map index page" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1520,7 +1522,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="add migration areatags" />
     <MESSAGE value="test yaml for socials" />
     <MESSAGE value="yaml test refactoring" />
     <MESSAGE value="read info about person from socials" />
@@ -1545,6 +1546,7 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="add recommend time tag" />
     <MESSAGE value="bug fix convert datetime" />
+    <MESSAGE value="add search by map index page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1627,16 +1629,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/assortments/add_photo.js.erb">
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="165" selection-start="20" selection-end="161" vertical-scroll-proportion="0.0">
+        <state line="8" column="65" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/assortments/add_photo.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="0" selection-start="4380" selection-end="4380" vertical-scroll-proportion="0.0">
+        <state line="0" column="165" selection-start="20" selection-end="161" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1648,16 +1650,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="65" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0">
+        <state line="164" column="43" selection-start="4503" selection-end="4503" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="964" selection-end="964" vertical-scroll-proportion="0.26653308">
+        <state line="27" column="33" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.3787575">
           <folding />
         </state>
       </provider>

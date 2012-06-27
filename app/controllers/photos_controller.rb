@@ -18,7 +18,14 @@ class PhotosController < ApplicationController
           [params[:ne_lat].to_f, params[:ne_lng].to_f])
 
       @locations = Geo.near([params[:lat].to_f, params[:lng].to_f], between)
-      @photos = @locations.collect(&:photo)
+      photos1 = @locations.collect(&:photo)
+
+      between = Geocoder::Calculations.distance_between([params[:lat].to_f, params[:lng].to_f],
+                                                        [params[:sw_lat].to_f, params[:sw_lng].to_f])
+      @locations = Geo.near([params[:lat].to_f, params[:lng].to_f], between)
+      photos2 = @locations.collect(&:photo)
+
+      @photos = photos1 | photos2
     else
       @photos = Photo.all
     end
