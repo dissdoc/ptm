@@ -124,8 +124,8 @@ class PhotosController < ApplicationController
   def create_recommend_at
     @recommend = @photo.recommend_ats.new
 
-    @recommend.from_at = params[:from_at]
-    @recommend.to_at = params[:to_at]
+    @recommend.from_at = params[:from_at].to_s
+    @recommend.to_at = params[:to_at].to_s
     @recommend.user = current_user
     if @recommend.save!
       UserMailer.suggested_generate(current_user, @photo).deliver
