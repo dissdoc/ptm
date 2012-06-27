@@ -32,6 +32,16 @@ class UserMailer < ActionMailer::Base
     )
   end
 
+  def suggested_generate(user, photo)
+    @user = user
+    @photo = photo
+
+    mail(
+        :to => photo.user.email,
+        :subject => "#{user.full_name} suggested generate date to your photo '#{photo.comment}'"
+    )
+  end
+
   def shared_photo(user, photo)
     @user = user
     @photo = photo

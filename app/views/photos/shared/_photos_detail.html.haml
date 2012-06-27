@@ -12,11 +12,19 @@
             = photo.comment
             %br
 
-          - if photo.user.present?
-            = link_to photo.user.full_name, detail_path(:id => photo.user)
+          - if photo.geo.present?
+            = photo.geo.address
             %br
 
-          = render :partial => 'photos/shared/generate_at', :locals => { :photo => photo }
+          - if photo.generate.present?
+            = l photo.generate, :format => :full
+            - if photo.generate_end
+              \...
+              = l photo.generate_end, :format => :full
+            %br
+
+          - if photo.user.present?
+            = link_to photo.user.full_name, detail_path(:id => photo.user)
 - else
   Not yet photos!
 

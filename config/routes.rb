@@ -22,9 +22,14 @@ Ptm::Application.routes.draw do
         post 'agree_link_photo'
         post 'cancel_link_photo'
 
+        post 'create_recommend_at'
+        post 'apply_recommend_at'
+        post 'destroy_recommend_at'
+
         get 'show_notes'
         get 'recommend_geo'
         get 'selected'
+        get 'recommend_at'
       end
     end
   end

@@ -106,6 +106,7 @@ class User < ActiveRecord::Base
   has_many :tags, :through => :taggings
 
   has_many :recommend_geos, :dependent => :destroy
+  has_many :recommend_ats, :dependent => :destroy
 
   has_many :areatags, :dependent => :destroy
 

@@ -2,8 +2,9 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album, :except => [:index]
   before_filter :set_photo, :except => [:new, :create, :destroy, :index]
-  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend]
-  before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend]
+  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend,
+    :apply_recommend_at, :destroy_recommend_at]
+  before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
 
@@ -114,6 +115,45 @@ class PhotosController < ApplicationController
     recommend.destroy
     redirect_to album_photo_path(@album, @photo)
   end
+
+  # Recommend generated at ---------------------------------------------------------------------------------------------
+  def recommend_at
+
+  end
+
+  def create_recommend_at
+    @recommend = @photo.recommend_ats.new
+
+    @recommend.from_at = params[:from_at]
+    @recommend.to_at = params[:to_at]
+    @recommend.user = current_user
+    if @recommend.save!
+      UserMailer.suggested_generate(current_user, @photo).deliver
+      @message = Message.new
+      @message.theme = "Recommended time tag..."
+      @message.description = "User #{current_user.full_name} recommended new generate date for photo #{@photo}"
+      @message.to_user = @photo.user
+      @message.from_user = current_user
+      @message.save!
+      redirect_to album_photo_path(@album, @photo)
+    else
+      render :action => :recommend_at
+    end
+  end
+
+  def apply_recommend_at
+    recommend = RecommendAt.find(params[:recommend_id])
+    @photo.update_attributes(:generate => recommend.from_at, :generate_end => recommend.to_at)
+    recommend.destroy
+    redirect_to album_photo_path(@album, @photo)
+  end
+
+  def destroy_recommend_at
+    recommend = RecommendAt.find(params[:recommend_id])
+    recommend.destroy
+    redirect_to album_photo_path(@album, @photo)
+  end
+  # end of recommend generated at --------------------------------------------------------------------------------------
 
   def selected
 

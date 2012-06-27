@@ -44,6 +44,7 @@ class Photo < ActiveRecord::Base
   has_many :photo_assortment_joins, :dependent => :destroy
 
   has_many :recommend_geos, :dependent => :destroy
+  has_many :recommend_ats, :dependent => :destroy
 
   has_many :areatags, :dependent => :destroy
 
