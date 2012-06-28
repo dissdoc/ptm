@@ -19,11 +19,16 @@
       = submit_tag "Go!", :name => nil, :class => 'small white nice button'
     %div.six.columns
       %div#fullmap
+      = hidden_field_tag :ne_lat
+      = hidden_field_tag :ne_lng
+      = hidden_field_tag :sw_lat
+      = hidden_field_tag :sw_lng
 
   %div.row
     %div.twelve.columns
-      = hidden_field_tag :minD, '0'
-      = hidden_field_tag :maxD, '1000'
+      = hidden_field_tag :minD, '5'
+      = hidden_field_tag :maxD, '215'
+      = hidden_field_tag :zoom, '1'
 
       %ul#data
         %li 1828

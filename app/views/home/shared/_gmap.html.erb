@@ -33,17 +33,10 @@
 
     function getBounds() {
         var currentBounds = map.getBounds();
-        var ne_lng = currentBounds.getNorthEast().lng();
-        var ne_lat = currentBounds.getNorthEast().lat();
-        var sw_lng = currentBounds.getSouthWest().lng();
-        var sw_lat = currentBounds.getSouthWest().lat();
 
-        var current = currentBounds.getNorthEast();
-        var center = map.getCenter();
-
-        //$.post("<%= photos_refresh_path %>",
-        //    { ne_lng: ne_lng, ne_lat: ne_lat,
-        //      sw_lng: sw_lng, sw_lat: sw_lat,
-        //      lat: center.lat(), lng: center.lng() });
+        $('#ne_lng').val(currentBounds.getNorthEast().lng());
+        $('#ne_lat').val(currentBounds.getNorthEast().lat());
+        $('#sw_lng').val(currentBounds.getSouthWest().lng());
+        $('#sw_lat').val(currentBounds.getSouthWest().lat());
     }
 </script>
