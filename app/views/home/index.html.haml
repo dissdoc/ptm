@@ -83,7 +83,7 @@
 
     var latlng = new google.maps.LatLng(-34.397, 150.644);
     var myOptions = {
-      zoom: 0,
+      zoom: 1,
       center: latlng,
       mapTypeId:google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
@@ -157,12 +157,13 @@
       var sw_lng = currentBounds.getSouthWest().lng();
       var sw_lat = currentBounds.getSouthWest().lat();
 
-      var current = currentBounds.getNorthEast();
       var center = map.getCenter();
+      var X = center.lng();
+      var Y = center.lat();
 
       $.post("<%= photos_refresh_path %>",
           { ne_lng: ne_lng, ne_lat: ne_lat,
             sw_lng: sw_lng, sw_lat: sw_lat,
-            lat: center.lat(), lng: center.lng() });
+            lat: Y, lng: X });
     }
   </script>

@@ -14,18 +14,16 @@ class PhotosController < ApplicationController
 
   def refresh
     if params[:ne_lat] && params[:ne_lng] && params[:lat] && params[:lng]
-      between = Geocoder::Calculations.distance_between([params[:lat].to_f, params[:lng].to_f],
-          [params[:ne_lat].to_f, params[:ne_lng].to_f])
+      max_lat = params[:ne_lat].to_f
+      max_lng = params[:ne_lng].to_f
+      min_lat = params[:sw_lat].to_f
+      min_lng = params[:sw_lng].to_f
 
-      @locations = Geo.near([params[:lat].to_f, params[:lng].to_f], between)
-      photos1 = @locations.collect(&:photo)
+      max_lat, min_lat = min_lat, max_lat if max_lat < min_lat
+      max_lng, min_lng = min_lng, max_lng if max_lng < min_lng
 
-      between = Geocoder::Calculations.distance_between([params[:lat].to_f, params[:lng].to_f],
-                                                        [params[:sw_lat].to_f, params[:sw_lng].to_f])
-      @locations = Geo.near([params[:lat].to_f, params[:lng].to_f], between)
-      photos2 = @locations.collect(&:photo)
-
-      @photos = photos1 | photos2
+      @locations = Geo.where('latitude <= ? AND latitude >= ? AND longitude <= ? AND longitude >= ?', max_lat, min_lat, max_lng, min_lng)
+      @photos = @locations.collect(&:photo)
     else
       @photos = Photo.all
     end
