@@ -22,9 +22,8 @@
 
   %div.row
     %div.twelve.columns
-      :erb
-        <input type="hidden" id="minCost" value="0"/>
-        <input type="hidden" id="maxCost" value="1000"/>
+      = hidden_field_tag :minD, '0'
+      = hidden_field_tag :maxD, '1000'
 
       %ul#data
         %li 1828
@@ -77,93 +76,5 @@
     %div#photos= render :partial => 'photos/shared/photos_detail', :locals => { :photos => @photos }
 
 
-:erb
-  <script language="Javascript">
-    var markers = [];
-
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-      zoom: 1,
-      center: latlng,
-      mapTypeId:google.maps.MapTypeId.ROADMAP,
-      streetViewControl: false,
-      mapTypeControl: false
-    }
-
-    var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
-    google.maps.event.addListener(map, 'idle', getBounds);
-
-    <% @photos.each do |photo| %>
-      <% if photo.geo.present? %>
-        <% if photo.geo.latitude.present? && photo.geo.longitude.present? %>
-          var latlng = new google.maps.LatLng(<%= photo.geo.latitude %>, <%= photo.geo.longitude %>);
-          var marker = new google.maps.Marker({
-            position: latlng
-          });
-          markers.push(marker);
-        <% end %>
-      <% end %>
-    <% end %>
-
-    markerClusterer = new MarkerClusterer(map, markers, {
-    maxZoom: 18,
-        gridSize: 50,
-        styles: null
-    });
-
-    $("#slider").slider({
-        min: 0,
-        max: 1000,
-        values: [25, 975],
-        range: true,
-        stop: function(event, ui) {
-            jQuery("input#minCost").val(jQuery("#slider").slider("values",0));
-            jQuery("input#maxCost").val(jQuery("#slider").slider("values",1));
-        },
-        slide: function(event, ui){
-            jQuery("input#minCost").val(jQuery("#slider").slider("values",0));
-            jQuery("input#maxCost").val(jQuery("#slider").slider("values",1));
-        }
-    });
-
-    jQuery("input#minCost").change(function(){
-        var value1=jQuery("input#minCost").val();
-        var value2=jQuery("input#maxCost").val();
-
-        if(parseInt(value1) > parseInt(value2)){
-            value1 = value2;
-            jQuery("input#minCost").val(value1);
-        }
-        jQuery("#slider").slider("values",0,value1);
-    });
-
-    jQuery("input#maxCost").change(function(){
-        var value1=jQuery("input#minCost").val();
-        var value2=jQuery("input#maxCost").val();
-
-        if (value2 > 1000) { value2 = 1000; jQuery("input#maxCost").val(1000)}
-
-        if(parseInt(value1) > parseInt(value2)){
-            value2 = value1;
-            jQuery("input#maxCost").val(value2);
-        }
-        jQuery("#slider").slider("values",1,value2);
-    });
-
-    function getBounds() {
-      var currentBounds = map.getBounds();
-      var ne_lng = currentBounds.getNorthEast().lng();
-      var ne_lat = currentBounds.getNorthEast().lat();
-      var sw_lng = currentBounds.getSouthWest().lng();
-      var sw_lat = currentBounds.getSouthWest().lat();
-
-      var center = map.getCenter();
-      var X = center.lng();
-      var Y = center.lat();
-
-      $.post("<%= photos_refresh_path %>",
-          { ne_lng: ne_lng, ne_lat: ne_lat,
-            sw_lng: sw_lng, sw_lat: sw_lat,
-            lat: Y, lng: X });
-    }
-  </script>
+= render :partial => 'home/shared/gmap', :locals => { :photos => @photos }
+= render :partial => 'home/shared/slider'
