@@ -11,11 +11,30 @@ class HomeController < ApplicationController
 
     if params[:ne_lat].present?
       photos_geo = Geo.get_all(params[:ne_lat].to_f, params[:ne_lng].to_f, params[:sw_lat].to_f, params[:sw_lng].to_f).collect(&:photo).uniq
-      render :text => photos_geo
       if @photos.present? && @photos.count > 0
         @photos = @photos & photos_geo
       else
         @photos = photos_geo
+      end
+    end
+
+    minD = params[:minD].to_i
+    maxD = params[:maxD].to_i
+    if minD > 5 ||  maxD < 176
+      minD = 5 if minD < 5
+      maxD = 176 if maxD > 176
+
+      min_date = minD - 5 + 1826
+      max_date = maxD - 5 + 1826
+
+      start = DateTime.civil(min_date)
+      fin = DateTime.civil(max_date)
+
+      photos_date = Photo.where('generate > ? AND generate < ?', start, fin)
+      if @photos.present? && @photos.count > 0
+        @photos = @photos & photos_date
+      else
+        @photos = photo_date
       end
     end
 
@@ -25,7 +44,7 @@ class HomeController < ApplicationController
 
     @photos_for_map = Photo.all
 
-    #render :layout => 'application_empty'
+    render :layout => 'application_empty'
   end
 
   def faq
