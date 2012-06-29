@@ -15,7 +15,7 @@ class TagsController < ApplicationController
       end
     end
 
-    UserMailer.added_tag(current_user, map, photo).deliver
+    UserMailer.added_tag(current_user, map, @photo).deliver
 
     respond_to do |format|
       format.js

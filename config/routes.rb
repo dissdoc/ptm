@@ -6,7 +6,6 @@ Ptm::Application.routes.draw do
 
 
   match '/photos', :to => 'photos#index'
-  match '/photos_refresh', :to => 'photos#refresh', :via => :post
   resources :albums do
     get 'share'
     post 'set_title', :on => :member

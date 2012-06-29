@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :refresh]
-  before_filter :set_album, :except => [:index, :refresh]
-  before_filter :set_photo, :except => [:new, :create, :destroy, :index, :refresh]
+  before_filter :authenticate_user!, :except => [:show]
+  before_filter :set_album, :except => [:index]
+  before_filter :set_photo, :except => [:new, :create, :destroy, :index]
   before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend,
     :apply_recommend_at, :destroy_recommend_at]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
@@ -10,27 +10,6 @@ class PhotosController < ApplicationController
 
   def index
     @photos = current_user.photos
-  end
-
-  def refresh
-    if params[:ne_lat] && params[:ne_lng] && params[:lat] && params[:lng]
-      max_lat = params[:ne_lat].to_f
-      max_lng = params[:ne_lng].to_f
-      min_lat = params[:sw_lat].to_f
-      min_lng = params[:sw_lng].to_f
-
-      max_lat, min_lat = min_lat, max_lat if max_lat < min_lat
-      max_lng, min_lng = min_lng, max_lng if max_lng < min_lng
-
-      @locations = Geo.where('latitude <= ? AND latitude >= ? AND longitude <= ? AND longitude >= ?', max_lat, min_lat, max_lng, min_lng)
-      @photos = @locations.collect(&:photo)
-    else
-      @photos = Photo.all
-    end
-
-    respond_to do |format|
-      format.js { render :template => 'photos/refresh.js.erb' }
-    end
   end
 
   def new
