@@ -10,7 +10,11 @@ class HomeController < ApplicationController
     end
 
     if params[:ne_lat].present?
-      photos_geo = Geo.get_all(params[:ne_lat].to_f, params[:ne_lng].to_f, params[:sw_lat].to_f, params[:sw_lng].to_f).collect(&:photo).uniq
+      distance = Geocoder::Calculations.distance_between([params[:ne_lat].to_f, params[:ne_lng].to_f],
+                                                         [params[:sw_lat].to_f, params[:sw_lng].to_f])
+      center = Geocoder::Calculations.geographic_center([[params[:ne_lat].to_f, params[:ne_lng].to_f],
+                                                        [params[:sw_lat].to_f, params[:sw_lng].to_f]])
+      photos_geo = Geo.near(center, distance/2).collect(&:photo)
       if @photos.present? && @photos.count > 0
         @photos = @photos & photos_geo
       else
@@ -42,7 +46,7 @@ class HomeController < ApplicationController
 
     @photos_for_map = Photo.all
 
-    render :layout => 'application_empty'
+    #render :layout => 'application_empty'
   end
 
   def faq
