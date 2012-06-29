@@ -4,9 +4,9 @@ class HomeController < ApplicationController
   def index
     if params[:search_tags].present?
       list_tag = params[:search_tags].split(/,\s*/)
-      tags = Tag.find(:all, :conditions => ["name IN (?)", list_tag]).collect(&:id).uniq
-      ids = Tagging.find(:all, :conditions => ["tag_id IN (?)", tags]).collect(&:photo)
-      @photos = Photo.find(:all, :conditions => ["id IN (?)", ids]).uniq
+      tags = Tag.all(:conditions => ["name IN (?)", list_tag]).collect(&:id).uniq
+      ids = Tagging.all(:conditions => ["tag_id IN (?)", tags]).collect(&:photo)
+      @photos = Photo.all(:conditions => ["id IN (?)", ids]).uniq
     end
 
     if params[:ne_lat].present?
@@ -20,22 +20,20 @@ class HomeController < ApplicationController
 
     minD = params[:minD].to_i
     maxD = params[:maxD].to_i
-    if minD > 5 ||  maxD < 176
-      minD = 5 if minD < 5
-      maxD = 176 if maxD > 176
+    minD = 5 if minD < 5
+    maxD = 176 if maxD > 176
 
-      min_date = minD - 5 + 1826
-      max_date = maxD - 5 + 1826
+    min_date = minD - 5 + 1826
+    max_date = maxD - 5 + 1826
 
-      start = DateTime.civil(min_date)
-      fin = DateTime.civil(max_date)
+    start = DateTime.civil(min_date)
+    fin = DateTime.civil(max_date)
 
-      photos_date = Photo.where('generate > ? AND generate < ?', start, fin)
-      if @photos.present? && @photos.count > 0
-        @photos = @photos & photos_date
-      else
-        @photos = photos_date
-      end
+    photos_date = Photo.where('generate > ? AND generate < ?', start, fin)
+    if @photos.present? && @photos.count > 0
+      @photos = @photos & photos_date
+    else
+      @photos = photos_date
     end
 
     if @photos.blank?
