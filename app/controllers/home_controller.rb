@@ -34,7 +34,7 @@ class HomeController < ApplicationController
       if @photos.present? && @photos.count > 0
         @photos = @photos & photos_date
       else
-        @photos = photo_date
+        @photos = photos_date
       end
     end
 
