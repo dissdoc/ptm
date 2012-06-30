@@ -1,7 +1,7 @@
 %script{ :type => 'text/javascript', :src => "/assets/markerclusterer_compiled.js" }
 %script{ :type => 'text/javascript', :src => "/assets/jquery.ui-slider.js" }
 
-= form_tag root_path, :method => :get do
+= form_tag root_path, :remote => true, :method => :get do
   %div.row
     %div.five.columns
       %br

@@ -46,7 +46,10 @@ class HomeController < ApplicationController
 
     @photos_for_map = Photo.all
 
-    #render :layout => 'application_empty'
+    respond_to do |format|
+      format.html { render :layout => 'application_empty' }
+      format.js { render :template => 'photos/refresh' }
+    end
   end
 
   def faq
