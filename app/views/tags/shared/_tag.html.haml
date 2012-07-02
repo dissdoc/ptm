@@ -1,3 +1,4 @@
 = tag.name
 - if signed_in? && tag.can_delete?(photo, current_user)
   %sup= link_to 'x', tags_destroy_path(:photo_id => photo, :tag_id => tag), :method => :post, :remote => true
+&bull;
