@@ -38,8 +38,9 @@
   %p
     = image_tag @photo.image.url(:large), :id => "imgselectarea"
 
-  %p
-    = render :partial => 'photos/shared/photo', :collection => @album.photos
+  - if @album
+    %p
+      = render :partial => 'photos/shared/photo', :collection => @album.photos
 
   - if @photo.share_photo
     %label Public:

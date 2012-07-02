@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   before_filter :album_admin?, :only => [:new, :create]
   before_filter :set_photo, :except => [:new, :create, :destroy, :index, :uploads, :uploaded]
   before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
-    :apply_recommend_at, :destroy_recommend_at, :uploads, :uploaded]
+    :apply_recommend_at, :destroy_recommend_at]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
@@ -33,7 +33,9 @@ class PhotosController < ApplicationController
   def show
     @notes = @photo.notes.all
     @note = @photo.notes.new
-    @album = @photo.album
+    if @photo.album.present?
+      @album = @photo.album
+    end
   end
 
   def edit
@@ -189,6 +191,8 @@ class PhotosController < ApplicationController
 
   def uploads
     @photo = current_user.photos.new
+    @photo.build_geo
+    @photo.build_share_photo
   end
 
   def uploaded
