@@ -1,6 +1,6 @@
 %h4 Recommend geo
 
-= form_tag create_recommend_album_photo_path(@album, @photo), :method => :post do
+= form_tag create_recommend_photo_path(@photo), :method => :post do
   = text_field_tag :address, @geo
   = hidden_field_tag 'lat', @lat
   = hidden_field_tag 'lng', @lng

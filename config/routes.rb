@@ -13,27 +13,33 @@ Ptm::Application.routes.draw do
 
     resources :photos do
       member do
-        post 'add_note'
-        post 'create_recommend'
-        post 'apply_recommend'
-        post 'destroy_recommend'
-        post 'addarea'
-        post 'deletearea'
-        post 'agree_link_photo'
-        post 'cancel_link_photo'
-
-        post 'create_recommend_at'
-        post 'apply_recommend_at'
-        post 'destroy_recommend_at'
-
         get 'show_notes'
-        get 'recommend_geo'
-        get 'selected'
-        get 'recommend_at'
       end
     end
   end
   match '/albums/link_photo', :to => 'albums#link_photo', :via => :post
+
+  match '/photos/uploads', :to => 'photos#uploads'
+  match '/photos/uploaded', :to => 'photos#uploaded', :via => :post
+  resources :photos do
+    member do
+      post 'addarea'
+      post 'deletearea'
+      post 'add_note'
+      post 'create_recommend'
+      post 'apply_recommend'
+      post 'destroy_recommend'
+      post 'create_recommend_at'
+      post 'apply_recommend_at'
+      post 'destroy_recommend_at'
+      post 'agree_link_photo'
+      post 'cancel_link_photo'
+
+      get 'selected'
+      get 'recommend_geo'
+      get 'recommend_at'
+    end
+  end
 
   match '/groups/managed', :to => 'groups#managed'
   resources :groups do

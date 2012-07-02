@@ -1,9 +1,10 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
-  before_filter :set_album, :except => [:index]
-  before_filter :set_photo, :except => [:new, :create, :destroy, :index]
-  before_filter :album_admin?, :only => [:new, :create, :destroy, :edit, :update, :apply_recommend, :destroy_recommend,
-    :apply_recommend_at, :destroy_recommend_at]
+  before_filter :set_album, :only => [:new, :create]
+  before_filter :album_admin?, :only => [:new, :create]
+  before_filter :set_photo, :except => [:new, :create, :destroy, :index, :uploads, :uploaded]
+  before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
+    :apply_recommend_at, :destroy_recommend_at, :uploads, :uploaded]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
@@ -32,6 +33,7 @@ class PhotosController < ApplicationController
   def show
     @notes = @photo.notes.all
     @note = @photo.notes.new
+    @album = @photo.album
   end
 
   def edit
@@ -41,7 +43,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update_attributes(params[:photo])
-      redirect_to [@album, @photo]
+      redirect_to @photo
     else
       render :action => "edit"
     end
@@ -49,9 +51,8 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = current_user.photos.find(params[:id])
-    @album = @photo.album
     @photo.destroy
-    redirect_to @album
+    redirect_to photos_path
   end
 
   def add_note
@@ -62,7 +63,7 @@ class PhotosController < ApplicationController
     if @note.save!
       UserMailer.commented_photo(current_user, @photo).deliver
       UserMailer.also_added_comment(current_user, @photo, current_notes).deliver if current_notes.count > 0
-      redirect_to [@album, @photo]
+      redirect_to @photo
     else
       redirect_to root_path
     end
@@ -89,7 +90,7 @@ class PhotosController < ApplicationController
       @message.from_user = current_user
       @message.save!
 
-      redirect_to album_photo_path(@album, @photo)
+      redirect_to @photo
     else
       render :action => :recommend_geo
     end
@@ -107,13 +108,13 @@ class PhotosController < ApplicationController
       @geo.save!
     end
     recommend.destroy
-    redirect_to album_photo_path(@album, @photo)
+    redirect_to @photo
   end
 
   def destroy_recommend
     recommend = RecommendGeo.find(params[:recommend_id])
     recommend.destroy
-    redirect_to album_photo_path(@album, @photo)
+    redirect_to @photo
   end
 
   # Recommend generated at ---------------------------------------------------------------------------------------------
@@ -135,7 +136,7 @@ class PhotosController < ApplicationController
       @message.to_user = @photo.user
       @message.from_user = current_user
       @message.save!
-      redirect_to album_photo_path(@album, @photo)
+      redirect_to @photo
     else
       render :action => :recommend_at
     end
@@ -145,13 +146,13 @@ class PhotosController < ApplicationController
     recommend = RecommendAt.find(params[:recommend_id])
     @photo.update_attributes(:generate => recommend.from_at, :generate_end => recommend.to_at)
     recommend.destroy
-    redirect_to album_photo_path(@album, @photo)
+    redirect_to @photo
   end
 
   def destroy_recommend_at
     recommend = RecommendAt.find(params[:recommend_id])
     recommend.destroy
-    redirect_to album_photo_path(@album, @photo)
+    redirect_to @photo
   end
   # end of recommend generated at --------------------------------------------------------------------------------------
 
@@ -166,29 +167,43 @@ class PhotosController < ApplicationController
       @note = @photo.areatags.create!(:x => params[:x1], :y => params[:y1], :height => params[:height], :width => params[:width],
         :description => params[:description], :user_id => current_user.id)
       UserMailer.added_note(current_user, @note, @photo).deliver
-      redirect_to selected_album_photo_path(@album, @photo)
+      redirect_to selected_photo_path(@photo)
     end
   end
 
   def deletearea
     area = @photo.areatags.find(params[:area])
     area.destroy
-    redirect_to selected_album_photo_path(@album, @photo)
+    redirect_to selected_photo_path(@photo)
   end
 
   def agree_link_photo
     @group.photo_group_joins.where(:photo_id => @photo.id).first.accept!
-    redirect_to [@album, @photo]
+    redirect_to @photo
   end
 
   def cancel_link_photo
     @group.photo_group_joins.where(:photo_id => @photo.id).first.destroy
-    redirect_to [@album, @photo]
+    redirect_to @photo
+  end
+
+  def uploads
+    @photo = current_user.photos.new
+  end
+
+  def uploaded
+    @photo = current_user.photos.new(params[:photo])
+    if @photo.save!
+      Activity.create!(:user_id => current_user.id, :action => 'add', :object_name => 'photo', :object_link => album_photo_path(@album, @photo))
+      redirect_to @photo
+    else
+      redirect_to root_path
+    end
   end
 
   protected
     def set_photo
-      @photo = @album.photos.find(params[:id])
+      @photo = Photo.find(params[:id])
     end
 
     def set_album
@@ -197,6 +212,10 @@ class PhotosController < ApplicationController
 
     def album_admin?
       redirect_to root_path if current_user.id != @album.user.id
+    end
+
+    def photo_admin?
+      redirect_to root_path if current_user.id != @photo.user.id
     end
 
     def not_admin_photo?

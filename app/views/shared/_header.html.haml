@@ -32,7 +32,7 @@
               %li= link_to 'Find your friends', '#', :class => 'simple'
               %li= link_to 'Invite', '#', :class => 'simple'
 
-        %li= link_to 'Upload', '#', :class => 'simple'
+        %li= link_to 'Upload', photos_uploads_path, :class => 'simple'
 
         %li.has-flyout
           = link_to current_user.full_name, '#', :class => 'simple'

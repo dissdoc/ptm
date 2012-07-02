@@ -23,15 +23,15 @@
 
 %div.span-16
   - if signed_in?
-    = link_to "Selected", selected_album_photo_url(@album, @photo)
+    = link_to "Selected", selected_photo_url(@photo)
     - if signed_in?
       |
       = link_to "Add to group", '#', 'data-reveal-id' => "modalGroup"
     - if current_user.admin_of_photo?(@photo)
       |
-      = link_to "Edit", edit_album_photo_url(@album, @photo)
+      = link_to "Edit", edit_photo_url(@photo)
       |
-      = link_to "Delete", [@album, @photo], :method => :delete
+      = link_to "Delete", @photo, :method => :delete
     - else
       %div#favorites
         = render :partial => 'favorites/shared/fave', :locals => { :photo => @photo }
@@ -55,7 +55,7 @@
     = render :partial => 'notes/shared/note', :collection => @notes
 
   - if signed_in?
-    = note_form(@note, :album => @album, :photo => @photo)
+    = note_form(@note, :id => @photo)
 
 %div.span-8.last
   %p
@@ -74,7 +74,7 @@
         %li
           = friendship.friend.full_name
           |
-          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => album_photo_url(@album, @photo), :photo_id => @photo), :method => :post
+          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => photo_url(@photo), :photo_id => @photo), :method => :post
 
   - if signed_in? && @photo.candidate_to_groups.present?
     %p
@@ -84,9 +84,9 @@
         %div
           = group.name
           - if current_user.admin_of_photo?(@photo)
-            = link_to "Add", agree_link_photo_album_photo_url(@album, @photo, :group_id => group), :method => :post
+            = link_to "Add", agree_link_photo_photo_url(@photo, :group_id => group), :method => :post
             |
-            = link_to "Cancel", cancel_link_photo_album_photo_url(@album, @photo, :group_id => group), :method => :post
+            = link_to "Cancel", cancel_link_photo_photo_url(@photo, :group_id => group), :method => :post
 
 %div#modalGroup.reveal-modal
   %h4 Change group for add

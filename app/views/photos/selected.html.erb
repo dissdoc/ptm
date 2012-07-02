@@ -57,7 +57,7 @@
 <%= image_tag @photo.image.url(:large), :id => "imgselectarea" %>
 
 <div id="noteform">
-  <%= form_tag addarea_album_photo_url(@album, @photo), :id => "NoteAddForm", :method => :post do %>
+  <%= form_tag addarea_photo_url(@photo), :id => "NoteAddForm", :method => :post do %>
     <fieldset>
         <%= hidden_field_tag :x1, params[:x1], :id => 'NoteX1' %>
         <%= hidden_field_tag :y1, params[:y1], :id => 'NoteY1' %>
@@ -81,7 +81,7 @@
 
       <% if signed_in? %>
         <% if current_user.admin_of_photo?(@photo) || current_user.admin_of_areatag?(@photo, areatag) %>
-          <%= link_to "X", deletearea_album_photo_path(@album, @photo, :area => areatag), :method => :post %>
+          <%= link_to "X", deletearea_photo_path(@photo, :area => areatag), :method => :post %>
         <% end %>
       <% end %>
     </div>

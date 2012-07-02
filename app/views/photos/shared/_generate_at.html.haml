@@ -7,7 +7,7 @@
       = l photo.generate_end, :format => :full
 
 - if signed_in? && !current_user.admin_of_photo?(photo)
-  = link_to 'Recommend at', recommend_at_album_photo_path(@album, @photo)
+  = link_to 'Recommend at', recommend_at_photo_path(@photo)
 
 %ul
   - photo.recommend_ats.each do |recommend|
@@ -19,5 +19,5 @@
           = l recommend.to_at, :format => :full
 
       - if signed_in? && current_user.admin_of_photo?(photo)
-        = link_to "V", apply_recommend_at_album_photo_path(@album, @photo, :recommend_id => recommend), :method => :post
-        = link_to "X", destroy_recommend_at_album_photo_path(@album, @photo, :recommend_id => recommend), :method => :post
+        = link_to "V", apply_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post
+        = link_to "X", destroy_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post

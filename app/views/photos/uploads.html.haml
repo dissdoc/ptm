@@ -1,4 +1,4 @@
-= form_for [@album, @photo], :html => { :multipart => true }  do |f|
+= form_for photos_uploaded_path(@photo), :html => { :multipart => true }, :method => :post  do |f|
   = f.file_field :image
 
   %div

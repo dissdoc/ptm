@@ -1,13 +1,13 @@
 %h4 Recommend date
 
-= form_tag create_recommend_at_album_photo_path(@album, @photo), :method => :post do
+= form_tag create_recommend_at_photo_path(@photo), :method => :post do
   %div
     %label From at:
-    = datetime_select :from_at, params[:from_at]
+    = datetime_select :from_at, params[:from_at], :start_year => 1826, :end_year => Time.now.year - 15
 
   %div
     %label To at:
-    = datetime_select :to_at, params[:to_at]
+    = datetime_select :to_at, params[:to_at], :start_year => 1826, :end_year => Time.now.year - 15
 
   %div
     = submit_tag 'Recommend'

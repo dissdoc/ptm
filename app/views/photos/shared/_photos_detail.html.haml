@@ -5,7 +5,7 @@
         = image_tag(photo.image.url(:small))
 
         %div
-          = link_to image_tag(photo.image.url(:medium), :width => '150px', :height => '100px'), [ photo.album, photo ]
+          = link_to image_tag(photo.image.url(:medium), :width => '150px', :height => '100px'), photo
           %br
 
           - if photo.comment.present?

@@ -6,7 +6,7 @@
       = image_tag "http://maps.google.com/maps/api/staticmap?size=320x240&sensor=false&&markers=size:mid%7Ccolor:red%7C#{photo.geo.address}"
 
 - if signed_in? && !current_user.admin_of_photo?(photo)
-  = link_to 'Recommend geo', recommend_geo_album_photo_path(@album, @photo)
+  = link_to 'Recommend geo', recommend_geo_photo_path(@photo)
 
 %ul
   - photo.recommend_geos.each do |recommend|
@@ -14,5 +14,5 @@
       %i= recommend.address
       %div= recommend.comment
       - if signed_in? && current_user.admin_of_photo?(photo)
-        = link_to "V", apply_recommend_album_photo_path(@album, @photo, :recommend_id => recommend), :method => :post
-        = link_to "X", destroy_recommend_album_photo_path(@album, @photo, :recommend_id => recommend), :method => :post
+        = link_to "V", apply_recommend_photo_path(@photo, :recommend_id => recommend), :method => :post
+        = link_to "X", destroy_recommend_photo_path(@photo, :recommend_id => recommend), :method => :post
