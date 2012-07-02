@@ -206,7 +206,7 @@ class PhotosController < ApplicationController
   def uploaded
     @photo = current_user.photos.new(params[:photo])
     if @photo.save!
-      Activity.create!(:user_id => current_user.id, :action => 'add', :object_name => 'photo', :object_link => album_photo_path(@album, @photo))
+      Activity.create!(:user_id => current_user.id, :action => 'add', :object_name => 'photo', :object_link => @photo)
       redirect_to @photo
     else
       redirect_to root_path
