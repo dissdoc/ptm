@@ -127,18 +127,26 @@ class PhotosController < ApplicationController
   def create_recommend_at
     @recommend = @photo.recommend_ats.new
 
-    @recommend.from_at = params[:from_at].to_s
-    @recommend.to_at = params[:to_at].to_s
-    @recommend.user = current_user
-    if @recommend.save!
-      UserMailer.suggested_generate(current_user, @photo).deliver
-      @message = Message.new
-      @message.theme = "Recommended time tag..."
-      @message.description = "User #{current_user.full_name} recommended new generate date for photo #{@photo}"
-      @message.to_user = @photo.user
-      @message.from_user = current_user
-      @message.save!
-      redirect_to @photo
+    from_at = parse_datetime(params[:from_at])
+    if from_at
+      @recommend.from_at = from_at
+
+      to_at = parse_datetime(params[:to_at])
+      if to_at
+        @recommend.to_at = to_at
+      end
+
+      @recommend.user = current_user
+      if @recommend.save!
+        UserMailer.suggested_generate(current_user, @photo).deliver
+        @message = Message.new
+        @message.theme = "Recommended time tag..."
+        @message.description = "User #{current_user.full_name} recommended new generate date for photo #{@photo}"
+        @message.to_user = @photo.user
+        @message.from_user = current_user
+        @message.save!
+        redirect_to @photo
+      end
     else
       render :action => :recommend_at
     end
@@ -235,4 +243,32 @@ class PhotosController < ApplicationController
     def set_group
       @group = Group.find(params[:group_id])
     end
+
+  private
+
+  def parse_datetime(params)
+    if params["(1i)"].blank?
+      return nil
+    end
+
+    year = params["(1i)"].to_i
+
+    if params["(2i)"].to_s.blank?
+      month = 1
+    else
+      month = params["(2i)"].to_i
+    end
+
+    if params["(3i)"].to_s.blank?
+      day = 1
+    else
+      day = params["(3i)"].to_i
+    end
+
+    hour   = 0
+    minute = 0
+    second = 0
+
+    return DateTime.civil(year, month, day, hour, minute, second)
+  end
 end
