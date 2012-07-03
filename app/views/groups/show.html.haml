@@ -8,7 +8,7 @@
     |
     = link_to "Add photo to group", group_photos_path(@group)
   - if current_user && current_user.can_join?(@group)
-    = link_to "Join", group_join_path(group), :method => :post
+    = link_to "Join", group_join_path(@group), :method => :post
 
   %h4 Photos
 
