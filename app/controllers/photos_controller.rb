@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :set_album, :only => [:new, :create]
   before_filter :album_admin?, :only => [:new, :create]
-  before_filter :set_photo, :except => [:new, :create, :destroy, :index, :uploads, :uploaded]
+  before_filter :set_photo, :except => [:new, :create, :index, :uploads, :uploaded]
   before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
     :apply_recommend_at, :destroy_recommend_at]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
@@ -23,7 +23,6 @@ class PhotosController < ApplicationController
     @photo = @album.photos.new(params[:photo])
     @photo.user_id = current_user.id
     if @photo.save!
-      Activity.create!(:user_id => current_user.id, :action => 'add', :object_name => 'photo', :object_link => album_photo_path(@album, @photo))
       redirect_to @album
     else
       redirect_to root_path
@@ -52,7 +51,6 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    @photo = current_user.photos.find(params[:id])
     @photo.destroy
     redirect_to photos_path
   end
@@ -206,7 +204,6 @@ class PhotosController < ApplicationController
   def uploaded
     @photo = current_user.photos.new(params[:photo])
     if @photo.save!
-      Activity.create!(:user_id => current_user.id, :action => 'add', :object_name => 'photo', :object_link => @photo)
       redirect_to @photo
     else
       redirect_to root_path

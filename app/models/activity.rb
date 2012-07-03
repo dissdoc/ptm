@@ -6,6 +6,7 @@ class Activity < ActiveRecord::Base
   default_scope :order => 'activities.created_at DESC', :limit => 10
 
   ADD_FAVE_PHOTO = 'added photo as a favorite'
+  UPLOADED_PHOTO = 'uploaded photo'
 
   def self.add(user, target, action, owner)
     return false if user.blank? or owner.blank? or action.blank?

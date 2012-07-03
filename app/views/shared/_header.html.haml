@@ -65,11 +65,12 @@
             = link_to image_tag('alarm.png'), '#'
             %sub= current_user.activities.count
           %div.flyout.mymedium.right
-            %ul
-              - if signed_in?
+            - if signed_in?
+              %ul
                 - current_user.activities.each do |activity|
                   %li
-                    = link_to activity.owner.full_name, detail_path(:id => activity.owner)
+                    - if activity.owner
+                      = link_to activity.owner.full_name, detail_path(:id => activity.owner)
                     = activity.action
                     = link_to "#{activity.target_type} ##{activity.target_id}", activity.target
 
