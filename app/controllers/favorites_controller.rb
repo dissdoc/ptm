@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
     current_user.favorites.create!(:photo_id => params[:photo_id])
     photo = Photo.find(params[:photo_id])
     UserMailer.added_photo_favorite(current_user, photo).deliver
+    Activity.add(photo.user, photo, Activity::ADD_FAVE_PHOTO, current_user)
     respond_to do |format|
       format.js
     end

@@ -18,7 +18,6 @@ gem 'paperclipdropbox', '1.0.8'
 gem 'rails-breadcrumbs'
 gem 'therubyracer'
 gem 'thin'
-gem "cucumber-rails"
 gem 'zurb-foundation'
 
 # Gems used only for assets and not required

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627075851) do
+ActiveRecord::Schema.define(:version => 20120703061148) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -24,14 +24,16 @@ ActiveRecord::Schema.define(:version => 20120627075851) do
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.string   "action"
-    t.string   "object_name"
-    t.string   "object_link"
-    t.string   "action2"
-    t.string   "object_name2"
-    t.string   "object_link2"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
+
+  add_index "activities", ["owner_id", "owner_type"], :name => "index_activities_on_owner_id_and_owner_type"
+  add_index "activities", ["target_id", "target_type"], :name => "index_activities_on_target_id_and_target_type"
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -62,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20120627075851) do
     t.text     "description"
   end
 
+  create_table "collections", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "dashboards", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -84,6 +93,13 @@ ActiveRecord::Schema.define(:version => 20120627075851) do
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
     t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "friendlists", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -143,6 +159,13 @@ ActiveRecord::Schema.define(:version => 20120627075851) do
     t.string   "notable_type"
   end
 
+  create_table "photo_album_joins", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "photo_assortment_joins", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "assortment_id"
@@ -193,6 +216,16 @@ ActiveRecord::Schema.define(:version => 20120627075851) do
     t.datetime "updated_at", :null => false
     t.integer  "photo_id"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "share_photos", :force => true do |t|
     t.boolean  "share",      :default => true

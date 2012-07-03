@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   has_many :albums, :dependent => :destroy
   has_many :photos, :dependent => :destroy
   has_many :notes, :dependent => :destroy
-  has_many :activities, :dependent => :destroy
 
   has_many :friendships, :dependent => :destroy
 
@@ -109,6 +108,14 @@ class User < ActiveRecord::Base
   has_many :recommend_ats, :dependent => :destroy
 
   has_many :areatags, :dependent => :destroy
+
+  has_many :activities, :dependent => :destroy
+
+  has_many :actions, :through => :activities
+
+  def current_messages
+    messages.all(:limit => 10, :order => 'created_at DESC')
+  end
 
   def self.search(query)
     where('first_name LIKE ? OR last_name LIKE ?', "%#{query}%", "%#{query}%")

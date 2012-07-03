@@ -54,35 +54,27 @@
         %li.has-flyout
           %div
             = link_to image_tag('email.png'), '#'
-            %sub 13
+            %sub= current_user.current_messages.count
           %div.flyout.mymedium.right
             %ul
-              %li User1 / At veto eos et accusam et justo
-              %li User2 / At veto eos et accusam et justo
-              %li User3 / At veto eos et accusam et justo
-              %li User4 / At veto eos et accusam et justo
-              %li User5 / At veto eos et accusam et justo
-              %li User6 / At veto eos et accusam et justo
-              %li User7 / At veto eos et accusam et justo
-              %li User8 / At veto eos et accusam et justo
+              - current_user.current_messages.each do |message|
+                %li= message.description
 
         %li.has-flyout
           %div
             = link_to image_tag('alarm.png'), '#'
-            %sub 82
+            %sub= current_user.activities.count
           %div.flyout.mymedium.right
             %ul
-              %li User1 added your photo "tiles" as a favorite just now
-              %li User2 commented on your photo "title" 5 min ago
-              %li User3 commented on your photo "title" 5 min ago
-              %li User4 added your photo "tiles" as a favorite just now
-              %li User5 commented on your photo "title" 5 min ago
-              %li User6 added your photo "tiles" as a favorite just now
-              %li User7 added your photo "tiles" as a favorite just now
-              %li User8 added your photo "tiles" as a favorite just now
+              - if signed_in?
+                - current_user.activities.each do |activity|
+                  %li
+                    = link_to activity.owner.full_name, detail_path(:id => activity.owner)
+                    = activity.action
+                    = link_to "#{activity.target_type} ##{activity.target_id}", activity.target
 
       - else
-        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %li= 10.times{"&nbsp;"}
         %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
