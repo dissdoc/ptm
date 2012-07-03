@@ -56,7 +56,7 @@
     = render :partial => 'notes/shared/note', :collection => @notes
 
   - if signed_in?
-    = note_form(@note, :id => @photo)
+    = note_form(@note, :photo => @photo)
 
 %div.span-8.last
   %p

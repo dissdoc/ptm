@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = current_user.contained_groups.all
+    @invites = current_user.inviting_groups
     @title_page = "Groups"
     add_breadcrumb @title_page, ''
   end

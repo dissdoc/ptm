@@ -4,3 +4,7 @@
   = render :partial => 'groups/shared/group', :collection => @groups
 - else
   %p No groups yet...
+
+- if @invites.present?
+  %h4 Invites
+  = render :partial => 'groups/shared/invite', :collection => @invites

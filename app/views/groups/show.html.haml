@@ -7,6 +7,8 @@
     = link_to "Invite users", group_users_path(@group)
     |
     = link_to "Add photo to group", group_photos_path(@group)
+  - if current_user && current_user.can_join?(@group)
+    = link_to "Join", group_join_path(group), :method => :post
 
   %h4 Photos
 
@@ -55,10 +57,10 @@
       = link_to '-', remove_group_member_groups_path(:group_id => @group, :id => candidate), :method => :post
     %br
 
-    %h3 My friends
-    %ul
-      - current_user.friendships.each do |friendship|
-        %li
-          = friendship.friend.full_name
-          |
-          = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => group_url(@group)), :method => :post
+  %h3 My friends
+  %ul
+    - current_user.friendships.each do |friendship|
+      %li
+        = friendship.friend.full_name
+        |
+        = link_to "share", messages_recommended_path(:user_id => friendship.friend, :link => group_url(@group)), :method => :post
