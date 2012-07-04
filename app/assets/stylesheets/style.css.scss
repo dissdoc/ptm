@@ -154,7 +154,9 @@ ul#data {
 ul#thumbs {
   li {
     float: left;
-    padding: 2px;
+    padding: 1px;
+    width: 102px;
+    height: 65px;
 
     div {
       border: 1px solid $link-hover-color;
