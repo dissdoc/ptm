@@ -31,7 +31,7 @@ set :scm, :git
 set :user, "www-data"
 set :use_sudo, false
 set :deploy_to, "/var/www/#{application}"
-server "server", :app, :web, :db, :primary => true
+server "localhost", :app, :web, :db, :primary => true
 
 set :keep_releases, 5
 set :deploy_via, :remote_cache
