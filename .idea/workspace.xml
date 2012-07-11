@@ -50,7 +50,7 @@
       <file leaf-file-name="_user.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/auths/shared/_user.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="21" selection-start="26" selection-end="26" vertical-scroll-proportion="0.015963512">
+            <state line="7" column="73" selection-start="258" selection-end="258" vertical-scroll-proportion="0.11174458">
               <folding />
             </state>
           </provider>
@@ -1610,7 +1610,11 @@
       <created>1341311672841</created>
       <updated>1341311672841</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="bug fix">
+      <created>1342035705563</created>
+      <updated>1342035705563</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1637,6 +1641,7 @@
     <frame x="64" y="-1" width="1217" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974002" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297561" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297561" sideWeight="0.4977806" order="6" side_tool="false" content_ui="tabs" />
@@ -1651,7 +1656,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32585365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1694,7 +1698,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="group admin of fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1728,10 +1732,10 @@
     <MESSAGE value="tag fix" />
     <MESSAGE value="refactoring activities" />
     <MESSAGE value="remove activity from uploads" />
-    <MESSAGE value="bug fix" />
     <MESSAGE value="add bug fix" />
     <MESSAGE value="group fix" />
     <MESSAGE value="group admin of fix" />
+    <MESSAGE value="bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1818,7 +1822,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/auths/shared/_user.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="26" selection-end="26" vertical-scroll-proportion="0.015963512">
+        <state line="7" column="73" selection-start="258" selection-end="258" vertical-scroll-proportion="0.11174458">
           <folding />
         </state>
       </provider>
