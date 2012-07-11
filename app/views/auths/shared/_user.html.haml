@@ -1,0 +1,7 @@
+%div
+  - if current_user.avatar.exists?
+    = image_tag current_user.avatar.url(:small)
+  - else
+    = image_tag "nologo.jpg", :width => '40', :height => '40'
+
+  = link_to current_user.full_name, profile_path, :class => 'darklink'

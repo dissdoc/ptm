@@ -71,6 +71,26 @@ sub {
   position: relative;
 }
 
+a.darklink {
+  color: $link-color;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+div.name {
+  font-size: 0.90em;
+
+  a {
+    color: $link-color;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+}
+
 /* Ширина слайдера */
 #slider {
   width: 100%;
