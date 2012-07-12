@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/photos/shared/_story.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ptm.iml" afterPath="$PROJECT_DIR$/.idea/ptm.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/auths/shared/_user.html.haml" afterPath="$PROJECT_DIR$/app/views/auths/shared/_user.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/style.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/style.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" afterPath="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/geos/shared/_geo.html.haml" afterPath="$PROJECT_DIR$/app/views/geos/shared/_geo.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/photos/shared/_generate_at.html.haml" afterPath="$PROJECT_DIR$/app/views/photos/shared/_generate_at.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/photos/show.html.haml" afterPath="$PROJECT_DIR$/app/views/photos/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/tags/shared/_list.html.haml" afterPath="$PROJECT_DIR$/app/views/tags/shared/_list.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/en.yml" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
     </list>
     <ignored path="ptm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,28 +37,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="photo.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="50" selection-start="874" selection-end="877" vertical-scroll-proportion="0.0">
+            <state line="68" column="76" selection-start="2397" selection-end="2397" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css.scss">
+      <file leaf-file-name="_geo.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/geos/shared/_geo.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="158" column="14" selection-start="2396" selection-end="2396" vertical-scroll-proportion="0.0">
+            <state line="3" column="7" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_user.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/auths/shared/_user.html.haml">
+      <file leaf-file-name="_tag.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/tags/shared/_tag.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="73" selection-start="258" selection-end="258" vertical-scroll-proportion="0.11174458">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_list.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/tags/shared/_list.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04003813">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="en.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="23" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,12 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/models/activity.rb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_header.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/photos_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/groups_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/groups/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/notes/shared/_dash_note.html.haml" />
         <option value="$PROJECT_DIR$/app/views/notes/shared/_form.html.haml" />
@@ -82,17 +102,23 @@
         <option value="$PROJECT_DIR$/app/views/groups/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/groups/shared/_group.html.haml" />
         <option value="$PROJECT_DIR$/app/views/photos/shared/_photos_detail.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/auths/shared/_user.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/albums/shared/_album.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css.scss" />
         <option value="$PROJECT_DIR$/app/views/photos/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/auths/shared/_user.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/photos/shared/_story.html.haml" />
+        <option value="$PROJECT_DIR$/config/locales/en.yml" />
+        <option value="$PROJECT_DIR$/app/views/photos/shared/_generate_at.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/geos/shared/_geo.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/tags/shared/_list.html.haml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="-1" />
-    <option name="width" value="1217" />
-    <option name="height" value="1026" />
+    <option name="x" value="-1" />
+    <option name="y" value="-3" />
+    <option name="width" value="1602" />
+    <option name="height" value="1204" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -136,16 +162,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -175,6 +191,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ptm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locales" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -926,6 +960,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="RailsProjectView">
         <subPane>
           <PATH>
@@ -941,12 +985,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1064,6 +1108,15 @@
         <option name="RakeTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method>
+        <option name="RakeTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -1095,15 +1148,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method>
-        <option name="RakeTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method>
         <option name="RakeTask" enabled="false" />
       </method>
@@ -1638,15 +1682,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-1" width="1217" height="1026" extended-state="6" />
+    <frame x="-1" y="-3" width="1602" height="1204" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974002" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297561" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297561" sideWeight="0.4977806" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24832214" sideWeight="0.6712195" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24793912" sideWeight="0.6712195" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287805" sideWeight="0.4977806" order="7" side_tool="true" content_ui="tabs" />
@@ -1656,6 +1699,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32585365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1741,59 +1785,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/photos_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="0" selection-start="5940" selection-end="5940" vertical-scroll-proportion="2.5951903" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/dashboards_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="36" selection-start="739" selection-end="770" vertical-scroll-proportion="0.40681362" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/dashboards/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="173" selection-end="173" vertical-scroll-proportion="0.11222445" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/notes_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="32" selection-start="105" selection-end="105" vertical-scroll-proportion="0.056112226" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="57" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.6492986" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/group.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/groups/shared/_group.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="51" selection-start="210" selection-end="210" vertical-scroll-proportion="0.098196395" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/groups/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="70" selection-start="246" selection-end="246" vertical-scroll-proportion="0.1262525" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/groups_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="103" column="42" selection-start="2660" selection-end="2660" vertical-scroll-proportion="0.27054107" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/albums/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="50" selection-start="874" selection-end="877" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
@@ -1806,23 +1800,93 @@
         <state line="4" column="8" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/photos/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="735" selection-end="735" vertical-scroll-proportion="0.016203703">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="14" selection-start="2396" selection-end="2396" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/auths/shared/_user.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="73" selection-start="258" selection-end="258" vertical-scroll-proportion="0.11174458">
+        <state line="7" column="74" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/albums/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="15" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/albums/shared/_album.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="90" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/style.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="16" selection-start="962" selection-end="962" vertical-scroll-proportion="0.77407056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/photo.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="50" selection-start="874" selection-end="877" vertical-scroll-proportion="0.11916111">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/shared/_story.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="56" selection-end="56" vertical-scroll-proportion="0.04003813">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="23" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/shared/_generate_at.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="54" selection-end="54" vertical-scroll-proportion="0.04003813">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/photos/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="76" selection-start="2397" selection-end="2397" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/geos/shared/_geo.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/shared/_tag.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/shared/_list.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="0.04003813">
           <folding />
         </state>
       </provider>

@@ -7,6 +7,8 @@ en:
   date:
     formats:
       full: "%d %b, %Y"
+      lite: "%d %b, %Y"
   time:
     formats:
       full: "%d %B, %Y at %I:%M%p"
+      lite: "%d %b, %Y"

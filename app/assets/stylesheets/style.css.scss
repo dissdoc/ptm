@@ -81,14 +81,18 @@ a.darklink {
 
 div.name {
   font-size: 0.90em;
+}
 
-  a {
-    color: $link-color;
-
-    &:hover {
-      color: $link-hover-color;
-    }
+ul#collection {
+  li {
+    float: left;
+    padding: 2px;
   }
+}
+
+.album_thumb {
+  width: 230px;
+  height: 150px;
 }
 
 /* Ширина слайдера */

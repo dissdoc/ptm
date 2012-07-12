@@ -54,11 +54,6 @@
     %label Public:
     = @photo.share_photo.share
 
-  - unless @photo.comment.blank?
-    %p
-      %label Description:
-      %div= @photo.comment
-
   %h4 Comments
   - if @notes.present?
     = render :partial => 'notes/shared/note', :collection => @notes
@@ -70,6 +65,8 @@
   %p
     %label Generate by:
     = link_to @photo.user.full_name, detail_path(:id => @photo.user)
+
+  = render :partial => 'photos/shared/story', :locals => { :photo => @photo }
 
   = render :partial => 'photos/shared/generate_at', :locals => { :photo => @photo }
 
