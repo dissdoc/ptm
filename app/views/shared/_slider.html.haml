@@ -1,0 +1,14 @@
+%div#slider-form.twelve.columns
+  = hidden_field_tag :minD, '5'
+  = hidden_field_tag :maxD, '176'
+  = hidden_field_tag :zoom, '1'
+
+  %ul#data
+    - for value in 17.times
+      - if value == 16
+        %li 1997
+      - else
+        %li #{1826 + value * 10}
+
+
+  %div#slider

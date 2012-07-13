@@ -13,8 +13,7 @@
     %div.container
       = render "shared/header"
 
-      %div.span-24
-        = yield :breadcrumbs
-        = yield
+      = yield :breadcrumbs
+      = yield
 
       = render "shared/footer"

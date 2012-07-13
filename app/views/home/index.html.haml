@@ -26,36 +26,7 @@
       = hidden_field_tag :sw_lng
 
   %div.row
-    %div.twelve.columns
-      = hidden_field_tag :minD, '5'
-      = hidden_field_tag :maxD, '176'
-      = hidden_field_tag :zoom, '1'
-
-      %ul#data
-        %li 1826
-        %li 1831
-        %li 1838
-        %li 1841
-        %li 1844
-        %li 1847
-        %li 1850
-        %li 1890
-        %li 1893
-        %li 1898
-        %li 1901
-        %li 1904
-        %li 1906
-        %li 1910
-        %li 1913
-        %li 1917
-        %li 1930
-        %li 1941
-        %li 1950
-        %li 1970
-        %li 1991
-        %li 1997
-
-      %div#slider
+    = render 'shared/slider'
 
 %div.row
   %div.three.columns
