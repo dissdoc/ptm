@@ -1,5 +1,5 @@
 %script{ :type => 'text/javascript', :src => "/assets/markerclusterer_compiled.js" }
-%script{ :type => 'text/javascript', :src => "/assets/jquery.ui-slider.js" }
+
 
 = form_tag root_path, :remote => true, :method => :get do
   %div.row
@@ -25,7 +25,7 @@
       = hidden_field_tag :sw_lat
       = hidden_field_tag :sw_lng
 
-  %div.row
+  %div#date-slider.row
     = render 'shared/slider'
 
 %div.row

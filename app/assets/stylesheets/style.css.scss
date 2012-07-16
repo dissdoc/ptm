@@ -127,7 +127,7 @@ ul#collection {
 /* позиционируем ползунки */
 .ui-slider-horizontal .ui-slider-handle {
   top: -5px;
-  margin-left: -3px;
+  margin-left: -5px;
 }
 .ui-slider-horizontal .ui-slider-range {
   top: 0;
@@ -157,13 +157,24 @@ ul#collection {
 }   */
 
 ul#data {
+  padding: {
+    left: 5px;
+    top: 5px;
+    bottom: 5px;
+  }
+
   li {
+    font-size: 1.25em;
     float: left;
     padding: {
-      left: 9px;
-      right: 10px;
+      left: 14px;
+      right: 13px;
     }
   }
+}
+
+#date-slider {
+  padding-top: 10px;
 }
 
 .mysmall {
