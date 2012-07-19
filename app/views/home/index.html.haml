@@ -1,56 +1,40 @@
-%script{ :type => 'text/javascript', :src => "/assets/markerclusterer_compiled.js" }
-
-
 = form_tag root_path, :remote => true, :method => :get do
-  %div.row
-    %div.five.columns
-      %br
-      %br
-      %br
-      %br
-      %br
-      = text_field_tag :search_tags, params[:search_tags], :class => 'input-text'
-
-    %div.one.columns
-      %br
-      %br
-      %br
-      %br
-      %br
-      = submit_tag "Go!", :name => nil, :class => 'small white nice button'
-    %div.six.columns
+  %div#search 
+    %div#field.three-column
+      = render 'home/shared/search_tags'            
+    
+    %div.empty-column &nbsp;
+    
+    %div#go
+      %div= submit_tag "GO!", :name => nil, :class => 'action-button'
+    
+    %div.empty-column &nbsp;  
+    
+    %div.three-column
       %div#fullmap
-      = hidden_field_tag :ne_lat
-      = hidden_field_tag :ne_lng
-      = hidden_field_tag :sw_lat
-      = hidden_field_tag :sw_lng
+        = hidden_field_tag :ne_lat
+        = hidden_field_tag :ne_lng
+        = hidden_field_tag :sw_lat
+        = hidden_field_tag :sw_lng
 
-  %div#date-slider.row
+    %div.clear
+
+  %div#date-slider
     = render 'shared/slider'
 
-%div.row
-  %div.three.columns
-  %div.four.columns
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    = image_tag "s_repeat_back.png"
-    = image_tag "repeat_back.png"
-    = image_tag "p_repeat_back.png"
-    = image_tag "p_play.png"
-    = image_tag "play.png"
-    = image_tag "s_play.png"
-  %div.three.columns
-  %div.two.columns
-    = image_tag "facebook.png"
-    = image_tag "twitter.png"
-    = image_tag "vk.png"
+%div#stats
+  %div
+    Results: #{ @photos.count }
+  %div
+    = render 'shared/controls'
+  %div
+    = render 'home/shared/socials'
+  %div.clear
 
-%div.row
-  %div.twelve.columns
-    %br
+%div#photos
+  = render :partial => 'photos/shared/photos_detail', :locals => { :photos => @photos }
 
-%div.row
-  %div.twelve.columns
-    %div#photos= render :partial => 'photos/shared/photos_detail', :locals => { :photos => @photos }
+  %div.clear
 
 
 = render :partial => 'home/shared/gmap', :locals => { :photos => @photos_for_map }
