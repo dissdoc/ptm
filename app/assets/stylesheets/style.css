@@ -138,10 +138,12 @@ ul#data li { font-size: 1.25.em; float: left; padding-right: 43px; }
 /* ================== Photo thumbs ====================================== */
 #photos { padding-top: 20px; }
 ul#thumbs { float: left; }
-ul#thumbs li { float: left; padding: 1px; width: 102px; height: 65px; }
-ul#thumbs li div { border: 1px solid #999; padding: 3px; display: none; position: absolute; background: white; z-index: 10; width: 150px; }
+ul#thumbs li { float: left; padding: 1px; width: 130px; height: 100px; }
+ul#thumbs li div { border: 1px solid #999; padding: 3px; display: none; position: absolute; background: white; z-index: 10; width: 190px; }
 ul#thumbs li div p { font-size: 9px; }      
 ul#thumbs li div a { font-size: 9px; } 
+ul#thumbs li img { height: 100px; }
+ul#thumbs li div img { height: 100%; }
 /* ====================================================================== */
 
 /* ======================== Footer ====================================== */
