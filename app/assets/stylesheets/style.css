@@ -35,8 +35,8 @@ div#menu ul.nav-bar li .flyout li:hover { background: #eee; }
 div#search { padding: 0px; }
 div#search div.empty-column { width: 3px; float: left; }
 div#search div.three-column { width: 420px; float: left; }
-#go { padding-top: 130px; float: left; padding-left: 160px; width: 275px; background: url("/assets/bglines.png"); height: 100px; }
-#field { padding-top: 126px; }
+#go { padding-top: 110px; float: left; padding-left: 160px; width: 275px; background: url("/assets/bglines.png"); height: 100px; }
+#field { padding-top: 106px; }
 #go .action-button { border: 1px solid #ccc; background: #fff; font-size: 20px; padding: 3px 10px; font-color: #666; }
 #go .action-button:hover { cursor: pointer; }
 #field .action-field { font-size: 12px; padding: 5px; width: 340px; border-width: 1px 0px 1px 1px; float: left; }
