@@ -43,10 +43,8 @@ div#search div.three-column { width: 420px; float: left; }
 #field .action-field:focus { font-size: 12px; padding: 5px; width: 340px; border-width: 1px 0px 1px 1px; float: left; border-color: #bbb; }
 /* ================================================ */
 
-#fullmap {
-	width: 420px;
-	height: 218px;
-}
+#fullmap, #map_canvas { width: 420px; height: 218px; }
+#map_canvas { overflow: hidden; position: relative; }
 
 /* ==================== Dropdown menu ==================================== */
 #dropdown { margin: 0; padding: 0; padding-top: 6px; padding-left: 340px; }
@@ -59,17 +57,10 @@ div#search div.three-column { width: 420px; float: left; }
 /* ======================================================================= */
 
 /* ========================== Slider ===================================== */
-#slider-form {
-	width: 100%;
-}
-
-#slider {
-  width: 100%;
-}
+#slider-form { width: 100%; }
+#slider { width: 100%; }
 /* Контейнер слайдера */
-.ui-slider {
-  position: relative;
-}
+.ui-slider { position: relative; }
 /* Ползунок */
 .ui-slider .ui-slider-handle {
   position: absolute;
@@ -112,11 +103,7 @@ div#search div.three-column { width: 420px; float: left; }
   background: #999;
 }
 /* оформление активного участка (между двумя ползунками) */
-.ui-widget-header {
-  border: 1px solid #D4D4D4;
-  background: #666;
-}
-
+.ui-widget-header { border: 1px solid #D4D4D4; background: #666; }
 ul#data { padding-left: 52px; padding-top: 15px; padding-bottom: 10px; }
 ul#data li { font-size: 1.25.em; float: left; padding-right: 43px; }
 /* ======================================================================= */

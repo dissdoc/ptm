@@ -1,14 +1,6 @@
 <script type="text/javascript">
-    // function getBounds() {
-    //     var currentBounds = map.getBounds();
-
-    //     $('#ne_lng').val(currentBounds.getNorthEast().lng());
-    //     $('#ne_lat').val(currentBounds.getNorthEast().lat());
-    //     $('#sw_lng').val(currentBounds.getSouthWest().lng());
-    //     $('#sw_lat').val(currentBounds.getSouthWest().lat());
-    // } 
-
     var markers = null;
+    var map = null;
 
     function initialize() {
         var myLatlng = new google.maps.LatLng(-34.397, 150.644);
@@ -19,7 +11,8 @@
             streetViewControl: false,
             mapTypeControl: false
         }
-        var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+        map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+        google.maps.event.addListener(map, 'idle', getBounds);
 
         markers = initMarkers(map);        
     }   
@@ -92,4 +85,13 @@
             outIconMarker(marker);
         }
     );
+
+    function getBounds() {
+        var currentBounds = map.getBounds();
+
+        $('#ne_lng').val(currentBounds.getNorthEast().lng());
+        $('#ne_lat').val(currentBounds.getNorthEast().lat());
+        $('#sw_lng').val(currentBounds.getSouthWest().lng());
+        $('#sw_lat').val(currentBounds.getSouthWest().lat());
+    } 
 </script>
