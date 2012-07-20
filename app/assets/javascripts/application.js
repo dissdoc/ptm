@@ -17,9 +17,6 @@
 
 
 
-
-
-
 this.marker = null;
 this.map = null;
 this.geocoder = null;
