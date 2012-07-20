@@ -29,4 +29,15 @@
   Not yet photos!
 
 :javascript
-  // Искать js скрипт в _gmap.html.erb
+  $('ul#thumbs li').hover(
+      function() { 
+          over($(this)); 
+          var marker = findMarker($(this).attr('id'));
+          overIconMarker(marker);
+      },
+      function() { 
+          out($(this)); 
+          var marker = findMarker($(this).attr('id'));
+          outIconMarker(marker);
+      }
+  );

@@ -2,23 +2,18 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, :only => [:profile]
 
   def index
-    # if params[:search_tags].present?
-    #   list_tag = params[:search_tags].split(/,\s*/)
-    #   tags = Tag.all(:conditions => ["name IN (?)", list_tag]).collect(&:id).uniq
-    #   ids = Tagging.all(:conditions => ["tag_id IN (?)", tags]).collect(&:photo)
-    #   @photos = Photo.all(:conditions => ["id IN (?)", ids]).uniq
-    # end
+    if params[:search_tags].present?
+      list_tag = params[:search_tags].split(/,\s*/)
+      tags = Tag.all(:conditions => ["name IN (?)", list_tag]).collect(&:id).uniq
+      ids = Tagging.all(:conditions => ["tag_id IN (?)", tags]).collect(&:photo)
+      @photos = Photo.all(:conditions => ["id IN (?)", ids]).uniq
+    end
 
     if params[:ne_lat].present?
       geos = Geo.where('latitude < ? AND latitude > ? AND longitude < ? AND longitude > ?', 
                 params[:ne_lat], params[:sw_lat],
                 params[:ne_lng], params[:sw_lng])
       photos_geo = geos.collect(&:photo)
-      # distance = Geocoder::Calculations.distance_between([params[:ne_lat].to_f, params[:ne_lng].to_f],
-                                                         # [params[:sw_lat].to_f, params[:sw_lng].to_f])
-      # center = Geocoder::Calculations.geographic_center([[params[:ne_lat].to_f, params[:ne_lng].to_f],
-      #                                                   [params[:sw_lat].to_f, params[:sw_lng].to_f]])
-      # photos_geo = Geo.near(center, distance/2).collect(&:photo)
       if @photos.present? && @photos.count > 0
         @photos = @photos & photos_geo
       else

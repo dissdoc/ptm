@@ -73,19 +73,7 @@
         return markers[key];
     }
 
-    $('ul#thumbs li').hover(
-        function() { 
-            over($(this)); 
-            var marker = findMarker($(this).attr('id'));
-            overIconMarker(marker);
-        },
-        function() { 
-            out($(this)); 
-            var marker = findMarker($(this).attr('id'));
-            outIconMarker(marker);
-        }
-    );
-
+    
     function getBounds() {
         var currentBounds = map.getBounds();
 
