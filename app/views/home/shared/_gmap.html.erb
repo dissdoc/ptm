@@ -1,42 +1,85 @@
 <script type="text/javascript">
-    var markers = [];
+    // var markers = [];
 
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-        zoom: 3,
-        center: latlng,
-        mapTypeId:google.maps.MapTypeId.ROADMAP,
-        streetViewControl: false,
-        mapTypeControl: false
+    // var latlng = new google.maps.LatLng(-34.397, 150.644);
+    // var myOptions = {
+    //     zoom: 3,
+    //     center: latlng,
+    //     mapTypeId:google.maps.MapTypeId.ROADMAP,
+    //     streetViewControl: false,
+    //     mapTypeControl: false
+    // }
+
+    // var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+    // google.maps.event.addListener(map, 'idle', getBounds);
+
+    // <% photos.each do |photo| %>
+    //     <% if photo.geo.present? %>
+    //         <% if photo.geo.latitude.present? && photo.geo.longitude.present? %>
+    //         var latlng = new google.maps.LatLng("<%= photo.geo.latitude %>", "<%= photo.geo.longitude %>");
+    //         var marker = new google.maps.Marker({
+    //             position: latlng
+    //         });
+    //         markers.push(marker);
+    //         <% end %>
+    //     <% end %>
+    // <% end %>
+
+    // markerClusterer = new MarkerClusterer(map, markers, {
+    //     maxZoom: 18,
+    //     gridSize: 50,
+    //     styles: null
+    // });
+
+    // function getBounds() {
+    //     var currentBounds = map.getBounds();
+
+    //     $('#ne_lng').val(currentBounds.getNorthEast().lng());
+    //     $('#ne_lat').val(currentBounds.getNorthEast().lat());
+    //     $('#sw_lng').val(currentBounds.getSouthWest().lng());
+    //     $('#sw_lat').val(currentBounds.getSouthWest().lat());
+    // }    
+
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+        var myOptions = {
+            zoom: 3,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: false,
+            mapTypeControl: false
+        }
+        var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+
+        initMarkers(map);
     }
 
-    var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
-    google.maps.event.addListener(map, 'idle', getBounds);
+    function loadScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
+        document.body.appendChild(script);
+    }
 
-    <% photos.each do |photo| %>
-        <% if photo.geo.present? %>
-            <% if photo.geo.latitude.present? && photo.geo.longitude.present? %>
-            var latlng = new google.maps.LatLng("<%= photo.geo.latitude %>", "<%= photo.geo.longitude %>");
-            var marker = new google.maps.Marker({
-                position: latlng
-            });
-            markers.push(marker);
+    window.onload = loadScript;
+
+    function initMarkers(map) {
+        <% photos.each do |photo| %>
+            <% if photo.geo.present? && photo.geo.latitude.present? && photo.geo.longitude.present? %>
+                var latlng = new google.maps.LatLng("<%= photo.geo.latitude %>", "<%= photo.geo.longitude %>");
+                var marker = new google.maps.Marker({
+                    position: latlng, 
+                    map: map,
+                    icon: '/assets/GoogleMap_Gray.png'
+                });
+                addListenerMarker(marker);
             <% end %>
         <% end %>
-    <% end %>
+    }
 
-    markerClusterer = new MarkerClusterer(map, markers, {
-        maxZoom: 18,
-        gridSize: 50,
-        styles: null
-    });
-
-    function getBounds() {
-        var currentBounds = map.getBounds();
-
-        $('#ne_lng').val(currentBounds.getNorthEast().lng());
-        $('#ne_lat').val(currentBounds.getNorthEast().lat());
-        $('#sw_lng').val(currentBounds.getSouthWest().lng());
-        $('#sw_lat').val(currentBounds.getSouthWest().lat());
+    function addListenerMarker(marker) {
+        google.maps.event.addListener(marker, 'mouseover', function() {
+            alert("hi");
+        });
     }
 </script>
