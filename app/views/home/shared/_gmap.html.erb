@@ -62,7 +62,14 @@
         var img = item.find('img').position();
         var top = img.top - 20;
         var left = img.left - 20;
-        item.find('div').css({'display': 'block', 'top': top, 'left': left});    
+
+        var div = item.find('div');
+        div.css({'display': 'block', 'top': top, 'left': left});
+
+        var image = div.find('img');
+        var width = image.width();
+        var shift_left = (190 - width)/2;
+        image.css({'position': 'relative', 'left': shift_left});
     }
 
     function out(item) {

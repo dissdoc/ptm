@@ -5,7 +5,7 @@
         = image_tag(photo.image.url(:medium))
 
         %div
-          = link_to image_tag(photo.image.url(:large), :width => '190px', :height => '160px'), photo
+          = link_to image_tag(photo.image.url(:medium)), photo
           %br
 
           - if photo.comment.present?
@@ -29,6 +29,14 @@
   Not yet photos!
 
 :javascript
+  $('ul#thumbs li').each(function(index) {
+      var img = $(this).find('img');
+      var w = img.width();
+      var left_shift = (140 - w)/2;
+      img.css({ 'left': left_shift, 'position': 'relative' });
+  });
+
+
   $('ul#thumbs li').hover(
       function() { 
           over($(this)); 
