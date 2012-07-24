@@ -59,12 +59,12 @@
     }
 
     function over(item) {
-        var img = item.find('img').position();
-        var top = img.top - 20;
-        var left = img.left - 20;
+        var position = item.position();
+        var top = position.top - 26;
+        var left = position.left - 26;
 
         var div = item.find('div');
-        div.css({'display': 'block', 'top': top, 'left': left});
+        div.css({'display': 'block', 'top': top, 'left': left });
 
         var image = div.find('img');
         var width = image.width();
