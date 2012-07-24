@@ -104,8 +104,8 @@ div#search div.three-column { width: 420px; float: left; }
 }
 /* оформление активного участка (между двумя ползунками) */
 .ui-widget-header { border: 1px solid #D4D4D4; background: #666; }
-ul#data { padding-left: 65px; padding-top: 15px; padding-bottom: 10px; }
-ul#data li { font-size: 1.05em; float: left; padding-right: 43px; }
+ul#data { padding-left: 45px; padding-top: 15px; padding-bottom: 10px; }
+ul#data li { font-size: 1.05em; float: left; padding-right: 44px; }
 /* ======================================================================= */
 
 /* ================= Controls ========================================== */

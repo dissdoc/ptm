@@ -11,12 +11,8 @@
     %div.empty-column &nbsp;  
     
     %div.three-column
-      %div#fullmap
-      = hidden_field_tag :ne_lat
-      = hidden_field_tag :ne_lng
-      = hidden_field_tag :sw_lat
-      = hidden_field_tag :sw_lng
-
+      = render :partial => 'home/shared/gmap', :locals => { :photos => @photos_for_map }
+      
     %div.clear
 
   %div#date-slider
@@ -34,6 +30,3 @@
 %div#photos
   = render :partial => 'photos/shared/photos_detail', :locals => { :photos => @photos }
 %div.clear
-
-
-= render :partial => 'home/shared/gmap', :locals => { :photos => @photos_for_map }
