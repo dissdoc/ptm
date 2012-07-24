@@ -1,26 +1,22 @@
-<div id="uploads">
-  <input type="file" id="fileinput" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">  
-  
-  <div id="horizontmenu">
-    <a href="#" id="fileselect">Select some files</a> 
-    <%= link_to "Uploads", photos_uploaded_path, :method => :post %>
-  </div>
-  
-  <div id="filelist">      
-    <p>No files selected!</p>  
-  </div>
+%div#uploads
+  :erb
+    <input type="file" id="fileinput" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)"> 
 
-  <div id="info">
-    <div>
-      <label>Tags:</label>
-      <%= text_field_tag :tag_names %>
-    </div>
-  </div>
+  %div#horizontmenu
+    = link_to 'Select some files', '#', :id => "fileselect"  
+    = link_to 'Uploads', photos_uploaded_path, :method => :post
 
-  <div class="clear"></div>
-</div>
+  %div#filelist
+    %p No files selected
 
-<script type="text/javascript">
+  %div#info
+    %div
+      %label Tags:
+      = text_field_tag :tag_names
+
+  %div.clear
+
+:javascript
   window.URL = window.URL || window.webkitURL; 
 
   var selected = false; 
@@ -30,9 +26,9 @@
   var array = document.getElementById("filelist");
 
   select.addEventListener("click", function (e) {  
-      if (input) input.click();        
-      e.preventDefault(); // prevent navigation to "#"  
-    }, false); 
+    if (input) input.click();        
+    e.preventDefault();   
+  }, false); 
 
   function handleFiles(files) {  
     if(!selected) {
@@ -79,8 +75,7 @@
     name = name.substring(0, 19);
     name = name + "...";
     return name;
-  }
-</script>  
+  } 
 
 = form_for @photo, :html => { :multipart => true }, :url => photos_uploaded_path, :method => :post  do |f|
   = f.file_field :image
