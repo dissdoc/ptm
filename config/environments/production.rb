@@ -61,7 +61,7 @@ Ptm::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.assets.precompile = [ /\A[^\/\\]+\.(ccs|js)$/i ]
+  config.assets.precompile += ["style.css"]
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
