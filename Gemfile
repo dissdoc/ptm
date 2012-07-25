@@ -6,7 +6,6 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'jquery-rails'
-gem 'heroku'
 gem 'devise'
 gem 'haml-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
@@ -18,6 +17,7 @@ gem 'therubyracer'
 gem 'thin'
 gem 'zurb-foundation'
 gem 'unicorn'
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,10 +33,7 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem "capistrano"
-  gem "rvm-capistrano"
 end
 
-group :production do
-  gem 'mysql2'
+group :production do  
 end

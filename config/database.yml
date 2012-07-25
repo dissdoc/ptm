@@ -20,7 +20,9 @@ test:
 
 production:
   adapter: mysql2
-  reconnect: false
-  database: db/production.sqlite3
+  reconnect: false  
+  database: ptm_production
   pool: 5
-  timeout: 5000
+  username: root
+  password: production_123
+  host: localhost
