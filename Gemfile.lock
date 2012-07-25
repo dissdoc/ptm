@@ -183,6 +183,7 @@ DEPENDENCIES
   devise
   geocoder
   haml-rails
+  i18n
   jquery-rails
   mysql
   omniauth-facebook

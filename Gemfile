@@ -18,6 +18,7 @@ gem 'thin'
 gem 'zurb-foundation'
 gem 'unicorn'
 gem 'mysql'
+gem 'i18n'
 
 # Gems used only for assets and not required
 # in production environments by default.

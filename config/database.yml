@@ -4,10 +4,14 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql
+  reconnect: false
+  encoding: utf8 
+  database: ptm_product
   pool: 5
-  timeout: 5000
+  username: root
+  password: "production123"
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,10 +23,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
+  adapter: mysql
   reconnect: false  
   database: ptm_product
   pool: 5
   username: root
-  password: production_123
-  host: localhost
+  password: "production123"
+  socket: /var/run/mysqld/mysqld.sock
