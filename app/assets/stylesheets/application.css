@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require foundation
+ *= require style.css
  *= require_tree .
 */
