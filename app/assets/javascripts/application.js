@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= ddmenu.js
+//= require ddmenu
 //= require_tree .
 
 
