@@ -17,7 +17,7 @@ gem 'therubyracer'
 gem 'thin'
 gem 'zurb-foundation'
 gem 'unicorn'
-gem 'mysql2'
+gem 'mysql'
 
 # Gems used only for assets and not required
 # in production environments by default.
