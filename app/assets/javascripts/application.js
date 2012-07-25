@@ -15,8 +15,6 @@
 //= require foundation
 //= require_tree .
 
-
-
 this.marker = null;
 this.map = null;
 this.geocoder = null;
