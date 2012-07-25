@@ -1,36 +1,88 @@
+<div id="fullmap"></div>
+
 <script type="text/javascript">
-    var markers = [];
+    var markers = null;
+    var map = null;
 
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-        zoom: 3,
-        center: latlng,
-        mapTypeId:google.maps.MapTypeId.ROADMAP,
-        streetViewControl: false,
-        mapTypeControl: false
-    }
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+        var myOptions = {
+            zoom: 3,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: false,
+            mapTypeControl: false
+        }
+        map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
+        google.maps.event.addListener(map, 'idle', getBounds);
 
-    var map = new google.maps.Map(document.getElementById("fullmap"), myOptions);
-    google.maps.event.addListener(map, 'idle', getBounds);
+        markers = initMarkers(map);        
+    }   
 
-    <% photos.each do |photo| %>
-        <% if photo.geo.present? %>
-            <% if photo.geo.latitude.present? && photo.geo.longitude.present? %>
-            var latlng = new google.maps.LatLng("<%= photo.geo.latitude %>", "<%= photo.geo.longitude %>");
-            var marker = new google.maps.Marker({
-                position: latlng
-            });
-            markers.push(marker);
+    function initMarkers(map) {
+        var markers = new Array();
+        <% photos.each do |photo| %>
+            <% if photo.geo.present? && photo.geo.latitude.present? && photo.geo.longitude.present? %>
+                var latlng = new google.maps.LatLng("<%= photo.geo.latitude %>", "<%= photo.geo.longitude %>");
+                var marker = new google.maps.Marker({
+                    position: latlng, 
+                    map: map,
+                    icon: '/assets/GoogleMap_Gray.png'
+                });
+                addListenerMarker(marker, "<%= photo.id %>");
+                markers["<%= photo.id %>"] = marker;
             <% end %>
         <% end %>
-    <% end %>
+        return markers;
+    }
 
-    markerClusterer = new MarkerClusterer(map, markers, {
-        maxZoom: 18,
-        gridSize: 50,
-        styles: null
-    });
+    function addListenerMarker(marker, id) {
+        google.maps.event.addListener(marker, 'mouseover', function() {
+            overIconMarker(marker);
+            over($('li#' + id));
+        });
 
+        google.maps.event.addListener(marker, 'mouseout', function() {
+            outIconMarker(marker);
+            out($('li#' + id));
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = '/photos/' + id;
+        });
+    }
+
+    function overIconMarker(marker) {
+        marker.setIcon('/assets/GoogleMap_Pink.png');
+    }
+
+    function outIconMarker(marker) {
+        marker.setIcon('/assets/GoogleMap_Gray.png');    
+    }
+
+    function over(item) {
+        var position = item.position();
+        var top = position.top - 26;
+        var left = position.left - 26;
+
+        var div = item.find('div');
+        div.css({'display': 'block', 'top': top, 'left': left });
+
+        var image = div.find('img');
+        var width = image.width();
+        var shift_left = (190 - width)/2;
+        image.css({'position': 'relative', 'left': shift_left});
+    }
+
+    function out(item) {
+        item.find('div').css({'display': 'none'});    
+    }
+
+    function findMarker(key) {
+        return markers[key];
+    }
+
+    
     function getBounds() {
         var currentBounds = map.getBounds();
 
@@ -38,5 +90,5 @@
         $('#ne_lat').val(currentBounds.getNorthEast().lat());
         $('#sw_lng').val(currentBounds.getSouthWest().lng());
         $('#sw_lat').val(currentBounds.getSouthWest().lat());
-    }
+    } 
 </script>

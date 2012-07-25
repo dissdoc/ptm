@@ -1,71 +1,72 @@
-%div.row
-  %div.six.columns
-    %div#logo= link_to 'PHOTOTIMEMACHINE', root_path, :class => "header"
-
-  %div.six.columns
+%div#header
+  %div#logo
+    = link_to 'PHOTOTIMEMACHINE', root_path
+  
+  %div#menu
     %ul.nav-bar
       - if signed_in?
         %li.has-flyout
-          = link_to 'Explore', '#', :class => 'simple'
-          %div.flyout.mysmall
+          = link_to 'Explore', '#'
+          %div.flyout.small
             %ul
-              %li= link_to 'To be tagged', '#', :class => 'simple'
-              %li= link_to 'Popular', '#', :class => 'simple'
-              %li= link_to 'Our choice', '#', :class => 'simple'
-              %li= link_to 'Current uploads', '#', :class => 'simple'
+              %li= link_to 'To be tagged', '#'
+              %li= link_to 'Popular', '#'
+              %li= link_to 'Our choice', '#'
+              %li= link_to 'Current uploads', '#'
 
         %li.has-flyout
-          = link_to 'Groups', '#', :class => 'simple'
-          %div.flyout.mysmall
+          = link_to 'Groups', '#'
+          %div.flyout.small
             %ul
-              %li= link_to 'Your groups', groups_path, :class => 'simple'
-              %li= link_to 'Managed by you', groups_managed_path, :class => 'simple'
-              %li= link_to 'Search for a group', '#', :class => 'simple'
-              %li= link_to 'Create a new one', new_group_path, :class => 'simple'
+              %li= link_to 'Your groups', groups_path
+              %li= link_to 'Managed by you', groups_managed_path
+              %li= link_to 'Search for a group', '#'
+              %li= link_to 'Create a new one', new_group_path
 
         %li.has-flyout
-          = link_to 'Friends', '#', :class => 'simple'
-          %div.flyout.mysmall
+          = link_to 'Friends', '#'
+          %div.flyout.small
             %ul
-              %li= link_to 'Friend\'s photos', '#', :class => 'simple'
-              %li= link_to 'List of friends', '#', :class => 'simple'
-              %li= link_to 'Find your friends', '#', :class => 'simple'
-              %li= link_to 'Invite', '#', :class => 'simple'
+              %li= link_to 'Friend\'s photos', '#'
+              %li= link_to 'List of friends', '#'
+              %li= link_to 'Find your friends', '#'
+              %li= link_to 'Invite', '#'
 
-        %li= link_to 'Upload', photos_uploads_path, :class => 'simple'
+        %li= link_to 'Upload', photos_uploads_path
 
         %li.has-flyout
-          = link_to current_user.full_name, '#', :class => 'simple'
-          %div.flyout.mysmall
+          = link_to current_user.full_name, '#'
+          %div.flyout.small
             %ul
-              %li= link_to 'Profile', profile_path, :class => 'simple'
-              %li= link_to 'Photos', photos_path, :class => 'simple'
-              %li= link_to 'Albums', albums_path, :class => 'simple'
-              %li= link_to 'Collections', assortments_path, :class => 'simple'
-              %li= link_to 'Family trees', familytrees_path, :class => 'simple'
-              %li= link_to 'Favorites', favorites_path, :class => 'simple'
-              %li= link_to 'Manage by content', '#', :class => 'simple'
-              %li= link_to 'Recent activity', '#', :class => 'simple'
-              %li= link_to 'Tags', '#', :class => 'simple'
-              %li= link_to 'Mail', messages_path, :class => 'simple'
-              %li= link_to 'Statistics', '#', :class => 'simple'
-              %li= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'simple'
+              %li= link_to 'Profile', profile_path
+              %li= link_to 'Photos', photos_path
+              %li= link_to 'Albums', albums_path
+              %li= link_to 'Collections', assortments_path
+              %li= link_to 'Family trees', familytrees_path
+              %li= link_to 'Favorites', favorites_path
+              %li= link_to 'Manage by content', '#'
+              %li= link_to 'Recent activity', '#'
+              %li= link_to 'Tags', '#'
+              %li= link_to 'Mail', messages_path
+              %li= link_to 'Statistics', '#'
+              %li= link_to 'Log out', destroy_user_session_path, :method => :delete
 
         %li.has-flyout
           %div
             = link_to image_tag('email.png'), '#'
             %sub= current_user.current_messages.count
-          %div.flyout.mymedium.right
-            %ul
-              - current_user.current_messages.each do |message|
-                %li= message.description
+          - if current_user.current_messages.present?
+            %div.flyout.medium.right
+              %ul
+                - current_user.current_messages.each do |message|
+                  %li= message.description
 
         %li.has-flyout
           %div
             = link_to image_tag('alarm.png'), '#'
             %sub= current_user.activities.count
-          %div.flyout.mymedium.right
-            - if signed_in?
+          - if current_user.activities.present?
+            %div.flyout.medium.right
               %ul
                 - current_user.activities.each do |activity|
                   %li
@@ -75,10 +76,12 @@
                     = link_to "#{activity.target_type} ##{activity.target_id}", activity.target
 
       - else
-        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %li &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        %li= link_to 'Sign in', new_user_session_path, :class => 'simple'
-        %li= link_to 'Sign up', new_user_registration_path, :class => 'simple'
+        %li &nbsp;
+        %li &nbsp;
+        %li &nbsp;
+        %li &nbsp;
+        %li &nbsp;
+        %li= link_to 'Sign in', new_user_session_path
+        %li= link_to 'Sign up', new_user_registration_path
+  
+  %div.clear

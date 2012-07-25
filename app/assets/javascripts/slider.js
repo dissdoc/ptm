@@ -1,8 +1,8 @@
-<script type="text/javascript">
+$(document).ready(function() {
     $("#slider").slider({
         min: 0,
-        max: 180,
-        values: [5, 176],
+        max: 210,
+        values: [10, 200],
         range: true,
         stop: function(event, ui) {
             $("#minD").val(ui.values[0]);
@@ -37,4 +37,4 @@
         }
         $("#slider").slider("values",1,value2);
     });
-</script>
+});

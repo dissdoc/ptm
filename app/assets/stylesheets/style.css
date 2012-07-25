@@ -1,0 +1,150 @@
+* { padding: 0; margin: 0; }
+body { padding-top: 10px; font-size: 12px; }
+a { color: #666; }
+a:hover { color: #999; }
+div.clear { clear: both; }
+
+div#wrapper { width: 1280px; margin: 0px auto; }
+
+/* ========== Header menu =================== */
+div#header { }
+
+div#logo { float: left; padding-top: 18px;}
+div#logo a { font-size: 24px; }
+
+div#menu { padding-left: 320px; }
+div#menu ul.nav-bar {
+	border: none;
+	margin: 0px;	
+	float: right;
+}
+div#menu ul.nav-bar li {
+	border: none;
+	margin: 0px;
+	padding-left: 25px;
+}
+
+div#menu ul.nav-bar .small { width: 140px; font-size: 12px; }
+div#menu ul.nav-bar .medium { width: 300px; font-size: 12px; }
+div#menu ul.nav-bar .flyout { padding: 0px; }
+div#menu ul.nav-bar li .flyout li { padding: 3px 10px 3px 10px; }
+div#menu ul.nav-bar li .flyout li:hover { background: #eee; }
+/* ========================================== */
+
+/* ================== Search fields ============= */
+div#search { padding: 0px; }
+div#search div.empty-column { width: 3px; float: left; }
+div#search div.three-column { width: 420px; float: left; }
+#go { padding-top: 110px; float: left; padding-left: 160px; width: 275px; background: url("/assets/bglines.png"); height: 80px; }
+#field { padding-top: 106px; }
+#go .action-button { border: 1px solid #ccc; background: #fff; font-size: 20px; padding: 3px 10px; font-color: #666; }
+#go .action-button:hover { cursor: pointer; }
+#field .action-field { font-size: 12px; padding: 5px; width: 340px; border-width: 1px 0px 1px 1px; float: left; }
+#field .action-field:focus { font-size: 12px; padding: 5px; width: 340px; border-width: 1px 0px 1px 1px; float: left; border-color: #bbb; }
+/* ================================================ */
+
+#fullmap, #map_canvas { width: 420px; height: 218px; }
+#map_canvas { overflow: hidden; position: relative; }
+
+/* ==================== Dropdown menu ==================================== */
+#dropdown { margin: 0; padding: 0; padding-top: 6px; padding-left: 340px; }
+#dropdown li { padding-top: 3px; border: 1px solid #bbb; width: 33px; height: 22px; }
+#dropdown li a { font-size: 16px; }
+#dropdown li ul { margin: 0; padding: 0; position: relative; visibility: hidden; border: 1px solid #ccc; top: 7px; left: -78px; width: 110px;}
+#dropdown li ul li { width: 94px; height: 16px; border: 0px solid #ccc; padding: 8px; margin: 0; }
+#dropdown li ul li:hover { background: #eee; }
+#dropdown li ul li a { font-size: 12px; }
+/* ======================================================================= */
+
+/* ========================== Slider ===================================== */
+#slider-form { width: 100%; }
+#slider { width: 100%; }
+/* Контейнер слайдера */
+.ui-slider { position: relative; }
+/* Ползунок */
+.ui-slider .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  width: 4px;   /* Задаем нужную ширину */
+  height: 10px;  /* и высоту */
+  background: url(/assets/slider.png); /* картинка изображающая ползунок. Или можно залить цветом, задать бордюр и скругления */
+  cursor: pointer
+}
+.ui-slider .ui-slider-range {
+  position: absolute;
+  z-index: 1;
+  font-size: .7em;
+  display: block;
+  border: 0;
+  overflow: hidden;
+}
+/* горизонтальный слайдер (сама полоса по которой бегает ползунок) */
+.ui-slider-horizontal {
+  height: 1px; /* задаем высоту согласно дизайна */
+}
+/* позиционируем ползунки */
+.ui-slider-horizontal .ui-slider-handle {
+  top: -5px;
+  margin-left: -5px;
+}
+.ui-slider-horizontal .ui-slider-range {
+  top: 0;
+  height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+  left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+  right: 0;
+}
+/* оформление полосы по которой ходит ползунок */
+.ui-widget-content {
+  /* border: 1px solid #D4D4D4; */
+  background: #999;
+}
+/* оформление активного участка (между двумя ползунками) */
+.ui-widget-header { border: 1px solid #D4D4D4; background: #666; }
+ul#data { padding-left: 45px; padding-top: 15px; padding-bottom: 10px; }
+ul#data li { font-size: 1.05em; float: left; padding-right: 44px; }
+/* ======================================================================= */
+
+/* ================= Controls ========================================== */
+#controls { padding-left: 120px; }
+#controls li { float: left; padding-left: 4px; padding-right: 4px; padding-top: 3px; }
+/* ===================================================================== */
+
+/* ============================= Stats ================================== */
+#stats { font-size: 0.9em; padding-bottom: 10px; }
+#stats div { float: left; width: 425px; }
+/* ====================================================================== */
+
+/* ================================ Socials ============================= */
+#socials { padding-left: 360px; }
+/* ====================================================================== */
+
+/* ================== Photo thumbs ====================================== */
+#photos { padding-top: 20px; }
+ul#thumbs { width: 1280px; }
+ul#thumbs li { float: left; width: 140px; height: 110px; padding: 5px 1px 5px 1px; }
+ul#thumbs li div { border: 1px solid #999; padding: 3px; display: none; position: absolute; background: white; z-index: 10; width: 190px; }
+ul#thumbs li div p { font-size: 9px; padding: 5px 2px 5px 2px; }
+ul#thumbs li div a { font-size: 9px; } 
+ul#thumbs li img { height: 100px; }
+ul#thumbs li div img { height: 130px; }
+/* ====================================================================== */
+
+/* ======================== Footer ====================================== */
+footer { padding-top: 15px; padding-left: 480px; }
+ul#footer-links li { float: left; padding-right: 25px; }
+/* ====================================================================== */
+
+/* ======================== Uploads photo =============================== */
+#uploads { width: 1280px; padding:0; }
+#filelist { width: 852px; float: left; }
+#filelist ul li { float: left;  width: 146px; padding: 4px; }
+#filelist ul li:hover { background-color: #ccc; }
+#filelist ul li img { height: 100px; }
+#info { padding-left: 860px; }
+/* ====================================================================== */
+
+/*div { border: 1px solid red; }*/

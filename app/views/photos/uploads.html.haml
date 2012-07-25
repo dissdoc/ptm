@@ -1,3 +1,82 @@
+%div#uploads
+  :erb
+    <input type="file" id="fileinput" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)"> 
+
+  %div#horizontmenu
+    = link_to 'Select some files', '#', :id => "fileselect"  
+    = link_to 'Uploads', photos_uploaded_path, :method => :post
+
+  %div#filelist
+    %p No files selected
+
+  %div#info
+    %div
+      %label Tags:
+      = text_field_tag :tag_names
+
+  %div.clear
+
+:javascript
+  window.URL = window.URL || window.webkitURL; 
+
+  var selected = false; 
+
+  var select = document.getElementById("fileselect");
+  var input = document.getElementById("fileinput");
+  var array = document.getElementById("filelist");
+
+  select.addEventListener("click", function (e) {  
+    if (input) input.click();        
+    e.preventDefault();   
+  }, false); 
+
+  function handleFiles(files) {  
+    if(!selected) {
+      array.innerHTML = '';
+      selected = true;
+    }
+
+    if (!files.length) {  
+      array.innerHTML = "<p>No files selected!</p>";  
+    } else {        
+      var list = document.createElement("ul");  
+      for (var i = 0; i < files.length; i++) {  
+        var li = document.createElement("li");  
+        list.appendChild(li);  
+        
+        var img = document.createElement("img");  
+        img.src = window.URL.createObjectURL(files[i]);                  
+        img.onload = function(e) {  
+          window.URL.revokeObjectURL(this.src);  
+        }  
+        li.appendChild(img);       
+        
+        var name = document.createElement("div");        
+        name.innerHTML = "<b>" + substrName(files[i].name) + "</b>";
+        li.appendChild(name);
+
+        var size_bytes = document.createElement("div");  
+        size_bytes.innerHTML = files[i].size + " bytes";  
+        li.appendChild(size_bytes);                 
+      }  
+      array.appendChild(list); 
+
+      $('#filelist ul li').each(function(index){
+        $(this).find('img').load(function() {
+          var w = $(this).width();
+          var left_shift = (138 - w)/2;
+          $(this).css({ 'left': left_shift, 'position': 'relative' });
+        });
+      });       
+    }          
+  }  
+
+  function substrName(name) {
+    name = name.substring(0, 19);
+    name = name + "...";
+    return name;
+  } 
+
 = form_for @photo, :html => { :multipart => true }, :url => photos_uploaded_path, :method => :post  do |f|
   = f.file_field :image
 
@@ -34,3 +113,68 @@
     = f.datetime_select :generate_end, :start_year => 1826, :end_year => Time.now.year - 15
 
   = f.submit "Add"
+
+
+%div#container
+  %div#filelist
+  = link_to 'Select files', '#', :id => 'pickfiles'
+  = link_to 'Uploads', '#', :id => 'uploadfiles'
+
+%script{ :type => "text/javascript",  :src => "/assets/plupload.full.js"}
+:javascript
+  $(function() {
+    var uploader = new plupload.Uploader({
+      runtimes : 'html5',
+      browse_button : 'pickfiles',
+      container : 'container',
+      max_file_size : '10mb',
+      //url : 'upload.php',
+      //flash_swf_url : '/plupload/js/plupload.flash.swf',
+      filters : [
+        {title : "Image files", extensions : "jpg,gif,png"},
+        {title : "Zip files", extensions : "zip"}
+      ],
+      resize : {width : 320, height : 240, quality : 90}
+    });
+
+    uploader.bind('Init', function(up, params) {
+      $('#filelist').html("<div>Current runtime: " + params.runtime + "</div>");
+    });
+
+    $('#uploadfiles').click(function(e) {
+      uploader.start();
+      e.preventDefault();
+    });
+
+    uploader.init();
+
+    uploader.bind('FilesAdded', function(up, files) {
+      $.each(files, function(i, file) {
+        $('#filelist').append(
+          //'<div id="' + file.id + '">' +
+          //file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+          //'</div>'
+          file.name
+        );
+        //var test = window.URL.createObjectURL(file);
+        //alert(file.nativeFile);
+      });
+      up.refresh();
+    });
+
+    uploader.bind('UploadProgress', function(up, file) {
+      $('#' + file.id + " b").html(file.percent + "%");
+    });
+
+    uploader.bind('Error', function(up, err) {
+      $('#filelist').append("<div>Error: " + err.code +
+      ", Message: " + err.message +
+      (err.file ? ", File: " + err.file.name : "") +
+      "</div>");
+      up.refresh();
+    });
+
+    uploader.bind('FileUploaded', function(up, file) {
+      $('#' + file.id + " b").html("100%");
+    });
+  });

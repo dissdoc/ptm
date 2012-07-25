@@ -1,11 +1,11 @@
 - unless photos.blank?
   %ul#thumbs
     - photos.each do |photo|
-      %li
-        = image_tag(photo.image.url(:small))
+      %li{ :id => "#{ photo.id }" }
+        = image_tag(photo.image.url(:medium))
 
         %div
-          = link_to image_tag(photo.image.url(:medium), :width => '150px', :height => '100px'), photo
+          = link_to image_tag(photo.image.url(:medium)), photo
           %br
 
           - if photo.comment.present?
@@ -29,14 +29,23 @@
   Not yet photos!
 
 :javascript
+  $('ul#thumbs li').each(function(index) {
+      var img = $(this).find('img');
+      var w = img.width();
+      var left_shift = (138 - w)/2;
+      img.css({ 'left': left_shift, 'position': 'relative' });
+  });
+
+
   $('ul#thumbs li').hover(
-    function() {
-      var img = $(this).find('img').position();
-      var top = img.top - 20;
-      var left = img.left - 20;
-      $(this).find('div').css({'display': 'block', 'top': top, 'left': left});
-    },
-    function() {
-      $(this).find('div').css({'display': 'none'});
-    }
+      function() { 
+          over($(this)); 
+          var marker = findMarker($(this).attr('id'));
+          overIconMarker(marker);
+      },
+      function() { 
+          out($(this)); 
+          var marker = findMarker($(this).attr('id'));
+          outIconMarker(marker);
+      }
   );
