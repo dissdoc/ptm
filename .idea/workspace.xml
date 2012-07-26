@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c69355d-fb6f-4358-bde5-7b4a797de4d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/shared/_gmap.html.erb" afterPath="$PROJECT_DIR$/app/views/home/shared/_gmap.html.erb" />
     </list>
     <list id="b12f2b2b-3398-4a97-8af3-74e005c68201" name="IgnoredMyStyle" comment="" />
     <ignored path="ptm.iws" />
@@ -1696,7 +1695,11 @@
       <created>1342982509467</created>
       <updated>1342982509467</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="bug fix">
+      <created>1342983408414</created>
+      <updated>1342983408415</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1780,7 +1783,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix from show photos in main page and add test uploads photos" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1813,11 +1816,11 @@
     <MESSAGE value="add bug fix" />
     <MESSAGE value="group fix" />
     <MESSAGE value="group admin of fix" />
-    <MESSAGE value="bug fix" />
     <MESSAGE value="add some design fix for show photo" />
     <MESSAGE value="add slider fix" />
     <MESSAGE value="refactoring slider js script" />
     <MESSAGE value="bug fix from show photos in main page and add test uploads photos" />
+    <MESSAGE value="bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
