@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
                     :styles => {:icon => "32x32>", :small => "64x64>", :medium => "260x180>" },
-                    :storage => :Dropboxstorage,
-                    :path => "/:attachment/:attachment/:id/:style/:filename"
+                    :path => "/data/assets/avatars/:id/:style/:basename.:extension",
+                    :url => "/assets/data/assets/avatars/:id/:style/:basename.:extension"
   attr_accessible :avatar
 
   has_many :group_joins, :dependent => :destroy
