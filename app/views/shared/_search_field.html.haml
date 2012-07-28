@@ -1,0 +1,12 @@
+%div#search-combo-box
+  = text_field_tag :search_field
+
+
+%script{ :type => "text/javascript", :src => "/assets/ptm.search.js" }
+:javascript
+  $(document).ready(function(){
+    $('#search_field').ptmSearch({
+      cl: 'inactive',
+      text: ''
+    });
+  });

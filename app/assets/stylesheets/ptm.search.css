@@ -1,0 +1,8 @@
+#search_field {
+    border-right: 1px solid #fff;
+    color: #666;
+}
+
+.inactive {
+    color: #aaa;
+}
