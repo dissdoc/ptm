@@ -1,13 +1,39 @@
 (function($){
     $.fn.ptmSearch = function(options) {
+        // Prepare
         var ul = this.find('.combo ul');
         this.find('#search_value').val('1');
-
-        // Prepare for ul position
         var comboPos = this.find('.combo').position();
         // minus and plus 1 - for border 1px
         ul.css( {'top': comboPos.top + 30 + 1, 'left': ul.offset().left - 90 - 1 })
         ul.hide();
+
+        ul.find('li').bind('selected', function() {
+            $(this).css({'background':'#eee'});
+        }).bind('unselected', function() {
+            $(this).css({'background':'#fff'});
+        });
+
+        ul.bind('clear', function() {
+            $(this).find('li').each(function(index) {
+                $(this).trigger('unselected');
+            });
+        }).bind('hide', function() {
+            $(this).animate({opacity: 'hide'}, 'fast');
+        }).bind('show', function() {
+            $(this).animate({opacity: 'show'}, 'fast');
+        }).bind('change', function() {
+            var value = $('#search_value').val();
+            $(this).find('li').each(function(index) {
+                if ($(this).find('a').attr('value') == value)
+                    $(this).trigger('selected');
+            });
+        });
+
+        // Actions
+        $('#search_field').focus(function() {
+            ul.trigger('hide');
+        })
 
         this.find('.combo div').hover(
             function() {
@@ -20,27 +46,38 @@
         );
 
         this.find('.combo div').click(function() {
-            if (!ul.is(':visible'))
-                ul.animate({opacity: 'show'}, 'fast');
-            else
-                ul.animate({opacity: 'hide'}, 'fast');
+            if (!ul.is(':visible')) {
+                ul.trigger('change');
+                ul.trigger('show');
+            }
+            else {
+                ul.trigger('change');
+                ul.trigger('hide');
+            }
         });
 
-        this.find('.combo ul li').mouseover(function() {
-            $(this).css({'background':'#eee', 'cursor': 'pointer'});
+        ul.find('li').mouseover(function() {
+            ul.trigger('clear');
+            $(this).trigger('selected').css({'cursor': 'pointer'});
         });
 
-        this.find('.combo ul li').mouseout(function() {
-           $(this).css({'background': '#fff'});
+        ul.find('li').mouseout(function() {
+            $(this).trigger('unselected');
         });
 
-        this.find('.combo ul li').click(function() {
+        ul.find('li').click(function() {
             $('#search_value').val( $(this).find('a').attr('value'));
-            ul.animate({opacity: 'hide'}, 'fast');
+            ul.trigger('hide');
+        });
+
+        ul.mouseout(function() {
+            $(this).trigger('change');
         });
 
         $(this).mouseleave(function(){
-            ul.animate({opacity: 'hide'}, 'fast');
+            var value = $('#search_value').val();
+            ul.trigger('change');
+            ul.trigger('hide');
         });
     };
 })(jQuery);
