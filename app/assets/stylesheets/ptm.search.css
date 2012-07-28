@@ -50,7 +50,8 @@
     border: none;
     color: #666;
     width: 100%;
+    margin: 0;
 }
-#search_field {
+#search_field:focus {
     outline: none;
 }

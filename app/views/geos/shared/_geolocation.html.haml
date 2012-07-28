@@ -1,0 +1,19 @@
+%div#geolocation
+  %div
+    = text_field_tag :geofield
+    = hidden_field_tag :latitude
+    = hidden_field_tag :longitude
+  %div#geomap
+
+%script{ :type => "text/javascript", :src => "/assets/ptm.geolocation.js" }
+:javascript
+  $(document).ready(function(){
+    $('#geolocation').ptmGeolocation({
+      width: '100px',
+      height_map: '240px',
+      marker: '/assets/GoogleMap_Pink.png',
+      latitude: '0',
+      longitude: '0',
+      location: 'Moscow'
+    });
+  });
