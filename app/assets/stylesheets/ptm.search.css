@@ -8,8 +8,8 @@
     border: 1px solid #999;
     border-right: none;
     width: 350px;
-    height: 28px;
-    padding-top: 2px;
+    height: 25px;
+    padding-top: 5px;
 }
 
 #search-combo-box .combo {
@@ -47,7 +47,10 @@
 }
 
 #search_field {
-    border: 1px solid #fff;
+    border: none;
     color: #666;
     width: 100%;
+}
+#search_field {
+    outline: none;
 }
