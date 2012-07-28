@@ -1,8 +1,51 @@
-#search_field {
-    border-right: 1px solid #fff;
+#search-combo-box {
+    padding: 0px;
+    width: 380px;
+}
+
+#search-combo-box .field {
+    float: left;
+    border: 1px solid #999;
+    border-right: none;
+    width: 350px;
+    height: 30px;
+}
+
+#search-combo-box .combo {
+    padding-left: 350px;
+    width: 30px;
+}
+
+#search-combo-box .combo div {
+    border: 1px solid #999;
+    border-left: none;
+    width: 30px;
+    height: 30px;
+}
+
+#search-combo-box .combo div p {
+    font-size: 1.4em;
+    color: #666;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#search-combo-box .combo ul {
+    border: 1px solid #999;
+    background: #fff;
+    width: 120px;
+    position: absolute;
+}
+#search-combo-box .combo ul li {
+    padding: 2px 8px 2px 5px;
+    margin: 0px;
+}
+
+#search-combo-box .combo ul li a:hover {
     color: #666;
 }
 
-.inactive {
-    color: #aaa;
+#search_field {
+    border: none;
+    color: #666;
 }

@@ -1,12 +1,18 @@
 %div#search-combo-box
-  = text_field_tag :search_field
+  %div.field
+    = text_field_tag :search_field
+    = hidden_field_tag :search_value
+  %div.combo
+    %div
+      %p &#9660;
+    %ul
+      %li= link_to 'Full text', '#', :value => '1'
+      %li= link_to 'Tags only', '#', :value => '2'
+  %div.clear
 
 
 %script{ :type => "text/javascript", :src => "/assets/ptm.search.js" }
 :javascript
   $(document).ready(function(){
-    $('#search_field').ptmSearch({
-      cl: 'inactive',
-      text: ''
-    });
+    $('#search-combo-box').ptmSearch();
   });
