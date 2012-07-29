@@ -31,13 +31,13 @@
 
 %div.span-16
   - if signed_in?
-    = link_to "Selected", selected_photo_url(@photo)
+    = link_to "Selected", selected_photo_path(@photo)
     - if signed_in?
       |
       = link_to "Add to group", '#', 'data-reveal-id' => "modalGroup"
     - if current_user.admin_of_photo?(@photo)
       |
-      = link_to "Edit", edit_photo_url(@photo)
+      = link_to "Edit", edit_photo_path(@photo)
       |
       = link_to "Delete", @photo, :method => :delete
     - else
