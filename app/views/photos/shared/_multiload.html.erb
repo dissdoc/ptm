@@ -1,12 +1,14 @@
 <div id="multiload">
-  <input type="file" id="fileinput" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+  <%= file_field_tag :fileinput, :multiple => true, :accept => 'image/*' %>
+
+  <%= select_tag :items, params[:item], :multiple => true %>
 
   <ul class='menu'>
     <%= link_to 'Select some files', '#', :id => 'fileselect' %>
-  </div>
+  </ul>
 
   <ul class='filelist'>
-  <div>
+  </ul>
 </div>
 
 <script type="text/javascript" src="/assets/ptm.multiload.js"></script>

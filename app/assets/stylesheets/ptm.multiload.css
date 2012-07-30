@@ -1,0 +1,21 @@
+#multiload {
+    width: 852px;
+}
+
+#fileinput {
+    display: none;
+}
+
+#multiload ul.filelist li {
+    float: left;
+    padding: 5px;
+    width: 142px;
+}
+
+#multiload ul.filelist li img {
+    height: 100px;
+}
+
+#multiload ul.filelist li div.name {
+    font-weight: bold;
+}

@@ -1,81 +1,11 @@
-%div#uploads
-  :erb
-    <input type="file" id="fileinput" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)"> 
+= form_tag photos_uploaded_path, :multipart => true, :method => :post do
+  = render 'photos/shared/multiload'
+  %div= submit_tag "Upload"
 
-  %div#horizontmenu
-    = link_to 'Select some files', '#', :id => "fileselect"  
-    = link_to 'Uploads', photos_uploaded_path, :method => :post
-
-  %div#filelist
-    %p No files selected
-
-  %div#info
-    %div
-      %label Tags:
-      = text_field_tag :tag_names
-
-  %div.clear
-
-:javascript
-  window.URL = window.URL || window.webkitURL; 
-
-  var selected = false; 
-
-  var select = document.getElementById("fileselect");
-  var input = document.getElementById("fileinput");
-  var array = document.getElementById("filelist");
-
-  select.addEventListener("click", function (e) {  
-    if (input) input.click();        
-    e.preventDefault();   
-  }, false); 
-
-  function handleFiles(files) {  
-    if(!selected) {
-      array.innerHTML = '';
-      selected = true;
-    }
-
-    if (!files.length) {  
-      array.innerHTML = "<p>No files selected!</p>";  
-    } else {        
-      var list = document.createElement("ul");  
-      for (var i = 0; i < files.length; i++) {  
-        var li = document.createElement("li");  
-        list.appendChild(li);  
-        
-        var img = document.createElement("img");  
-        img.src = window.URL.createObjectURL(files[i]);                  
-        img.onload = function(e) {  
-          window.URL.revokeObjectURL(this.src);  
-        }  
-        li.appendChild(img);       
-        
-        var name = document.createElement("div");        
-        name.innerHTML = "<b>" + substrName(files[i].name) + "</b>";
-        li.appendChild(name);
-
-        var size_bytes = document.createElement("div");  
-        size_bytes.innerHTML = files[i].size + " bytes";  
-        li.appendChild(size_bytes);                 
-      }  
-      array.appendChild(list); 
-
-      $('#filelist ul li').each(function(index){
-        $(this).find('img').load(function() {
-          var w = $(this).width();
-          var left_shift = (138 - w)/2;
-          $(this).css({ 'left': left_shift, 'position': 'relative' });
-        });
-      });       
-    }          
-  }  
-
-  function substrName(name) {
-    name = name.substring(0, 19);
-    name = name + "...";
-    return name;
-  } 
+%br
+%br
+%br
+%br
 
 = form_for @photo, :html => { :multipart => true }, :url => photos_uploaded_path, :method => :post  do |f|
   = f.file_field :image

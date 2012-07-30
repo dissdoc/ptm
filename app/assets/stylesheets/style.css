@@ -136,13 +136,4 @@ footer { padding-top: 15px; padding-left: 480px; }
 ul#footer-links li { float: left; padding-right: 25px; }
 /* ====================================================================== */
 
-/* ======================== Uploads photo =============================== */
-#uploads { width: 1280px; padding:0; }
-#filelist { width: 852px; float: left; }
-#filelist ul li { float: left;  width: 146px; padding: 4px; }
-#filelist ul li:hover { background-color: #ccc; }
-#filelist ul li img { height: 100px; }
-#info { padding-left: 860px; }
-/* ====================================================================== */
-
 /*div { border: 1px solid red; }*/
