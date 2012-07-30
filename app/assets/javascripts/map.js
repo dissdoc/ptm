@@ -19,3 +19,16 @@
 
 //     this.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);    
 // }
+
+//$('ul#thumbs li').hover(
+//    function() {
+//        over($(this));
+//        var marker = findMarker($(this).attr('id'));
+//        overIconMarker(marker);
+//#    },
+//    function() {
+//        out($(this));
+//        var marker = findMarker($(this).attr('id'));
+//        outIconMarker(marker);
+//    }
+//);

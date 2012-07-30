@@ -206,12 +206,12 @@ class PhotosController < ApplicationController
     #  @photo = Photo.create!(:image => File.new(src, "r"), :user_id => current_user.id)
     #end
     #redirect_to @root_path
-    #@photo = current_user.photos.new(params[:photo])
-    #if @photo.save!
-    #  redirect_to @photo
-    #else
-    #  redirect_to root_path
-    #end
+    @photo = current_user.photos.new(params[:photo])
+    if @photo.save!
+      redirect_to @photo
+    else
+      redirect_to root_path
+    end
   end
 
   protected

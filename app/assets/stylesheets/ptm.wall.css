@@ -1,0 +1,31 @@
+#wall {
+    width: 1280px;
+}
+
+#wall li {
+    width: 160px;
+    padding: 5px;
+    float: left;
+}
+
+#wall li img {
+    height: 116px;
+}
+
+#wall li div {
+    display: none;
+    position: absolute;
+    width: 210px;
+    padding: 5px;
+    border: 1px solid #eee;
+    background: #fff;
+    z-index: 100;
+}
+
+#wall li div img {
+    height: 150px;
+}
+
+#wall li div{
+    font-size: 9px;
+}
