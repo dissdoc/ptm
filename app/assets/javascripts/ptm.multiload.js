@@ -12,9 +12,9 @@
 
     var selected = false;
 
-    fileselect.click(function() {
+    fileselect.click(function(e) {
       if (fileinput) fileinput.click();
-      //e.preventDefault();
+      e.preventDefault();
     });
 
     fileinput.change(function (files) {
@@ -44,8 +44,7 @@
                 var size_bytes = document.createElement("div");
                 size_bytes.innerHTML = parseInt(files[i].size/1024) + " Kb";
                 li.appendChild(size_bytes);
-
-                $('#items').append('<option value="'+ files[i]  +'">test</option>');
+                $('#items').append('<option value="'+ files[i].name  +'">test</option>');
             }
         }
     }).change();
