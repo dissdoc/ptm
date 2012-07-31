@@ -1,0 +1,7 @@
+%div
+  %label Picture Name
+  = link_to '(edit)', '#', :class => 'link'
+  - if photo.name.present?
+    %br
+    %span
+      %i= photo.name

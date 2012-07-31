@@ -1,5 +1,6 @@
-- unless photo.comment.blank?
-  %p
-    %b Story:
+%div
+  %label Story
+  = link_to '(edit)', '#', :class => 'link'
+  - if photo.comment.present?
     %br
-    = photo.comment
+    %span= photo.comment

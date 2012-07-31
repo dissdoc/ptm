@@ -12,7 +12,7 @@
 
                 var left = 0;
                 if (pos.left == 0) left = 0;
-                else if (pos.left == 1120) left = 1095;
+                else if (pos.left == 1120) left = 1065;
                 else left = pos.left - 25;
 
                 $(this).find('div').css({'top': pos.top - 25, 'left': left});

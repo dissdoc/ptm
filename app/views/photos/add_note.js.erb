@@ -1,0 +1,2 @@
+$('#comments').html("<%= escape_javascript(render(:partial => 'notes/shared/note', :collection => @photo.notes)) %>");
+$('#add_comment').html("<%= escape_javascript(note_form(@photo.notes.new, :photo => @photo)) %>")

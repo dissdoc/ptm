@@ -21,14 +21,7 @@
   %p
     %h3 Geolocation
 
-    = f.fields_for :geo do |location|
-      %div
-        %label Address:
-        = location.text_field :address, :id => 'address'
-
-        = hidden_field_tag 'lat', '-34.397'
-        = hidden_field_tag 'lng', '150.644'
-      %div#map_canvas
+    = render :partial => 'geos/shared/geolocation', :locals => { :photo => @photo }
 
   %p
     = f.fields_for :share_photo do |sharing|

@@ -1,5 +1,5 @@
-= form_for note, :as => :note, :url => url do |f|
-  %div
-    = f.text_area :message, :rows => 5
-  %div
+%div#add_comment
+  = form_for note, :as => :note, :url => url, :remote => true do |f|
+    = f.text_area :message, :placeholder => 'Write a comment...'
     = f.submit "Add"
+    = button_tag "Cancel", :onclick => "javascript: document.getElementById('note_message').value = ''; return false;"

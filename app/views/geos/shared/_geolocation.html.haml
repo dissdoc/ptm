@@ -1,19 +1,27 @@
 %div#geolocation
   %div
-    = text_field_tag :geofield
-    = hidden_field_tag :latitude
-    = hidden_field_tag :longitude
+    - if photo.geo.present? && photo.geo.address.present?
+      = text_field_tag :geofield, photo.geo.address
+    - else
+      = text_field_tag :geofield
+
+    - if photo.geo.present? && photo.geo.latitude.present?
+      = hidden_field_tag :latitude, photo.geo.latitude
+    - else
+      = hidden_field_tag :latitude,  -34.397
+
+    - if photo.geo.present? && photo.geo.longitude.present?
+      = hidden_field_tag :longitude, photo.geo.longitude
+    - else
+      = hidden_field_tag :longitude,  150.644
   %div#geomap
 
 %script{ :type => "text/javascript", :src => "/assets/ptm.geolocation.js" }
 :javascript
-  $(document).ready(function(){
-    $('#geolocation').ptmGeolocation({
-      width: '100px',
+  $(window).load(function() {
+    var t = $('#geolocation').ptmGeolocation({
+      width: '320px',
       height_map: '240px',
       marker: '/assets/GoogleMap_Pink.png',
-      latitude: '0',
-      longitude: '0',
-      location: 'Moscow'
     });
   });

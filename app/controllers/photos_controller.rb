@@ -35,6 +35,10 @@ class PhotosController < ApplicationController
     if @photo.album.present?
       @album = @photo.album
     end
+
+    respond_to do |format|
+      format.html { render :layout => 'application_empty' }
+    end
   end
 
   def edit
@@ -63,22 +67,20 @@ class PhotosController < ApplicationController
     if @note.save!
       UserMailer.commented_photo(current_user, @photo).deliver
       UserMailer.also_added_comment(current_user, @photo, current_notes).deliver if current_notes.count > 0
-      redirect_to @photo
-    else
-      redirect_to root_path
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
   def recommend_geo
-    @geo = @photo.geo.present? ? @photo.geo : @geo = params[:address]
-    @lat = @photo.geo.present? ? @photo.geo.latitude : '-34.397'
-    @lng = @photo.geo.present? ? @photo.geo.longitude : '150.644'
   end
 
   def create_recommend
     @recommend = @photo.recommend_geos.new
 
-    @recommend.address = params[:address]
+    @recommend.address = params[:geofield]
     @recommend.comment = params[:comment]
     @recommend.user = current_user
     if @recommend.save!
