@@ -70,15 +70,12 @@ class PhotosController < ApplicationController
   end
 
   def recommend_geo
-    @geo = @photo.geo.present? ? @photo.geo : @geo = params[:address]
-    @lat = @photo.geo.present? ? @photo.geo.latitude : '-34.397'
-    @lng = @photo.geo.present? ? @photo.geo.longitude : '150.644'
   end
 
   def create_recommend
     @recommend = @photo.recommend_geos.new
 
-    @recommend.address = params[:address]
+    @recommend.address = params[:geofield]
     @recommend.comment = params[:comment]
     @recommend.user = current_user
     if @recommend.save!

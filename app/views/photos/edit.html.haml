@@ -15,18 +15,7 @@
     %p
       %h3 Geolocation
 
-      = f.fields_for :geo do |location|
-        %div
-          %label Address:
-          = location.text_field :address
-
-        %div
-          %label Latitude
-          = location.text_field :latitude
-
-        %div
-          %label Longitude
-          = location.text_field :longitude
+      = render :partial => 'geos/shared/geolocation', :locals => { :photo => @photo }
 
     %p
       = f.fields_for :share_photo do |sharing|
