@@ -7,7 +7,6 @@ gem 'rails', '3.2.1'
 
 gem 'jquery-rails'
 gem 'devise'
-gem 'heroku'
 gem 'haml-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'geocoder'
@@ -38,5 +37,4 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
 end
