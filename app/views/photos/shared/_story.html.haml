@@ -1,6 +1,7 @@
 %div
   %label Story
-  = link_to '(edit)', '#', :class => 'link'
+  - if signed_in? && current_user.admin_of_photo?(photo)
+    = link_to '(edit)', '#', :class => 'link'
   - if photo.comment.present?
     %br
     %span= photo.comment
