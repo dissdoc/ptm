@@ -1,6 +1,9 @@
 %div#geolocation
   %div
-    = text_field_tag :geofield, photo.geo.address if (photo.geo.present? && photo.geo.address.present?)
+    - if photo.geo.present? && photo.geo.address.present?
+      = text_field_tag :geofield, photo.geo.address
+    - else
+      = text_field_tag :geofield
 
     - if photo.geo.present? && photo.geo.latitude.present?
       = hidden_field_tag :latitude, photo.geo.latitude
