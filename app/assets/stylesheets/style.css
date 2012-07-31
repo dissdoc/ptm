@@ -129,4 +129,28 @@ footer { padding-top: 15px; padding-left: 480px; }
 ul#footer-links li { float: left; padding-right: 25px; }
 /* ====================================================================== */
 
+/* ==================== Collection ====================================== */
+#collection {
+    width: 1280px;
+}
+
+#collection li {
+    width: 310px;
+    float: left;
+    padding: 5px;
+}
+
+#collection li div.imaging  img{
+    height: 205px;
+}
+
+#collection li div.name a {
+    font-weight: bold;
+}
+
+#collection li div.name div {
+    font-size: 0.8em;
+}
+/* ====================================================================== */
+
 /*div { border: 1px solid red; }*/
