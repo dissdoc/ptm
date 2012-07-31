@@ -1,4 +1,11 @@
-%div
-  = note.message
-  |
-  = note.author
+%div.comment
+  %div.image
+    - if note.user.avatar.exists?
+      = image_tag note.user.avatar.url(:small)
+    - else
+      = image_tag "nologo.jpg", :width => '40', :height => '40'
+  %div.text
+    = link_to note.author, detail_path(:id => note.user)
+    %br
+    %span= note.message
+  %div.clear

@@ -1,8 +1,10 @@
-- if tags.present?
-  %p
-    %b Tags:
+%div
+  %label Tags
+  = link_to '(add a tag)', '#', :class => 'link'
+  - if tags.present?
     %br
-    = render :partial => 'tags/shared/tag', :collection => tags, :locals => { :photo => photo }
+    %span
+      = render :partial => 'tags/shared/tag', :collection => tags, :locals => { :photo => photo }
 
 - if signed_in?
-  = render :partial => 'tags/shared/form', :locals => { :photo => photo }
+  = # render :partial => 'tags/shared/form', :locals => { :photo => photo }

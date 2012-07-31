@@ -1,0 +1,9 @@
+%div
+  - if photo.user.avatar.exists?
+    = image_tag photo.user.avatar.url(:small)
+  - else
+    = image_tag "nologo.jpg", :width => '40', :height => '40'
+
+  = link_to photo.user.full_name, detail_path(:id => photo.user), :class => 'darklink'
+
+  = link_to '(add as a frined)', friendlists_add_friend_path, :class => 'link', :remote => true

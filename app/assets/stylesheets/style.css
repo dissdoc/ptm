@@ -140,8 +140,16 @@ ul#footer-links li { float: left; padding-right: 25px; }
     padding: 5px;
 }
 
-#collection li div.imaging  img{
+#collection li div.imaging {
     height: 205px;
+}
+
+#collection li div.imaging img{
+    height: 205px;
+}
+
+#collection li div.name {
+    padding-top: 5px;
 }
 
 #collection li div.name a {
@@ -150,6 +158,96 @@ ul#footer-links li { float: left; padding-right: 25px; }
 
 #collection li div.name div {
     font-size: 0.8em;
+}
+/* ====================================================================== */
+
+/* =========================== Photo detail ============================= */
+#photo-detail {
+    width: 1280px;
+}
+
+#photo-detail div.column1 {
+    width: 842px;
+    float: left;
+    padding-right: 10px;
+}
+
+#photo-detail .column1 div, #photo-detail .column2 div {
+    padding: 5px;
+}
+
+#photo-detail div.column2 {
+    width: 426px;
+    padding-left: 852px;
+}
+
+#photo-detail a.link {
+    font-size: 0.8em;
+    color: #999;
+}
+
+#photo-detail a.link:hover {
+    color: #aaa;
+}
+#photo-detail label {
+    font-weight: bold;
+}
+
+#photo-detail span {
+    font-size: 0.9em;
+}
+#photo-detail div.map {
+    padding: 0px;
+    padding-top: 3px;
+}
+#photo-detail div.statistic {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    height: 22px;
+}
+
+#photo-detail div.comment {
+    padding: 2px;
+    padding-bottom: 0px;
+}
+#photo-detail div.image {
+    padding: 0px;
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+#photo-detail div.text {
+    padding: 0px;
+    padding-left: 45px;
+}
+
+#comments {
+    padding: 0px;
+}
+
+#add_comment {
+    padding: 0px;
+}
+
+#add_comment textarea {
+    font-size: 0.9em;
+    height: 86px;
+    width: 100%;
+}
+#add_comment div {
+    padding: 0px;
+}
+
+#add_comment input[type=submit], #add_comment button {
+    border: 1px solid #666;
+    background: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#add_comment input[type=submit]:hover, #add_comment button:hover {
+    background: #eee;
+    cursor: pointer;
 }
 /* ====================================================================== */
 

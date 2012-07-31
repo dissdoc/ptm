@@ -5,6 +5,9 @@
 %p
   = form_for [@album, @photo] do |f|
     %div
+      = f.label :name
+      = f.text_field :name
+    %div
       = f.label :tag_names, "Tags"
       = f.text_field :tag_names
 

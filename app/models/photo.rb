@@ -32,7 +32,7 @@ class Photo < ActiveRecord::Base
       :path => "/data/assets/photos/:id/:style/:basename.:extension",
       :url => "/assets/data/assets/photos/:id/:style/:basename.:extension"
 
-  attr_accessible :album_id, :user_id, :comment, :image, :generate, :generate_end, :tag_names, :geo, :share_photo, :comment
+  attr_accessible :album_id, :user_id, :comment, :image, :generate, :generate_end, :tag_names, :geo, :share_photo, :comment, :name
   attr_writer :tag_names
 
   accepts_nested_attributes_for :geo, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }

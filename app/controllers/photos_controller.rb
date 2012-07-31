@@ -35,6 +35,10 @@ class PhotosController < ApplicationController
     if @photo.album.present?
       @album = @photo.album
     end
+
+    respond_to do |format|
+      format.html { render :layout => 'application_empty' }
+    end
   end
 
   def edit
@@ -63,9 +67,10 @@ class PhotosController < ApplicationController
     if @note.save!
       UserMailer.commented_photo(current_user, @photo).deliver
       UserMailer.also_added_comment(current_user, @photo, current_notes).deliver if current_notes.count > 0
-      redirect_to @photo
-    else
-      redirect_to root_path
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
