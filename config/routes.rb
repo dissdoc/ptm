@@ -35,6 +35,7 @@ Ptm::Application.routes.draw do
       post 'agree_link_photo'
       post 'cancel_link_photo'
       post 'add_picture_name'
+      post 'add_story'
 
       get 'selected'
       get 'recommend_geo'
