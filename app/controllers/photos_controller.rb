@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   before_filter :album_admin?, :only => [:new, :create]
   before_filter :set_photo, :except => [:new, :create, :index, :uploads, :uploaded]
   before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
-    :apply_recommend_at, :destroy_recommend_at]
+    :apply_recommend_at, :destroy_recommend_at, :add_picture_name, :add_story]
   before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
@@ -213,6 +213,22 @@ class PhotosController < ApplicationController
       redirect_to @photo
     else
       redirect_to root_path
+    end
+  end
+
+  def add_picture_name
+    @photo.update_attribute(:name, params[:picture_name])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_story
+    @photo.update_attribute(:comment, params[:picture_story])
+
+    respond_to do |format|
+      format.js
     end
   end
 
