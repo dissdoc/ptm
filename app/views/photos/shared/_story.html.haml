@@ -2,16 +2,17 @@
   %label Story
   - if signed_in? && current_user.admin_of_photo?(photo)
     = link_to '(edit)', '#', :class => 'link', :id => 'edit_story'
+    
+    %div{ :style => 'display:none', :id => 'story_form' }
+      = form_tag add_story_photo_path(:id => photo), :remote => true do
+        = text_area_tag :picture_story, photo.comment, :class => 'text_lite'
+        = submit_tag 'Add', :class => 'action'
+        = button_tag 'Cancel', :class => 'action', :id => 'cancel_story'
+
   %br
   %span#story
     - if photo.comment.present?
       = photo.comment
-
-%div{ :style => 'display:none', :id => 'story_form' }
-  = form_tag add_story_photo_path(:id => photo), :remote => true do
-    = text_area_tag :picture_story, photo.comment, :class => 'text_lite'
-    = submit_tag 'Add', :class => 'action'
-    = button_tag 'Cancel', :class => 'action', :id => 'cancel_story'
 
 :javascript
   $(document).ready(function() {

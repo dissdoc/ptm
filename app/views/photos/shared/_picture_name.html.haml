@@ -2,18 +2,17 @@
   %label Picture Name
   - if signed_in? && current_user.admin_of_photo?(photo)
     = link_to '(edit)', '#', :class => 'link', :id => 'edit_picture_name'
+
+    %div{ :style => 'display:none', :id => 'picture_name_form' }
+      = form_tag add_picture_name_photo_path(:id => photo), :remote => true do
+        = text_field_tag :picture_name, photo.name
+        %br
+        = submit_tag 'Add', :class => 'action'
+        = button_tag 'Cancel', :class => 'action', :id => 'cancel_picture_name'
   %br
   %span#name
     - if photo.name.present?
       %i= photo.name
-
-
-%div{ :style => 'display:none', :id => 'picture_name_form' }
-  = form_tag add_picture_name_photo_path(:id => photo), :remote => true do
-    = text_field_tag :picture_name, photo.name
-    %br
-    = submit_tag 'Add', :class => 'action'
-    = button_tag 'Cancel', :class => 'action', :id => 'cancel_picture_name'
 
 :javascript
   $(document).ready(function() {
