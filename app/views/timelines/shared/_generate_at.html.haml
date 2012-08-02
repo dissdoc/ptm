@@ -1,0 +1,32 @@
+- if photo.generate.present?
+  %div
+    %label Time
+    - if signed_in?
+      = link_to '(specify time tag)', '#', :class => 'link'
+
+    - if current_user.admin_of_photo?(photo)
+      
+    - else
+    %br
+    %span
+      = l photo.generate, :format => :lite
+      - if photo.generate_end
+        \...
+        = l photo.generate_end, :format => :lite
+
+- if signed_in? && !current_user.admin_of_photo?(photo)
+  = link_to 'Recommend at', recommend_at_photo_path(@photo)
+
+- if photo.recommend_ats.present?
+  %ul
+    - photo.recommend_ats.each do |recommend|
+      %li
+        %i
+          = l recommend.from_at, :format => :lite
+          - if recommend.to_at.present?
+            \...
+            = l recommend.to_at, :format => :lite
+
+        - if signed_in? && current_user.admin_of_photo?(photo)
+          = link_to "V", apply_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post
+          = link_to "X", destroy_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post
