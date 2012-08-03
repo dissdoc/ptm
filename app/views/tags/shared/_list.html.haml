@@ -1,10 +1,24 @@
 %div
   %label Tags
-  = link_to '(add a tag)', '#', :class => 'link'
+  = link_to '(add a tag)', '#', :class => 'link', :id => 'add_tags'
   - if tags.present?
     %br
-    %span
+    %span#tags
       = render :partial => 'tags/shared/tag', :collection => tags, :locals => { :photo => photo }
 
 - if signed_in?
-  = # render :partial => 'tags/shared/form', :locals => { :photo => photo }
+  =  render :partial => 'tags/shared/form', :locals => { :photo => photo }
+
+:javascript
+  $(document).ready(function() {
+    $('#add_tags').click(function() {
+      $('#tags_form').css({'display':'block'});
+      return false;
+    });
+
+    $('#cancel_tags').click(function() {
+      $('#tags_field').val('');
+      $('#tags_form').css({'display':'none'});
+      return false;
+    });
+  });

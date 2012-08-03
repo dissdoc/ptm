@@ -1,3 +1,5 @@
-= form_tag tags_create_path(:photo_id => photo), :id => 'form-little', :method => :post, :remote => true do
-  = text_field_tag :tags
-  = submit_tag 'Add'
+%div#tags_form{ :style => 'display:none' }
+  = form_tag tags_create_path(:photo_id => photo), :id => 'form-little', :method => :post, :remote => true do
+    = text_field_tag :tags, params[:tags], :id => 'tags_field', :class =>'field_lite'
+    = submit_tag 'Add', :class => 'action'
+    = button_tag 'Cancel', :class => 'action', :id => 'cancel_tags'
