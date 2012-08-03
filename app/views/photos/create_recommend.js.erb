@@ -1,0 +1,4 @@
+<% if @photo.geo.present? && @photo.geo.address.present? %>
+    $('#geo_map').show();
+<% end %>
+$('#geo_form').css({'display': 'none'});

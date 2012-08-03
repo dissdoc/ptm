@@ -85,6 +85,7 @@ class PhotosController < ApplicationController
       end
     end
 
+    @geo = @photo.geo
     respond_to do |format|
       format.js
     end
@@ -107,7 +108,7 @@ class PhotosController < ApplicationController
     end
 
     respond_to do |format|
-      format.js { render :template => 'photos/edit_geo.js.erb' }
+      format.js
     end
   end
 
