@@ -1,8 +1,8 @@
 %div#geo_form{ :style => 'display:none' }
   = form_tag url, :method => :post, :remote => true do
     = geolocation(photo)
-    - unless user
-      = text_area_tag :comment, params[:comment], :class => 'text_lite', :style => 'display:none'
+    - if user == 'member'
+      = text_area_tag :comment, params[:comment], :class => 'text_lite'
     %br
     = submit_tag 'Add', :class => 'action'
     = button_tag 'Cancel', :class => 'action', :id => 'cancel_geo'

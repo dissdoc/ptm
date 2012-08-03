@@ -29,13 +29,11 @@ module PhotosHelper
   def edit_geo_form(item, opts = {})
     if opts[:user] == 'admin'
       url = edit_geo_photo_path(item)
-      user = true
     elsif opts[:user] == 'member'
       url = create_recommend_photo_path(item)
-      user = false
     end
 
     render :partial => 'geos/shared/geo_form',
-           :locals => { :photo => item, :url => url, :user => user }
+           :locals => { :photo => item, :url => url, :user => opts[:user] }
   end
 end
