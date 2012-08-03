@@ -8,6 +8,6 @@ module PhotosHelper
     end
 
     render :partial => 'timelines/shared/time_form',
-           :locals => { :url => url, :item => item }
+           :locals => { :url => url, :photo => item }
   end
 end

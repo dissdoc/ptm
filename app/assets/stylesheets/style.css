@@ -19,6 +19,17 @@ div.clear { clear: both; }
     width: 426px;
 }
 
+div#datetime_form {
+    padding: 0px;
+    height: 60px;
+}
+div#datetime_form select {
+    float: left;
+}
+div#datetime_form div.tire {
+    float:left;
+}
+
 div#wrapper { width: 1280px; margin: 0px auto; }
 
 /* ========== Header menu =================== */

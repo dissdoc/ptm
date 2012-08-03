@@ -124,6 +124,20 @@ class PhotosController < ApplicationController
 
   end
 
+  def edit_recommend_at
+    from_at = parse_datetime(params[:from_at])
+    if from_at
+      @photo.update_attribute(:generate => from_at)
+
+      to_at = parse_datetime(params[:to_at])
+      @photo.update_attribute(:generate_end, to_at) if to_at
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create_recommend_at
     @recommend = @photo.recommend_ats.new
 

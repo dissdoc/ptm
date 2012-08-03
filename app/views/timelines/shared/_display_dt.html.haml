@@ -1,0 +1,5 @@
+- if photo.generate.present?
+  = l photo.generate, :format => :lite
+  - if photo.generate_end
+    \...
+    = l photo.generate_end, :format => :lite

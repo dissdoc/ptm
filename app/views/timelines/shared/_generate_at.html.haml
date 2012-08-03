@@ -1,18 +1,35 @@
-- if photo.generate.present?
-  %div
-    %label Time
-    - if signed_in?
-      = link_to '(specify time tag)', '#', :class => 'link'
+%div
+  %label Time
+  - if signed_in?
+    = link_to '(specify time tag)', '#', :class => 'link', :id => 'edit_dt'
 
-    - if current_user.admin_of_photo?(photo)
-      
-    - else
-    %br
-    %span
-      = l photo.generate, :format => :lite
-      - if photo.generate_end
-        \...
-        = l photo.generate_end, :format => :lite
+  - if current_user.admin_of_photo?(photo)
+    = edit_date_form(photo, :user => 'admin')
+
+    :javascript
+      $(window).load(function() {
+        $('#edit_dt').click(function() {
+          $('#dt').hide();
+          $('#datetime_form').css({'display': 'block'});
+          return false;
+        });
+      });
+
+  - else
+    = edit_date_form(photo, :user => 'member')
+
+  %br
+  %span#dt
+    = render :partial => 'timelines/shared/display_dt', :locals => { :photo => photo }
+
+:javascript
+  $(document).ready(function() {
+    $('#cancel_datetime').click(function() {
+      $('#datetime_form').css({'display':'none'});
+      $('#dt').show();
+      return false;
+    });
+  });
 
 - if signed_in? && !current_user.admin_of_photo?(photo)
   = link_to 'Recommend at', recommend_at_photo_path(@photo)

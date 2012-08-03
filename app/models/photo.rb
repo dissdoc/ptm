@@ -29,8 +29,8 @@ class Photo < ActiveRecord::Base
   has_attached_file :image,
       :whiny => true,
       :styles => {:icon => "64x64", :small => "100x63", :medium => "260x180", :large => "483x302" },
-      :path => "/data/assets/avatars/:id/:style/:basename.:extension",
-      :url => "/assets/data/assets/avatars/:id/:style/:basename.:extension"
+      :path => "/data/assets/photos/:id/:style/:basename.:extension",
+      :url => "/assets/data/assets/photos/:id/:style/:basename.:extension"
 
   attr_accessible :album_id, :user_id, :comment, :image, :generate, :generate_end, :tag_names, :geo, :share_photo, :comment, :name
   attr_writer :tag_names
