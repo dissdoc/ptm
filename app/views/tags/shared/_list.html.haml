@@ -1,9 +1,9 @@
 %div
   %label Tags
   = link_to '(add a tag)', '#', :class => 'link', :id => 'add_tags'
-  - if tags.present?
-    %br
-    %span#tags
+  %br
+  %span#tags
+    - if tags.present?
       = render :partial => 'tags/shared/tag', :collection => tags, :locals => { :photo => photo }
 
 - if signed_in?
@@ -13,6 +13,7 @@
   $(document).ready(function() {
     $('#add_tags').click(function() {
       $('#tags_form').css({'display':'block'});
+      $('#tags_field').val('');
       return false;
     });
 

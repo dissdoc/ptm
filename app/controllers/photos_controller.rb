@@ -76,7 +76,13 @@ class PhotosController < ApplicationController
 
   def edit_geo
     if params[:geofield].present?
-      @photo.geo.update_attribute(:address, params[:geofield])
+      if @photo.geo.present?
+        @photo.geo.update_attribute(:address, params[:geofield])
+      else
+        geo = @photo.build_geo
+        geo.address = params[:geofield]
+        geo.save!
+      end
     end
 
     respond_to do |format|

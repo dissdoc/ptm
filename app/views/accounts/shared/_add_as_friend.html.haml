@@ -1,0 +1,6 @@
+- unless Friendship.is_friend(current_user, author)
+  = link_to '(add as a friend)',
+            friendlists_add_friend_path(:friend_id => author),
+            :class => 'link',
+            :remote => true,
+            :method => :post

@@ -6,4 +6,6 @@
 
   = link_to photo.user.full_name, detail_path(:id => photo.user), :class => 'darklink'
 
-  = link_to '(add as a frined)', friendlists_add_friend_path, :class => 'link', :remote => true
+  - if signed_in? && !current_user.admin_of_photo?(photo)
+    %span#add_as_friend
+      = render :partial => 'accounts/shared/add_as_friend', :locals => { :author => photo.user }
