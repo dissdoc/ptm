@@ -1,21 +1,64 @@
 %div
   %label Place
-  = link_to '(specify geo tag)', '#', :class => 'link'
-  - if photo.geo.present?
+  - if signed_in?
+    = link_to '(specify geo tag)', '#', :class => 'link', :id => 'edit_geo'
+
+    - if current_user.admin_of_photo?(photo)
+      = edit_geo_form(photo, :user => 'admin')
+      :javascript
+        $(window).load(function() {
+          $('#cancel_geo').click(function() {
+            $('#geo_form').css({'display':'none'});
+            $('#geo_address').show();
+            $('#geo_map').show();
+            return false;
+          });
+
+          $('#edit_geo').click(function() {
+            $('#geo_form').css({'display':'block'});
+            $('#geo_address').hide();
+            $('#geo_map').hide();
+            return false;
+          });
+        });
+    - else
+      = edit_geo_form(photo, :user => 'member')
+      :javascript
+        $(window).load(function() {
+          $('#cancel_geo').click(function() {
+            $('#geo_form').css({'display':'none'});
+            $('#geo_map').show();
+            return false;
+          });
+
+          $('#edit_geo').click(function() {
+            $('#geo_form').css({'display': 'block'});
+            $('#geo_map').hide();
+            return false;
+          });
+        })
+
     %br
-    %span= photo.geo.address
-    %div.map
-      = image_tag "http://maps.google.com/maps/api/staticmap?size=416x240&sensor=false&markers=icon:http://bit.ly/MXgxzs%7C#{photo.geo.address}"
+    %span#geo_address
+      = photo.geo.address  if photo.geo.present?
+    %div#geo_map{ :style => 'padding: 0px' }
+      - if photo.geo.present?
+        = render :partial => 'geos/shared/staticmap', :locals => { :address => photo.geo.address }
 
-- if signed_in? && !current_user.admin_of_photo?(photo)
-  = link_to 'Recommend geo', recommend_geo_photo_path(@photo)
+- if signed_in? && current_user.admin_of_photo?(photo) && photo.recommend_geos.present?
+  %div#recommends_panel
+    = render :partial => 'geos/shared/list_recommends', :locals => { :photo => photo }
 
-- if photo.recommend_geos.present?
-  %ul
-    - photo.recommend_geos.each do |recommend|
-      %li
-        %i= recommend.address
-        %div= recommend.comment
-        - if signed_in? && current_user.admin_of_photo?(photo)
-          = link_to "V", apply_recommend_photo_path(@photo, :recommend_id => recommend), :method => :post
-          = link_to "X", destroy_recommend_photo_path(@photo, :recommend_id => recommend), :method => :post
+  :javascript
+    $(window).load(function() {
+      var init = false;
+      $('#show_geo_recommends').click(function() {
+        if (init == false) {
+          $('#list_recommend').css({'display': 'block'});
+          init = true;
+        } else {
+          $('#list_recommend').css({'display': 'none'});
+          init = false;
+        }
+      });
+    });

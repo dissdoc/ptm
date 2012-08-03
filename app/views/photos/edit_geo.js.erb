@@ -1,0 +1,3 @@
+$('#geo_address').html("<%= escape_javascript(@photo.geo.address) %>").show();
+$('#geo_map').html("<%= escape_javascript(render(:partial => 'geos/shared/staticmap', :locals => { :address => @photo.geo.address })) %>").show();
+$('#geo_form').css({'display': 'none'});

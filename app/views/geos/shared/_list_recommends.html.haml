@@ -1,0 +1,12 @@
+- if photo.recommend_geos.count > 0
+  = link_to "recommends(#{photo.recommend_geos.count})", '#', :class => 'link', :id => 'show_geo_recommends'
+  %ul#list_recommend{ :style => 'display:none' }
+  - photo.recommend_geos.each do |recommend|
+    %li
+      %i= recommend.address
+      %br
+      = recommend.comment
+      (
+      = link_to "V", apply_recommend_photo_path(@photo, :recommend_id => recommend), :method => :post, :remote => true, :class => 'link'
+      = link_to "X", destroy_recommend_photo_path(@photo, :recommend_id => recommend), :method => :post, :remote => true, :class => 'link'
+      )

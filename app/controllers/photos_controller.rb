@@ -4,8 +4,8 @@ class PhotosController < ApplicationController
   before_filter :album_admin?, :only => [:new, :create]
   before_filter :set_photo, :except => [:new, :create, :index, :uploads, :uploaded]
   before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
-    :apply_recommend_at, :destroy_recommend_at, :add_picture_name, :add_story]
-  before_filter :not_admin_photo?, :only => [:recommend_geo, :create_recommend, :recommend_at, :create_recommend_at]
+    :apply_recommend_at, :destroy_recommend_at, :add_picture_name, :add_story, :edit_geo]
+  before_filter :not_admin_photo?, :only => [:create_recommend, :recommend_at, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
 
@@ -74,7 +74,14 @@ class PhotosController < ApplicationController
     end
   end
 
-  def recommend_geo
+  def edit_geo
+    if params[:geofield].present?
+      @photo.geo.update_attribute(:address, params[:geofield])
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create_recommend
@@ -91,10 +98,10 @@ class PhotosController < ApplicationController
       @message.to_user = @photo.user
       @message.from_user = current_user
       @message.save!
+    end
 
-      redirect_to @photo
-    else
-      render :action => :recommend_geo
+    respond_to do |format|
+      format.js { render :template => 'photos/edit_geo.js.erb' }
     end
   end
 
@@ -110,13 +117,19 @@ class PhotosController < ApplicationController
       @geo.save!
     end
     recommend.destroy
-    redirect_to @photo
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy_recommend
     recommend = RecommendGeo.find(params[:recommend_id])
     recommend.destroy
-    redirect_to @photo
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   # Recommend generated at ---------------------------------------------------------------------------------------------

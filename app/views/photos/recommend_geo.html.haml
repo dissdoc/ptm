@@ -1,6 +1,0 @@
-%h4 Recommend geo
-
-= form_tag create_recommend_photo_path(@photo), :method => :post do
-  = render :partial => 'geos/shared/geolocation', :locals => { :photo => @photo }
-  = text_area_tag :comment, params[:comment]
-  %div= submit_tag 'Recommend'
