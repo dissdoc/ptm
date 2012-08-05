@@ -17,8 +17,8 @@ module ApplicationHelper
     content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=450&action=like&font=arial&colorscheme=light&height=80", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like
   end
 
-  def dt_set_defaults(item, params_name)
+  def dt_set_defaults(params_name)
     render :partial => 'timelines/shared/dt_select',
-           :locals => { :params_name => params_name, :generate => item }
+           :locals => { :params_name => params_name }
   end
 end

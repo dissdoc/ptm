@@ -38,7 +38,8 @@ Ptm::Application.routes.draw do
       post 'apply_recommend'
       post 'destroy_recommend'
 
-      get 'recommend_at'
+      post 'destroy_start_date'
+      post 'destroy_end_date'
       post 'edit_recommend_at'
       post 'create_recommend_at'
       post 'apply_recommend_at'

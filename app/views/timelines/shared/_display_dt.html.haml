@@ -1,5 +1,9 @@
 - if photo.generate.present?
   = l photo.generate, :format => :lite
+  - if signed_in? && current_user.admin_of_photo?(photo)
+    %sup= link_to 'x', destroy_start_date_photo_path(photo), :method => :post, :remote => true unless photo.generate_end
   - if photo.generate_end
     \...
     = l photo.generate_end, :format => :lite
+    - if signed_in? && current_user.admin_of_photo?(photo)
+      %sup= link_to 'x', destroy_end_date_photo_path(photo), :method => :post, :remote => true

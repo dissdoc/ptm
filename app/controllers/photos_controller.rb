@@ -4,8 +4,9 @@ class PhotosController < ApplicationController
   before_filter :album_admin?, :only => [:new, :create]
   before_filter :set_photo, :except => [:new, :create, :index, :uploads, :uploaded]
   before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
-    :apply_recommend_at, :destroy_recommend_at, :add_picture_name, :add_story, :edit_geo]
-  before_filter :not_admin_photo?, :only => [:create_recommend, :recommend_at, :create_recommend_at]
+    :apply_recommend_at, :destroy_recommend_at, :add_picture_name, :add_story, :edit_geo, :destroy_start_date,
+    :destroy_end_date]
+  before_filter :not_admin_photo?, :only => [:create_recommend, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
 
@@ -140,14 +141,26 @@ class PhotosController < ApplicationController
   end
 
   # Recommend generated at ---------------------------------------------------------------------------------------------
-  def recommend_at
+  def destroy_start_date
+    @photo.update_attribute(:generate, nil)
 
+    respond_to do |format|
+      format.js { render :template => 'photos/destroy_date.js.erb' }
+    end
+  end
+
+  def destroy_end_date
+    @photo.update_attribute(:generate_end, nil)
+
+    respond_to do |format|
+      format.js { render :template => 'photos/destroy_date.js.erb' }
+    end
   end
 
   def edit_recommend_at
     from_at = parse_datetime(params[:from_at])
     if from_at
-      @photo.update_attribute(:generate => from_at)
+      @photo.update_attribute(:generate, from_at)
 
       to_at = parse_datetime(params[:to_at])
       @photo.update_attribute(:generate_end, to_at) if to_at
@@ -179,10 +192,11 @@ class PhotosController < ApplicationController
         @message.to_user = @photo.user
         @message.from_user = current_user
         @message.save!
-        redirect_to @photo
       end
-    else
-      render :action => :recommend_at
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -190,13 +204,19 @@ class PhotosController < ApplicationController
     recommend = RecommendAt.find(params[:recommend_id])
     @photo.update_attributes(:generate => recommend.from_at, :generate_end => recommend.to_at)
     recommend.destroy
-    redirect_to @photo
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy_recommend_at
     recommend = RecommendAt.find(params[:recommend_id])
     recommend.destroy
-    redirect_to @photo
+
+    respond_to do |format|
+      format.js
+    end
   end
   # end of recommend generated at --------------------------------------------------------------------------------------
 

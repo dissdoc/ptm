@@ -1,0 +1,2 @@
+$('#dt').html("<%= escape_javascript(render(:partial => 'timelines/shared/display_dt', :locals => { :photo => @photo })) %>");
+$('#recommends_at_panel').html("<%= escape_javascript(render(:partial => 'geos/shared/list_recommends', :locals => { :photo => @photo })) %>");

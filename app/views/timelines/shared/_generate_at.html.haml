@@ -6,15 +6,6 @@
   - if current_user.admin_of_photo?(photo)
     = edit_date_form(photo, :user => 'admin')
 
-    :javascript
-      $(window).load(function() {
-        $('#edit_dt').click(function() {
-          $('#dt').hide();
-          $('#datetime_form').css({'display': 'block'});
-          return false;
-        });
-      });
-
   - else
     = edit_date_form(photo, :user => 'member')
 
@@ -23,27 +14,34 @@
     = render :partial => 'timelines/shared/display_dt', :locals => { :photo => photo }
 
 :javascript
-  $(document).ready(function() {
-    $('#cancel_datetime').click(function() {
-      $('#datetime_form').css({'display':'none'});
-      $('#dt').show();
+  $(window).load(function() {
+    $('#edit_dt').click(function() {
+      $('#datetime_form').css({'display': 'block'});
       return false;
     });
   });
 
-- if signed_in? && !current_user.admin_of_photo?(photo)
-  = link_to 'Recommend at', recommend_at_photo_path(@photo)
+  $(document).ready(function() {
+    $('#cancel_datetime').click(function() {
+      $('#datetime_form').css({'display':'none'});
+      return false;
+    });
+  });
 
-- if photo.recommend_ats.present?
-  %ul
-    - photo.recommend_ats.each do |recommend|
-      %li
-        %i
-          = l recommend.from_at, :format => :lite
-          - if recommend.to_at.present?
-            \...
-            = l recommend.to_at, :format => :lite
+- if signed_in? && current_user.admin_of_photo?(photo) && photo.recommend_ats.present?
+  %div#recommends_at_panel
+    = render :partial => 'timelines/shared/list_recommends_at', :locals => { :photo => photo }
 
-        - if signed_in? && current_user.admin_of_photo?(photo)
-          = link_to "V", apply_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post
-          = link_to "X", destroy_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post
+  :javascript
+    $(window).load(function() {
+      var init = false;
+      $('#show_at_recommends').click(function() {
+        if (init == false) {
+          $('#list_recommend_at').css({'display': 'block'});
+          init = true;
+        } else {
+          $('#list_recommend_at').css({'display': 'none'});
+          init = false;
+        }
+      });
+    });

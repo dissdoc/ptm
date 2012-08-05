@@ -1,0 +1,14 @@
+- if photo.recommend_ats.count > 0
+  = link_to "recommends(#{photo.recommend_ats.count})", '#', :class => 'link', :id => 'show_at_recommends'
+  %ul#list_recommend_at{ :style => 'display:none' }
+    - photo.recommend_ats.each do |recommend|
+      %li
+        %i
+          = l recommend.from_at, :format => :lite
+          - if recommend.to_at.present?
+            \...
+            = l recommend.to_at, :format => :lite
+        (
+        = link_to "V", apply_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post, :remote => true, :class => 'link'
+        = link_to "X", destroy_recommend_at_photo_path(@photo, :recommend_id => recommend), :method => :post, :remote => true, :class => 'link'
+        )

@@ -1,8 +1,8 @@
 %div{ :style => 'display:none', :id => 'datetime_form' }
   = form_tag url, :remote => true do
-    = dt_set_defaults(photo.generate, :from_at)
+    = dt_set_defaults(:from_at)
     %div.tire -
-    = dt_set_defaults(photo.generate_end, :to_at)
+    = dt_set_defaults(:to_at)
 
     = submit_tag 'Add', :class => 'action'
     = button_tag 'Cancel', :class => 'action', :id => 'cancel_datetime'
