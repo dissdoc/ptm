@@ -3,11 +3,11 @@
   - if signed_in?
     = link_to '(specify time tag)', '#', :class => 'link', :id => 'edit_dt'
 
-  - if current_user.admin_of_photo?(photo)
-    = edit_date_form(photo, :user => 'admin')
+    - if current_user.admin_of_photo?(photo)
+      = edit_date_form(photo, :user => 'admin')
 
-  - else
-    = edit_date_form(photo, :user => 'member')
+    - else
+      = edit_date_form(photo, :user => 'member')
 
   %br
   %span#dt

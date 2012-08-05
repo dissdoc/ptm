@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
     photo = Photo.find(params[:photo_id])
     UserMailer.added_photo_favorite(current_user, photo).deliver
     Activity.add(photo.user, photo, Activity::ADD_FAVE_PHOTO, current_user)
+    @photo = photo
     respond_to do |format|
       format.js
     end
@@ -14,6 +15,7 @@ class FavoritesController < ApplicationController
   def unfave
     @favorite = current_user.favorites.where(:photo_id => params[:photo_id]).first
     @favorite.destroy
+    @photo = Photo.find(params[:photo_id])
     respond_to do |format|
       format.js { render :template => 'favorites/fave.js.erb' }
     end

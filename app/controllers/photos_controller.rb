@@ -37,6 +37,14 @@ class PhotosController < ApplicationController
       @album = @photo.album
     end
 
+    if @photo.review.present?
+      rv = @photo.review
+      rv += 1
+      @photo.update_attribute(:review, rv)
+    else
+      @photo.update_attribute(:review, 1);
+    end
+
     respond_to do |format|
       format.html { render :layout => 'application_empty' }
     end

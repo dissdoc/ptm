@@ -3,7 +3,7 @@
   = hidden_field_tag :latitude, latitude
   = hidden_field_tag :longitude, longitude
 
-  %div#geomap
+  %div#geomap{ :style => 'clear: none !important;' }
 
 %script{ :type => "text/javascript", :src => "/assets/ptm.geolocation.js" }
 :javascript

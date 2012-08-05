@@ -72,7 +72,8 @@
 
     = render :partial => 'tags/shared/list', :locals => { :tags => @photo.tags, :photo => @photo }
 
-    = render :partial => 'photos/shared/statistic', :locals => { :photo => @photo }
+    %div#statistic{ :style => 'padding: 0px' }
+      = render :partial => 'photos/shared/statistic', :locals => { :photo => @photo }
 
     %br
     = render :partial => 'photos/shared/license', :locals => { :photo => @photo }
@@ -97,7 +98,7 @@
               |
               = link_to "Cancel", cancel_link_photo_photo_url(@photo, :group_id => group), :method => :post
 
-    %div#vk_button
+    %div#vk_button{ :style => 'clear:none;' }
 
     %a{ :href => "https://twitter.com/share", :class => "twitter-share-button", "data-text" => "About this photo: #{@photo.comment}", "data-url" => "http://phototimemachine.heroku.com#{photo_path(@photo)}" }
       Tweet
