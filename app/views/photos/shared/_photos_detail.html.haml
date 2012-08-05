@@ -2,10 +2,10 @@
   %ul#wall
     - photos.each do |photo|
       %li{ :id => "#{ photo.id}" }
-        = image_tag photo.image.url(:medium)
+        = image_tag photo.image.url(:medium), :class => 'thumb'
 
         %div
-          = link_to image_tag(photo.image.url(:medium)), photo
+          = link_to image_tag(photo.image.url(:large)), photo
           %br
 
           - if photo.comment.present?

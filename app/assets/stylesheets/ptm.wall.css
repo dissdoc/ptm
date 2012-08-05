@@ -8,7 +8,7 @@
     float: left;
 }
 
-#wall li img {
+#wall li img.thumb {
     height: 116px;
 }
 
@@ -23,7 +23,7 @@
 }
 
 #wall li div img {
-    height: 150px;
+    width: 210px;
 }
 
 #wall li div{
