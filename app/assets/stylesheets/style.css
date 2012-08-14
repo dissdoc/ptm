@@ -234,7 +234,28 @@ ul#footer-links li { float: left; padding-right: 25px; }
     border-top: 1px solid #999;
     border-bottom: 1px solid #999;
     height: 22px;
+    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 0.85em;
 }
+
+#photo-detail div.statistic ul {
+
+}
+
+#photo-detail div.statistic ul li {
+    float: left;
+    width: 71px;
+}
+
+#photo-detail div.statistic ul li div {
+    padding: 0px;
+    position: relative;
+    left: 30px;
+    top: -23px;
+}
+
 
 #photo-detail div.comment {
     padding: 2px;

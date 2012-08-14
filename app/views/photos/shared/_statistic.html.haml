@@ -1,12 +1,48 @@
 %div.statistic
-  V
-  = photo.review
-  &nbsp;&nbsp;&nbsp;&nbsp;
+  %ul
+    %li
+      = image_tag 'ICON_view.png'
+      %div= photo.review
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    %li
+      = image_tag 'ICON_Comments.png'
+      %div= photo.notes.count
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    %li
+      = image_tag 'ICON_Favorites.png'
+      %div= photo.favorites.count
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    %li
+      = image_tag 'ICON_FACEBOOK.jpg'
+      %div#fb_like 0
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    %li
+      = image_tag 'ICON_TWITER.jpg'
+      %div#tw_like 0
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    %li
+      = image_tag 'ICON_B.jpg'
+      %div#vk_like 0
+      &nbsp;&nbsp;&nbsp;&nbsp;
 
-  F
-  = photo.favorites.count
-  &nbsp;&nbsp;&nbsp;&nbsp;
+:javascript
+  var pageuri = "http://phototimemachine.heroku.com#{photo_path(photo)}";
 
-  C
-  = photo.notes.count
-  &nbsp;&nbsp;&nbsp;&nbsp;
+  // Facebook
+  $.getJSON('http://api.facebook.com/restserver.php?method=links.getStats&callback=?&urls=' + pageuri + '&format=json', function(data) {
+    $('#fb_like span').text(data[0].like_count);
+  });
+
+  // VK
+  VK = {};
+  VK.Share = {};
+  VK.Share.count = function(index, count) {
+    $('#vk_like').text(count);
+  };
+  $.getJSON('http://vkontakte.ru/share.php?act=count&index=1&url=' + pageuri + '&format=json&callback=?');
+
+  // Twitter
+  $.getJSON('http://urls.api.twitter.com/1/urls/count.json?url=' + pageuri + '&callback=?', function(data) {
+      $('#tw_like').text(data.count);
+  });
+
