@@ -31,19 +31,7 @@
 
 %div#photo-detail
   %div.column1
-    - if signed_in?
-      = link_to "Selected", selected_photo_path(@photo)
-      - if signed_in?
-        |
-        = link_to "Add to group", '#', 'data-reveal-id' => "modalGroup"
-      - if current_user.admin_of_photo?(@photo)
-        |
-        = link_to "Edit", edit_photo_path(@photo)
-        |
-        = link_to "Delete", @photo, :method => :delete
-      - else
-        %div#favorites
-          = render :partial => 'favorites/shared/fave', :locals => { :photo => @photo }
+    = render :partial => 'photos/shared/navigation', :locals => { :photo => @photo }
     %p
       = image_tag @photo.image.url(:large), :id => "imgselectarea"
 
@@ -98,14 +86,7 @@
               |
               = link_to "Cancel", cancel_link_photo_photo_url(@photo, :group_id => group), :method => :post
 
-    %div#vk_button{ :style => 'clear:none;' }
 
-    %a{ :href => "https://twitter.com/share", :class => "twitter-share-button", "data-text" => "About this photo: #{@photo.comment}", "data-url" => "http://phototimemachine.heroku.com#{photo_path(@photo)}" }
-      Tweet
-
-    %div{ :class => "fb-like", "data-href" => "http://phototimemachine.heroku.com#{photo_path(@photo)}",
-          "data-send" => "false", "data-layout" => "button_count", "data-width" => "450",
-          "data-show-faces" => "false", "data-action" => "recommend", "data-font" => "arial" }
 
 
   %div#modalGroup.reveal-modal
@@ -127,13 +108,7 @@
       dissmissModalClass: 'close-reveal-modal'
     });
 
-  %script{ :type => "text/javascript" }
-    document.getElementById('vk_button').innerHTML = VK.Share.button({ url: "http://phototimemachine.heroku.com#{photo_path(@photo)}", title: "Photo", image: "#{@photo.image.url(:medium)}", noparse: true });
 
-  %script
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-
-  %div#fb-root
   %script
     (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];

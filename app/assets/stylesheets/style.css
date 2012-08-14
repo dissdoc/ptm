@@ -136,11 +136,6 @@ ul#data { padding-left: 45px; padding-top: 15px; padding-bottom: 10px; }
 ul#data li { font-size: 1.05em; float: left; padding-right: 34px; padding-left: 9px; }
 /* ======================================================================= */
 
-/* ================= Controls ========================================== */
-#controls { padding-left: 120px; }
-#controls li { float: left; padding-left: 4px; padding-right: 4px; padding-top: 3px; }
-/* ===================================================================== */
-
 /* ============================= Stats ================================== */
 #stats { font-size: 0.9em; padding-bottom: 10px; }
 #stats div { float: left; width: 425px; }
@@ -301,5 +296,24 @@ ul#footer-links li { float: left; padding-right: 25px; }
     cursor: pointer;
 }
 /* ====================================================================== */
+
+/* =================== NAVIGATION FOR PHOTO ============================= */
+#navigation {
+    padding: 0px;
+}
+#navigation ul {
+    padding: 0;
+    margin: 0;
+}
+#navigation ul li {
+    float: left;
+    padding: 0;
+}
+/* ====================================================================== */
+
+/* ================= Controls ========================================== */
+ul.controls { padding-left: 120px; }
+ul.controls li { float: left; padding-left: 4px; padding-right: 4px; padding-top: 3px; }
+/* ===================================================================== */
 
 /*div { border: 1px solid red; }*/

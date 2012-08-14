@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_filter :set_album, :only => [:new, :create]
   before_filter :album_admin?, :only => [:new, :create]
   before_filter :set_photo, :except => [:new, :create, :index, :uploads, :uploaded]
-  before_filter :photo_admin?, :only => [:destroy, :edit, :update, :apply_recommend, :destroy_recommend,
+  before_filter :photo_admin?, :only => [:destroy, :update, :apply_recommend, :destroy_recommend,
     :apply_recommend_at, :destroy_recommend_at, :add_picture_name, :add_story, :edit_geo, :destroy_start_date,
     :destroy_end_date]
   before_filter :not_admin_photo?, :only => [:create_recommend, :create_recommend_at]
@@ -48,11 +48,6 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { render :layout => 'application_empty' }
     end
-  end
-
-  def edit
-    @photo.geo ? @photo.geo : @photo.build_geo
-    @photo.share_photo ? @photo.share_photo : @photo.build_share_photo
   end
 
   def update

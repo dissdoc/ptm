@@ -1,0 +1,77 @@
+- if signed_in?
+  = link_to "Selected", selected_photo_path(photo)
+  - if signed_in?
+    |
+    = link_to "Add to group", '#', 'data-reveal-id' => "modalGroup"
+  - if current_user.admin_of_photo?(photo)
+    |
+    = link_to "Delete", photo, :method => :delete
+
+
+
+%div#navigation
+  %ul
+    %li
+      - if signed_in?
+        -# Favorites menu
+        - unless current_user.admin_of_photo?(photo)
+          %div#favorites
+            = render :partial => 'favorites/shared/fave', :locals => { :photo => photo }
+
+    %li
+      %div
+        %a{ :href => "https://twitter.com/share",
+            :class => "twitter-share-button",
+            "data-text" => "About this photo: #{photo.comment}",
+            "data-url" => "http://phototimemachine.heroku.com#{photo_path(photo)}",
+            "data-count" => "none" }
+          Tweet
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+    %li
+      %div#vk_like_button
+      :javascript
+        document.getElementById('vk_like_button').innerHTML = VK.Share.button(
+          {
+            url: "http://phototimemachine.heroku.com#{photo_path(photo)}",
+            title: "Photo",
+            image: "#{photo.image.url(:medium)}",
+            noparse: true
+          },
+          {
+            type: 'custom',
+            text: '<img src="/assets/ICON_bLIKE.jpg" />'
+          });
+
+    %li
+      %div{ :class => "fb-like", "data-href" => "http://phototimemachine.heroku.com#{photo_path(@photo)}",
+                "data-send" => "false", "data-layout" => "button_count", "data-width" => "100",
+                "data-show-faces" => "false", "data-action" => "like", "data-font" => "arial" }
+      :javascript
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=284172994996972";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+    %li
+      = link_to 'Action'
+      %ul
+        %li
+          = link_to 'Add to note'
+          = link_to 'Add to an album'
+          = link_to 'Add to a group'
+          = link_to 'Download'
+          = link_to 'View original size'
+          = link_to 'Replace'
+          = link_to 'Delete'
+      = link_to 'Share'
+
+    %li
+      = render 'shared/controls'
+
+
+%div.clear
