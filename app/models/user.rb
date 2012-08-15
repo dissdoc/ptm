@@ -195,6 +195,10 @@ class User < ActiveRecord::Base
     areatags.where(:id => areatag.id, :photo_id => photo.id).first.present?
   end
 
+  def admin_of_note?(note)
+    notes.where(:id => note.id).first.present?
+  end
+
   def admin_of_assortment(assort)
     assortments.where(:id => assort.id).first.present?
   end

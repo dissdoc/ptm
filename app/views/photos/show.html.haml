@@ -42,7 +42,7 @@
     %label Comments
     %div#comments
       - if @notes.present?
-        = render :partial => 'notes/shared/note', :collection => @notes
+        = render :partial => 'notes/shared/note', :collection => @notes, :locals => { :photo => @photo }
 
     - if signed_in?
       = note_form(@note, :photo => @photo)

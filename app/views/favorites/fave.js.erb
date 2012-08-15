@@ -1,2 +1,2 @@
 $('#favorites').html("<%= escape_javascript(render(:partial => 'favorites/shared/fave', :locals => { :photo => @photo } )) %>");
-$('#statistic').html("<%= escape_javascript(render(:partial => 'photos/shared/statistic', :locals => { :photo => @photo })) %>");
+$('#faves_statistic').html("<%= @photo.favorites.count  %>");

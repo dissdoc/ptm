@@ -6,11 +6,11 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
     %li
       = image_tag 'ICON_Comments.png'
-      %div= photo.notes.count
+      %div#notes_statistic= photo.notes.count
       &nbsp;&nbsp;&nbsp;&nbsp;
     %li
       = image_tag 'ICON_Favorites.png'
-      %div= photo.favorites.count
+      %div#faves_statistic= photo.favorites.count
       &nbsp;&nbsp;&nbsp;&nbsp;
     %li
       = image_tag 'ICON_FACEBOOK.jpg'

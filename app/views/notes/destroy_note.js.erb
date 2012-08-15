@@ -1,0 +1,2 @@
+$('#comments').html("<%= escape_javascript(render(:partial => 'notes/shared/note', :collection => @photo.notes, :locals => { :photo => @photo })) %>");
+$('#notes_statistic').html("<%= @photo.notes.count %>");

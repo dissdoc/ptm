@@ -9,6 +9,7 @@ class PhotosController < ApplicationController
   before_filter :not_admin_photo?, :only => [:create_recommend, :create_recommend_at]
   before_filter :can_delete?, :only => [:deletearea]
   before_filter :set_group, :only => [:agree_link_photo, :cancel_link_photo]
+  before_filter :can_delete_comment?, :only => [:destroy_note]
 
   def index
     @photos = current_user.photos
@@ -42,7 +43,7 @@ class PhotosController < ApplicationController
       rv += 1
       @photo.update_attribute(:review, rv)
     else
-      @photo.update_attribute(:review, 1);
+      @photo.update_attribute(:review, 1)
     end
 
     respond_to do |format|
@@ -74,13 +75,12 @@ class PhotosController < ApplicationController
     end
 
     respond_to do |format|
-      format.js
+      format.js { render :template => 'notes/add_note.js.erb' }
     end
   end
 
   def destroy_note
-    note = @photo.notes.find(params[:note_id])
-    note.detroy
+    @note.destroy
     
     respond_to do |format|
       format.js { render :template => 'notes/destroy_note.js.erb' }
@@ -327,6 +327,11 @@ class PhotosController < ApplicationController
 
     def set_group
       @group = Group.find(params[:group_id])
+    end
+
+    def can_delete_comment?
+      @note = @photo.notes.find(params[:note_id])
+      current_user.admin_of_photo?(@photo) || current_user.admin_of_note?(@note)
     end
 
   private

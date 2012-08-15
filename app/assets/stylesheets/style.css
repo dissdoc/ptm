@@ -252,23 +252,18 @@ ul#footer-links li { float: left; padding-right: 25px; }
 }
 
 
-#photo-detail div.comment {
-    padding: 2px;
-    padding-bottom: 0px;
-}
-#photo-detail div.comment div.remove {
-  position: relative;
-  left: 100px;
-}
-#photo-detail div.image {
+#photo-detail ul.comment {
     padding: 0px;
+}
+#photo-detail ul.comment li {
     float: left;
-    width: 40px;
-    height: 40px;
+    padding: 2px;
 }
-#photo-detail div.text {
-    padding: 0px;
-    padding-left: 45px;
+#photo-detail ul.comment li.image {
+    width: 46px;
+}
+#photo-detail ul.comment li.text {
+    width: 762px;
 }
 
 #comments {
