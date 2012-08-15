@@ -256,6 +256,10 @@ ul#footer-links li { float: left; padding-right: 25px; }
     padding: 2px;
     padding-bottom: 0px;
 }
+#photo-detail div.comment div.remove {
+  position: relative;
+  left: 100px;
+}
 #photo-detail div.image {
     padding: 0px;
     float: left;

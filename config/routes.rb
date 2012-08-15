@@ -44,6 +44,8 @@ Ptm::Application.routes.draw do
       post 'create_recommend_at'
       post 'apply_recommend_at'
       post 'destroy_recommend_at'
+
+      post 'destroy_note'
     end
   end
 

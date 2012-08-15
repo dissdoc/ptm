@@ -78,6 +78,15 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy_note
+    note = @photo.notes.find(params[:note_id])
+    note.detroy
+    
+    respond_to do |format|
+      format.js { render :template => 'notes/destroy_note.js.erb' }
+    end
+  end
+
   def edit_geo
     if params[:geofield].present?
       if @photo.geo.present?
