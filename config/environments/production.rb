@@ -61,7 +61,7 @@ Ptm::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.assets.precompile += %w( style.css ptm.search.css ptm.search.js ptm.geolocation.css ptm.geolocation.js ptm.multiload.js ptm.multiload.css ptm.wall.js ptm.wall.css)
+  config.assets.precompile += %w(style.css ptm.search.css ptm.search.js ptm.geolocation.css ptm.geolocation.js ptm.multiload.js ptm.multiload.css ptm.wall.js ptm.wall.css ptm.dropdown.js ptm.dropdown.css)
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

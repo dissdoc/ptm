@@ -1,0 +1,19 @@
+.dropdown ul {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 2px;
+}
+
+.dropdown ul li {
+    clear: both;
+    width: 100%;
+    margin: 0px !important;
+}
+.dropdown ul li div {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+.dropdown ul li:hover {
+    background: #eee;
+}

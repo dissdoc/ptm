@@ -13,22 +13,6 @@
   %meta{ :property => "og:image", :content => "#{@photo.image.url(:medium)}" }
   %meta{ :property => "og:site_name", :content => "Phototimemachine" }
 
-  :erb
-    <script language="Javascript">
-      jQuery(function($) {
-        notes = [];
-        <% @photo.areatags.each do |areatag| %>
-          notes.push({"x1": "<%= areatag.x %>",
-                      "y1": "<%= areatag.y %>",
-                      "height": "<%= areatag.height %>",
-                      "width": "<%= areatag.width %>",
-                      "note": "<%= areatag.description.gsub(/\r/," ").gsub(/\n/," ") %>" });
-        <% end %>
-
-        $('#imgselectarea').imgNotes();
-      });
-    </script>
-
 %div#photo-detail
   %div.column1
     = render :partial => 'photos/shared/navigation', :locals => { :photo => @photo }
@@ -38,6 +22,10 @@
     - if @album
       %p
         = render :partial => 'photos/shared/photo', :collection => @album.photos
+
+    - if @photo.areatags.present?
+      %div#areatags_list
+        = render :partial => 'areatags/shared/areatag', :collection => @photo.areatags, :locals => { :photo => @photo }
 
     %label Comments
     %div#comments
@@ -87,8 +75,6 @@
               = link_to "Cancel", cancel_link_photo_photo_url(@photo, :group_id => group), :method => :post
 
 
-
-
   %div#modalGroup.reveal-modal
     %h4 Change group for add
     %a{ :class => "close-reveal-modal" }
@@ -108,15 +94,7 @@
       dissmissModalClass: 'close-reveal-modal'
     });
 
-
-  %script
-    (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=284172994996972";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-
 %div.clear
+
+= render :partial => 'areatags/shared/form_select', :locals => { :photo => @photo }
+= render :partial => 'areatags/shared/selected', :locals => { :photo => @photo }

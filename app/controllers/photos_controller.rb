@@ -231,11 +231,6 @@ class PhotosController < ApplicationController
     end
   end
   # end of recommend generated at --------------------------------------------------------------------------------------
-
-  def selected
-
-  end
-
   def addarea
     if params[:description].blank?
       render :action => :selected
@@ -248,9 +243,13 @@ class PhotosController < ApplicationController
   end
 
   def deletearea
-    area = @photo.areatags.find(params[:area])
+    @area_id = params[:area]
+    area = @photo.areatags.find(@area_id)
     area.destroy
-    redirect_to selected_photo_path(@photo)
+
+    respond_to do |format|
+      format.js { render :template => 'areatags/deletearea.js.erb' }
+    end
   end
 
   def agree_link_photo

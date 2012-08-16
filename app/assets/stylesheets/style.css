@@ -59,9 +59,9 @@ div#menu ul.nav-bar .medium { width: 300px; font-size: 12px; }
 div#menu ul.nav-bar .flyout { padding: 0px; }
 div#menu ul.nav-bar li .flyout li { padding: 3px 10px 3px 10px; }
 div#menu ul.nav-bar li .flyout li:hover { background: #eee; }
-/* ========================================== */
+/* ================================================================= */
 
-/* ================== Search fields ============= */
+/* ================== Search fields ================================ */
 div#search { padding: 0px; }
 div#search div.empty-column { width: 3px; float: left; }
 div#search div.three-column { width: 420px; float: left; }
@@ -306,7 +306,6 @@ ul#footer-links li { float: left; padding-right: 25px; }
 }
 #navigation ul li {
     float: left;
-    padding: 0;
 }
 /* ====================================================================== */
 

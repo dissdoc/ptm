@@ -1,14 +1,3 @@
-- if signed_in?
-  = link_to "Selected", selected_photo_path(photo)
-  - if signed_in?
-    |
-    = link_to "Add to group", '#', 'data-reveal-id' => "modalGroup"
-  - if current_user.admin_of_photo?(photo)
-    |
-    = link_to "Delete", photo, :method => :delete
-
-
-
 %div#navigation
   %ul
     %li
@@ -45,7 +34,7 @@
           });
 
     %li
-      %div{ :class => "fb-like", "data-href" => "http://phototimemachine.heroku.com#{photo_path(@photo)}",
+      %div{ :class => "fb-like", "data-href" => "http://phototimemachine.heroku.com#{photo_path(photo)}",
                 "data-send" => "false", "data-layout" => "button_count", "data-width" => "100",
                 "data-show-faces" => "false", "data-action" => "like", "data-font" => "arial" }
       :javascript
@@ -57,20 +46,36 @@
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
-    %li
-      = link_to 'Action'
-      %ul
-        %li
-          = link_to 'Add to note'
-          = link_to 'Add to an album'
-          = link_to 'Add to a group'
-          = link_to 'Download'
-          = link_to 'View original size'
-          = link_to 'Replace'
-          = link_to 'Delete'
-      = link_to 'Share'
+    - if signed_in?
+      %li
+        %div.dropdown
+          = link_to 'Action', '#', :remote => true
+          %ul
+            %li
+              %div= link_to 'Add a note', '#', :id => 'addnotelink'
+            %li
+              %div= link_to 'Add to an album'
+            %li
+              %div= link_to 'Add to a group', '#', 'data-reveal-id' => "modalGroup"
+            %li
+              %div= link_to 'Download'
+            %li
+              %div= link_to 'View original size'
+            %li
+              %div= link_to 'Replace'
+            - if current_user.admin_of_photo?(photo)
+              %li
+                %div= link_to 'Delete', photo, :method => :delete
+          %script{ :type => "text/javascript", :src => "/assets/ptm.dropdown.js" }
+          :javascript
+            $(document).ready(function() {
+              $('.dropdown').ptmDropdown();
+            });
 
-    %li
+      %li
+        %div= link_to 'Share'
+
+    %li{ :style => 'padding-left: 100px;' }
       = render 'shared/controls'
 
 

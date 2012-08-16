@@ -31,8 +31,6 @@ Ptm::Application.routes.draw do
       post 'add_picture_name'
       post 'add_story'
 
-      get 'selected'
-
       post 'edit_geo'
       post 'create_recommend'
       post 'apply_recommend'

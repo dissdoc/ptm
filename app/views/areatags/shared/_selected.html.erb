@@ -1,0 +1,45 @@
+<script language="Javascript">
+    jQuery(function($) {
+        notes = [];
+        <% photo.areatags.each do |areatag| %>
+        notes.push({"x1": "<%= areatag.x %>",
+            "y1": "<%= areatag.y %>",
+            "height": "<%= areatag.height %>",
+            "width": "<%= areatag.width %>",
+            "note": "<%= areatag.description.gsub(/\r/," ").gsub(/\n/," ") %>" });
+        <% end %>
+
+        $('#imgselectarea').imgNotes();
+        $('#imgselectarea').imgAreaSelect({
+            handles: true,
+            onSelectChange:showaddnote
+        });
+
+        $('#cancelnote').click(function(){
+            $('#imgselectarea').imgAreaSelect({ hide: true, disable:true });
+            $('#noteform').hide();
+        });
+
+        $('#addnotelink').click(function(){
+            $('#imgselectarea').imgAreaSelect({ enable:true, onSelectChange: showaddnote, x1: 120, y1: 90, x2: 280, y2: 210 });
+            return false;
+        });
+    });
+
+    function showaddnote (img, area) {
+        imgOffset = $(img).offset();
+        form_left  = parseInt(imgOffset.left) + parseInt(area.x1);
+        form_top   = parseInt(imgOffset.top) + parseInt(area.y1) + parseInt(area.height)+5;
+
+        $('#noteform').css({ left: form_left + 'px', top: form_top + 'px'});
+
+        $('#noteform').show();
+
+        $('#noteform').css("z-index", 10000);
+        $('#NoteX1').val(area.x1);
+        $('#NoteY1').val(area.y1);
+        $('#NoteHeight').val(area.height);
+        $('#NoteWidth').val(area.width);
+
+    }
+</script>
