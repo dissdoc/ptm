@@ -1,5 +1,5 @@
 %span{ :id => "#{areatag.id}" }
-  = link_to areatag.description, '#', :remote => true
+  = link_to areatag.description, '#', :class => 'sarea', :remote => true
   - if signed_in?
     - if current_user.admin_of_photo?(photo) || current_user.admin_of_areatag?(photo, areatag)
       %sup= link_to 'x', deletearea_photo_path(photo, :area => areatag), :method => :post, :remote => true

@@ -2,7 +2,9 @@
     jQuery(function($) {
         notes = [];
         <% photo.areatags.each do |areatag| %>
-        notes.push({"x1": "<%= areatag.x %>",
+        notes.push({
+            "id": "<%= areatag.id %>",
+            "x1": "<%= areatag.x %>",
             "y1": "<%= areatag.y %>",
             "height": "<%= areatag.height %>",
             "width": "<%= areatag.width %>",
@@ -13,6 +15,11 @@
         $('#imgselectarea').imgAreaSelect({
             handles: true,
             onSelectChange:showaddnote
+        });
+
+        $('#submitnote').click(function() {
+           $('#imgselectarea').imgAreaSelect({ hide: true, disable:true });
+           $('#noteform').hide();
         });
 
         $('#cancelnote').click(function(){
@@ -42,4 +49,36 @@
         $('#NoteWidth').val(area.width);
 
     }
+
+    function appendnote(note_data, id){
+        note_left  = parseInt(imgOffset.left) + parseInt(note_data.x1);
+        note_top   = parseInt(imgOffset.top) + parseInt(note_data.y1);
+
+        note_area_div = $("<div class='note' id='selfnote'></div>").css({ left: note_left + 'px', top: note_top + 'px', width: note_data.width + 'px', height: note_data.height + 'px' });
+
+        $('body').append(note_area_div);
+    }
+
+    $(document).ready(function() {
+        $('#areatags_list span').each(function(index) {
+            var id = $(this).attr('id');
+            $(this).find('a.sarea').mouseover(function() {
+                $.getJSON('/areatags?photo_id=' + <%= photo.id %> + '&areatag_id='+id,
+                  function(data) {
+                      var _notes = [];
+                      _notes.push({"x1": data.x,
+                          "y1": data.y,
+                          "height": data.height,
+                          "width": data.width,
+                          "note": data.description});
+                      appendnote(_notes[0]);
+                      $('#selfnote').show();
+                  });
+            });
+
+            $(this).find('a.sarea').mouseout(function() {
+                $('#selfnote').remove();
+            });
+        });
+    })
 </script>

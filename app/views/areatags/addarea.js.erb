@@ -1,0 +1,1 @@
+$('#areatags_list').html("<%= escape_javascript(render(:partial => 'areatags/shared/areatag', :collection => @photo.areatags, :locals => { :photo => @photo })) %>").show();

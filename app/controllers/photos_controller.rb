@@ -232,13 +232,14 @@ class PhotosController < ApplicationController
   end
   # end of recommend generated at --------------------------------------------------------------------------------------
   def addarea
-    if params[:description].blank?
-      render :action => :selected
-    else
+    if params[:description].present?
       @note = @photo.areatags.create!(:x => params[:x1], :y => params[:y1], :height => params[:height], :width => params[:width],
         :description => params[:description], :user_id => current_user.id)
       UserMailer.added_note(current_user, @note, @photo).deliver
-      redirect_to selected_photo_path(@photo)
+    end
+
+    respond_to do |format|
+      format.js { render :template => 'areatags/addarea.js.erb' }
     end
   end
 

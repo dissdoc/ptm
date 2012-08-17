@@ -1,1 +1,17 @@
+alert(notes);
+notes = jQuery.grep(notes, function(value) {
+    alert(value.id != "<%= @area_id %>");
+    return value.id != "<%= @area_id %>";
+});
+alert(notes);
+$('body').find('.note').each(function(index) {
+    $(this).remove();
+});
+
+$('body').find('.notep').each(function(index) {
+    $(this).remove();
+});
+
+$('#imgselectarea').imgNotes();
+
 $("#areatags_list #<%= escape_javascript(@area_id) %>").remove();
