@@ -1,2 +1,2 @@
-$('#tags').html("<%= escape_javascript(render(:partial => 'tags/shared/tag', :collection => @photo.tags, :locals => { :photo => @photo })) %>");
+$('#tags').html("<%= escape_javascript(render(:partial => 'tags/shared/tag', :collection => @photo.tags, :locals => { :photo => @photo })) %>").show();
 $('#tags_form').css({'display':'none'});

@@ -46,7 +46,7 @@
 
     = render :partial => 'geos/shared/geo', :locals => { :photo => @photo }
 
-    = render :partial => 'tags/shared/list', :locals => { :tags => @photo.tags, :photo => @photo }
+    = render :partial => 'tags/shared/list', :locals => { :photo => @photo }
 
     %div#statistic{ :style => 'padding: 0px' }
       = render :partial => 'photos/shared/statistic', :locals => { :photo => @photo }
