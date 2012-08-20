@@ -86,42 +86,4 @@
     %li{ :style => 'padding-left: 100px;' }
       = render 'shared/controls'
 
-
 %div.clear
-
-%div#modalGroup.reveal-modal
-  %h4 Change group for add
-  %a{ :class => "close-reveal-modal" }
-    &#215;
-
-  - if signed_in?
-    - current_user.managing_groups.each do |group|
-      %div= link_to group.name, group_link_photo_path(:group_id => group, :photo_id => @photo), :method => :post
-    - current_user.joining_groups.each do |group|
-      %div= link_to group.name, group_link_photo_path(:group_id => group, :photo_id => @photo), :method => :post
-
-:javascript
-  $('#modalGroup').reveal({
-    animation: 'none',
-    animationspeed: 200,
-    closeOnBackgroundClick: true,
-    dissmissModalClass: 'close-reveal-modal'
-  });
-
-
-%div#modalAlbum.reveal-modal
-  %h4 Change album for add
-  %a{ :class => 'close-reveal-modal' }
-    &#215;
-
-  - if signed_in?
-    - current_user.assortments.each do |assortment|
-      %div= link_to assortment.name, assortment_add_photo_path(:assortment_id => assortment, :photo_id => photo), :method => :post
-
-:javascript
-  $('#modalAlbum').reveal({
-    animation: 'none',
-    animationspeed: 200,
-    closeOnBackgroundClick: true,
-    dissmissModalClass: 'close-reveal-modal'
-  });
