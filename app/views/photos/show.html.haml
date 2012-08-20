@@ -23,8 +23,9 @@
       %p
         = render :partial => 'photos/shared/photo', :collection => @album.photos
 
-    - if @photo.areatags.present?
-      %div#areatags_list
+
+    %div#areatags_list
+      - if @photo.areatags.present?
         = render :partial => 'areatags/shared/areatag', :collection => @photo.areatags, :locals => { :photo => @photo }
 
     %label Comments
