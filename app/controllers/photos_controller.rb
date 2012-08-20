@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :original]
   before_filter :set_album, :only => [:new, :create]
   before_filter :album_admin?, :only => [:new, :create]
   before_filter :set_photo, :except => [:new, :create, :index, :uploads, :uploaded]
@@ -296,6 +296,10 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def original
+
   end
 
   protected

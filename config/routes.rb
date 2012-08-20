@@ -23,6 +23,8 @@ Ptm::Application.routes.draw do
   match '/photos/uploaded', :to => 'photos#uploaded', :via => :post
   resources :photos do
     member do
+      get 'original'
+
       post 'addarea'
       post 'deletearea'
       post 'add_note'

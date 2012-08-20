@@ -16,7 +16,15 @@
             "data-count" => "none" }
           Tweet
         :javascript
-          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          !function(d,s,id) {
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)) {
+              js=d.createElement(s);
+              js.id=id;
+              js.src="//platform.twitter.com/widgets.js";
+              fjs.parentNode.insertBefore(js,fjs);
+            }
+          }(document,"script","twitter-wjs");
 
     %li
       %div#vk_like_button
@@ -54,13 +62,13 @@
             %li
               %div= link_to 'Add a note', '#', :id => 'addnotelink'
             %li
-              %div= link_to 'Add to an album'
+              %div= link_to 'Add to an album', '#', 'data-reveal-id' => 'modalAlbum', :remote => true
             %li
-              %div= link_to 'Add to a group', '#', 'data-reveal-id' => "modalGroup"
+              %div= link_to 'Add to a group', '#', 'data-reveal-id' => "modalGroup", :remote => true
             %li
               %div= link_to 'Download'
             %li
-              %div= link_to 'View original size'
+              %div= link_to 'View original size', original_photo_path(photo)
             %li
               %div= link_to 'Replace'
             - if current_user.admin_of_photo?(photo)
@@ -80,3 +88,40 @@
 
 
 %div.clear
+
+%div#modalGroup.reveal-modal
+  %h4 Change group for add
+  %a{ :class => "close-reveal-modal" }
+    &#215;
+
+  - if signed_in?
+    - current_user.managing_groups.each do |group|
+      %div= link_to group.name, group_link_photo_path(:group_id => group, :photo_id => @photo), :method => :post
+    - current_user.joining_groups.each do |group|
+      %div= link_to group.name, group_link_photo_path(:group_id => group, :photo_id => @photo), :method => :post
+
+:javascript
+  $('#modalGroup').reveal({
+    animation: 'none',
+    animationspeed: 200,
+    closeOnBackgroundClick: true,
+    dissmissModalClass: 'close-reveal-modal'
+  });
+
+
+%div#modalAlbum.reveal-modal
+  %h4 Change album for add
+  %a{ :class => 'close-reveal-modal' }
+    &#215;
+
+  - if signed_in?
+    - current_user.assortments.each do |assortment|
+      %div= link_to assortment.name, assortment_add_photo_path(:assortment_id => assortment, :photo_id => photo), :method => :post
+
+:javascript
+  $('#modalAlbum').reveal({
+    animation: 'none',
+    animationspeed: 200,
+    closeOnBackgroundClick: true,
+    dissmissModalClass: 'close-reveal-modal'
+  });
