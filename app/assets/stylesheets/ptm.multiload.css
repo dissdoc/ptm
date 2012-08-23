@@ -19,3 +19,7 @@
 #multiload ul.filelist li div.name {
     font-weight: bold;
 }
+
+#photo_file {
+    display: none;
+}

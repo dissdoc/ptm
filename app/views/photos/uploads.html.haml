@@ -1,3 +1,52 @@
 = form_for @object_new, :url => photos_uploaded_path, :html => { :multipart => true, :id => "fileupload"  } do |f|
-  = f.file_field :file, :multiple => true
-  = f.submit "Upload"
+  = f.file_field :file, :multiple => true, :accept => 'image/*'
+  = hidden_field_tag :sources
+  %div
+    = button_tag 'Add files', :id => 'add_files'
+    = button_tag 'Uploads', :id => 'upload_files', :remote => true
+    = f.submit "Upload"
+
+%ul#preload
+
+
+%script{ :type => 'text/javascript', :src => '/assets/uploaderObject.js' }
+:javascript
+  window.URL = window.URL || window.webkitURL;
+  var files = [];
+
+  $('#add_files').click(function(e) {
+    if ($('#photo_file')) $('#photo_file').click();
+    e.preventDefault();
+  });
+
+  $('#photo_file').change(function(e) {
+    for (i = 0; i < e.currentTarget.files.length; i++) {
+      var currentFile = e.currentTarget.files[i];
+      var li = $('<li>').text(currentFile.name);
+      $('#preload').append(li);
+      files.push(currentFile);
+    }
+  });
+
+  $('#upload_files').click(function() {
+    for(var curfile in files) {
+      new uploaderObject({
+        file: curfile,
+        url: "#{ photos_uploaded_path }",
+        fieldName: 'mypic',
+
+        onprogress: function(percents) {
+          console.log("onprogress");
+        },
+
+        oncomplete: function(done, data) {
+          if(done) {
+            console.log('Файл `'+uploadItem.file.name+'` загружен, полученные данные:<br/>*****<br/>'+data+'<br/>*****');
+          } else {
+            console.log('Ошибка при загрузке файла `'+uploadItem.file.name+'`:<br/>'+this.lastError.text);
+          }
+        }
+      });
+    }
+  });
+

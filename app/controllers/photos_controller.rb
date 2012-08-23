@@ -280,10 +280,14 @@ class PhotosController < ApplicationController
     #  redirect_to root_path
     #end
     #puts params[:file].original_filename
-    params[:photo][:file].each do |photo|
-      photo_pc = Photo.create!(:image => File.new(photo.tempfile), :user_id => current_user.id)
-    end
-    render :text => params[:photo][:file].first.original_filename
+    #params[:photo][:file].each do |photo|
+      #photo_pc = Photo.create!(:image => File.new(photo.tempfile), :user_id => current_user.id)
+      #puts photo.original_filename
+    #end
+    #render :text => params[:photo][:file].first.original_filename
+    puts params[:mypic]
+
+    render :text => 'good'
   end
 
   def add_picture_name
