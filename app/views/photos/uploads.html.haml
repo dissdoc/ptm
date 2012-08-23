@@ -44,6 +44,11 @@
               '<div id="' + file.id + '">' +
               file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
           '</div>');
+
+           //var url = window.webkitURL ? window.webkitURL : window.URL;
+           //var img = $('img').attr('src', url.createObjectURL(file.nativeFile));
+           //$('#filelist').append(img);
+
       });
 
       up.refresh(); // Reposition Flash/Silverlight
