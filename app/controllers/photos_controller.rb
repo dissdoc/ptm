@@ -268,25 +268,7 @@ class PhotosController < ApplicationController
   end
 
   def uploaded
-    #items.each do |src|
-    #  @photo = Photo.create!(:image => File.new(src, "r"), :user_id => current_user.id)
-    #end
-    #redirect_to @root_path
-
-    #@photo = current_user.photos.new(params[:photo])
-    #if @photo.save!
-    #  redirect_to @photo
-    #else
-    #  redirect_to root_path
-    #end
-    #puts params[:file].original_filename
-    #params[:photo][:file].each do |photo|
-      #photo_pc = Photo.create!(:image => File.new(photo.tempfile), :user_id => current_user.id)
-      #puts photo.original_filename
-    #end
-    #render :text => params[:photo][:file].first.original_filename
-    puts params[:mypic]
-
+    Photo.create!(:image => File.new(params[:file].tempfile), :user_id => current_user.id)
     render :text => 'good'
   end
 

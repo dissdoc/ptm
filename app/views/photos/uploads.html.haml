@@ -1,52 +1,68 @@
-= form_for @object_new, :url => photos_uploaded_path, :html => { :multipart => true, :id => "fileupload"  } do |f|
-  = f.file_field :file, :multiple => true, :accept => 'image/*'
-  = hidden_field_tag :sources
-  %div
-    = button_tag 'Add files', :id => 'add_files'
-    = button_tag 'Uploads', :id => 'upload_files', :remote => true
-    = f.submit "Upload"
+%h3 Custom
+%div#container
+  %div#filelist
+  %br
+  = link_to 'Select Files', '#', :id => 'pickfiles'
+  = link_to 'Upload files', '#', :id => 'uploadfiles'
 
-%ul#preload
+%script{ :type => "text/javascript", :src => "/assets/plupload.html5.js" }
 
+:erb
+  <% session_key_name = Rails.application.config.session_options[:key] %>
 
-%script{ :type => 'text/javascript', :src => '/assets/uploaderObject.js' }
 :javascript
-  window.URL = window.URL || window.webkitURL;
-  var files = [];
 
-  $('#add_files').click(function(e) {
-    if ($('#photo_file')) $('#photo_file').click();
-    e.preventDefault();
+  var uploader = new plupload.Uploader({
+      runtimes : 'html5',
+      browse_button : 'pickfiles',
+      container : 'container',
+      max_file_size : '10mb',
+      url : "#{photos_uploaded_path}",
+      multipart: true,
+      multipart_params: {
+        '_http_accept': 'application/javascript',
+        'authenticity_token': "#{form_authenticity_token}",
+        "#{session_key_name}": "#{cookies[session_key_name]}"
+      },
+      filters : [
+          {title : "Image files", extensions : "jpg,gif,png"},
+          {title : "Zip files", extensions : "zip"}
+      ],
+      resize : {width : 320, height : 240, quality : 90}
   });
 
-  $('#photo_file').change(function(e) {
-    for (i = 0; i < e.currentTarget.files.length; i++) {
-      var currentFile = e.currentTarget.files[i];
-      var li = $('<li>').text(currentFile.name);
-      $('#preload').append(li);
-      files.push(currentFile);
-    }
+  $('#uploadfiles').click(function(e) {
+      uploader.start();
+      e.preventDefault();
   });
 
-  $('#upload_files').click(function() {
-    for(var curfile in files) {
-      new uploaderObject({
-        file: curfile,
-        url: "#{ photos_uploaded_path }",
-        fieldName: 'mypic',
+  uploader.init();
 
-        onprogress: function(percents) {
-          console.log("onprogress");
-        },
-
-        oncomplete: function(done, data) {
-          if(done) {
-            console.log('Файл `'+uploadItem.file.name+'` загружен, полученные данные:<br/>*****<br/>'+data+'<br/>*****');
-          } else {
-            console.log('Ошибка при загрузке файла `'+uploadItem.file.name+'`:<br/>'+this.lastError.text);
-          }
-        }
+  uploader.bind('FilesAdded', function(up, files) {
+      $.each(files, function(i, file) {
+          $('#filelist').append(
+              '<div id="' + file.id + '">' +
+              file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+          '</div>');
       });
-    }
+
+      up.refresh(); // Reposition Flash/Silverlight
   });
 
+  uploader.bind('UploadProgress', function(up, file) {
+      $('#' + file.id + " b").html(file.percent + "%");
+  });
+
+  uploader.bind('Error', function(up, err) {
+      $('#filelist').append("<div>Error: " + err.code +
+          ", Message: " + err.message +
+          (err.file ? ", File: " + err.file.name : "") +
+          "</div>"
+      );
+
+      up.refresh(); // Reposition Flash/Silverlight
+  });
+
+  uploader.bind('FileUploaded', function(up, file) {
+      $('#' + file.id + " b").html("100%");
+  });
