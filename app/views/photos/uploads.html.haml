@@ -92,4 +92,7 @@
 
   uploader.bind('FileUploaded', function(up, file) {
       $('#' + file.id + " b").html("Uploaded!");
+
+      if(uploader.total.uploaded == uploader.files.length)
+        window.location = "#{root_path}";
   });

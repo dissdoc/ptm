@@ -269,9 +269,11 @@ class PhotosController < ApplicationController
 
   def uploaded
     if params[:file].tempfile.present?
-      Photo.create!(:image => File.new(params[:file].tempfile), :user_id => current_user.id)
+      Photo.create!(:image => File.new(params[:file].tempfile),
+                    :user_id => current_user.id,
+                    :name => params[:file].original_filename)
     end
-    render :text => 'good'
+    render :text => '200!'
   end
 
   def add_picture_name
