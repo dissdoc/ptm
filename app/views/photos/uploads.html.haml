@@ -1,9 +1,13 @@
 %h3 Custom
 %div#container
-  %div#filelist
-  %br
   = link_to 'Select Files', '#', :id => 'pickfiles'
   = link_to 'Upload files', '#', :id => 'uploadfiles'
+
+  %div.tabs
+    %div.left_panel
+      %ul#filelist
+    %div.right_panel
+    %div.clear
 
 %script{ :type => "text/javascript", :src => "/assets/plupload.html5.js" }
 
@@ -11,12 +15,13 @@
   <% session_key_name = Rails.application.config.session_options[:key] %>
 
 :javascript
-
+  window.URL = window.URL || window.webkitURL;
   var uploader = new plupload.Uploader({
       runtimes : 'html5',
       browse_button : 'pickfiles',
       container : 'container',
       max_file_size : '10mb',
+      max_file_count  : 20,
       url : "#{photos_uploaded_path}",
       multipart: true,
       multipart_params: {
@@ -39,19 +44,36 @@
   uploader.init();
 
   uploader.bind('FilesAdded', function(up, files) {
-      $.each(files, function(i, file) {
-          $('#filelist').append(
-              '<div id="' + file.id + '">' +
-              file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-          '</div>');
+    var ul = $('#container .tabs .left_panel ul');
 
-           //var url = window.webkitURL ? window.webkitURL : window.URL;
-           //var img = $('img').attr('src', url.createObjectURL(file.nativeFile));
-           //$('#filelist').append(img);
-
+    $.each(files, function(i, file) {
+      var li = $('<li>').attr('id', file.id);
+      li.hover(
+        function() {
+          $(this).css({background: '#ccc'});
+        }, function() {
+          $(this).css({background: '#fff'});
       });
 
-      up.refresh(); // Reposition Flash/Silverlight
+      var div = $('<div>').attr('class', 'thumb');
+      var name = $('<p>').text(file.name);
+      var size = $('<p>').text(plupload.formatSize(file.size));
+      var img = $('<img>').attr('src', window.URL.createObjectURL(file.nativeFile));
+
+      var a = $('<a>').attr('href', '#').text('delete');
+      a.click(function(e) {
+        e.preventDefault();
+        up.removeFile(file);
+        $('li#'+file.id).remove();
+        return false;
+      });
+
+      div.append(img).append(name).append(size).append(a).append('<p><b></b></p>');
+      li.append(div);
+      ul.append(li);
+    });
+
+    up.refresh(); // Reposition Flash/Silverlight
   });
 
   uploader.bind('UploadProgress', function(up, file) {
@@ -69,5 +91,5 @@
   });
 
   uploader.bind('FileUploaded', function(up, file) {
-      $('#' + file.id + " b").html("100%");
+      $('#' + file.id + " b").html("Uploaded!");
   });

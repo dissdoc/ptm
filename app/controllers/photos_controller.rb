@@ -268,7 +268,9 @@ class PhotosController < ApplicationController
   end
 
   def uploaded
-    Photo.create!(:image => File.new(params[:file].tempfile), :user_id => current_user.id)
+    if params[:file].tempfile.present?
+      Photo.create!(:image => File.new(params[:file].tempfile), :user_id => current_user.id)
+    end
     render :text => 'good'
   end
 

@@ -1,25 +1,49 @@
-#multiload {
-    width: 852px;
+#container .tabs {
+    width: 1280px;
+    height: 480px;
 }
 
-#fileinput {
-    display: none;
-}
-
-#multiload ul.filelist li {
+#container .tabs .left_panel {
+    width: 854px;
+    height: 100%;
     float: left;
-    padding: 5px;
-    width: 142px;
+    background: #fff;
+    border: 1px solid #eee;
 }
 
-#multiload ul.filelist li img {
-    height: 100px;
+#container .tabs .right_panel {
+    padding-left: 854px;
+    width: 425px;
+    height: 100%;
+    background: #eee;
+    border: 1px solid #eee;
 }
 
-#multiload ul.filelist li div.name {
-    font-weight: bold;
+#container .tabs .left_panel ul {
+    widht: 100%;
+    padding: 7px;
 }
 
-#photo_file {
-    display: none;
+#container .tabs .left_panel ul li {
+    float: left;
+    width: 168px;
+    height: 168px;
+}
+
+#container .tabs .left_panel ul li .thumb {
+    padding: 2px;
+    height: 164px;
+}
+
+#container .tabs .left_panel ul li .thumb img {
+    height: 108px;
+}
+
+#container .tabs .left_panel ul li .thumb p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    font-size: 0.9em;
 }
