@@ -19,6 +19,10 @@
     border: 1px solid #eee;
 }
 
+#container .tabs .right_panel {
+
+}
+
 #container .tabs .left_panel ul {
     widht: 100%;
     padding: 7px;
