@@ -61,7 +61,13 @@
       var div = $('<div>').attr('class', 'thumb');
       var name = $('<p>').text(file.name);
       var size = $('<p>').text(plupload.formatSize(file.size));
-      var img = $('<img>').attr('src', window.URL.createObjectURL(file.nativeFile));
+
+      var img = null;
+      if (file.name.substr(-4).valueOf() == '.tif'.valueOf()
+        || file.name.substr(-5).valueOf() == '.tiff'.valueOf())
+        var img = $('<span>').text(file.name)
+      else
+        var img = $('<img>').attr('src', window.URL.createObjectURL(file.nativeFile));
 
       var a = $('<a>').attr('href', '#').text('delete');
       a.click(function(e) {
