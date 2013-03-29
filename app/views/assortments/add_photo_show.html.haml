@@ -1,7 +1,0 @@
-%div#prepare-to-add= render :partial => 'assortments/shared/photo', :collection => current_user.current_favorites
-
-%p#counter2
-  This is all my favorites
-  = pluralize(@assortment.photos.count, 'photo')
-
-%div#addings= render :partial => 'assortments/shared/item', :collection => @assortment.photos

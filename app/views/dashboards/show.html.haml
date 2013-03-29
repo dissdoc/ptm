@@ -1,9 +1,0 @@
-%h3= @dashboard.name
-= @dashboard.description
-
-%h5 Comments
-
-- if @notes.present?
-  = render :partial => 'notes/shared/note', :collection => @notes
-
-= note_form(@note, :group => @group, :dashboard => @dashboard)

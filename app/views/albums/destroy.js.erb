@@ -1,2 +1,0 @@
-$('#album-count').html("You have <%= pluralize(current_user.albums.count, 'album') %>");
-$('#collection').html("<%= escape_javascript(render(:partial => 'albums/shared/album', :collection => current_user.albums)) %>").fadeIn(500);

@@ -1,4 +1,0 @@
-- if photo.can_add?(@assortment)
-  = link_to image_tag(photo.image.url(:small)), assortment_add_photo_path(@assortment, :photo_id => photo), :method => :post, :remote => true
-- else
-  = image_tag photo.image.url(:small)

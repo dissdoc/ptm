@@ -1,8 +1,0 @@
-- if tags.present?
-  %p
-    %b Tags:
-    %br
-    = render :partial => 'tags/shared/tag', :collection => tags, :locals => { :photo => photo }
-
-- if signed_in?
-  = render :partial => 'tags/shared/form', :locals => { :photo => photo }

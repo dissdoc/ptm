@@ -1,6 +1,0 @@
-- if @accounts
-  - unless @accounts.empty?
-    - for account in @accounts
-      %p
-        = image_tag "#{account.provider}_32.png", :size => "32x32"
-        = link_to "X", account, :method => :delete

@@ -1,5 +1,0 @@
-development:
-  path: "/:attachment/:attachment/:id/:style/:filename"
-
-production:
-  path: "/:attachment/:attachment/:id/:style/:filename"

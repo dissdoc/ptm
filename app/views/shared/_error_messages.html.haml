@@ -1,9 +1,0 @@
-- if target.errors.any?
-  %div#errors
-    %b
-      = pluralize(target.errors.count, 'error')
-      prohibited this record from
-
-    %ul
-      - target.errors.full_messages.each do |error|
-        %li= error

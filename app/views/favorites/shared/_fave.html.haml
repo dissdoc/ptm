@@ -1,4 +1,0 @@
-- if current_user.photo_fave?(photo)
-  = link_to "Unfave", favorites_unfave_path(:photo_id => @photo), :method => :post, :remote => true
-- else
-  = link_to "Fave", favorites_fave_path(:photo_id => @photo), :method => :post, :remote => true
