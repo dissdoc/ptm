@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="photo_privacy">
+        <input type="radio" name="privacy" value="0" checked="checked" />
+        Public
+        <br/>
+        <input type="radio" name="privacy" value="1" />
+        Friends
+        <br/>
+        <input type="radio" name="privacy" value="2" />
+        Only me
+    </div>
+</div>

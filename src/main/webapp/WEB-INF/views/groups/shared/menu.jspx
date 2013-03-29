@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="group-menu"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:sec="http://www.springframework.org/security/tags"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <ul class="dropdown">
+        <sec:authorize access="isAuthenticated()">
+            <c:choose>
+                <c:when test="${owner or user_join}">
+                    <li class="headlink">
+                        <a href="#">Actions</a>
+                        <ul>
+                            <li><a href="/groups/${group.id}/upload">Add photos</a></li>
+                            <c:if test="${owner}">
+                                <li><a href="/groups/${group.id}/admin">Admin</a></li>
+                            </c:if>
+                            <c:if test="${owner or user_join}">
+                                <li><a href="#" id="add-menu-topic">Post a new topic</a></li>
+                                <script type="text/javascript">
+                                    $(function() {
+                                        $('#add-menu-topic').click(function() {
+                                            $('body').ptmModal('windowInit');
+                                            $('body').ptmModal('show', {dialog: '#modalNewTopic'});
+                                            $('body').ptmModal('destroy2', {dialog: '#modalNewTopic', parent: '#add-new-topic'});
+                                            return false;
+                                        });
+                                    });
+                                </script>
+                                <li><a href="#">Invite</a></li>
+                            </c:if>
+
+                            <c:choose>
+                                <c:when test="${owner}">
+                                    <li><a href="/groups/${group.id}/edit">Edit</a></li>
+
+                                    <c:choose>
+                                        <c:when test="${group.deleted == false}">
+                                            <li><a href="#" id="group-delete">Delete group</a></li>
+                                            <script type="text/javascript">
+                                                $(function() {
+                                                    $('#group-delete').click(function() {
+                                                        $.post(
+                                                            '/groups/${group.id}/delete',
+                                                            function(response) {
+                                                                window.location = '/groups/${group.id}';
+                                                            }
+                                                        );
+                                                        return false;
+                                                    });
+                                                })
+                                            </script>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li><a href="#" id="group-restore">Restore group</a></li>
+                                            <script type="text/javascript">
+                                                $(function() {
+                                                    $('#group-restore').click(function() {
+                                                        $.post(
+                                                            '/groups/${group.id}/restore',
+                                                            function(response) {
+                                                                window.location = '/groups/${group.id}';
+                                                            }
+                                                        );
+                                                        return false;
+                                                    });
+                                                });
+                                            </script>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                </c:when>
+                                <c:otherwise>
+                                    <li>
+                                        <a href="#" id="leave-group">Leave group</a>
+                                        <script type="text/javascript">
+                                            $(function() {
+                                                $('#leave-group').click(function() {
+                                                    $.post(
+                                                        '/groups/${group.id}/leave',
+                                                        function(response) {
+                                                            if (response.length == 0) return;
+                                                            window.location.href = "/groups/${group.id}";
+                                                        }
+                                                    );
+                                                    return false;
+                                                });
+                                            });
+                                        </script>
+                                    </li>
+                                    <li><a href="#">Flag</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="headlink">
+                        <a href="#">Report</a>
+                    </li>
+                    <c:choose>
+                        <c:when test="${group.closed}">
+
+                            <li class="headlink">
+                                <a href="#" id="apply-group">
+                                    <tiles:insertTemplate template="/WEB-INF/views/groups/shared/modal_apply.jspx"/>
+                                    Apply
+                                </a>
+                                <script type="text/javascript">
+                                    $(function() {
+                                        $('#apply-group').click(function() {
+                                            if ('${user_waiting}' === 'true') {
+                                                $('body').ptmModal('windowInit');
+                                                $('body').ptmModal('show', {dialog: '#message-apply'});
+                                                $('body').ptmModal('destroy2', {dialog: '#message-apply', parent: '#apply-group'});
+                                            } else {
+                                                $.post(
+                                                    '/groups/${group.id}/apply',
+                                                    function(response) {
+                                                        if (response.length == 0) return;
+                                                        window.location.href = "/groups/${group.id}/upload"
+                                                    }
+                                                );
+                                            }
+                                            return false;
+                                        });
+
+                                        $('#ok-apply-message').click(function() {
+                                            $('body').ptmModal('close', {dialog: '#message-apply', parent: '#apply-group'});
+                                        });
+                                    });
+                                </script>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="headlink">
+                                <a href="#" id="join-group">Join</a>
+                                <script type="text/javascript">
+                                    $(function() {
+                                        $('#join-group').click(function() {
+                                            $.post(
+                                                '/groups/${group.id}/join',
+                                                function(response) {
+                                                    if (response.length == 0) return;
+                                                    window.location.href = "/groups/${group.id}"
+                                                }
+                                            );
+                                            return false;
+                                        })
+                                    });
+                                </script>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
+        </sec:authorize>
+        <li class="headlink">
+            <a href="/groups/create">Create a new group</a>
+        </li>
+    </ul>
+
+</div>

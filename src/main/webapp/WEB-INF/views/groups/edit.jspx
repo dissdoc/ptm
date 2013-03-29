@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0" >
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h2>Edit group ${group.name}</h2>
+
+    <form method="POST" action="/groups/${group.id}/edit">
+        <div class="shift-top-app">
+            <div id="closed">
+                <input type="radio" name="closed" value="0" />
+                Open
+                &#160;
+                <input type="radio" name="closed" value="1" />
+                By invitation only
+
+                <script type="text/javascript">
+                    $(function() {
+                        var radioClosed = $('input:radio[name=closed]');
+                        if ('${group.closed}' === 'true')
+                            radioClosed.filter('[value=1]').attr('checked', true);
+                        else
+                            radioClosed.filter('[value=0]').attr('checked', true);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="shift-top-app">
+            <input type="text" id="name" name="name" placeholder="Type name of the group" class="border big-field"
+                    value="${group.name}"/>
+        </div>
+
+        <div class="shift-top-app">
+            <textarea id="description" name="description" placeholder="Describe your group (optional)" class="border big-area">
+                <jsp:text>${group.description}</jsp:text>
+            </textarea>
+        </div>
+
+        <div class="shift-top-app">
+            <textarea id="rules" name="rules" placeholder="Add the rules if there are any" class="border big-area">
+                <jsp:text>${group.rules}</jsp:text>
+            </textarea>
+        </div>
+
+        <div class="shift-top-app">
+            <b>Safety level</b>
+            <div id="marked" class="shift-top1">
+                <input type="radio" name="marked" value="0" />
+                This group is Safe by everyone
+                <br/>
+                <input type="radio" name="marked" value="1" />
+                This group is 18+
+
+                <script type="text/javascript">
+                    $(function() {
+                        var radioMarked = $('input:radio[name=marked]');
+                        if ('${group.marked}' === 'true')
+                            radioMarked.filter('[value=1]').attr('checked', true);
+                        else
+                            radioMarked.filter('[value=0]').attr('checked', true);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="shift-top-app">
+            <button type="submit" class="black-btn">Update</button>
+            &#160;
+            <a href="/groups/${group.id}" class="white-btn">Cancel</a>
+        </div>
+    </form>
+
+</div>

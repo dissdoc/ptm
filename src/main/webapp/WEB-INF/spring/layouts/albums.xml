@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="albums.list" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/albums/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/albums/list.jspx"/>
+    </definition>
+
+    <definition name="collections.list" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/albums/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/collections/list.jspx"/>
+    </definition>
+
+    <definition name="album.photos" template="/WEB-INF/views/albums/item.jspx">
+        <put-attribute name="title" value="Photo Time Machine"/>
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jspx"/>
+        <put-attribute name="menu_anonymous" value="/WEB-INF/tiles/menu_anonymous.jspx"/>
+        <put-attribute name="logo" value="/WEB-INF/tiles/logo.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jspx"/>
+        <put-attribute name="static" value="/WEB-INF/views/users/shared/wall_static.jspx"/>
+        <put-attribute name="field_search" value="/WEB-INF/views/shared/field_search.jspx"/>
+        <put-attribute name="date_slider" value="/WEB-INF/views/shared/date_slider.jspx"/>
+        <put-attribute name="gmap" value="/WEB-INF/views/shared/gmap.jspx"/>
+        <put-attribute name="by_sorting" value="/WEB-INF/views/shared/by_sorting.jspx"/>
+    </definition>
+
+    <definition name="collection.photos" template="/WEB-INF/views/collections/item.jspx">
+        <put-attribute name="title" value="Photo Time Machine"/>
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jspx"/>
+        <put-attribute name="menu_anonymous" value="/WEB-INF/tiles/menu_anonymous.jspx"/>
+        <put-attribute name="logo" value="/WEB-INF/tiles/logo.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jspx"/>
+        <put-attribute name="static" value="/WEB-INF/views/users/shared/wall_static.jspx"/>
+        <put-attribute name="field_search" value="/WEB-INF/views/shared/field_search.jspx"/>
+        <put-attribute name="date_slider" value="/WEB-INF/views/shared/date_slider.jspx"/>
+        <put-attribute name="gmap" value="/WEB-INF/views/shared/gmap.jspx"/>
+        <put-attribute name="by_sorting" value="/WEB-INF/views/shared/by_sorting.jspx"/>
+    </definition>
+</tiles-definitions>

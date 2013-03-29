@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="privacy"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <b>Privacy</b>
+    <sec:authorize access="isAuthenticated()">
+        <c:if test="${owner}">
+            <a href="#">&#160;(edit)</a>
+        </c:if>
+    </sec:authorize>
+    <br/>
+
+    <span>${photo.namePrivacy()}</span>
+
+    <sec:authorize access="isAuthenticated()">
+        <c:if test="${owner}">
+            <div class="radio">
+                <input type="radio" name="privacy" value="0" checked="checked" />
+                Public
+                <br/>
+                <input type="radio" name="privacy" value="1" />
+                Friends
+                <br/>
+                <input type="radio" name="privacy" value="2" />
+                Only me
+
+                <div class="field">
+                    <input type="button" id="add_privacy" class="border black-btn" value="Add" />
+                    <input type="button" id="cancel_privacy" class="border white-btn" value="Cancel" />
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(function() {
+                    var privacy = '${photo.privacy}';
+                    $('input:radio[name=privacy][value='+privacy+']').attr('checked', true);
+
+                    $('#privacy a').click(function() {
+                        $('#privacy span').hide();
+                        $('#privacy div.radio').show();
+                        return false;
+                    });
+
+                    $('#add_privacy').click(function() {
+                        $.post(
+                                "/photos/${photo.id}/update/privacy",
+                                {privacy: $('input:radio[name=privacy]:checked').val()},
+                                function(data) {
+                                    $('#privacy span').text(data);
+                                }
+                        );
+                        $('#privacy div.radio').hide();
+                        $('#privacy span').show();
+                    });
+
+                    $('#cancel_privacy').click(function() {
+                        $('#privacy div.radio').hide();
+                        $('#privacy span').show();
+                    });
+                });
+            </script>
+        </c:if>
+    </sec:authorize>
+
+</div>

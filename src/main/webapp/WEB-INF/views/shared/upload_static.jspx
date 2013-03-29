@@ -1,0 +1,26 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: kmuhov
+  Date: 19.02.13
+  Time: 15:10
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          version="2.0">
+
+    <spring:url value="/resources/css" var="css"/>
+    <spring:url value="/resources/js" var="js"/>
+    <spring:url value="/plugins" var="plugins"/>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="${css}/default.css"/>
+    <link rel="stylesheet/less" type="text/css" href="${css}/styles.less"/>
+    <link rel="stylesheet" type="text/css" href="${css}/ptm.modal.css"/>
+    <link rel="stylesheet" type="text/css" href="${css}/upload.css"/>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"><!-- --></script>
+    <script type="text/javascript" src="${js}/ptm.map.js"><!-- --></script>
+    <script type="text/javascript" src="${js}/ptm.modal.js"><!-- --></script>
+
+</jsp:root>

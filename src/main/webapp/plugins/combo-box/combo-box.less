@@ -1,0 +1,60 @@
+@import "/resources/css/core";
+
+#search-dropdown-field {
+  height: 30px;
+  padding: 2px;
+  padding-top: 5px;
+  width: 280px;
+
+  .field {
+    .pos-left;
+    padding: 1px;
+    padding-top: 2px;
+
+    #search_field {
+      .medium-field;
+    }
+  }
+
+  .combo {
+    border: @border;
+    height: 23px;
+
+    div {
+      cursor: pointer;
+
+      p {
+        text-shadow: @shadow-black;
+        padding-top: 2px;
+        padding-left: 260px;
+        font-size: 14px;
+        color: @color + #222;
+      }
+    }
+  }
+
+  ul {
+    position: absolute;
+    list-style-type: none;
+    border: @border;
+    background: @color-none;
+    width: 90px;
+    padding: 1px;
+    box-shadow: @box-shadow-untop;
+    display: none;
+
+    li {
+      padding: 4px;
+      padding-left: 6px;
+
+      &:hover {
+        background: @color-purp;
+        cursor: pointer;
+
+        a {
+          color: @color;
+        }
+      }
+    }
+  }
+}

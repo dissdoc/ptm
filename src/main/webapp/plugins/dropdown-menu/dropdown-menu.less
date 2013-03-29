@@ -1,0 +1,95 @@
+@import "/resources/css/core.less";
+
+ul.dropdown {
+  list-style-type: none;
+  padding-top: 5px;
+
+  .shift-top {
+    padding-top: 4px;
+  }
+
+  li.headlink {
+    .pos-left;
+    display: list-item;
+    z-index: 100;
+    padding-left: 10px;
+    height: 32px;
+
+    sub {
+      color: red;
+      padding: 2px;
+    }
+
+    img {
+      border: none;
+    }
+
+    ul {
+      padding: 1px;
+      display: none;
+      list-style-type: none;
+      .rounded-corners;
+      border: @border;
+      position: absolute;
+      background: @color-none;
+      box-shadow: @box-shadow;
+      z-index: 100;
+
+      &:before {
+        .triangle(153, @color, -10px, 10px);
+      }
+
+      &:after {
+        .triangle(255, @color-none, -9px, 10px);
+      }
+
+      li {
+        padding: 3px;
+
+        &:hover {
+          background: @background;
+          cursor: pointer;
+        }
+
+        a {
+          color: @color;
+        }
+      }
+    }
+
+
+    ul.fix {
+      padding: 1px;
+      display: none;
+      list-style-type: none;
+      .rounded-corners;
+      border: @border;
+      position: absolute;
+      background: @color-none;
+      box-shadow: @box-shadow;
+      z-index: 100;
+
+      &:before {
+        .triangle(153, @color, -10px, 68px);
+      }
+
+      &:after {
+        .triangle(255, @color-none, -9px, 68px);
+      }
+
+      li {
+        padding: 3px;
+
+        &:hover {
+          background: @background;
+          cursor: pointer;
+        }
+
+        a {
+          color: @color;
+        }
+      }
+    }
+
+  }
+}

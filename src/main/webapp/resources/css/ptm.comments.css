@@ -1,0 +1,32 @@
+#comments {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style-type: none;
+}
+
+#comments li {
+    padding: 5px;
+}
+
+#comments li:hover {
+    background: #eee;
+}
+
+#comments li .photo {
+    float: left;
+}
+
+#comments li .descr {
+    float: left;
+    padding-left: 10px;
+}
+
+#comments li .descr p span {
+    color: #999;
+    font-style: italic;
+}
+
+#comments li .delete {
+    float: right;
+    width: 6px;
+}

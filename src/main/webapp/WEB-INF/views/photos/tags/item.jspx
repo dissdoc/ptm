@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <p>
+        <b>Tags</b>
+        &#160;
+
+        <sec:authorize access="isAuthenticated()">
+            <a class="add-tag" href="#">(add a tag)</a>
+        </sec:authorize>
+    </p>
+
+    <tiles:insertAttribute name="show"/>
+
+    <sec:authorize access="isAuthenticated()">
+        <div class="action-field">
+            <input type="text" id="tags_field" class="border huge-field"/>
+
+            <div class="field">
+                <input type="button" id="add_tags" class="border black-btn" value="Add" />
+                <input type="button" id="cancel_tags" class="border white-btn" value="Cancel" />
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function() {
+                $('#tags .add-tag').click(function() {
+                    $('#tags .show').hide();
+                    $('#tags .action-field').show();
+                    return false;
+                });
+
+                $('#cancel_tags').click(function() {
+                    $('#tags .show').show();
+                    $('#tags .action-field').hide();
+                });
+
+                $('#tags .show .delete').click(function() {
+                    $.post($(this).attr('href'));
+                    $(this).parent().parent().remove();
+                    return false;
+                })
+            });
+        </script>
+
+        <c:choose>
+            <c:when test="${owner}">
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_tags').click(function() {
+                            $.post(
+                                "/photos/${photo.id}/update/tags",
+                                {tags: $('#tags_field').val()},
+                                function(response) {
+                                    if (response) $('#tags').html(response);
+                                    $('#tags .show').show();
+                                    $('#tags .action-field').hide();
+                                }
+
+                            );
+                        });
+                    });
+                </script>
+            </c:when>
+
+            <c:otherwise>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_tags').click(function() {
+                            $.post(
+                                "/recommend/tags",
+                                {photo_id: "${photo.id}",
+                                 tags: $('#tags_field').val()}
+                            );
+                            $('#tags .show').show();
+                            $('#tags .action-field').hide();
+                        });
+                    });
+                </script>
+            </c:otherwise>
+        </c:choose>
+    </sec:authorize>
+
+</div>

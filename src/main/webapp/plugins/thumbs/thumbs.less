@@ -1,0 +1,52 @@
+.thumbs-slider {
+  position: relative;
+  width: 670px;
+
+  .slider {
+    position: relative;
+    width: 602px;
+    height: 81px;
+    margin: auto;
+    overflow: hidden;
+
+    ul {
+      position: absolute;
+      list-style-type: none;
+      width: 632px;
+
+      li {
+        float: left;
+        padding: 2px;
+        z-index: 1;
+        background: #fff;
+
+        a {
+          display: inline-block;
+        }
+
+        img {
+          height: 76px;
+          width: 116px;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .sl-arrow {
+    position: absolute;
+    top: 10px;
+    font-size: 48px;
+    font-weight: bold;
+  }
+
+  .sl-left {
+    left: 8px;
+    z-index: 9999;
+  }
+
+  .sl-right {
+    right: 8px;
+    z-index: 9999;
+  }
+}

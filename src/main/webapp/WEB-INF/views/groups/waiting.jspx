@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" >
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h3><a href="/groups/${group.id}">${group.name} (group)</a></h3>
+
+    <div class="shift-top-app">
+        <ul id="forjoin" class="preview-photo">
+            <c:forEach var="photo" items="${photos}">
+                <li id="${photo.id}">
+                    <img src="/data/${photo.id}/small.png" />
+                    <div class="actions">
+                        <a href="#" id="apply">V</a>
+                        <a href="#" id="remove">X</a>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('#apply').click(function() {
+                                    $.post(
+                                        '/groups/${group.id}/admin/apply',
+                                        {photo_id: '${photo.id}'},
+                                        function(response) {
+                                            if (response.length >= 0) {
+                                                $('#${photo.id}').remove();
+                                            }
+                                        }
+                                    );
+                                    return false;
+                                });
+
+                                $('#remove').click(function() {
+                                    $.post(
+                                        '/groups/${group.id}/admin/remove',
+                                        {photo_id: '${photo.id}'},
+                                        function(response) {
+                                            if (response.length >= 0) {
+                                                $('#${photo.id}').remove();
+                                            }
+                                        }
+                                    );
+                                    return false;
+                                })
+                            });
+                        </script>
+                    </div>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"><!-- --></div>
+    </div>
+
+</div>

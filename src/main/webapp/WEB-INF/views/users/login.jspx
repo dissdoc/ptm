@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_login_header" var="login_header"/>
+    <spring:message code="label_login_name" var="login_name"/>
+    <spring:message code="label_login_password" var="login_password"/>
+    <spring:message code="label_login_btn" var="login_btn"/>
+    <spring:message code="label_login_forgot" var="login_forgot"/>
+    <spring:message code="label_login_keep" var="login_keep"/>
+
+    <spring:url value="/resources/images" var="image_url"/>
+    <spring:url value="/users/forgot" var="forgot_password"/>
+
+    <h3>${login_header}</h3>
+
+    <form action="/j_spring_security_check" method="post">
+
+        <tiles:insertTemplate template="/WEB-INF/views/shared/message.jspx"/>
+
+        <div class="field">
+            <div class="text">
+                <label for="j_username">${login_name}:</label>
+            </div>
+            <div class="input">
+                <input type="text" id="j_username" name="j_username" class="border big-field"/>
+                <div style="padding-top: 2px;">
+                    <input id="_spring_security_remember_me" name="_spring_security_remember_me" type="checkbox" value="true"/>
+                    <label for="_spring_security_remember_me"> ${login_keep}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <label for="j_password">${login_password}:</label>
+            </div>
+            <div class="input">
+                <input type="password" id="j_password" name="j_password" class="border big-field"/>
+                <div>
+                    <a href="${forgot_password}">${login_forgot}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <input type="submit" value="${login_btn}" class="black-btn pos-left"/>
+            <span class="txt-shift-top pos-left">or</span>
+            <div class="pos-left">
+                <a href="/social/fb?signin"><img src="${image_url}/facebook-button-login.gif"/></a>
+                &#160;
+                <a href="/social/vk?signin"><img src="${image_url}/loginvk.png"/></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+</div>

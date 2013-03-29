@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_sign_in" var="sign_in"/>
+    <spring:message code="label_sign_up" var="sign_up"/>
+
+    <div id="menu">
+        <ul class="dropdown">
+            <li class="headlink shift-top">
+                <a href="/users/login">${sign_in}</a>
+            </li>
+            <li class="headlink shift-top">
+                <a href="/users/register">${sign_up}</a>
+            </li>
+        </ul>
+    </div>
+</div>

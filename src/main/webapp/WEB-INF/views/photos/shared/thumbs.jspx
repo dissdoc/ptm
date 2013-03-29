@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: dissdoc
+  Date: 08.03.13
+  Time: 0:55
+  To change this template use File | Settings | File Templates.
+-->
+<div xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0">
+
+    <div class="thumbs-slider">
+        <div class="slider">
+            <ul>
+                <c:forEach var="thumb" items="${thumbs}">
+                    <c:choose>
+                        <c:when test="${type != null and type_id != null}">
+                            <li id="th${thumb.id}">
+                                <a href="/photos/${thumb.id}?type=${type}&amp;type_id=${type_id}"><img src="/data/${thumb.id}/wall.png"/></a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li id="th${thumb.id}">
+                                <a href="/photos/${thumb.id}"><img src="/data/${thumb.id}/wall.png"/></a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </ul>
+        </div>
+
+        <a href="#" class="sl-arrow sl-left">‹</a>
+        <a href="#" class="sl-arrow sl-right">›</a>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('.thumbs-slider').ptmThumbs('init', {width: 602});
+            $('.thumbs-slider').ptmThumbs('action');
+            $('.thumbs-slider').ptmThumbs('center', {id: '${photo.id}'});
+            $('.thumbs-slider').ptmThumbs('keyboard');
+        });
+    </script>
+
+</div>

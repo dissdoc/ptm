@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="photos/upload" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/shared/upload_static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/photos/upload.jspx"/>
+    </definition>
+    <definition name="photos/detail" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/photos/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/photos/detail.jspx"/>
+    </definition>
+
+    <definition name="photo.name" template="/WEB-INF/views/photos/name/item.jspx">
+        <put-attribute name="show" value="/WEB-INF/views/photos/name/show.jspx"/>
+    </definition>
+
+    <definition name="photo.author" template="/WEB-INF/views/photos/author/item.jspx">
+        <put-attribute name="show" value="/WEB-INF/views/photos/author/show.jspx"/>
+    </definition>
+
+    <definition name="photo.description" template="/WEB-INF/views/photos/description/item.jspx">
+        <put-attribute name="show" value="/WEB-INF/views/photos/description/show.jspx"/>
+    </definition>
+
+    <definition name="photo.time" template="/WEB-INF/views/photos/time/item.jspx">
+        <put-attribute name="show" value="/WEB-INF/views/photos/time/show.jspx"/>
+        <put-attribute name="approximate" value="/WEB-INF/views/shared/approximate.jspx"/>
+    </definition>
+
+    <definition name="photo.place" template="/WEB-INF/views/photos/place/item.jspx">
+        <put-attribute name="show" value="/WEB-INF/views/photos/place/show.jspx"/>
+    </definition>
+
+    <definition name="photo.tags" template="/WEB-INF/views/photos/tags/item.jspx">
+        <put-attribute name="show" value="/WEB-INF/views/photos/tags/show.jspx"/>
+    </definition>
+
+    <definition name="photo.static.views" template="/WEB-INF/views/photos/static/partials/views.jspx"/>
+
+    <definition name="photo.comments" template="/WEB-INF/views/photos/comment/item.jspx"/>
+
+    <definition name="photo.thumbs" template="/WEB-INF/views/photos/shared/thumbs.jspx"/>
+
+    <definition name="photo.modal" template="/WEB-INF/views/photos/modal.jspx"/>
+</tiles-definitions>

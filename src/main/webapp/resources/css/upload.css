@@ -1,0 +1,99 @@
+#container {
+    font-size: 11px;
+}
+
+#container .tabpanel {
+    display: none;
+}
+
+#container .tabpanel .panel-left {
+    float: left;
+    width: 420px;
+    padding-right: 5px;
+    border-right: 1px solid #999;
+    height: 740px;
+}
+
+#container .tabpanel .panel-right {
+    padding-left: 435px;
+}
+
+#container .tabpanel .panel-right .text {
+    float: left;
+    width: 72%;
+}
+
+#container .tabpanel .panel-right .buttons {
+    float: right;
+}
+
+#container #filelist {
+    list-style-type: none;
+    padding-top: 25px;
+}
+
+#container #filelist li {
+    background: #fff;
+    width: 192px;
+    float: left;
+    border: 2px solid #fff;
+}
+
+#container #filelist li .error {
+    color: red;
+}
+
+#container #filelist li:hover {
+    background: #eee;
+}
+
+#container #filelist li.selected {
+    border: 2px solid #f9bcee;
+}
+
+#container #filelist li.uploaded {
+    border: 2px solid #0f0;
+}
+
+#container #filelist li.error {
+    border: 2px solid #f00;
+}
+
+#container .thumb {
+    padding: 4px;
+}
+
+#container .thumb > img {
+    height: 137px;
+    max-width: 182px;
+    overflow: hidden;
+}
+
+#container .thumb .panel {
+    background: #fff;
+    position: absolute;
+    height: 20px;
+    padding-top: 2px;
+    padding-left: 64px;
+    display: none;
+    opacity: 0.7;
+    width: 118px;
+}
+
+#container .thumb .panel .delete img, #container .thumb .panel .zoom img {
+    width: 16px;
+    height: 16px;
+}
+
+#gmap {
+    width: 419px;
+    height: 218px;
+}
+
+#modalUploadAvatar .large-img img {
+    height: 480px;
+}
+
+#map {
+    left: 0px;
+}

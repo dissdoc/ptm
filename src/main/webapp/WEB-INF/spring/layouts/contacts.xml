@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="contact.list" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/contacts/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/contacts/list.jspx"/>
+    </definition>
+
+    <!--Social templates-->
+    <definition name="vk.email" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/contacts/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/users/shared/vkemail.jspx"/>
+    </definition>
+
+    <definition name="send.email" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/contacts/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/users/shared/sendemail.jspx"/>
+    </definition>
+</tiles-definitions>

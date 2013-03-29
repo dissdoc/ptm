@@ -1,0 +1,34 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: kmuhov
+  Date: 11.02.13
+  Time: 15:59
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <div id="slider-form">
+        <input type="hidden" id="minD" value="1826"/>
+        <input type="hidden" id="maxD" value="1998"/>
+        <input type="hidden" id="dateAction" />
+
+        <ul id="data"><!-- --></ul>
+
+        <div id="slider"><!-- --></div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#slider-form').ptmSlider('init', {
+                slider: '#slider',
+                data: '#data',
+                min: '#minD',
+                max: '#maxD',
+                isaction: '#dateAction'
+            });
+        });
+    </script>
+
+</jsp:root>

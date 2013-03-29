@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <p>
+        <b>Place</b>
+        &#160;
+
+        <sec:authorize access="isAuthenticated()">
+            <a href="#">(suggest geo tag)</a>
+        </sec:authorize>
+    </p>
+
+    <tiles:insertAttribute name="show"/>
+
+    <sec:authorize access="isAuthenticated()">
+        <div class="action-field">
+            <div id="map"><!-- --></div>
+            <input type="text"
+                   id="photo_place"
+                   placeholder="Tap the map and move the marker or/and type the name of location here"
+                   class="border huge-field"/>
+            <input type="hidden" id="lat"/>
+            <input type="hidden" id="lng"/>
+
+            <c:if test="${not owner}">
+                <div class="shift-top-app">
+                    <textarea id="annotation_place" class="border huge-area" placeholder="Describe your tag (optional)">
+                        <jsp:text/>
+                    </textarea>
+                </div>
+            </c:if>
+
+            <div class="field">
+                <input type="button" id="add_place" class="border black-btn" value="Add" />
+                <input type="button" id="cancel_place" class="border white-btn" value="Cancel" />
+            </div>
+        </div>
+
+        <script src="/resources/js/ptm.map.js" type="text/javascript"><!-- --></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#place a').click(function() {
+                    $('#map').css('left', '0px');
+                    $('#map').ptmMap('init', {width: '346px', height: '218px'});
+                    $('#map').ptmMap('marker', {field: '#photo_place', lat: '#lat', lng: '#lng'});
+                    $('#map').ptmMap('field', {field: '#photo_place', lat: '#lat', lng: '#lng'});
+
+                    if ('${photo.address}') {
+                        $('#photo_place').val('${photo.address}');
+                        $('#lat').val('${photo.latitude}');
+                        $('#lng').val('${photo.longitude}');
+                        $('#map').ptmMap('set_marker', {field: $('#photo_place'), lat: $('#lat'), lng: $('#lng')});
+                    }
+
+                    $('#place div.static').hide();
+                    $('#place div.action-field').show();
+
+                    return false;
+                });
+
+                $('#cancel_place').click(function() {
+                    $('#place div.static').show();
+                    $('#place div.action-field').hide();
+                });
+            });
+        </script>
+
+        <c:choose>
+            <c:when test="${owner}">
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_place').click(function() {
+                            $.post(
+                                "/photos/${photo.id}/update/place",
+                                {address: $('#photo_place').val(), lat: $('#lat').val(), lng: $('#lng').val()},
+                                function(response) {
+                                    if (!response) {
+                                        $('#place .static').show();
+                                        $('#place .action-field').hide();
+                                    } else
+                                        $('#place').html(response);
+                                });
+                        });
+                    });
+                </script>
+            </c:when>
+
+            <c:otherwise>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_place').click(function() {
+                            $.post(
+                                "/recommend/place",
+                                {photo_id: "${photo.id}",
+                                 place: $('#photo_place').val(),
+                                 annotation: $('#annotation_place').val()}
+                            );
+                            $('#place div.static').show();
+                            $('#place div.action-field').hide();
+                        });
+                    });
+                </script>
+            </c:otherwise>
+        </c:choose>
+    </sec:authorize>
+
+    <div class="clear"><!-- --></div>
+
+</div>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0" >
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h2>Create a new group</h2>
+
+    <form method="POST" action="/groups/create">
+        <div class="shift-top-app">
+            <div id="closed">
+                <input type="radio" name="closed" value="0" checked="checked" />
+                Open
+                &#160;
+                <input type="radio" name="closed" value="1" />
+                By invitation only
+            </div>
+        </div>
+
+        <div class="shift-top-app">
+            <input type="text" id="name" name="name" placeholder="Type name of the group" class="border big-field"/>
+        </div>
+
+        <div class="shift-top-app">
+            <textarea id="description" name="description" placeholder="Describe your group (optional)" class="border big-area">
+                <jsp:text/>
+            </textarea>
+        </div>
+
+        <div class="shift-top-app">
+            <textarea id="rules" name="rules" placeholder="Add the rules if there are any" class="border big-area">
+                <jsp:text/>
+            </textarea>
+        </div>
+
+        <div class="shift-top-app">
+            <b>Safety level</b>
+            <div id="marked" class="shift-top1">
+                <input type="radio" name="marked" value="0" checked="checked" />
+                This group is Safe for everyone
+                <br/>
+                <input type="radio" name="marked" value="1" />
+                This group is 18+
+            </div>
+        </div>
+
+        <div class="shift-top-app">
+            <button type="submit" class="black-btn">Create</button>
+            &#160;
+            <a href="/groups/list" class="white-btn">Cancel</a>
+        </div>
+    </form>
+
+</div>

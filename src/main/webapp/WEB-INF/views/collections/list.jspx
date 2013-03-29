@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:sec="http://www.springframework.org/security/tags"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="user-display"><tiles:insertDefinition name="user.display"/></div>
+
+    <div class="shift-top-app">
+        <div class="left panel4-5">
+            <h2>Collections</h2>
+        </div>
+        <c:if test="${owner}">
+            <div class="shift-top1">
+                <a href="#" id="modalCreateAlbum" class="border white-btn">Create new collection</a>
+                <tiles:insertTemplate template="/WEB-INF/views/collections/form.jspx"/>
+            </div>
+        </c:if>
+        <div class="clear"><!-- --></div>
+    </div>
+
+    <ul id="albums" class="shift-top-app">
+        <c:forEach var="album" items="${albums}">
+            <li id="${album.id}">
+                <c:forEach var="photo" items="${album.photos}" end="0">
+                    <c:set var="id" value="${photo.id}"/>
+                </c:forEach>
+                <c:choose>
+                    <c:when test="${id > 0}">
+                        <a href="/collections/collection/${album.id}"><img src="/data/${id}/showing.png"/></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/collections/collection/${album.id}"><img /></a>
+                    </c:otherwise>
+                </c:choose>
+                <div>
+                    <p>${album.name}</p>
+                    <p>${album.photos.size()} photos</p>
+                </div>
+                <sec:authorize access="isAuthenticated()">
+                    <c:if test="${owner == true}">
+                        <a href="#" class="delete-album">X</a>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('#${album.id} .delete-album').click(function() {
+                                    $.post(
+                                        '/collections/${album.id}/delete',
+                                        function(response) {
+                                            $('#${album.id}').remove();
+                                        }
+                                    );
+                                    return false;
+                                });
+                            });
+                        </script>
+                    </c:if>
+                </sec:authorize>
+            </li>
+        </c:forEach>
+    </ul>
+    <div class="clear"><!-- --></div>
+
+</div>

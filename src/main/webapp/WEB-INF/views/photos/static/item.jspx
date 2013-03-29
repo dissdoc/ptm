@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="static"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:url value="/resources/images" var="image_url"/>
+
+    <ul>
+        <tiles:insertDefinition name="photo.static.views"/>
+        <li>
+            <img src="${image_url}/ICON_Comments.png"/>
+            <span class="comment">${comments.size()}</span>
+        </li>
+        <li>
+            <img src="${image_url}/fave.png"/>
+            <span class="fave">${faves.size()}</span>
+        </li>
+        <li>
+            <img src="${image_url}/ICON_FACEBOOK.jpg"/>
+            0
+        </li>
+        <li>
+            <img src="${image_url}/ICON_TWITER.jpg"/>
+            0
+        </li>
+        <li>
+            <img src="${image_url}/ICON_B.jpg"/>
+            0
+        </li>
+    </ul>
+    <div class="clear"><!-- --></div>
+
+</div>

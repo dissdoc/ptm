@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="replies"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <c:forEach var="reply" items="${topic.replies}">
+        <div class="shift-top-app" id="reply${reply.id}">
+            <div class="pos-left">
+                <div><a href="/user/${reply.author.userId}">${reply.author.fullName()}</a></div>
+                <div>${reply.description}</div>
+                <div>${reply.getDateAgo()}</div>
+            </div>
+            <div class="delete">
+
+                <c:if test="${owner or reply.author.userId == user.userId}">
+                    <a href="#">(x)</a>
+                    <script type="text/javascript">
+                        $(function() {
+                            $('#reply${reply.id} .delete a').click(function() {
+                                $.post(
+                                    '/replies/delete',
+                                    {id: '${reply.id}'},
+                                    function(response) {
+                                        if (response.length == 0) return;
+                                        $('#reply${reply.id}').remove();
+                                    }
+                                );
+                                return false;
+                            });
+                        })
+                    </script>
+                </c:if>
+
+            </div>
+            <div class="clear"><!-- --></div>
+        </div>
+    </c:forEach>
+
+</div>

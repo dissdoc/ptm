@@ -1,0 +1,87 @@
+div.image-panel {
+    width: 669px;
+    padding-right: 15px;
+}
+
+div.image-panel .image {
+    text-align: center;
+}
+
+div.image-panel .image img {
+    max-width: 649px;
+    max-height: 480px;
+}
+
+div.image-panel .comments {
+    padding-top: 10px;
+}
+
+div.image-panel h4 {
+    font-size: 12px;
+}
+
+div.info-panel {
+    width: 340px;
+    float: right;
+}
+
+.info-panel #panel {
+    list-style-type: none;
+}
+.info-panel #panel li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.info-panel { min-height: 640px; }
+.info-panel .action-field { display: none; padding-top: 3px; }
+.info-panel .action-field .field { padding-top: 3px; }
+
+ul#tags {
+    list-style-type: none;
+}
+ul#tags li {
+    float: left;
+    padding-right: 5px;
+}
+
+#marked span {
+    font-weight: bold;
+    color: #999;
+}
+
+#marked .radio, #license .radio, #privacy .radio {
+    display: none;
+    font-size: 0.9em;
+}
+
+.no-title {
+    background: #f4efff;
+    font-size: 0.9em;
+    padding-left: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 100%;
+}
+
+#time .action-field .field { padding-top: 3px; }
+
+#static {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+}
+
+#static ul {
+    list-style-type: none;
+}
+
+#static ul li {
+    float: left;
+    width: 55px;
+    font-size: 11px;
+}
+
+#static ul li img {
+    vertical-align: -5px;
+}

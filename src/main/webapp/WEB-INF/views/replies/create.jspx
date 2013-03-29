@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="modalNewReply">
+        <h3>New reply</h3>
+
+        <textarea id="description-reply" class="border big-area" placeholder="Describe this reply">
+            <jsp:text/>
+        </textarea>
+
+        <div class="field">
+            <input type="button" id="create-reply" class="border black-btn" value="Start" />
+            <input type="button" id="not-now-reply" class="border white-btn" value="Not now" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#modalNewReply').css('display', 'none');
+
+            $('#add-new-reply').click(function() {
+                $('body').ptmModal('windowInit');
+                $('body').ptmModal('show', {dialog: '#modalNewReply'});
+                $('body').ptmModal('destroy2', {dialog: '#modalNewReply', parent: '#add-new-reply'});
+                return false;
+            });
+
+            $('#create-reply').click(function() {
+                $.post(
+                    '/replies/add',
+                    {topic_id:'${topic.id}', comment: $('#description-reply').val()},
+                    function(response) {
+                        if (response == null || response.length == 0) return;
+
+                        var item = $('&lt;div&gt;', {class: 'shift-top-app', id: 'reply'+response.id});
+                        var lft = $('&lt;div&gt;', {class: 'pos-left'});
+                        lft.append($('&lt;div&gt;').text(response.userName));
+                        lft.append($('&lt;div&gt;').text(response.description));
+                        lft.append($('&lt;div&gt;').text(response.date));
+                        var rht = $('&lt;div&gt;', {class: 'delete'});
+                        var aclk = $('&lt;a&gt;', {href: '#reply'+response.id}).text('(x)');
+                        aclk.click(function() {
+                            $.post(
+                                '/replies/delete',
+                                {id: response.id},
+                                function(response) {
+                                    if (response.length == 0) return;
+                                    $(aclk.attr('href')).remove();
+                                }
+                            );
+                            return false;
+                        });
+                        rht.append(aclk);
+                        item.append(lft);
+                        item.append(rht);
+                        item.append($('&lt;div&gt;', {class: 'clear'}));
+                        $('#replies').append(item);
+                        $('#description-reply').val('');
+                    }
+                );
+                $('body').ptmModal('close', {dialog: '#modalNewReply', parent: '#add-new-reply'});
+            });
+
+            $('#not-now-reply').click(function() {
+                $('body').ptmModal('close', {dialog: '#modalNewReply', parent: '#add-new-reply'});
+            });
+        });
+    </script>
+
+</div>

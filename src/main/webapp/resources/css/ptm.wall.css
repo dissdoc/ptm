@@ -1,0 +1,30 @@
+ul#wall {
+    width: 1280px;
+    list-style-type: none;
+}
+
+ul#wall li {
+    float: left;
+    width: 154px;
+    height: 122px;
+    padding: 3px;
+}
+
+ul#wall li div.small {
+
+}
+
+ul#wall li div.preview {
+    position: absolute;
+    display: none;
+    border: 1px solid #ddd;
+    padding: 3px;
+    background: #fff;
+    z-index: 1000;
+}
+
+ul#wall li div.preview p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

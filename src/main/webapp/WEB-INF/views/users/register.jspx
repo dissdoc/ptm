@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_register_header" var="register_header"/>
+    <spring:message code="label_register_first_name" var="first_name"/>
+    <spring:message code="label_register_second_name" var="second_name"/>
+    <spring:message code="label_register_password" var="password"/>
+    <spring:message code="label_register_confirm_password" var="confirmPassword"/>
+    <spring:message code="label_register_email" var="email"/>
+    <spring:message code="label_register_submit" var="join"/>
+
+    <spring:url value="/resources/images" var="image_url"/>
+
+    <h3>${register_header}</h3>
+
+    <form:form modelAttribute="appUser" id="userRegisterForm" method="post">
+
+        <tiles:insertTemplate template="/WEB-INF/views/shared/message.jspx"/>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="firstName">${first_name}*</form:label>
+            </div>
+            <div class="input">
+                <form:input path="firstName" cssClass="border big-field" />
+                <form:errors path="firstName" element="div" cssClass="errors"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="lastName">${second_name}*</form:label>
+            </div>
+            <div class="input">
+                <form:input path="lastName" cssClass="border big-field" />
+                <form:errors path="lastName" element="div" cssClass="errors"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="password">${password}*</form:label>
+            </div>
+            <div class="input">
+                <form:password path="password" cssClass="border big-field"/>
+                <form:errors path="password" element="div" cssClass="errors"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="confirmPassword">${confirmPassword}*</form:label>
+            </div>
+            <div class="input">
+                <form:password path="confirmPassword" cssClass="border big-field"/>
+                <form:errors path="confirmPassword" element="div" cssClass="errors"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="email">${email}*</form:label>
+            </div>
+            <div class="input">
+                <form:input path="email" cssClass="border big-field"/>
+                <form:errors path="email" element="div" cssClass="errors"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="about">About</form:label>
+            </div>
+            <div class="input">
+                <form:textarea path="about" cssClass="border big-area"/>
+                <form:errors path="about" element="div" cssClass="errors"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <form:label path="gender">Gender</form:label>
+            </div>
+            <div class="input">
+                <form:radiobutton path="gender" value="0"/>
+                <form:label path="gender">Male</form:label>
+                <form:radiobutton path="gender" value="1"/>
+                <form:label path="gender">Female</form:label>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="text">
+                <label>Birthday</label>
+            </div>
+            <div class="input">
+                <form:input path="day" cssClass="border" placeholder="day"/>
+                /
+                <form:input path="month" cssClass="border" placeholder="month"/>
+                /
+                <form:input path="year" cssClass="border" placeholder="year"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <button type="submit" class="black-btn pos-left">${join}</button>
+            <span class="txt-shift-top pos-left">or</span>
+            <div class="pos-left">
+                <a href="/social/fb?signup"><img src="${image_url}/facebook-button-login.gif"/></a>
+                &#160;
+                <a href="/social/vk?signup"><img src="${image_url}/loginvk.png"/></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </form:form>
+
+</div>

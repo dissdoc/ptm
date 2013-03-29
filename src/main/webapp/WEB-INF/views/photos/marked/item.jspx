@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="marked"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <b>This photo is marked as</b>
+
+    <span>
+        <c:choose>
+            <c:when test="${photo.marked}">
+                Safe
+            </c:when>
+
+            <c:otherwise>
+                Unsafe
+            </c:otherwise>
+        </c:choose>
+    </span>
+
+    <sec:authorize access="isAuthenticated()">
+        <c:if test="${owner}">
+            <a href="#">(edit)</a>
+
+            <div class="radio">
+                <input type="radio" name="marked" value="0" />
+                Mark as Safe (for content which you can show to your mom and kids)
+                <br/>
+                <input type="radio" name="marked" value="1" />
+                Mark as Unsafe (for content which you would not show to your mom and kids)
+
+                <div class="field">
+                    <input type="button" id="add_marked" class="border black-btn" value="Add" />
+                    <input type="button" id="cancel_marked" class="border white-btn" value="Cancel" />
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(function() {
+                    var marked = '${photo.marked}';
+                    if (marked === 'true') {
+                        $('input:radio[name=marked][value=0]').attr('checked', true);
+                    } else {
+                        $('input:radio[name=marked][value=1]').attr('checked', true);
+                    }
+
+                    $('#marked a').click(function() {
+                        $('#marked div.radio').show();
+                        return false;
+                    });
+
+                    $('#add_marked').click(function() {
+                        $.post(
+                            "/photos/${photo.id}/update/marked",
+                                {marked: $('input:radio[name=marked]:checked').val()},
+                                function(data) {
+                                    $('#marked span').text("&#160;"+data);
+                                }
+                        );
+                        $('#marked div.radio').hide();
+                    });
+
+                    $('#cancel_marked').click(function() {
+                        $('#marked div.radio').hide();
+                    });
+                });
+            </script>
+        </c:if>
+    </sec:authorize>
+</div>

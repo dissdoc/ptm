@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h3><a class="topic-details" href="/groups/${group.id}">${group.name} (group)</a></h3>
+
+    <b>Discussions</b>
+    &#160;
+    (${topics.size()} posts)
+    &#160;
+    <a href="#" class="border white-btn" id="add-new-topic">Create a new post</a>
+    <tiles:insertDefinition name="topic.create3"/>
+
+    <ul class="topic-table shift-top-app2">
+        <li>
+            <div class="panel1-2 left header">Title</div>
+            <div class="panel7 left header">Author</div>
+            <div class="panel9 left header">Replies</div>
+            <div class="panel9 left header">Last reply</div>
+        </li>
+        <c:forEach var="topic" items="${topics}">
+            <li class="content" id="topic${topic.id}">
+                <div class="panel1-2 left">
+                    <a href="/groups/${group.id}/topic/${topic.id}">${topic.theme}</a>
+
+                    <c:if test="${owner or topic.author.userId == user.userId}">
+                        <sup><a class="to-remove" href="#">x</a></sup>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('#topic'+'${topic.id} .to-remove').click(function() {
+                                    $.post(
+                                            '/topics/delete',
+                                            {id: '${topic.id}', group_id: '${group.id}'},
+                                            function(response) {
+                                                if (response.length == 0) return;
+                                                $("#topic"+'${topic.id}').remove();
+                                            }
+                                    );
+                                    return false;
+                                });
+                            });
+                        </script>
+                    </c:if>
+
+                </div>
+                <div class="panel7 left">
+                    <a href="/user/${topic.author.userId}">${topic.author.fullName()}</a>
+                </div>
+                <div class="panel9 left">
+                    ${topic.replies.size()}
+                </div>
+                <div class="panel9 left">
+                    ${topic.getDateAgo()}
+                </div>
+                <div class="clear"><!-- --></div>
+            </li>
+        </c:forEach>
+    </ul>
+
+    <script type="text/javascript">
+        $(function() {
+            $('body').ptmModal('init');
+        });
+    </script>
+
+</div>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <script type="text/javascript">
+        $(function() {
+            $('body').ptmModal('init');
+        });
+    </script>
+
+    <c:if test="${owner}">
+        <tiles:insertTemplate template="/WEB-INF/views/users/shared/modal_avatar.jspx"/>
+    </c:if>
+
+    <c:choose>
+        <c:when test="${owner}">
+            <div class="field" id="profile-menu">
+                <span class="pos-left" id="user-avatar">
+                    <c:choose>
+                        <c:when test="${avatar == null}">
+                            <img src="/resources/images/no_avatar.png"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img src="/avatar/${avatar.id}/icon.png"/>
+                        </c:otherwise>
+                    </c:choose>
+                </span>
+                <ul class="dropdown shift-top-app3">
+                    <li class="headlink">
+                        <a href="#">${user.fullName()} <c:if test="${owner}">(you)</c:if></a>
+                        <ul>
+                            <li><a href="#">Edit profile</a></li>
+                            <li style="display:none;"><a href="#">Choose from photos</a></li>
+                            <li id="upload-avatar">
+                                <a href="#">Upload</a>
+                                <script type="text/javascript" src="/resources/js/modules/upload.avatar.js"><!-- --></script>
+                            </li>
+
+                            <li><hr/></li>
+                            <c:choose>
+                                <c:when test="${empty user.fblink}">
+                                    <li><a href="/social/fb?add">Connect my Facebook account</a></li>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <li>You connected your Facebook account</li>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <c:choose>
+                                <c:when test="${empty user.vklink}">
+                                    <li><a href="/social/vk?add">Connect my Vkontakte account</a></li>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <li>You connected your Vkontakte account</li>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </c:when>
+
+        <c:otherwise>
+            <div id="user-display"><tiles:insertDefinition name="user.display"/></div>
+        </c:otherwise>
+    </c:choose>
+    <div class="clear"><!-- --></div>
+
+    <div class="shift-top-app">
+        <div class="left panel3">
+            <b>About</b>
+            <c:if test="${owner}"><a id="edit-about" href="#"> (edit)</a></c:if>
+            <br/>
+            <span id="about">${user.about}</span>
+            <c:if test="${owner}">
+                <div id="form-about">
+                    <textarea id="field-about" class="small-area border">
+                        <jsp:text/>
+                    </textarea>
+                    <div class="shift-top1">
+                        <input type="button" id="update-about" class="border black-btn" value="Update" />
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $('#form-about').hide();
+                    $(function() {
+                        $('#edit-about').click(function() {
+                            $('#form-about').show();
+                            $('#field-about').val($('#about').text());
+                            $('#about').hide();
+                            return false;
+                        });
+
+                        $('#update-about').click(function() {
+                            $.post(
+                                '/user/update/about',
+                                {field: $('#field-about').val()},
+                                function(response) {
+                                    $('#form-about').hide();
+                                    $('#about').text($('#field-about').val());
+                                    $('#about').show();
+                                }
+                            );
+                        });
+                    });
+                </script>
+            </c:if>
+        </div>
+        <div class="left panel8">
+            <b>Account:</b> personal
+            <br/>
+            <br/>
+
+            <b>User name:</b>
+            <span id="static-name"> ${user.fullName()}</span>
+            <c:if test="${owner}">
+                <div id="form-name">
+                    <input type="text" id="field-name" class="border"/>
+                </div>
+                <a id="name" href="#"> (edit)</a>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#form-name').hide();
+
+                        $('#name').click(function() {
+                            $('#name').hide();
+                            $('#static-name').hide();
+                            $('#field-name').val($('#static-name').text());
+                            $('#form-name').show();
+                            return false;
+                        });
+
+                        $('#field-name').keypress(function(event) {
+                            if (event.which == 13) {
+                                $.post(
+                                    '/user/update/name',
+                                    {name: $('#field-name').val()},
+                                    function(response) {
+                                        $('#name').show();
+                                        $('#static-name').show();
+                                        $('#static-name').text(response);
+                                        $('#form-name').hide();
+                                    }
+                                );
+                            }
+                        });
+                    });
+                </script>
+            </c:if>
+            <br/>
+            <br/>
+
+            <b>Birthday:</b>
+            <span id="static-date"> ${user.formatDate()}</span>
+            <c:if test="${owner}">
+                <div id="form-date">
+                    <input type="text" id="field-date" class="border"/>
+                </div>
+                <a id="date" href="#"> (edit)</a>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#form-date').hide();
+
+                        $('#date').click(function() {
+                            $('#date').hide();
+                            $('#static-date').hide();
+                            $('#field-date').val($('#static-date').text().trim());
+                            $('#form-date').show();
+                            return false;
+                        });
+
+                        $('#field-date').keypress(function(event) {
+                            if (event.which == 13) {
+                                $.post(
+                                        '/user/update/date',
+                                        {d: $('#field-date').val()},
+                                        function(response) {
+                                            $('#date').show();
+                                            $('#static-date').show();
+                                            $('#static-date').text(response);
+                                            $('#form-date').hide();
+                                        }
+                                );
+                            }
+                        });
+                    });
+                </script>
+            </c:if>
+            <br/>
+
+            <br/>
+
+            <b>Gender:</b>
+            <span id="static-gender"> ${user.gender()}</span>
+            <c:if test="${owner}">
+                <a id="gender" href="#"> (edit)</a>
+                <div id="form-gender">
+                    <div class="radio">
+                        <input type="radio" name="gender" value="0" />
+                        Male
+                        &#160;
+                        <input type="radio" name="gender" value="1" />
+                        Female
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#form-gender').hide();
+
+                        $('#gender').click(function() {
+                            var status = $('#form-gender').is(':visible');
+                            if (status == false) {
+                                $('#gender').text('(hide)');
+                                $('#static-gender').hide();
+                                $('#form-gender').show();
+
+                                var gnd = $('#static-gender').text();
+                                if (gnd === 'Male') {
+                                    $('input:radio[name=gender][value=0]').attr('checked', true);
+                                } else if (gnd === 'Female') {
+                                    $('input:radio[name=gender][value=1]').attr('checked', true);
+                                }
+                                return false;
+                            } else {
+                                $('#gender').text('(edit)');
+                                $('#static-gender').show();
+                                $('#form-gender').hide();
+                            }
+                        });
+
+                        $('input:radio[name=gender]').change(function() {
+                            $.post(
+                                '/user/update/gender',
+                                {gender: $('input:radio[name=gender]:checked').val()},
+                                function(response) {
+                                    if (response.length > 0) {
+                                        $('#static-gender').text(response);
+                                    }
+                                    $('#gender').text('(edit)');
+                                    $('#static-gender').show();
+                                    $('#form-gender').hide();
+                                }
+                            );
+                        });
+                    });
+                </script>
+            </c:if>
+        </div>
+        <div class="left panel2">
+            <tiles:insertDefinition name="user.home_town"/>
+        </div>
+        <div class="left panel2">
+            <tiles:insertDefinition name="user.current_city"/>
+        </div>
+    </div>
+    <div class="clear"><!-- --></div>
+
+    <div class="shift-top-app">
+        <a href="/user/${user.userId}/photos" class="header">Photos (${photos.size()})</a>
+        <ul class="preview-photo">
+            <c:forEach var="photo" items="${photos}" begin="0" end="5">
+                <li>
+                    <a href="/photos/${photo.id}?type=user&amp;type_id=${user.userId}">
+                        <img src="/data/${photo.id}/wall.png"/>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"/>
+        <c:choose>
+            <c:when test="${owner}">
+                <a href="/user/photos">See more</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/user/${user.userId}/photos">See more</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+    <div class="shift-top-app">
+        <a href="/user/${user.userId}/favorites" class="header">Favorites (${faves.size()})</a>
+        <ul class="preview-photo">
+            <c:forEach var="fave" items="${faves}" begin="0" end="5">
+                <li>
+                    <a href="/photos/${fave.photo.id}?type=fave&amp;type_id=${fave.id}">
+                        <img src="/data/${fave.photo.id}/wall.png"/>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"/>
+        <c:choose>
+            <c:when test="${owner}">
+                <a href="/user/favorites">See more</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/user/${user.userId}/favorites">See more</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+    <div class="shift-top-app">
+        <a href="/user/${user.userId}/albums" class="header">Albums (${albums.size()})</a>
+        <ul class="preview-photo">
+            <c:forEach var="album" items="${albums}" begin="0" end="5">
+                <li>
+                    <a href="/albums/album/${album.id}">
+                        <img src="/data/${album.thumbnail.id}/wall.png"/>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"/>
+        <c:choose>
+            <c:when test="${owner}">
+                <a href="/user/albums">See more</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/user/${user.userId}/albums">See more</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+    <div class="shift-top-app">
+        <a href="/user/${user.userId}/collections" class="header">Collections (${assortments.size()})</a>
+        <ul class="preview-photo">
+            <c:forEach var="assortment" items="${assortments}" begin="0" end="5">
+                <li>
+                    <a href="/collections/collection/${assortment.id}">
+                        <img src="/data/${assortment.thumbnail.id}/wall.png"/>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"/>
+        <c:choose>
+            <c:when test="${owner}">
+                <a href="/user/collections">See more</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/user/${user.userId}/collections">See more</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+    <div class="shift-top-app">
+        <a href="/user/${user.userId}/groups" class="header">Groups (${groups.size()})</a>
+        <ul class="preview-photo">
+            <c:forEach var="group" items="${groups}" begin="0" end="5">
+                <c:forEach var="photo" items="${group.joinPhotos()}" end="0">
+                    <c:set var="id" value="${photo.id}"/>
+                </c:forEach>
+                <li>
+                    <a href="/groups/${group.id}">
+                        <img src="/data/${id}/wall.png"/>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"/>
+        <c:choose>
+            <c:when test="${owner}">
+                <a href="/groups/list">See more</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/user/${user.userId}/groups">See more</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+    <div class="shift-top-app">
+        <a href="/user/${user.userId}/contacts" class="header">Contacts (${user.contacts.size()})</a>
+        <ul class="preview-photo">
+            <c:forEach var="contact" items="${user.contacts}">
+                <li>
+                    <a href="/user/${contact.userId}">
+                        <img src="/avatar/${contact.avatar.id}/wall.png"/>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+        <div class="clear"><!-- --></div>
+        <a href="/user/${user.userId}/contacts">See more</a>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#profile-menu').ptmDropdownMenu('init');
+            $('#profile-menu').ptmDropdownMenu('action');
+        });
+    </script>
+
+</div>

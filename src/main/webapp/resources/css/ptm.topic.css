@@ -1,0 +1,37 @@
+ul.topic-table {
+    list-style-type: none;
+}
+
+ul.topic-table li .panel {
+    float: left;
+}
+
+ul.topic-table .header {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+    padding-bottom: 5px;
+}
+
+ul.topic-table .content {
+    padding-top: 2px;
+}
+
+#topiclist {
+    list-style-type: none;
+}
+#topiclist li {
+    padding-top: 2px;
+    font-size: 0.9em;
+}
+
+a.topic-details {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: #444;
+}
+
+a.topic-details:hover {
+    color: #888;
+}

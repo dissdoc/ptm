@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div class="show"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:sec="http://www.springframework.org/security/tags"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <c:choose>
+        <c:when test="${photo.startDate().length() > 0 or photo.endDate().length() > 0}">
+            <p>
+                <c:if test="${photo.startDate() != null}">
+                    ${photo.startDate()}
+                </c:if>
+                <c:if test="${photo.startDate().length() > 0 and photo.endDate().length() > 0}">
+                    -
+                </c:if>
+                <c:if test="${photo.endDate().length() > 0}">
+                    ${photo.endDate()}
+                </c:if>
+                <c:if test="${owner}">
+                    <sup><a class="delete" href="/photos/${photo.id}/delete/time">x</a></sup>
+                </c:if>
+            </p>
+        </c:when>
+
+        <c:otherwise>
+            <sec:authorize access="isAuthenticated()">
+                <p class="no-title">Describe your tag</p>
+            </sec:authorize>
+        </c:otherwise>
+    </c:choose>
+
+</div>

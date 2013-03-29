@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <spring:message code="label_upload_info" var="info"/>
+    <spring:message code="label_upload_description" var="description"/>
+    <spring:message code="label_upload_tags" var="tags"/>
+    <spring:message code="label_upload_datearea" var="datearea"/>
+    <spring:message code="label_upload_select_date" var="select_date"/>
+    <spring:message code="label_upload_info2" var="info2"/>
+
+    <spring:url value="/resources/js" var="js_res"/>
+
+    <div id="container">
+        <p class="prepare-text">
+            ${info}
+            <br/>
+            ${description}
+            <br/>
+            <br/>
+            <a href="#" class="black-btn" id="pickfiles">Add!</a>
+        </p>
+
+        <div class="tabpanel">
+            <div class="panel-left">
+                <p>${tags}</p>
+                <p>${info2}</p>
+                <br/>
+
+                <div class="field">
+                    <input type="text" id="photo_name" placeholder="Add a title here" class="border middle-field" />
+                </div>
+
+                <div class="field">
+                    <input type="text" id="photo_author" placeholder="Type author's name here" class="border middle-field"/>
+                </div>
+
+                <div class="field">
+                    <textarea id="photo_describe"
+                              placeholder="Describe this photo"
+                              class="border middle-area">
+                        <jsp:text />
+                    </textarea>
+                </div>
+
+                <div class="field">
+                    <b>${datearea}</b><br/>
+                    ${select_date}
+                    <tiles:insertTemplate template="/WEB-INF/views/shared/approximate.jspx"/>
+                </div>
+
+                <div class="field">
+                    <b>Place</b>
+                    <div id="map"><!-- --></div>
+                    <input type="text"
+                           id="photo_place"
+                           placeholder="Tap the map and move the marker or/and type the name of location here"
+                           class="border middle-field"/>
+                    <input type="hidden" id="lat"/>
+                    <input type="hidden" id="lng"/>
+                </div>
+
+                <div class="field">
+                    <h4>Tags</h4>
+                    <input type="text"
+                           id="photo_tags"
+                           placeholder="Type new tags separated by comma. Mark what you see on a picture"
+                           class="border middle-field"/>
+                </div>
+
+                <div class="field">
+                    <b>Privacy (who can see this photo)</b>
+                    <tiles:insertTemplate template="/WEB-INF/views/shared/privacy.jspx"/>
+                </div>
+
+                <div class="field">
+                    <b>License</b><br/>
+                    <tiles:insertTemplate template="/WEB-INF/views/shared/license.jspx"/>
+                </div>
+
+                <div class="field">
+                    <b>Safety level</b>
+                    <tiles:insertTemplate template="/WEB-INF/views/shared/marked.jspx"/>
+                </div>
+            </div>
+
+            <div class="panel-right">
+                <div class="text">
+                    &#160;
+                </div>
+                <div class="buttons">
+                    <a href="#" class="black-btn" id="uploadfiles">Upload</a>
+                </div>
+
+                <ul id="filelist"></ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <script src="${js_res}/plupload.js" type="text/javascript"><!-- --></script>
+    <script src="${js_res}/plupload.html5.js" type="text/javascript"><!-- --></script>
+    <script src="${js_res}/ptm.plupload.js" type="text/javascript"><!-- --></script>
+    <script type="text/javascript">
+        $(function() {
+            $('body').ptmModal('init');
+        });
+    </script>
+    <script src="${js_res}/ptm.map.js" type="text/javascript"><!-- --></script>
+</div>

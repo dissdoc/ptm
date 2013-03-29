@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="empty" template="/WEB-INF/tiles/empty.jspx">
+        <put-attribute name="title" value="Photo Time Machine"/>
+        <put-attribute name="logo" value="/WEB-INF/tiles/logo.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jspx"/>
+        <put-attribute name="menu_anonymous" value="/WEB-INF/tiles/menu_anonymous.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jspx"/>
+    </definition>
+
+    <definition name="default" template="/WEB-INF/tiles/default.jspx">
+        <put-attribute name="title" value="Photo Time Machine"/>
+        <put-attribute name="logo" value="/WEB-INF/tiles/logo.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jspx"/>
+        <put-attribute name="menu_anonymous" value="/WEB-INF/tiles/menu_anonymous.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jspx"/>
+    </definition>
+
+    <!--New style-->
+    <definition name="blank" template="/WEB-INF/tiles/blank.jspx">
+        <put-attribute name="title" value="Photo Time Machine"/>
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jspx"/>
+        <put-attribute name="menu_anonymous" value="/WEB-INF/tiles/menu_anonymous.jspx"/>
+        <put-attribute name="logo" value="/WEB-INF/tiles/logo.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jspx"/>
+    </definition>
+</tiles-definitions>
