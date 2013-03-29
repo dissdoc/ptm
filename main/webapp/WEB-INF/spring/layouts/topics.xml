@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="topics.limit" template="/WEB-INF/views/topics/item_limit.jspx"/>
+    <definition name="topic.create" template="/WEB-INF/views/topics/create.jspx"/>
+    <definition name="topic.create2" template="/WEB-INF/views/topics/create2.jspx"/>
+    <definition name="topic.create3" template="/WEB-INF/views/topics/create3.jspx"/>
+
+    <definition name="topic.detail" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/topics/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/topics/item.jspx"/>
+    </definition>
+    <definition name="topics.all" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/topics/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/topics/list.jspx"/>
+    </definition>
+</tiles-definitions>

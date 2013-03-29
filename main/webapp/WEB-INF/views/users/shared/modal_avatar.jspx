@@ -1,0 +1,13 @@
+<div id="modalUploadAvatar">
+    <div class="large-img"><!-- --></div>
+    <div class="clear"><!-- --></div>
+
+    <input type="hidden" id="w"/>
+    <input type="hidden" id="x1"/>
+    <input type="hidden" id="y1"/>
+
+    <div class="shift-top-app">
+        <a href="#" class="black-btn border" id="save-avatar">Save</a>
+        <a href="#" class="white-btn border" id="cancel-from-upload">Cancel</a>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="tour" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/tour.jspx"/>
+    </definition>
+
+    <definition name="about_us" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/about_us.jspx"/>
+    </definition>
+
+    <definition name="faq" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/faq.jspx"/>
+    </definition>
+
+    <definition name="rules" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/rules.jspx"/>
+    </definition>
+
+    <definition name="donate" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/donate.jspx"/>
+    </definition>
+
+    <definition name="contact" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/contact.jspx"/>
+    </definition>
+
+    <!--New style-->
+    <definition name="main" extends="blank">
+        <put-attribute name="static" value="/WEB-INF/views/shared/static.jspx"/>
+        <put-attribute name="field_search" value="/WEB-INF/views/shared/field_search.jspx"/>
+        <put-attribute name="date_slider" value="/WEB-INF/views/shared/date_slider.jspx"/>
+        <put-attribute name="gmap" value="/WEB-INF/views/shared/gmap.jspx"/>
+        <put-attribute name="by_sorting" value="/WEB-INF/views/shared/by_sorting.jspx"/>
+    </definition>
+</tiles-definitions>

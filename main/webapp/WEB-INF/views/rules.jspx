@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div id="wrapper"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div style="min-height: 456px;">
+
+    <p class="app">
+        We are all here to enjoy visual history and to explore it, to bring together our
+        smaller private stories as an important part of the big common one.
+    </p>
+
+
+    <p class="app">
+        <b>Some simple terms:</b>
+    </p>
+
+    <p class="app">
+        1. Please upload only photos older than 15 years. This period is a
+        sort of filter, which allows us to be a resource about the past, not about the
+        present.
+    </p>
+
+
+    <p class="app">
+        2. Post only pictures you are a rights holder of (or if you represent
+        the right holder's interests). This is your responsibility. We do respect authors and their work.
+    </p>
+
+    <p class="app">
+        3. If you post photos with nude or other sensitive content - please mark them as Unsafe.
+    </p>
+
+    <p class="app">
+        4. Please no harassing content, really. There is a thin line, we're
+        sure you know where to draw it.
+    </p>
+
+    <p class="app">
+        That's it for now. Enjoy!
+    </p>
+
+    </div>
+
+</div>

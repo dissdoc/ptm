@@ -1,0 +1,46 @@
+.modal {
+    min-height: 100%;
+    display: table;
+    height: auto !important;
+}
+
+.modal .window {
+    padding: 10px;
+    background-color: #fff;
+    position: fixed;
+    display: none;
+    z-index: 9999;
+}
+
+.modal .mask {
+    background-color: #000;
+    display: none;
+    filter: alpha(Opacity=90);
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    z-index: 9000;
+    min-height: 100%;
+    height: auto !important;
+    width: 100%;
+}
+
+.modal .window .large-img {
+    text-align: center;
+}
+
+.modal .window .large-img img {
+    max-width: 670px;
+    max-height: 480px;
+}
+
+.modal .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.modal .close:hover {
+    cursor: pointer;
+}

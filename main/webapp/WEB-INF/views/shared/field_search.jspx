@@ -1,0 +1,34 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <div id='search-dropdown-field'>
+        <div class='field'>
+            <input type="text" id="search_field"/>
+            <input type="hidden" id="search_value"/>
+        </div>
+        <div class="combo">
+            <div>
+                <p>&#9660;</p>
+            </div>
+            <ul>
+                <li>
+                    <a href="#" data-remote="true" value="1">Full text</a>
+                </li>
+                <li>
+                    <a href="#" data-remote="true" value="2">Tags only</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#search-dropdown-field').ptmDropdownField('init', {
+                'field': '#search_field',
+                'value': '#search_value'
+            });
+        });
+    </script>
+
+</jsp:root>

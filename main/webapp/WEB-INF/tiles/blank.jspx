@@ -1,0 +1,101 @@
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+      xmlns:tiles="http://tiles.apache.org/tags-tiles"
+      xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:directive.page pageEncoding="UTF-8" />
+
+    <spring:theme code="default" var="app_css"/>
+    <spring:url value="/resources/js" var="js"/>
+    <spring:url value="/plugins" var="plugins"/>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8" />
+        <meta http-equiv="no-cache"/>
+        <meta http-equiv="Expires" content="-1"/>
+        <meta http-equiv="Cache-Control" content="no-cache"/>
+
+        <title><tiles:insertAttribute name="title"/></title>
+
+        <link rel="stylesheet" type="text/css" media="screen" href="${app_css_url}"/>
+        <script src="${js}/jquery.min.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.hotkeys.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.ui.core.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.ui.widget.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.ui.mouse.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.ui-slider.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.ui.draggable.js" type="text/javascript"><!-- --></script>
+        <script src="${js}/jquery.nano.js" type="text/javascript"><!-- --></script>
+
+        <link rel="stylesheet/less" type="text/css" href="${plugins}/dropdown-menu/dropdown-menu.less"/>
+        <script type="text/javascript" src="${plugins}/dropdown-menu/dropdown-menu.js"><!-- --></script>
+
+        <tiles:insertAttribute name="static"/>
+
+        <script src="${js}/less.min.js" type="text/javascript"><!-- --></script>
+    </head>
+
+    <body>
+        <input type="hidden" id="user" value="${user}"/>
+
+        <div class="app">
+            <div class="left">
+                <tiles:insertAttribute name="logo"/>
+            </div>
+
+            <div class="left">
+                <tiles:insertAttribute name="field_search"/>
+            </div>
+
+            <div class="pos-right">
+                <sec:authorize access="isAuthenticated()">
+                    <tiles:insertAttribute name="menu"/>
+                </sec:authorize>
+
+                <sec:authorize access="isAnonymous()">
+                    <tiles:insertAttribute name="menu_anonymous"/>
+                </sec:authorize>
+            </div>
+
+            <div class="break"><!-- --></div>
+        </div>
+
+        <div class="app">
+            <tiles:insertAttribute name="date_slider"/>
+        </div>
+
+        <div class="app">
+            <tiles:insertAttribute name="by_sorting"/>
+        </div>
+
+        <div class="app2">
+            <div class="right wrapper-map">
+                <tiles:insertAttribute name="gmap"/>
+            </div>
+
+            <ul id="wall-wrapper"><!-- --></ul>
+            <script type="text/javascript" src="/resources/js/modules/ptm.search.js"><!-- --></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('#wall-wrapper').ptmSearch('init', {
+                        shift: 20,
+                        url: '/search/photos',
+                        page: 'main',
+                        template: '/resources/templates/photos/wall_item.tmpl',
+                        map_w: '336px',
+                        map_h: '224px'});
+                    $('#wall-wrapper').ptmSearch('action');
+                });
+            </script>
+        </div>
+        <div class="clear"><!-- --></div>
+
+        <div class="app">
+            <tiles:insertAttribute name="footer" ignore="true"/>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:sec="http://www.springframework.org/security/tags"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:url value="/resources/images" var="image_url"/>
+
+    <spring:message code="label_explore" var="explore"/>
+    <spring:message code="label_explore_tagged" var="tagged"/>
+    <spring:message code="label_explore_popular" var="popular"/>
+    <spring:message code="label_explore_choice" var="choice"/>
+    <spring:message code="label_explore_current" var="current"/>
+
+    <spring:message code="label_group" var="group"/>
+    <spring:message code="label_group_your" var="your_groups"/>
+    <spring:message code="label_group_search" var="search_group"/>
+    <spring:message code="label_group_create" var="create_group"/>
+
+    <spring:message code="label_friend" var="friend"/>
+    <spring:message code="label_friend_photo" var="photo_friend"/>
+    <spring:message code="label_friend_list" var="list_friend"/>
+    <spring:message code="label_friend_find" var="find_friend"/>
+    <spring:message code="label_friend_invite" var="invite_friend"/>
+
+    <spring:message code="label_upload" var="upload"/>
+
+    <spring:message code="label_profile_profile" var="profile_profile"/>
+    <spring:message code="label_profile_photos" var="profile_photos"/>
+    <spring:message code="label_profile_albums" var="profile_albums"/>
+    <spring:message code="label_profile_collections" var="profile_collections"/>
+    <spring:message code="label_profile_family" var="family_tree"/>
+    <spring:message code="label_profile_favorites" var="profile_favorites"/>
+    <spring:message code="label_profile_managed" var="profile_managed"/>
+    <spring:message code="label_profile_recent" var="profile_recent"/>
+    <spring:message code="label_profile_tags" var="profile_tags"/>
+    <spring:message code="label_profile_statistics" var="profile_stat"/>
+    <spring:message code="label_profile_logout" var="profile_logout"/>
+
+    <div id="menu">
+        <ul class="dropdown">
+            <li class="headlink shift-top" style="display: none;">
+                <a href="#">${explore}</a>
+                <ul>
+                    <li><a href="#">${tagged}</a></li>
+                    <li><a href="#">${popular}</a></li>
+                    <li><a href="#">${choice}</a></li>
+                    <li><a href="#">${current}</a></li>
+                </ul>
+            </li>
+
+            <li class="headlink shift-top">
+                <a href="#">${group}</a>
+                <ul>
+                    <li><a href="/groups/list">${your_groups}</a></li>
+                    <li style="display: none;"><a href="#">${search_group}</a></li>
+                    <li><a href="/groups/create">${create_group}</a></li>
+                </ul>
+            </li>
+
+            <li class="headlink shift-top">
+                <a href="#">${friend}</a>
+                <ul>
+                    <li><a href="#">${photo_friend}</a></li>
+                    <li><a href="/user/contacts">${list_friend}</a></li>
+                    <li style="display: none;"><a href="#">${find_friend}</a></li>
+                    <li style="display: none;"><a href="#">${invite_friend}</a></li>
+                </ul>
+            </li>
+
+            <li class="headlink shift-top">
+                <a href="/photos/upload">${upload}</a>
+            </li>
+
+            <li class="headlink shift-top">
+                <a href="/user/photos">
+                    <sec:authorize access="isRememberMe()">
+                        <sec:authentication property="principal.username"/>
+                    </sec:authorize>
+
+                    <sec:authorize access="!isRememberMe()">
+                        <sec:authentication property="principal"/>
+                    </sec:authorize>
+                </a>
+                <ul>
+                    <li><a href="/user/profile">${profile_profile}</a></li>
+                    <li><a href="/user/photos">${profile_photos}</a></li>
+                    <li><a href="/user/albums">${profile_albums}</a></li>
+                    <li><a href="/user/collections">${profile_collections}</a></li>
+                    <li style="display: none;"><a href="#">${family_tree}</a></li>
+                    <li><a href="/user/favorites">${profile_favorites}</a></li>
+                    <li style="display: none;"><a href="#">${profile_managed}</a></li>
+                    <li style="display: none;"><a href="#">${profile_recent}</a></li>
+                    <li style="display: none;"><a href="#">${profile_tags}</a></li>
+                    <li style="display: none;"><a href="#">${profile_stat}</a></li>
+                    <li><a href="/j_spring_security_logout">${profile_logout}</a></li>
+                </ul>
+            </li>
+
+            <li class="headlink" style="display: none;">
+                <a href="#"><img src="${image_url}/email.png"/></a>
+                <sub>0</sub>
+            </li>
+
+            <li class="headlink" id="alarms">
+                <a href="/recommend/archive"><img src="${image_url}/alarm.png"/></a>
+                <sub>0</sub>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $.post("/users/alarms/count", function(response) {
+                $('#alarms sub').text(response);
+                if (parseInt(response) > 0) {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "html",
+                        url:"/recommend/",
+                        success: function(response) {
+                            $('#alarms').append(response);
+                        }
+                    });
+                }
+            });
+        })
+
+        $(window).load(function() {
+            $('#menu').ptmDropdownMenu('init');
+            $('#menu').ptmDropdownMenu('action');
+        });
+    </script>
+</div>

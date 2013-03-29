@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_profile_profile" var="profile_profile"/>
+    <spring:message code="label_profile_photos" var="profile_photos"/>
+    <spring:message code="label_profile_albums" var="profile_albums"/>
+    <spring:message code="label_profile_collections" var="profile_collections"/>
+    <spring:message code="label_profile_family" var="family_tree"/>
+    <spring:message code="label_profile_favorites" var="profile_favorites"/>
+
+    <div id="user-menu">
+        <div class="left">
+            <c:choose>
+                <c:when test="${photo.appUser.avatar == null}">
+                    <img src="/resources/images/no_avatar.png"/>
+                </c:when>
+                <c:otherwise>
+                    <img src="/avatar/${photo.appUser.avatar.id}/icon.png"/>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div>
+            <ul class="dropdown" style="padding-top: 44px; padding-bottom: 0px;">
+                <li class="headlink">
+                    <a href="/user/${photo.appUser.userId}/photos">
+                        ${photo.appUser.fullName()}
+                        <c:if test="${auth != null and auth.userId.intValue() == photo.appUser.userId.intValue()}">
+                            (you)
+                        </c:if>
+                    </a>
+
+                    <ul>
+                        <li><a href="/user/${photo.appUser.userId}">${profile_profile}</a></li>
+                        <li><a href="/user/${photo.appUser.userId}/photos">${profile_photos}</a></li>
+                        <li><a href="/user/${photo.appUser.userId}/albums">${profile_albums}</a></li>
+                        <li><a href="/user/${photo.appUser.userId}/collections">${profile_collections}</a></li>
+                        <li style="display: none;"><a href="#">${family_tree}</a></li>
+                        <li><a href="/user/${photo.appUser.userId}/groups">Groups</a></li>
+                        <li><a href="/user/${photo.appUser.userId}/favorites">${profile_favorites}</a></li>
+                        <sec:authorize access="isAuthenticated()">
+                            <c:if test="${!owner and user.isFriend(photo.appUser.userId)}">
+                                <li>
+                                    <a href="#" id="remove-friend">Remove contact</a>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $('#remove-friend').click(function() {
+                                                $.post(
+                                                    '/contacts/delete',
+                                                    {user_id: '${photo.appUser.userId}', photo_id: '${photo.id}'},
+                                                    function(response) {
+                                                        $('#user').html(response);
+                                                    }
+                                                )
+                                            });
+                                        });
+                                    </script>
+                                </li>
+                            </c:if>
+                        </sec:authorize>
+                    </ul>
+                </li>
+                <sec:authorize access="isAuthenticated()">
+                    <c:if test="${!owner and !user.isFriend(photo.appUser.userId)}">
+                        <li class="headlink">
+                            <a href="#" id="add-friend">(add contact)</a>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $('#add-friend').click(function() {
+                                        $.post(
+                                            '/contacts/add',
+                                            {user_id: '${photo.appUser.userId}', photo_id: '${photo.id}'},
+                                            function(response) {
+                                                $('#user').html(response);
+                                            }
+                                        )
+                                        return false;
+                                    });
+                                })
+                            </script>
+                        </li>
+                    </c:if>
+                </sec:authorize>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#user-menu').ptmDropdownMenu('init');
+            $('#user-menu').ptmDropdownMenu('action');
+        });
+    </script>
+
+    <div class="clear"><!-- --></div>
+</div>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <p>
+        <b>Time</b>
+        &#160;
+
+        <sec:authorize access="isAuthenticated()">
+            <a class="add-time" href="#">(suggest time tag)</a>
+        </sec:authorize>
+    </p>
+
+    <tiles:insertAttribute name="show"/>
+
+    <sec:authorize access="isAuthenticated()">
+        <div class="action-field">
+            <tiles:insertAttribute name="approximate"/>
+
+            <c:if test="${not owner}">
+                <div class="shift-top-app">
+                    <textarea id="annotation_time" class="border huge-area" placeholder="Describe your tag (optional)">
+                        <jsp:text/>
+                    </textarea>
+                </div>
+            </c:if>
+
+            <div class="field">
+                <input type="button" id="add_time" class="border black-btn" value="Add" />
+                <input type="button" id="cancel_time" class="border white-btn" value="Cancel" />
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function() {
+                $(function() {
+                    var year = '${photo.year1}';
+                    var month = '${photo.month1}';
+                    var day = '${photo.day1}';
+                    var year2 = '${photo.year2}';
+                    var month2 = '${photo.month2}';
+                    var day2 = '${photo.day2}';
+
+                    $('#time .add-time').click(function() {
+                        if (!year || year === '0') year = 'year';
+                        $('#birthYear option').filter(function() {
+                            return $(this).text() == year;
+                        }).attr('selected', true);
+
+                        if (!month || month === '0') month = 'month';
+                        $('#birthMonth option').filter(function() {
+                            return $(this).val() == month;
+                        }).attr('selected', true);
+
+                        if (!day || day === '0') day = 'day';
+                        $('#birthDay option').filter(function() {
+                            return $(this).text() == day;
+                        }).attr('selected', true);
+
+                        if (!year2 || year2 === '0') year2 = 'year';
+                        $('#birthYear2 option').filter(function() {
+                            return $(this).text() == year2;
+                        }).attr('selected', true);
+
+                        if (!month2 || month2 === '0') month2 = 'month';
+                        $('#birthMonth2 option').filter(function() {
+                            return $(this).val() == month2;
+                        }).attr('selected', true);
+
+                        if (!day2 || day2 === '0') day2 = 'day';
+                        $('#birthDay2 option').filter(function() {
+                            return $(this).text() == day2;
+                        }).attr('selected', true);
+
+                        $('#time .show').hide();
+                        $('#time .action-field').show();
+
+                        return false;
+                    });
+
+                    $('#cancel_time').click(function() {
+                        $('#time .show').show();
+                        $('#time .action-field').hide();
+                    });
+
+                    $('#time .show .delete').click(function() {
+                        $.post(
+                            $(this).attr('href'),
+                            function(response) {
+                                $('#time').html(response);
+                            }
+                        );
+                        return false;
+                    })
+                });
+            });
+        </script>
+
+        <c:choose>
+            <c:when test="${owner}">
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_time').click(function() {
+                            $.post(
+                                "/photos/${photo.id}/update/date",
+                                {year: $('#birthYear').val(),
+                                    month: $('#birthMonth').val(),
+                                    day: $('#birthDay').val(),
+                                    year2: $('#birthYear2').val(),
+                                    month2: $('#birthMonth2').val(),
+                                    day2: $('#birthDay2').val()},
+                                function(response) {
+                                    if (!response) {
+                                        $('#time .show').show();
+                                        $('#time .action-field').hide();
+                                    } else
+                                        $('#time').html(response);
+                                });
+                        });
+                    });
+                </script>
+            </c:when>
+
+            <c:otherwise>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_time').click(function() {
+                            $.post(
+                                "/recommend/date",
+                                {photo_id: "${photo.id}",
+                                year: $('#birthYear').val(),
+                                month: $('#birthMonth').val(),
+                                day: $('#birthDay').val(),
+                                year2: $('#birthYear2').val(),
+                                month2: $('#birthMonth2').val(),
+                                day2: $('#birthDay2').val(),
+                                annotation: $('#annotation_time').val()}
+                            );
+                            $('#time .show').show();
+                            $('#time .action-field').hide();
+                        });
+                    });
+                </script>
+            </c:otherwise>
+        </c:choose>
+    </sec:authorize>
+
+</div>

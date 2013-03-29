@@ -1,0 +1,29 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <ul id="by_sorting">
+
+        <li class="sort">
+            <input type="radio" name="sorting" value="0" checked="checked"/> By uploading date
+            &#160;
+            <input type="radio" name="sorting" value="1"/> By creation date
+        </li>
+
+        <li class="buttons">
+            <a href="#" id="forwardbtn">
+                <img src="/resources/images/arrow-left.png"/>
+            </a>
+            &#160;
+            <a href="#" id="playbtn">
+                <img src="/resources/images/arrow-right.png"/>
+            </a>
+        </li>
+
+        <li class="result">
+            Results: <span id="results">0</span>
+        </li>
+
+    </ul>
+
+</jsp:root>

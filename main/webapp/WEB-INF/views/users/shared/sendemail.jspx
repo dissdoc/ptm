@@ -1,0 +1,15 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: dissdoc
+  Date: 21.03.13
+  Time: 13:02
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <h2>Check your mailbox!</h2>
+    <script type="text/javascript">
+        window.setTimeout(function() {
+            window.location.href = '/';
+        }, 3000);
+    </script>
+</jsp:root>

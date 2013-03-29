@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div id="wrapper"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div style="min-height: 456px;">
+        <h2>About us</h2>
+
+        <p class="app">
+            We started this project because we're obsessed with the idea of exploring history through old photos.
+            We cover the period from 1826 (first made photograph) - to minus 15 years from now (to keep a distance from our days and work with history).
+            Photography has totally covered all the fields of human activity during these years.
+            This is the most stirring times of human civilization.
+        </p>
+
+        <p class="app">
+            Photo Time Machine will let/offer:
+        </p>
+
+        <p class="app">
+            <ul style="list-style-type: square; padding-left: 25px;">
+                <li class="app2">
+                    People – travel to the Past, observe visual history of places, things they love through old photos;
+                    upload and organize their old photos (family, amateur and pro archives) by time, place and thematic tags.
+                    Thus photos will get connected with content from many other accounts into an easy to navigate network.
+                    We’ll let people build visual stories of their families and hometowns, create family trees and connect them
+                </li>
+                <li class="app2">
+                    Companies and brands – beautiful marketing solutions based on their visual history (old photos)
+                </li>
+                <li class="app2">
+                    Institutional archives (national ones, libraries, museums...) –
+                    sell their photos (digital copies and prints) and promote their collections
+                </li>
+            </ul>
+        </p>
+
+        <p class="app">
+            Join us and share your old pictures. Your history is an important part of our big common one.
+        </p>
+    </div>
+
+</div>

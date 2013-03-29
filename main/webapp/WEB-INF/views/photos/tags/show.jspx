@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div class="show"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0"
+     xmlns:sec="http://www.springframework.org/security/tags" xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <c:choose>
+        <c:when test="${tags.size() > 0}">
+            <ul id="tags">
+                <c:forEach var="tag" items="${tags}">
+                    <li>
+                        ${tag.name}
+                        <c:if test="${owner}">
+                            <sup><a class="delete" href="/photos/${photo.id}/delete/tag/${tag.id}">x</a></sup>
+                        </c:if>
+                        &#8226;
+                    </li>
+                </c:forEach>
+            </ul>
+            <div class="clear"><!-- --></div>
+        </c:when>
+
+        <c:otherwise>
+            <sec:authorize access="isAuthenticated()">
+                <p class="no-title">Type news tags separated by comma</p>
+            </sec:authorize>
+        </c:otherwise>
+    </c:choose>
+
+</div>

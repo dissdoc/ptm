@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h1><a class="topic-details" href="/groups/${group.id}">${group.name} (group)</a></h1>
+
+    <div class='app'>
+        <b>Discussions</b>
+        &#160;
+        (${topics.size()} posts)
+        &#160;
+        <a href="#" class="border white-btn" id="add-new-topic">Create a new post</a>
+        <tiles:insertDefinition name="topic.create2"/>
+    </div>
+
+    <div class="shift-top-app">
+        <div class="left panel7">
+            <p class="shift-top-app">
+                <a href="/groups/${group.id}/topics">Current ones</a>
+            </p>
+
+            <ul class="shift-top-app" id="topiclist">
+                <c:forEach var="topic" items="${topics}">
+                    <li><a href="/groups/${group.id}/topic/${topic.id}">${topic.theme}</a></li>
+                </c:forEach>
+            </ul>
+        </div>
+
+        <div class="right panel5-5">
+            <h4>${topic.theme}</h4>
+            by <a href="/user/${topic.author.userId}">${topic.author.fullName()}</a>
+            <br/>
+            ${topic.description}
+            <br/>
+            at <i>${topic.getDateAgo()}</i>
+            &#160;|&#160;
+            <a href="#" id="add-new-reply">reply</a>
+            <tiles:insertDefinition name="replies.create"/>
+            <hr/>
+
+            <tiles:insertDefinition name="replies.list"/>
+        </div>
+    </div>
+    <div class="clear"><!-- --></div>
+
+</div>

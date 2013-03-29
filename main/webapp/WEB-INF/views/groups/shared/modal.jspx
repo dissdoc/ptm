@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="modalGroup">
+        <div class="show-scroll">
+            <h3>Add this photo to a group</h3>
+            <div class="field">
+                <input type="text" id="search-group-field" class="border big-field" placeholder="Search your group"/>
+            </div>
+            <div class="field scrollable">
+                <div class="span">
+                    <ul><!-- --></ul>
+                </div>
+                <div class="unspan">
+                    <div class="panel-scroll">
+                        <div class="cursor-up">
+                            &#9650;
+                        </div>
+                        <div class="parent-panel">
+                            <div class="scrollbar">
+                                &#160;
+                            </div>
+                        </div>
+                        <div class="cursor-down">
+                            &#9660;
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"><!-- --></div>
+            </div>
+            <div class="field">
+                <input type="button" id="ok-group-btn" class="border black-btn" value="OK" />
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+        function removeLi() {
+            $('#modalGroup .show-scroll .scrollable .span ul').empty();
+        }
+
+        function addLi() {
+            $.post(
+                "/groups/all",
+                {id: '${photo.id}'},
+                function(response) {
+                    $('#modalGroup .show-scroll .scrollable .span ul').empty();
+                    var arr = $.parseJSON(response);
+                    $.each(arr.GroupList, function(i, item) {
+                        var li = $("&lt;li&gt;", {id: item.id}).text(item.name);
+                        if (item.exist === "true") li.addClass('exist');
+                        $('#modalGroup .show-scroll .scrollable .span ul').append(li);
+
+                        li.click(function() {
+                            var element = $(this);
+                            if ($(this).hasClass('exist')) {
+                                $.post(
+                                        "/groups/delete",
+                                        {id: '${photo.id}', group: item.id},
+                                        function(response) {
+                                            element.removeClass('exist');
+                                        }
+                                );
+                            } else {
+                                $.post(
+                                        "/groups/add",
+                                        {id: '${photo.id}', group: item.id},
+                                        function(response) {
+                                            element.addClass('exist');
+                                        }
+                                );
+                            }
+                        });
+
+                    });
+
+                    var parH = $('#modalGroup .scrollable .parent-panel').outerHeight(true);
+                    var areaH = 24 * ($('#modalGroup .scrollable ul li').length - 1);
+                    var srcH = 0;
+
+                    if (parH > areaH) srcH = parH / (parH/areaH);
+                    else srcH = parH / (areaH/parH);
+
+                    function dragging() {
+                        var srcPos = $('#modalGroup .scrollbar').position().top;
+                        $('#modalGroup .scrollable ul').css({top: -(srcPos*(areaH/parH)-1)});
+                    }
+
+                    $('#modalGroup .panel-scroll .scrollbar').height(srcH);
+                    $('#modalGroup .panel-scroll .scrollbar').draggable({
+                        axis: 'y',
+                        containment: '#modalGroup .scrollable .parent-panel',
+                        drag: function() {
+                            dragging()
+                        }
+                    });
+                }
+            );
+        }
+
+
+            $('#add-to-group').click(function() {
+                $('body').ptmModal('windowInit');
+                $('body').ptmModal('show', {dialog: '#modalGroup'});
+                $('body').ptmModal('destroy2', {dialog: '#modalGroup', parent: '#add-to-group'});
+                $('#modalGroup .show-scroll .scrollable .span ul').css({top: '0px', left: '0px'});
+                removeLi();
+                addLi();
+                return false;
+            });
+
+            $('#search-group-field').keydown(function(event) {
+                if (event.which == 13) {
+                    if (!$(this).val() || 0 === $(this).val().length) {
+                        $('#modalGroup .scrollable ul li').each(function() {
+                            $(this).show();
+                        });
+                    }
+                    else {
+                        $('#modalGroup .scrollable ul li').each(function() {
+                            var index = $(this).text().indexOf($('#search-group-field').val());
+                            if (index &lt; 0) $(this).hide();
+                            else $(this).show();
+                        });
+                    }
+                }
+            });
+
+            $('#modalGroup .show-scroll .scrollable .span ul li').click(function() {
+                $(this).removeClass('exist');
+            });
+
+            $('#ok-group-btn').click(function() {
+                $('body').ptmModal('close', {dialog: '#modalGroup', parent: '#add-to-group'});
+            })
+        });
+    </script>
+</div>

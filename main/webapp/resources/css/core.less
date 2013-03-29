@@ -1,0 +1,58 @@
+@color: #444;
+@color-lite: #888;
+@color-none: #fff;
+@color-purp: #f4efff;
+@size: 11px;
+@fonts: "lucida grande",tahoma,verdana,arial,sans-serif;
+
+@shadow-black: 1px 1px 0px #eee;
+@shadow-lite: 1px 1px 0px #333;
+@box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+@box-shadow-untop: 0 5px 5px rgba(0, 0, 0, 0.2);
+
+@width: 1024px;
+
+@border: 1px solid #aaa;
+
+@background: #eee;
+@background-lite: #fff;
+
+.medium-field() {
+  background: @background-lite;
+  font-size: @size+1;
+  border: none;
+  padding-left: 8px;
+  height: 22px;
+  width: 240px;
+  color: @color;
+  font-family: @fonts;
+}
+
+.pos-left() {
+  float: left;
+}
+
+.pos-right() {
+  float: right;
+}
+
+.clear-all(@param: 0) {
+  margin: @param;
+  padding: @param;
+}
+
+.triangle(@a: 255, @c: #fff, @top: -10px, @right: 10px) {
+  content: "";
+  position: absolute;
+  border-left: 10px solid rgba(@a, @a, @a, 0);
+  border-right: 10px solid rgba(@a, @a, @a, 0);
+  border-bottom: 10px solid @c;
+  right: @right;
+  top: @top;
+}
+
+.rounded-corners (@radius: 2px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}

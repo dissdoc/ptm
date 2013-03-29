@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                                 http://www.springframework.org/schema/security
+                                 http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <http pattern="/resources" security="none" />
+
+    <http use-expressions="true" disable-url-rewriting="true">
+        <intercept-url pattern="/" access="permitAll"/>
+
+        <form-login login-page="/users/login"
+                    authentication-failure-url="/users/loginfail"
+                    default-target-url="/"/>
+
+        <access-denied-handler error-page="/users/denied"/>
+
+        <logout logout-success-url="/" delete-cookies="JSESSIONID, phototimemachine"/>
+
+        <remember-me key="PhotoTimeMachine" services-ref="rememberMeService"/>
+
+        <anonymous/>
+    </http>
+
+    <authentication-manager erase-credentials="false">
+        <authentication-provider ref="authenticationProvider"/>
+    </authentication-manager>
+
+    <beans:bean id="rememberMeService"
+                class="org.phototimemachine.security.CustomRememberMeService">
+        <beans:property name="key" value="PhotoTimeMachine"/>
+        <beans:property name="userDetailsService" ref="customUserDetailsService"/>
+        <beans:property name="cookieName" value="phototimemachine"/>
+    </beans:bean>
+
+    <beans:bean id="authenticationProvider"
+                class="org.phototimemachine.security.provider.UserAuthenticationProvider"/>
+
+    <beans:bean id="customUserDetailsService"
+                class="org.phototimemachine.security.provider.UserDetailsServiceImpl"/>
+
+</beans:beans>

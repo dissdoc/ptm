@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div class="app"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" >
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div>
+        <div class="pos-left">
+            <h3>Discussions</h3>
+        </div>
+        <div class="pos-left shift-top1">
+            &#160;(${topic_count} posts)&#160;
+        </div>
+
+        <c:if test="${owner or user_join}">
+            <div class="pos-left shift-top1">
+                <a href="#" class="border white-btn" id="add-new-topic">Post a new topic</a>
+                <tiles:insertDefinition name="topic.create"/>
+            </div>
+        </c:if>
+
+        <div class="clear"><!-- --></div>
+    </div>
+
+    <ul class="topic-table">
+        <li>
+            <div class="panel1-2 left header">Title</div>
+            <div class="panel7 left header">Author</div>
+            <div class="panel9 left header">Replies</div>
+            <div class="panel9 left header">Last reply</div>
+        </li>
+        <c:forEach var="topic" items="${topics}">
+            <li class="content" id="topic${topic.id}">
+                <div class="panel1-2 left">
+                    <a href="/groups/${group.id}/topic/${topic.id}">${topic.theme}</a>
+
+                    <c:if test="${owner or topic.author.userId == user.userId}">
+                        <sup><a class="to-remove" href="#">x</a></sup>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('#topic'+'${topic.id} .to-remove').click(function() {
+                                    $.post(
+                                        '/topics/delete',
+                                        {id: '${topic.id}', group_id: '${group.id}'},
+                                        function(response) {
+                                            if (response.length == 0) return;
+                                            $("#topic"+'${topic.id}').remove();
+                                        }
+                                    );
+                                    return false;
+                                });
+                            });
+                        </script>
+                    </c:if>
+
+                </div>
+                <div class="panel7 left">
+                    <a href="/user/${topic.author.userId}">${topic.author.fullName()}</a>
+                </div>
+                <div class="panel9 left">
+                    ${topic.replies.size()}
+                </div>
+                <div class="panel9 left">
+                    ${topic.getDateAgo()}
+                </div>
+                <div class="clear"><!-- --></div>
+            </li>
+        </c:forEach>
+    </ul>
+
+</div>

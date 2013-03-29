@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ul id="wall"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <c:forEach var="photo" items="${photos}">
+        <li id="${photo.id}">
+            <div class="small">
+                <img src="/data/${photo.id}/small.png"/>
+            </div>
+            <div class="preview">
+                <a class="lite-mode" href="/data/${photo.id}/medium.png"><img src="/data/${photo.id}/preview.png"/></a>
+                <p><a class="photo-link" href="/photos/${photo.id}">${photo.name}</a></p>
+                <p>${photo.author}</p>
+                <p>
+                    <c:if test="${photo.startDate() != null}">
+                        ${photo.startDate()}
+                    </c:if>
+                    <c:if test="${photo.startDate().length() > 0 and photo.endDate().length() > 0}">
+                        -
+                    </c:if>
+                    <c:if test="${photo.endDate().length() > 0}">
+                        ${photo.endDate()}
+                    </c:if>
+                </p>
+                <p><a href="/user/${photo.appUser.userId}">${photo.appUser.fullName()}</a></p>
+            </div>
+        </li>
+    </c:forEach>
+
+    <script type="text/javascript" src="/resources/js/ptm.map.js"><!-- --></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#map').ptmMap('init', {width: '428px', height: '218px'});
+            $('#map').ptmMap('bounds', {ne_lat: '#ne_lat', ne_lng: '#ne_lng', sw_lat: '#sw_lat', sw_lng: '#sw_lng'});
+        });
+
+        var data = new Array();
+    </script>
+
+    <c:forEach items="${photos}" var="photo">
+        <c:if test="${photo.isPlace()}">
+            <script type="text/javascript">
+                var item = new Array();
+                item['id'] = '${photo.id}';
+                item['latitude'] = '${photo.latitude}';
+                item['longitude'] = '${photo.longitude}';
+                data.push(item);
+            </script>
+        </c:if>
+    </c:forEach>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#map').ptmMap('markers', data);
+        });
+    </script>
+
+    <script type="text/javascript" src="/resources/js/ptm.wall.js"><!-- --></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#wall').ptmWall('init', {map: '#map'});
+        });
+    </script>
+
+    <script type="text/javascript" src="/resources/js/ptm.modal.js"><!-- --></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#wall').find('li').each(function() {
+                $('.preview .lite-mode', this).click(function() {
+                    $('body').ptmModal('litemode', {src: $(this).attr('href'), url: $(this).parent().find('.photo-link').attr('href')});
+                    $('body').ptmModal('destroy');
+                    return false;
+                })
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#action-go-search').click(function() {
+                $('#map').ptmMap('delete_markers');
+                $.post(
+                        "/search",
+                        {search_value: $('#search_value').val(), search_field: $('#search_field').val(),
+                            ne_lng: $('#ne_lng').val(), ne_lat: $('#ne_lat').val(), sw_lng: $('#sw_lng').val(), sw_lat: $('#sw_lat').val(),
+                            minD: $('#minD').val(), maxD: $('#maxD').val()},
+                        function(response) {
+                            $('#for_wall').html(response);
+                        }
+                );
+                return false;
+            });
+        });
+    </script>
+
+</ul>

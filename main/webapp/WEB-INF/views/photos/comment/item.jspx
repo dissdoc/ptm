@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h4>Comments</h4>
+
+    <ul id="comments">
+        <c:forEach var="comment" items="${comments}">
+            <li id="${comment.id}">
+
+                <div class="photo">
+                    <c:choose>
+                        <c:when test="${comment.appUser.avatar == null}">
+                            <img src="/resources/images/no_avatar.png"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img src="/avatar/${comment.appUser.avatar.id}/icon.png"/>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <div class="descr">
+                    <p>
+                        <a href="#">${comment.appUser.fullName()}</a>
+                    </p>
+                    ${comment.description}
+                    <p>
+                        <span>${comment.getDateAgo()}</span>
+                    </p>
+                </div>
+                <div class="delete">
+                    <sec:authorize access="isAuthenticated()">
+                        <c:if test="${user.userId == comment.appUser.userId or user.userId == photo.appUser.userId}">
+                            <a href="/comments/delete">x</a>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $('li#'+${comment.id}+' .delete a').click(function() {
+                                        $.post(
+                                            $('li#'+${comment.id}+' .delete a').attr('href'),
+                                            {comment_id: '${comment.id}'},
+                                            function(response) {
+                                                var i = parseInt($('span.comment').text());
+                                                if (i > 0) $('span.comment').text(i-1);
+                                                $('li#' + '${comment.id}').remove();
+                                            }
+                                        );
+                                        return false;
+                                    })
+                                });
+                            </script>
+                        </c:if>
+                    </sec:authorize>
+                </div>
+                <div class="clear"><!-- --></div>
+            </li>
+        </c:forEach>
+    </ul>
+
+    <sec:authorize access="isAuthenticated()">
+        <tiles:insertTemplate template="/WEB-INF/views/photos/comment/form.jspx"/>
+    </sec:authorize>
+
+</div>

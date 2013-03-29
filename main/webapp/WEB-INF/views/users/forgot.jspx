@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0">
+
+    <jsp:directive.page contentType="texr/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_forgot_header" var="forgot_header"/>
+    <spring:message code="label_forgot_name" var="forgot_name"/>
+    <spring:message code="label_forgot_btn" var="forgot_btn"/>
+
+    <spring:url value="/users/forgot" var="action"/>
+
+    <h3>${forgot_header}</h3>
+
+    <form action="${action}" method="POST">
+
+        <c:if test="${not empty message}">
+            <div id="message">
+                <div class="${message.type}">${message.message}</div>
+            </div>
+        </c:if>
+
+        <div class="field">
+            <div class="text">
+                <label>${forgot_name}</label>
+            </div>
+            <div class="input">
+                <input type="text" id="email" name="email" class="border big-field"/>
+            </div>
+        </div>
+
+        <div class="field">
+            <input type="submit" value="${forgot_btn}" class="black-btn pos-left"/>
+        </div>
+
+    </form>
+
+</div>

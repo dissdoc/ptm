@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="uploaded-photos"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <h3><a href="/groups/${group.id}">${group.name} (group)</a></h3>
+
+    <div class="shift-top-app">
+        <ul id="for-upload" class="preview-photo">
+            <c:forEach var="photo" items="${photos}">
+                <li id="${photo.id}">
+                    <img src="/data/${photo.id}/small.png" />
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+    <div class="clear"><!-- --></div>
+
+    <div class="shift-top-app">
+        <h4>For upload</h4>
+    </div>
+    <div class="clear"><!-- --></div>
+
+    <div class="shift-top-app">
+        <ul id="uploaded" class="preview-photo">
+
+        </ul>
+    </div>
+    <div class="clear"><!-- --></div>
+
+    <div class="shift-top-app field">
+        <input type="button" id="upload-photos" class="border black-btn" value="Upload" />
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#uploaded-photos').find('li').each(function() {
+                $(this).click(function() {
+                    if ($(this).parent().attr('id') == "for-upload") {
+                        if ($('#uploaded li').length + 1 > 6) return;
+                        $(this).appendTo('#uploaded');
+                    } else if ($(this).parent().attr('id') == "uploaded") {
+                        $(this).appendTo('#for-upload');
+                    }
+                });
+            });
+
+            $('#upload-photos').click(function() {
+                var array = new Array();
+                $('#uploaded').find('li').each(function() {
+                    array.push($(this).attr('id'));
+                });
+
+                $.post(
+                    '/groups/add_to_group',
+                    {group: '${group.id}', 'ids': array},
+                    function(response) {
+                        window.location.href = '/groups/${group.id}';
+                    }
+                );
+            });
+        });
+    </script>
+
+</div>

@@ -1,0 +1,101 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: kmuhov
+  Date: 22.03.13
+  Time: 16:53
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <h1>Your notifications</h1>
+
+    <ul class="alarms app" style="min-height: 456px;">
+        <c:forEach var="item" items="${recommends}">
+            <li id="fld${item.id}" class="${item.status}">
+                <a href="/user/${item.userId}/photos">${item.userName}</a>
+                suggested
+                <c:choose>
+                    <c:when test="${item.name == 'place'}">
+                        geo tag
+                    </c:when>
+
+                    <c:when test="${item.name == 'date'}">
+                        time tag
+                    </c:when>
+
+                    <c:when test="${item.name == 'tag'}">
+                        tag
+                    </c:when>
+
+                    <c:otherwise>
+                        an author
+                    </c:otherwise>
+                </c:choose>
+
+                <b>${item.message}</b>
+
+                to your ${item.type}
+                <a href="/photos/${item.typeId}">
+                    <c:choose>
+                        <c:when test="${not empty item.typeName}">
+                            ${item.typeName}
+                        </c:when>
+                        <c:otherwise>
+                            Noname
+                        </c:otherwise>
+                    </c:choose>
+                </a>
+
+                <a href="#" class="accept">Accept</a>&#160;<a href="#" class="reject">Decline</a>
+
+                <c:if test="${not empty item.annotation}">
+                    <br/>(${item.annotation})
+                </c:if>
+
+                <br/>
+                <img src="/data/${item.typeId}/wall.png"/>
+
+                <script type="text/javascript">
+                    $(function() {
+                        $('#fld${item.id}').hover(function() {
+                            if ($(this).hasClass('false')) {
+                                $.post("/recommend/status", {id: "${item.id}"});
+                                $('#${item.id}').css('background', '#fff');
+                                $('#${item.id}').removeClass('false');
+                                $('#${item.id}').addClass('true');
+                                var i = parseInt($('#alarms sub').text());
+                                $('#alarms sub').text(--i);
+                                $(this).removeClass('false');
+                                $(this).addClass('true');
+                            }
+                            $(this).css('background', '#eee');
+                        }, function() {
+                            $(this).css('background', '#fff');
+                        });
+
+                        $('#fld${item.id} .accept').click(function() {
+                            $.post(
+                                "/recommend/accept",
+                                {id: "${item.id}"}
+                            )
+                            $('#fld${item.id}').remove();
+                            $('#${item.id}').remove();
+                        });
+
+                        $('#fld${item.id} .reject').click(function() {
+                            $.post(
+                                "/recommend/reject",
+                                {id: "${item.id}"}
+                            );
+                            $('#fld${item.id}').remove();
+                            $('#${item.id}').remove();
+                        });
+                    });
+                </script>
+            </li>
+        </c:forEach>
+    </ul>
+</jsp:root>

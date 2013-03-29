@@ -1,0 +1,56 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: dissdoc
+  Date: 27.02.13
+  Time: 13:54
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <div id="modalAlbum">
+        <h3>Create new album</h3>
+        <div class="field">
+            <input type="text" id="name-album" class="border big-field" placeholder="Add a title here"/>
+        </div>
+        <textarea id="description-album" class="border big-area" placeholder="Describe this album">
+            <jsp:text/>
+        </textarea>
+        <div class="field">
+            <input type="button" id="create-album" class="border black-btn" value="OK" />
+            <input type="button" id="back-albums" class="border white-btn" value="Cancel" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('body').ptmModal('init');
+
+            $('#modalCreateAlbum').click(function() {
+                $('body').ptmModal('windowInit');
+                $('body').ptmModal('show', {dialog: '#modalAlbum'});
+                $('body').ptmModal('destroy2', {dialog: '#modalAlbum', parent: '#modalCreateAlbum'});
+                return false;
+            });
+
+            $('#create-album').click(function() {
+                $.post(
+                    "/albums/new",
+                    {name: $("#name-album").val(), description: $('#description-album').val()},
+                    function(response) {
+                        if (response &amp;&amp; response.length > 0)
+                            window.location = '/user/albums';
+                        else
+                            $('body').ptmModal('close', {dialog: '#modalAlbum', parent: '#modalCreateAlbum'});
+                    }
+                );
+            });
+
+            $('#back-albums').click(function() {
+                $('body').ptmModal('close', {dialog: '#modalAlbum', parent: '#modalCreateAlbum'});
+            });
+        });
+    </script>
+
+</jsp:root>

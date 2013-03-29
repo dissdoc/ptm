@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <b>This photo also represented in</b>
+    <br/>
+
+    <c:if test="${groups.size() > 0}">
+        <div>
+            Groups:&#160;
+            <c:forEach var="group" items="${groups}">
+                <a href="/groups/${group.id}">${group.name}</a>&#160;
+            </c:forEach>
+        </div>
+    </c:if>
+
+    <c:if test="${albums.size() > 0}">
+        <div>
+            Albums:&#160;
+            <c:forEach var="album" items="${albums}">
+                <a href="/albums/album/${album.id}">${album.name}</a>&#160;
+            </c:forEach>
+        </div>
+    </c:if>
+
+    <c:if test="${assortments.size() > 0}">
+        <div>
+            Collections:&#160;
+            <c:forEach var="assortment" items="${assortments}">
+                <a href="/collections/collection/${assortment.id}">${assortment.name}</a>&#160;
+            </c:forEach>
+        </div>
+    </c:if>
+
+</div>

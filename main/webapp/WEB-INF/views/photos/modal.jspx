@@ -1,0 +1,59 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: kmuhov
+  Date: 12.03.13
+  Time: 12:00
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="http://java.sun.com/jstl/core_rt"
+          version="2.0">
+
+    <a>
+        <div class="large-img">
+            <a href="/photos/${photo.id}${params}">
+                <img src="/data/${photo.id}/medium.png" />
+            </a>
+        </div>
+    </a>
+
+    <div class="left">
+        <div class="text" id="photo-name">
+            <a href="/photos/${photo.id}${params}">
+                ${photo.name}
+            </a>
+        </div>
+
+        <div class="text" id="photo-user">
+            <a href="/user/${user.userId}/photos">
+                ${user.fullName()}
+            </a>
+        </div>
+
+        <c:if test="${photo.fullDate().length() > 0}">
+            <div class="text" id="photo-date">
+                ${photo.fullDate()}
+            </div>
+        </c:if>
+    </div>
+    <div class="right">
+        <div class='pluso pluso-theme-light pluso-small' style="padding-left: 0px;">
+            <a class='pluso-facebook'></a>
+            <a class='pluso-twitter'></a>
+            <a class='pluso-vkontakte'></a>
+        </div>
+    </div>
+    <div class="clear"><!-- --></div>
+
+    <div class="shift-top-app">
+        <div class="thumbs-slider">
+            <div class="slider">
+                <ul><!-- --></ul>
+            </div>
+            <a href="#" class="sl-arrow sl-left">‹</a>
+            <a href="#" class="sl-arrow sl-right">›</a>
+        </div>
+    </div>
+
+</jsp:root>

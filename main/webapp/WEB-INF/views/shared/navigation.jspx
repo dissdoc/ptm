@@ -1,0 +1,74 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_login_btn" var="name_btn"/>
+
+    <div class='app'>
+        <div class='panel-form shift-top'>
+            <div id='search-dropdown-field'>
+                <div class='field'>
+                    <input type="text" id="search_field" name="search_field" class="border big-field"/>
+                    <input type="hidden" id="search_value" name="search_value"/>
+                </div>
+                <div class="combo">
+                    <div>
+                        <p>&#9660;</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#" data-remote="true" value="1">Full text</a>
+                        </li>
+                        <li>
+                            <a href="#" data-remote="true" value="2">Tags only</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class='panel-form'>
+            <div class="btn-field shift-top">
+                <input type='button' value='${name_btn}' class="big-white-btn" id="action-go-search"/>
+            </div>
+        </div>
+
+        <div class='panel-form'>
+            <div id='map'><!-- --></div>
+            <input type="hidden" id="ne_lng"/>
+            <input type="hidden" id="ne_lat"/>
+            <input type="hidden" id="sw_lng"/>
+            <input type="hidden" id="sw_lat"/>
+        </div>
+
+        <div class="clear"><!-- --></div>
+    </div>
+
+    <div class='shift-top-app'>
+        <div id="slider-form">
+            <input type="hidden" id="minD" value="1826"/>
+            <input type="hidden" id="maxD" value="1998"/>
+
+            <ul id="data"><!-- --></ul>
+
+            <div id="slider"><!-- --></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/resources/js/ptm.slider.js"><!-- --></script>
+    <script type="text/javascript" src="/resources/js/ptm.dropdown-field.js"><!-- --></script>
+    <script type="text/javascript">
+        $(function() {
+            $('body').ptmModal('init');
+            $('#search-dropdown-field').ptmDropdownField('init',
+                    {'field': '#search_field', 'value': '#search_value'});
+            $('#slider-form').ptmSlider('init',
+                    {slider: '#slider', data: '#data', min: '#minD', max: '#maxD'});
+        });
+    </script>
+
+</div>

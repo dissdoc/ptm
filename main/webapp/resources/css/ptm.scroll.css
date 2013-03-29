@@ -1,0 +1,148 @@
+#modalAlbum {
+    display: none;
+    width: 360px;
+}
+
+#modalAlbum .scrollable {
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+    width: 352px;
+}
+
+#modalAlbum .scrollable .span ul {
+    padding-top: 5px;
+    width: 335px;
+    padding-right: 8px;
+    position: absolute;
+    list-style-type: none;
+}
+
+#modalAlbum .scrollable ul li {
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#modalAlbum .scrollable ul li.exist {
+    background: #ddd;
+}
+
+#modalAlbum .scrollable ul li:hover {
+    background: #cbc6e0;
+    color: #999;
+    cursor: pointer;
+}
+
+#modalAlbum .scrollable .panel-scroll {
+    border: 1px solid #bbb;
+    width: 12px;
+    padding: 1px;
+    height: 110px;
+    position: relative;
+}
+
+#modalAlbum .scrollable .panel-scroll .cursor-up {
+    padding-bottom: 2px;
+}
+
+#modalAlbum .scrollable .panel-scroll .cursor-down {
+    padding-top: 2px;
+    position: absolute;
+    bottom: 0px;
+}
+
+#modalAlbum .scrollable .panel-scroll .scrollbar {
+    width: 10px;
+    background: #666;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 1px;
+    cursor: pointer;
+}
+
+#modalAlbum .scrollable .panel-scroll .parent-panel {
+    height: 78px;
+    position: relative;
+}
+
+#modalAlbum .span { float: left; }
+#modalAlbum .unspan { float: right; }
+
+/***** DOUBLICAT FOR GROUPS *****/
+#modalGroup {
+    display: none;
+    width: 360px;
+}
+
+#modalGroup .scrollable {
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+    width: 352px;
+}
+
+#modalGroup .scrollable .span ul {
+    padding-top: 5px;
+    width: 335px;
+    padding-right: 8px;
+    position: absolute;
+    list-style-type: none;
+}
+
+#modalGroup .scrollable ul li {
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#modalGroup .scrollable ul li.exist {
+    background: #ddd;
+}
+
+#modalGroup .scrollable ul li:hover {
+    background: #cbc6e0;
+    color: #999;
+    cursor: pointer;
+}
+
+#modalGroup .scrollable .panel-scroll {
+    border: 1px solid #bbb;
+    width: 12px;
+    padding: 1px;
+    height: 110px;
+    position: relative;
+}
+
+#modalGroup .scrollable .panel-scroll .cursor-up {
+    padding-bottom: 2px;
+}
+
+#modalGroup .scrollable .panel-scroll .cursor-down {
+    padding-top: 2px;
+    position: absolute;
+    bottom: 0px;
+}
+
+#modalGroup .scrollable .panel-scroll .scrollbar {
+    width: 10px;
+    background: #666;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 1px;
+    cursor: pointer;
+}
+
+#modalGroup .scrollable .panel-scroll .parent-panel {
+    height: 78px;
+    position: relative;
+}
+
+#modalGroup .span { float: left; }
+#modalGroup .unspan { float: right; }

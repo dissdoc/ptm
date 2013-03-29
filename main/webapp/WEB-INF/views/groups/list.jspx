@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags" xmlns:c="http://java.sun.com/jsp/jstl/core"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="user-display"><tiles:insertDefinition name="user.display"/></div>
+
+    <div class="pos-left shift-right">
+        <h2>Groups</h2>
+    </div>
+    <div class="shift-top1">
+        <a href="/groups/create" class="border white-btn">Create a new group</a>
+    </div>
+    <div class="clear"><!-- --></div>
+
+    <c:if test="${groups.size() > 0}">
+        <div class="shift-top-app">
+            <b>Groups you moderate</b>
+        </div>
+        <div class="shift-top-app field">
+            <sec:authorize access="isAuthenticated()">
+                <ul class="groups">
+                    <c:forEach var="group" items="${groups}">
+                        <li id="${group.id}">
+                            <c:forEach var="photo" items="${group.joinPhotos()}" end="0">
+                                <c:set var="id" value="${photo.id}"/>
+                            </c:forEach>
+                            <c:set var="count" value="${group.joinPhotos().size()}"/>
+                            <c:choose>
+                                <c:when test="${count > 0}">
+                                    <a href="/groups/${group.id}"><img src="/data/${id}/showing.png"/></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/groups/${group.id}"><img /></a>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <div>
+                                <p>
+                                    ${group.name}
+                                    <c:if test="${group.deleted == true}">(deleted)</c:if>
+                                </p>
+                                <p>${count} photos</p>
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </sec:authorize>
+            <div class="clear"><!-- --></div>
+        </div>
+    </c:if>
+
+    <c:if test="${managed_groups.size() > 0}">
+        <div class="shift-top-app">
+            <b>Groups you're member of</b>
+        </div>
+        <div class="shift-top-app field">
+            <sec:authorize access="isAuthenticated()">
+                <ul class="groups">
+                    <c:forEach var="group" items="${managed_groups}">
+                        <li id="${group.id}">
+                            <c:forEach var="photo" items="${group.joinPhotos()}" end="0">
+                                <c:set var="id" value="${photo.id}"/>
+                            </c:forEach>
+                            <c:set var="count" value="${group.joinPhotos().size()}"/>
+                            <c:choose>
+                                <c:when test="${count > 0}">
+                                    <a href="/groups/${group.id}"><img src="/data/${id}/showing.png"/></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/groups/${group.id}"><img/></a>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <div>
+                                <p>${group.name}</p>
+                                <p>${count} photos</p>
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </sec:authorize>
+            <div class="clear"><!-- --></div>
+        </div>
+    </c:if>
+
+</div>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="users/register" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/users/register.jspx"/>
+    </definition>
+
+    <definition name="users/denied" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/users/denied.jspx"/>
+    </definition>
+
+    <definition name="users/login" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/users/login.jspx"/>
+    </definition>
+
+    <definition name="users/forgot" extends="default">
+        <put-attribute name="body" value="/WEB-INF/views/users/forgot.jspx"/>
+    </definition>
+
+    <definition name="user.profile" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/users/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/users/profile.jspx"/>
+    </definition>
+
+    <definition name="user.home_town" template="/WEB-INF/views/users/user/home_town.jspx"/>
+    <definition name="user.current_city" template="/WEB-INF/views/users/user/current_city.jspx"/>
+
+    <definition name="user.status" template="/WEB-INF/views/users/user/item.jspx"/>
+    <definition name="user.display" template="/WEB-INF/views/users/user/display.jspx"/>
+</tiles-definitions>

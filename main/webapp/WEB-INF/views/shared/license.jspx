@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="photo_license">
+        <input type="radio" name="license" value="0" checked="checked" />
+        &#169;All Rights Reserved
+        <br/>
+        <input type="radio" name="license" value="1" />
+        &#169;Attribution-NonCommercial-ShareAlike Creative Commons
+        <br/>
+        <input type="radio" name="license" value="2" />
+        &#169;Attribution-NonCommercial Creative Commons
+        <br/>
+        <input type="radio" name="license" value="3" />
+        &#169;Attribution-NonCommercial-NoDerivs Creative Commons
+        <br/>
+        <input type="radio" name="license" value="4" />
+        &#169;Attribution Creative Commons
+        <br/>
+        <input type="radio" name="license" value="5" />
+        &#169;Attribution-ShareAlike Creative Commons
+        <br/>
+        <input type="radio" name="license" value="6" />
+        &#169;Attribution-NoDerivs Creative Commons
+    </div>
+</div>

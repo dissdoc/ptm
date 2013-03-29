@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:sec="http://www.springframework.org/security/tags">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <tiles:insertAttribute name="show"/>
+
+    <sec:authorize access="isAuthenticated()">
+        <div class="action-field">
+            <input type="text" id="author_field" class="border huge-field"/>
+
+            <c:if test="${not owner}">
+                <div class="shift-top-app">
+                    <textarea id="annotation_author" class="border huge-area" placeholder="Describe your tag (optional)">
+                        <jsp:text/>
+                    </textarea>
+                </div>
+            </c:if>
+
+            <div class="field">
+                <input type="button" id="add_author" class="border black-btn" value="Add" />
+                <input type="button" id="cancel_author" class="border white-btn" value="Cancel" />
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function() {
+                $('#author .show').click(function() {
+                    $(this).hide();
+                    if ('${photo.author}'.length == 0) {}
+                    else $('#author_field').val($('span', this).text());
+                    $('#author .action-field').show();
+                });
+
+                $('#cancel_author').click(function() {
+                    $('#author .show').show();
+                    $('#author .action-field').hide();
+                });
+            });
+        </script>
+
+        <c:choose>
+            <c:when test="${owner}">
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_author').click(function() {
+                            $.post(
+                                "/photos/${photo.id}/update/author",
+                                {author: $('#author_field').val()},
+                                function(response) {
+                                    if (!response) {
+                                        $('#author .show').show();
+                                        $('#author .action-field').hide();
+                                    } else
+                                        $('#author').html(response);
+                                }
+                            );
+                        });
+                    });
+                </script>
+            </c:when>
+
+            <c:otherwise>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#add_author').click(function() {
+                            $.post(
+                                "/recommend/author",
+                                {photo_id: '${photo.id}',
+                                 author: $('#author_field').val(),
+                                 annotation: $('#annotation_author').val()},
+                                function(response) { }
+                            );
+                            $('#author .show').show();
+                            $('#author .action-field').hide();
+                        });
+                    });
+                </script>
+            </c:otherwise>
+        </c:choose>
+    </sec:authorize>
+
+</div>

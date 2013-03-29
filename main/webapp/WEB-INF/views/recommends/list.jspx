@@ -1,0 +1,101 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: kmuhov
+  Date: 22.03.13
+  Time: 16:52
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0"
+          xmlns:c="http://java.sun.com/jstl/core_rt">
+    <c:if test="${not empty recommends}">
+        <ul class="alarm-item">
+            <c:forEach var="item" items="${recommends}">
+                <li id="${item.id}" class="${item.status} noaction">
+                    <a href="/user/${item.userId}/photos">${item.userName}</a>
+                    suggested
+                    <c:choose>
+                        <c:when test="${item.name == 'place'}">
+                            geo tag
+                        </c:when>
+
+                        <c:when test="${item.name == 'date'}">
+                            time tag
+                        </c:when>
+
+                        <c:when test="${item.name == 'tag'}">
+                            tag
+                        </c:when>
+
+                        <c:otherwise>
+                            an author
+                        </c:otherwise>
+                    </c:choose>
+
+                    <b>${item.message}</b>
+
+                    to your ${item.type}
+                    <a href="/photos/${item.typeId}">
+                        <c:choose>
+                            <c:when test="${not empty item.typeName}">
+                                ${item.typeName}
+                            </c:when>
+                            <c:otherwise>
+                                Noname
+                            </c:otherwise>
+                        </c:choose>
+                    </a>
+
+                    <c:if test="${not empty item.annotation}">
+                        <br/>(${item.annotation})
+                    </c:if>
+
+                    <br/>
+                    <img src="/data/${item.typeId}/wall.png"/>
+
+                    <br/>
+                    <a href="#" class="accept">Accept</a>&#160;<a href="#" class="reject">Decline</a>
+                    <script type="text/javascript">
+                        $(function() {
+                            $('#${item.id}').hover(function() {
+                                if ($(this).hasClass('false')) {
+                                    $.post("/recommend/status", {id: "${item.id}"});
+                                    $('#fld${item.id}').css('background', '#fff');
+                                    $('#fld${item.id}').removeClass('false');
+                                    $('#fld${item.id}').addClass('true');
+                                    var i = parseInt($('#alarms sub').text());
+                                    $('#alarms sub').text(--i);
+                                    $(this).removeClass('false');
+                                    $(this).addClass('true');
+                                }
+                                $(this).css('background', '#eee');
+                            }, function() {
+                                $(this).css('background', '#fff');
+                            });
+
+                            $('#${item.id} .accept').click(function() {
+                                $.post(
+                                    "/recommend/accept",
+                                    {id: "${item.id}"}
+                                )
+                                $('#fld${item.id}').remove();
+                                $('#${item.id} .accept').remove();
+                                $('#${item.id} .reject').remove();
+                            });
+
+                            $('#${item.id} .reject').click(function() {
+                                $.post(
+                                        "/recommend/reject",
+                                        {id: "${item.id}"}
+                                );
+                                $('#fld${item.id}').remove();
+                                $('#${item.id} .accept').remove();
+                                $('#${item.id} .reject').remove();
+                            });
+                        });
+                    </script>
+                </li>
+            </c:forEach>
+            <li class="detail"><a href="/recommend/archive">See more...</a></li>
+        </ul>
+    </c:if>
+</jsp:root>

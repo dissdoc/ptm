@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="recommend.list" template="/WEB-INF/views/recommends/list.jspx"/>
+    <definition name="recommend.archive" extends="empty">
+        <put-attribute name="static" value="/WEB-INF/views/users/shared/static.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/recommends/archive.jspx"/>
+    </definition>
+</tiles-definitions>

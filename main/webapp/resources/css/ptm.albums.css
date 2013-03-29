@@ -1,0 +1,52 @@
+#modalAlbum {
+    display: none;
+}
+
+#albums {
+    list-style-type: none;
+}
+
+#albums li {
+    float: left;
+    width: 252px;
+    height: 168px;
+    padding: 2px;
+    text-align: center;
+}
+
+#albums li:hover {
+    cursor: pointer;
+}
+
+#albums li a img {
+    height: 164px;
+    width: 252px;
+    border: 0px solid #fff;
+}
+
+#albums li .delete-album {
+    position:relative;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 0px #fff;
+    top: -190px;
+    left: 110px;
+}
+
+#albums li div {
+    text-align: left;
+    background: #444;
+    filter: alpha(Opacity=80);
+    opacity: 0.8;
+    position: relative;
+    padding: 2px;
+    bottom: 30px;
+}
+
+#albums li div p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+}

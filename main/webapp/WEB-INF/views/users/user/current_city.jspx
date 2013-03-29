@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div class="static"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <b>Current city</b>
+    <c:if test="${owner}">
+        <a id="cplace" href="#"> (edit)</a>
+    </c:if>
+
+    <div id="static-cplace">
+        <c:if test="${not empty user.currentCity}">
+            <img src="https://maps.google.com/maps/api/staticmap?size=300x190&amp;sensor=false&amp;markers=icon:http://bit.ly/MXgxzs%7C${user.currentCity}"/>
+        </c:if>
+    </div>
+
+    <c:if test="${owner}">
+        <div class="caction-field">
+            <div id="current-city"><!-- --></div>
+            <input type="text"
+                   id="photo_cplace"
+                   placeholder="Tap the map and move the marker or/and type the name of location here"
+                   class="border small-field"/>
+            <input type="hidden" id="clat"/>
+            <input type="hidden" id="clng"/>
+            <div class="field">
+                <input type="button" id="add_cplace" class="border black-btn" value="Add" />
+                <input type="button" id="cancel_cplace" class="border white-btn" value="Cancel" />
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function srcGenerate(address) {
+                return "https://maps.google.com/maps/api/staticmap?size=300x190&amp;sensor=false&amp;markers=icon:http://bit.ly/MXgxzs%7C"+address;
+            }
+            $(function() {
+                $('.caction-field').hide();
+                $('#cplace').click(function() {
+                    $('#current-city').ptmMap('init', {width: '300px', height: '150px'});
+                    $('#current-city').ptmMap('marker', {field: '#photo_cplace', lat: '#clat', lng: '#clng'});
+                    $('#current-city').ptmMap('field', {field: '#photo_cplace', lat: '#clat', lng: '#clng'});
+
+                    if ('${user.currentCity}') {
+                        $('#photo_cplace').val('${user.currentCity}');
+                        $('#clat').val('${user.cLatitude}');
+                        $('#clng').val('${user.cLongitude}');
+                        $('#current-city').ptmMap('set_marker', {field: $('#photo_cplace'), lat: $('#clat'), lng: $('#clng')});
+                    }
+
+                    $('#static-cplace').hide();
+                    $('div.caction-field').show();
+
+                    return false;
+                });
+
+                $('#add_cplace').click(function() {
+                    $.post(
+                            "/user/update/currentcity",
+                            {address: $('#photo_cplace').val(), lat: $('#clat').val(), lng: $('#clng').val()},
+                            function(response) {
+                                if (response) {
+                                    var img = new Image();
+                                    img.src = srcGenerate($('#photo_cplace').val());
+                                    $('#static-cplace').empty().append(img);
+                                }
+                                $('#static-cplace').show();
+                                $('.caction-field').hide();
+                            });
+                });
+
+                $('#cancel_cplace').click(function() {
+                    $('#static-cplace').show();
+                    $('div.caction-field').hide();
+                });
+            });
+        </script>
+    </c:if>
+</div>

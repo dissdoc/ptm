@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="photo_marked">
+        <input type="radio" name="marked" value="0" checked="checked" />
+        Mark as Safe (for content which you can show to your mom and kids)
+        <br/>
+        <input type="radio" name="marked" value="1" />
+        Mark as Unsafe (for content which you would not show to your mom and kids)
+    </div>
+</div>

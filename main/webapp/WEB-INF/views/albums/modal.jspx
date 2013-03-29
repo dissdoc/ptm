@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <div id="modalAlbum">
+        <div class="show-scroll">
+            <h3>Add this photo to an album</h3>
+            <div class="field">
+                <input type="text" id="search-album-field" class="border big-field" placeholder="Search your album"/>
+            </div>
+            <div class="field scrollable">
+                <div class="span">
+                    <ul><!-- --></ul>
+                </div>
+                <div class="unspan">
+                    <div class="panel-scroll">
+                        <div class="cursor-up">
+                            &#9650;
+                        </div>
+                        <div class="parent-panel">
+                            <div class="scrollbar">
+                                &#160;
+                            </div>
+                        </div>
+                        <div class="cursor-down">
+                            &#9660;
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"><!-- --></div>
+            </div>
+            <div class="field">
+                <input type="button" id="ok-btn" class="border black-btn" value="OK" />
+                <input type="button" id="create-new-album" class="border white-btn" value="Create a new album" />
+            </div>
+        </div>
+
+        <div class="show-form">
+            <h3>Create a new album</h3>
+            <div class="field">
+                <input type="text" id="name-album" class="border big-field" placeholder="Add a title here"/>
+            </div>
+            <textarea id="description-album" class="border big-area" placeholder="Describe this album">
+                <jsp:text/>
+            </textarea>
+            <div class="field">
+                <input type="button" id="create-album" class="border black-btn" value="OK" />
+                <input type="button" id="back-albums" class="border white-btn" value="Cancel" />
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+        function removeLi() {
+            $('#modalAlbum .show-scroll .scrollable .span ul').empty();
+        }
+
+        function addLi() {
+            $.post(
+                "/albums/all",
+                {id: '${photo.id}'},
+                function(response) {
+                    $('#modalAlbum .show-scroll .scrollable .span ul').empty();
+                    var arr = $.parseJSON(response);
+                    $.each(arr.GroupList, function(i, item) {
+                        var li = $("&lt;li&gt;", {id: item.id}).text(item.name);
+                        if (item.exist === "true") li.addClass('exist');
+                        $('#modalAlbum .show-scroll .scrollable .span ul').append(li);
+
+                        li.click(function() {
+                            var element = $(this);
+                            if ($(this).hasClass('exist')) {
+                                $.post(
+                                    "/albums/delete",
+                                    {id: '${photo.id}', album: item.id},
+                                    function(response) {
+                                        element.removeClass('exist');
+                                    }
+                                );
+                            } else {
+                                $.post(
+                                    "/albums/add",
+                                    {id: '${photo.id}', album: item.id},
+                                    function(response) {
+                                        element.addClass('exist');
+                                    }
+                                );
+                            }
+                        });
+
+                    });
+
+                    var parH = $('#modalAlbum .scrollable .parent-panel').outerHeight(true);
+                    var areaH = 24 * ($('#modalAlbum .scrollable ul li').length - 1);
+                    var srcH = 0;
+
+                    if (parH > areaH) srcH = parH / (parH/areaH);
+                    else srcH = parH / (areaH/parH);
+
+                    function dragging() {
+                        var srcPos = $('#modalAlbum .scrollbar').position().top;
+                        $('#modalAlbum .scrollable ul').css({top: -(srcPos*(areaH/parH)-1)});
+                    }
+
+                    $('#modalAlbum .panel-scroll .scrollbar').height(srcH);
+                    $('#modalAlbum .panel-scroll .scrollbar').draggable({
+                        axis: 'y',
+                        containment: '#modalAlbum .scrollable .parent-panel',
+                        drag: function() {
+                            dragging()
+                        }
+                    });
+                }
+            );
+        }
+
+
+            $('#name-album').focus();
+            $('#modalAlbum .show-form').hide();
+
+            $('#add-to-album').click(function() {
+                $('body').ptmModal('windowInit');
+                $('body').ptmModal('show', {dialog: '#modalAlbum'});
+                $('body').ptmModal('destroy2', {dialog: '#modalAlbum', parent: '#add-to-album'});
+                $('#modalAlbum .show-scroll .scrollable .span ul').css({top: '0px', left: '0px'});
+                removeLi();
+                addLi();
+                return false;
+            });
+
+            $('#create-new-album').click(function() {
+                $('#modalAlbum .show-scroll').hide();
+                $('#modalAlbum .show-form').show();
+            });
+
+            $('#back-albums').click(function() {
+                $('#modalAlbum .show-scroll').show();
+                $('#modalAlbum .show-form').hide();
+                $('#name-album').val('');
+                $('#description-album').val('');
+            });
+
+            $('#search-album-field').keydown(function(event) {
+                if (event.which == 13) {
+                    if (!$(this).val() || 0 === $(this).val().length) {
+                        $('#modalAlbum .scrollable ul li').each(function() {
+                            $(this).show();
+                        });
+                    }
+                    else {
+                        $('#modalAlbum .scrollable ul li').each(function() {
+                            var index = $(this).text().indexOf($('#search-album-field').val());
+                            if (index &lt; 0) $(this).hide();
+                            else $(this).show();
+                        });
+                    }
+                }
+            });
+
+            $('#modalAlbum .show-scroll .scrollable .span ul li').click(function() {
+                    $(this).removeClass('exist');
+            });
+
+            $('#create-album').click(function() {
+                $.post(
+                    "/albums/create",
+                    {name: $('#name-album').val(), description: $('#description-album').val(), id: '${photo.id}'},
+                    function(response) {
+                        $('#modalAlbum .show-scroll').show();
+                        $('#modalAlbum .show-form').hide();
+                        removeLi();
+                        addLi();
+                    }
+                );
+            });
+
+            $('#ok-btn').click(function() {
+                $('body').ptmModal('close', {dialog: '#modalAlbum', parent: '#add-to-album'});
+            })
+        });
+    </script>
+
+</div>

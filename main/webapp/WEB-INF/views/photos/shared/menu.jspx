@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="photo-menu"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:sec="http://www.springframework.org/security/tags"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     version="2.0">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <ul class="dropdown">
+        <sec:authorize access="isAuthenticated()">
+            <c:if test="${not owner}">
+                <li class="headlink shift-top">
+                    <c:choose>
+                        <c:when test="${fave == null}">
+                            <a class="fave" href="/faves/fave"><img src="/resources/images/unfave.png"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="fave" href="/faves/unfave"><img src="/resources/images/fave.png"/></a>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+                <script type="text/javascript">
+                    $(function() {
+                        $('a.fave').click(function() {
+                            var url = $(this).attr('href');
+                            $.post(
+                                url,
+                                {user_id: '${user.userId}', photo_id: '${photo.id}'},
+                                function(response) {
+                                    $('a.fave').find('img').remove();
+                                    var img = new Image();
+                                    $('a.fave').append(img);
+                                    var i = parseInt($('span.fave').text());
+                                    if (url.indexOf("unfave") >= 0) {
+                                        img.src = "/resources/images/unfave.png";
+                                        $('a.fave').attr('href', "/faves/fave");
+                                        if (i > 0) $('span.fave').text(i-1);
+                                    } else {
+                                        img.src = "/resources/images/fave.png";
+                                        $('a.fave').attr('href', "/faves/unfave");
+                                        $('span.fave').text(i+1);
+                                    }
+                                }
+                            );
+                            return false;
+                        });
+                    })
+                </script>
+            </c:if>
+        </sec:authorize>
+        <li class="headlink pluso-fix">
+            <script type="text/javascript">(function() {
+                if (window.pluso &amp;&amp; typeof window.pluso.start == "function") return;
+                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = false;
+                s.src = d.location.protocol  + '//share.pluso.ru/pluso-like.js';
+                var h=d[g]('head')[0] || d[g]('body')[0];
+                h.appendChild(s);
+            })();</script>
+            <div class="pluso" data-options="small,square,line,horizontal,nocounter,theme=06"
+                 data-services="vkontakte,twitter,facebook"
+                 data-background="transparent"
+                 data-title="Photo Time Machine"
+                 data-description=""><!-- --></div>
+        </li>
+
+        <sec:authorize access="isAuthenticated()">
+            <li class="headlink shift-top2">
+                <a href="#">Actions</a>
+                <ul class="fix">
+                    <li><a href="#">Add a note</a></li>
+                    <c:choose>
+                        <c:when test="${owner}">
+                            <li id="add-to-album">
+                                <tiles:insertTemplate template="/WEB-INF/views/albums/modal.jspx"/>
+                                <a href="#">Add to/remove from an album</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li id="add-to-album">
+                                <tiles:insertTemplate template="/WEB-INF/views/collections/modal.jspx"/>
+                                <a href="#">Add to/remove from a collection</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li id="add-to-group">
+                        <tiles:insertTemplate template="/WEB-INF/views/groups/shared/modal.jspx"/>
+                        <a href="#">Add to/remove from a group</a>
+                    </li>
+                    <li><a href="#">Download</a></li>
+                    <li><a href="#">View original size</a></li>
+                    <li><a href="#">Replace</a></li>
+                    <c:if test="${owner}">
+                        <li><a href="#" class="delete-photo">Delete</a></li>
+                        <script type="text/javascript">
+                            $(function() {
+                                $('a.delete-photo').click(function() {
+                                    $.post(
+                                        '/photos/${photo.id}/delete',
+                                        function(response) {
+                                            window.location = '/user/${user.userId}/photos';
+                                        }
+                                    );
+                                    return false;
+                                });
+                            });
+                        </script>
+                    </c:if>
+                </ul>
+            </li>
+            <li class="headlink shift-top2">
+                <a href="#">Share</a>
+            </li>
+        </sec:authorize>
+    </ul>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#photo-menu').ptmDropdownMenu('init');
+            $('#photo-menu').ptmDropdownMenu('action');
+            $('body').ptmModal('init');
+        });
+    </script>
+
+</div>

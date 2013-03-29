@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <tiles:insertTemplate template="/WEB-INF/views/photos/shared/menu.jspx"/>
+    <div class="clear"><!-- --></div>
+
+    <div class="image-panel left">
+
+        <div class="image">
+            <img src="/data/${photo.id}/medium.png"/>
+        </div>
+
+        <div class="app">
+            <tiles:insertDefinition name="photo.thumbs"/>
+        </div>
+
+        <div class="comments">
+            <div id="full-comments"><tiles:insertDefinition name="photo.comments"/></div>
+        </div>
+
+    </div>
+
+    <div class="info-panel">
+
+        <ul id="panel">
+            <li id="user"><tiles:insertDefinition name="user.status"/></li>
+            <li id="name"><tiles:insertDefinition name="photo.name"/></li>
+            <li id="author"><tiles:insertDefinition name="photo.author"/></li>
+            <li id="description"><tiles:insertDefinition name="photo.description"/></li>
+            <li id="time"><tiles:insertDefinition name="photo.time"/></li>
+            <li id="place"><tiles:insertDefinition name="photo.place"/></li>
+            <li id="tags"><tiles:insertDefinition name="photo.tags"/></li>
+            <li><tiles:insertTemplate template="/WEB-INF/views/photos/static/item.jspx"/></li>
+            <li><tiles:insertTemplate template="/WEB-INF/views/photos/shared/represented.jspx"/></li>
+            <li><tiles:insertTemplate template="/WEB-INF/views/photos/privacy/item.jspx"/></li>
+            <li><tiles:insertTemplate template="/WEB-INF/views/photos/license/item.jspx"/></li>
+            <li><tiles:insertTemplate template="/WEB-INF/views/photos/marked/item.jspx"/></li>
+        </ul>
+
+    </div>
+
+    <div class="clear"><!-- --></div>
+
+</div>
